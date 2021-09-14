@@ -4,10 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-    <!--
-		Basic
-	-->
+    <!-- Basic -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>عنى</title>
@@ -16,14 +13,10 @@
     <meta name="keywords" content="vcard, resposnive, resume, personal, card, cv, cards, portfolio" />
     <meta name="author" content="beshleyua" />
 
-    <!--
-		Load Fonts
-	-->
+    <!-- Load Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!--
-		Load CSS
-	-->
+    <!-- Load CSS -->
     <link rel="stylesheet" href="assets/fontawsome-5.4.1/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/basic.css" />
     <link rel="stylesheet" href="assets/css/layout.css" />
@@ -33,9 +26,7 @@
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/owl.carousel.css" />
 
-    <!--
-		Background Gradient
-	-->
+    <!-- Background Gradient -->
     <link rel="stylesheet" href="assets/css/gradient.css" />
 
     <!--
