@@ -1,0 +1,540 @@
+/* Slider
+================================================== */
+
+
+/* ==== Main CSS === */
+.img-fill {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    text-align: center
+}
+
+    .img-fill .img-silder {
+        min-height: 100%;
+        min-width: 100%;
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        max-width: none;
+    }
+
+.Modern-Slider *,
+.Modern-Slider *:before,
+.Modern-Slider *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.Grid1k {
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.blocks-box,
+.slick-slider {
+    margin: 0;
+    padding: 0 !important;
+}
+
+.slick-slide {
+    float: left /* If RTL Make This Right */;
+    padding: 0;
+}
+
+/* ==== Slider Style === */
+.Modern-Slider .item .img-fill {
+    height: calc(100vh - 110px);
+    background: #000;
+}
+
+    .Modern-Slider .item .img-fill .info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        background: rgba(0,0,0,.3);
+        line-height: 100vh;
+        text-align: center;
+    }
+
+    .Modern-Slider .item .img-fill .img-silder {
+        filter: blur(1px);
+        background-size: cover;
+        background-position: center;
+    }
+
+.Modern-Slider .item .info > div {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-flow: column;
+}
+
+.Modern-Slider .NextArrow {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 45px;
+    height: 45px;
+    background: rgba(0,0,0,.50);
+    border: 0 none;
+    margin-top: -22.5px;
+    text-align: center;
+    font: 20px/45px FontAwesome;
+    color: #FFF;
+    z-index: 5;
+    cursor: pointer;
+    outline: none;
+}
+
+.Modern-Slider .PrevArrow {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 45px;
+    height: 45px;
+    background: rgba(0,0,0,.50);
+    border: 0 none;
+    margin-top: -22.5px;
+    text-align: center;
+    font: 20px/45px FontAwesome;
+    color: #FFF;
+    z-index: 5;
+    cursor: pointer;
+    outline: none;
+}
+
+    .Modern-Slider .NextArrow i,
+    .Modern-Slider .PrevArrow i {
+        font-style: normal;
+    }
+
+.Modern-Slider .slick-dots {
+    position: absolute;
+    height: 5px;
+    background: rgba(255,255,255,.20);
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+    .Modern-Slider .slick-dots li button {
+        display: none;
+    }
+
+    .Modern-Slider .slick-dots li {
+        float: left;
+        width: 0px;
+        height: 5px;
+        background: #2a5f97;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        margin: 0;
+    }
+
+        .Modern-Slider .slick-dots li.slick-active {
+            width: 100%;
+            animation: ProgressDots 11s both;
+        }
+
+.Modern-Slider .item h3 {
+    width: 100%;
+    font-size: 30px;
+    line-height: 50px;
+    /*font: 30px/50px RalewayB;*/
+    text-transform: uppercase;
+    color: #FFF;
+    animation: fadeOutRight 1s both;
+    margin: 0;
+    padding: 0;
+}
+
+.Modern-Slider .item h5 {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 30px;
+    /*font: 15px/30px RalewayR;*/
+    color: #FFF;
+    /*max-width: 600px;*/
+    overflow: hidden;
+    height: 60px;
+    animation: fadeOutLeft 1s both;
+}
+
+.Modern-Slider .item.slick-active h3 {
+    animation: fadeInDown 1s both 1s;
+}
+
+.Modern-Slider .item.slick-active h5 {
+    animation: fadeInLeft 1s both 1.5s;
+}
+
+.Modern-Slider .item.slick-active {
+    animation: Slick-FastSwipeIn 1s both;
+}
+
+.Modern-Slider {
+    direction: ltr;
+    background: #000;
+    margin-top: 110px;
+}
+
+/* ==== Slider Image Transition === */
+@keyframes Slick-FastSwipeIn {
+    0% {
+        transform: rotate3d(0,1,0,150deg) scale(0) perspective(400px);
+    }
+
+    100% {
+        transform: rotate3d(0,1,0,0deg) scale(1) perspective(400px);
+    }
+}
+
+@-webkit-keyframes ProgressDots {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes ProgressDots {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* ==== Slick Slider Css Ruls === */
+.slick-slider {
+    position: relative;
+    display: block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent
+}
+
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0
+}
+
+    .slick-list:focus {
+        outline: none
+    }
+
+    .slick-list.dragging {
+        cursor: hand
+    }
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0)
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block
+}
+
+    .slick-track:before, .slick-track:after {
+        display: table;
+        content: ''
+    }
+
+    .slick-track:after {
+        clear: both
+    }
+
+.slick-loading .slick-track {
+    visibility: hidden
+}
+
+.slick-slide {
+    display: none;
+    float: left /* If RTL Make This Right */;
+    height: 100%;
+    min-height: 1px
+}
+
+    .slick-slide.dragging img {
+        pointer-events: none
+    }
+
+.slick-initialized .slick-slide {
+    display: block
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent
+}
+
+
+/*-- Animation */
+
+.slick-slide.slick-active .img-fill .info .animated1 {
+}
+
+.slick-slide.slick-active .img-fill .info .animated2 {
+    -webkit-animation: slideInLeft .5s ease-in 300ms both;
+    animation: slideInLeft .5s ease-in 300ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated3 {
+    -webkit-animation: fadeInLeft 1.5s ease-in-out 300ms both;
+    animation: fadeInLeft 1.5s ease-in-out 300ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated4 {
+    -webkit-animation: lightSpeedIn 1.5s ease-in 300ms both;
+    animation: lightSpeedIn 1.5s ease-in 300ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated5 {
+    -webkit-animation: bounceInLeft 1s ease-in-out 100ms both;
+    animation: bounceInLeft 1s ease-in-out 100ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated6 {
+    -webkit-animation: fadeInRight 1s ease-in 200ms both;
+    animation: fadeInRight 1s ease-in 200ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated7 {
+    -webkit-animation: fadeInRight 1.5s ease-in 300ms both;
+    animation: fadeInRight 1.5s ease-in 300ms both;
+}
+
+.slick-slide.slick-active .img-fill .info .animated8 {
+    -webkit-animation: bounceInDown 1s ease-in 800ms both;
+    animation: bounceInDown 1s ease-in 800ms both;
+}
+
+.nav-menu a {
+    font-size: 15px;
+}
+
+/*.nav-menu ul {
+    left: unset;
+    right: 0;
+    padding: 0;
+}*/
+
+.nav-menu ul li a {
+    text-align: right;
+}
+
+/*Start Search*/
+.search-container {
+    position: relative;
+    float: left;
+    width: auto;
+    height: 45px;
+    background-color: #067C61;
+    text-align: right;
+    padding: 8px 22.5px;
+    border-radius: 30px;
+    margin: 20px 0;
+}
+
+.txt-search,
+.txt-search:focus {
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+    display: inline-block;
+    box-shadow: unset;
+    height: 27px;
+    padding: 0;
+    transition: all .7s ease;
+}
+
+.txt-search {
+    width: 0;
+}
+
+.search-container:hover .txt-search,
+.search-container .txt-search:focus {
+    margin-left: 22px;
+    width: 285px;
+}
+
+.txt-search::placeholder {
+    color: #fff;
+}
+
+.btn-search {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    width: 35px;
+    height: 35px;
+    background-color: #2a977e;
+    border-radius: 50%;
+    transform: translate(0px, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .btn-search i {
+        color: #fff;
+    }
+/*End Search*/
+
+#header #logo {
+    display: inline-block;
+}
+
+#header .logo-area, #footer .logo-area {
+    display: flex;
+    /*margin-top: 5px;*/
+    float: right;
+}
+
+    #header .logo-area img, #footer .logo-area img {
+        height: 65px;
+    }
+
+    #header .logo-area .logo-text, #footer .logo-area .logo-text {
+        font-size: 15px;
+        text-align: right;
+        margin-right: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #2a5f97;
+    }
+
+    #footer .logo-area .logo-text {
+        font-size: 20px;
+    }
+
+        #header .logo-area .logo-text p, #footer .logo-area .logo-text p {
+            margin: 0;
+        }
+
+        #header .logo-area .logo-text span, #footer .logo-area .logo-text span {
+            letter-spacing: .8px;
+            font-size: 18px;
+        }
+
+        #footer .logo-area .logo-text span {
+            font-size: 24px;
+        }
+
+@media (max-width: 991px) {
+    #header .nav-search {
+        top: 5px;
+        left: 55px;
+        width: auto;
+        color: #fff;
+        background-color: unset;
+    }
+
+        #header .nav-search:after {
+            display: none !important;
+        }
+
+    #header .search-block {
+        top: 100%;
+        left: 15px;
+    }
+
+    #header .search-block .search-close {
+        top: -59px;
+        left: 37px;
+        color: #fff;
+    }
+
+    #header .logo-area img {
+        height: 60px;
+    }
+
+    .Modern-Slider {
+        margin-top: 70px;
+    }
+}
+
+/* fixed-social-links */
+.fixed-social-links {
+    position: fixed;
+    top: 20vh;
+    left: 0;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 0px 5px 4px 0px;
+    padding: 10px 0;
+}
+
+    .fixed-social-links a {
+        display: block;
+        padding: 6px 15px;
+        font-size: 17px;
+        color: #b4c2e5;
+    }
+
+        .fixed-social-links a:hover {
+            transform: scale(1.5);
+        }
+
+.nav-menu ul li ul {
+    width: max-content;
+    left: unset;
+    right: 100%;
+}
+
+.iframe-news {
+    width: 100%;
+    height: 560px;
+    overflow-y: auto;
+    border: 5px solid #ddd;
+    background-color: #fff;
+}
+
+.footer-container {
+    padding: 0 60px;
+}

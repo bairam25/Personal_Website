@@ -1,0 +1,347 @@
+/*Font Arabic*/
+@font-face {
+    font-family: 'Tajawal';
+    src: url('../fonts/Tajawal-Black.ttf');
+    src: url('../../fonts/Tajawal-Bold.ttf'), url('../fonts/Tajawal-ExtraBold.ttf'), url('../fonts/Tajawal-ExtraLight.ttf'), url('../fonts/Tajawal-Light.ttf'), url('../fonts/Tajawal-Medium.ttf'), url('../fonts/Tajawal-Regular.ttf');
+}
+
+body {
+    direction: rtl;
+    overflow-x: hidden;
+    font-family: Tajawal, "Open Sans", "sans-serif" !important;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+}
+
+.banner-btn {
+    font-family: Tajawal, raleway,sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 50px;
+    transition: .5s;
+    line-height: 1;
+    margin: 10px;
+    color: #fff;
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s;
+    border: 2px solid #133c68;
+    text-shadow: 1px 1px 1px #0c2a49, 2px 2px 2px #08203a;
+}
+
+    .banner-btn:hover,
+    .banner-btn:focus {
+        background: #133c68;
+        color: #fff;
+        text-shadow: 1px 1px 1px #0c2a49, 2px 2px 2px #08203a;
+    }
+
+/*Start cust-tabs*/
+.cust-tabs.nav-tabs {
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    display: block;
+    border-bottom: 0;
+    margin-bottom: 30px;
+}
+
+    .cust-tabs.nav-tabs li {
+        display: inline-block;
+        margin-bottom: 0;
+        float: unset;
+        margin: 0 3px;
+    }
+
+    .cust-tabs.nav-tabs a {
+        border: 2px solid #133c68;
+        border-radius: 50px;
+        font-weight: 600;
+        background-color: transparent;
+        color: #133c68;
+        padding: 10px 50px;
+        text-shadow: 1px 1px 1px #dfdfdf, 2px 2px 2px #dbdbdb;
+    }
+
+        .cust-tabs.nav-tabs a:hover {
+            background-color: #133c68;
+            color: #fff;
+            text-shadow: 1px 1px 1px #0c2a49, 2px 2px 2px #08203a;
+            border-color: #133c68;
+        }
+
+        .cust-tabs.nav-tabs a.active, .cust-tabs.nav-tabs a.active:hover, .cust-tabs.nav-tabs a.active:focus {
+            background-color: #133c68;
+            color: #fff;
+            border: 2px solid #133c68;
+            text-shadow: 1px 1px 1px #0c2a49, 2px 2px 2px #08203a;
+        }
+
+.small-tab li {
+    margin: 0px 1px !important;
+}
+
+    .small-tab li a {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
+    }
+/*End cust-tabs*/
+/*Start style Button*/
+.def-btn {
+    background: #133c68;
+    border: 0;
+    padding: 7px 40px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 22px;
+    text-shadow: 1px 1px 1px #0c2a49, 2px 2px 2px #08203a;
+}
+
+    .def-btn:hover,
+    .def-btn:focus {
+        background: #2a5f97;
+        color: #fff;
+    }
+
+.md-btn {
+    background: #b8a060;
+    border: 0;
+    padding: 5px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+    .md-btn:hover,
+    .md-btn:focus {
+        background: #c6af70;
+        color: #fff;
+    }
+
+.list-btn {
+    background: #133c68;
+    border: 0;
+    padding: 2px 21px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+    .list-btn:hover,
+    .list-btn:focus {
+        background: #2a5f97;
+        color: #fff;
+    }
+/*End style Button*/
+
+.mt40 {
+    margin-top: 40px !important;
+}
+
+.p-lr-25 {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
+
+/*Start tbl-data*/
+.tbl-data {
+    width: 100%;
+    margin: 5px 0;
+}
+
+    .tbl-data tr {
+        border: 1px solid #dfdfdf;
+    }
+
+    .tbl-data thead tr {
+        background-color: #1c61b7;
+        color: #fff;
+    }
+
+    /*.tbl-data tr th {
+        min-width: 220px;
+    }*/
+
+    .tbl-data tr th,
+    .tbl-data tr td {
+        padding: 8px 6px;
+        border-left: 1px solid #eee;
+    }
+
+    .tbl-data tr th:last-child,
+    .tbl-data tr td:last-child {
+        border: 0;
+    }
+
+    .tbl-data tr td {
+        font-size: 15px;
+    }
+
+    .tbl-data tbody tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+/*End tbl-data*/
+
+/*Start tbl-vertical*/
+.tbl-vertical tr:nth-child(even) th {
+    background-color: #1c61b7;
+    color: #fff;
+}
+.tbl-vertical tr:nth-child(odd) th {
+    background-color: #2683c8;
+    color: #fff;
+}
+/*End tbl-vertical*/
+
+/*Start Slider*/
+.carousel .carousel-tabs {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 0;
+}
+    .carousel .carousel-tabs li {
+        width: 70px;
+        height: 60px;
+        overflow: hidden;
+        margin: 0 3px;
+    }
+        .carousel .carousel-tabs li .img-thumbnail {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #bbb;
+        }
+        .carousel .carousel-tabs li.active img {
+            border: 1.5px solid #133c68;
+        }
+/*End Slider*/
+
+#news .col-lg-3,
+#news .col-md-6,
+#About_TheProgram .col-lg-3,
+#About_TheProgram .col-md-6,
+#Success_Stories .col-lg-4,
+#Success_Stories .col-md-6,
+.team .col-lg-3,
+.team .col-md-6,
+.cards-style .col-lg-6,
+.cards-style .col-md-6 {
+    float: right;
+}
+
+.custome-ol li {
+    margin-bottom: 10px;
+}
+
+.ml15 {
+    margin-left: 15px !important;
+}
+
+.lead {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 15px;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-skip-ink: none;
+}
+
+.text-line {
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-skip-ink: none;
+}
+
+/*Start map menu*/
+.centers-list {
+    height: 90vh;
+    position: absolute;
+    z-index: 99;
+    top: 5%;
+    right: 4rem;
+    overflow-y: auto;
+    width: 33.33%;
+    background-color: #fff;
+    margin-top: 11px;
+}
+
+    .centers-list h4 {
+        padding: .7rem;
+        color: #133c68;
+        border-bottom: 1px solid #eee;
+    }
+
+.centers-list-item .center-title {
+    padding: .7rem;
+    display: block;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.collapse.center-info {
+    padding: 1rem;
+    background: #f5f5f5;
+}
+
+.center-list-info {
+    padding: 0 !important;
+}
+
+.centers-list-item .center-title h3 {
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #133c68;
+}
+
+.center-title h3:before {
+    content: "\f068";
+    font-family: "FontAwesome";
+    font-weight: 900;
+    padding-left: 1rem;
+    font-size: 12px;
+}
+
+.center-title.collapsed h3:before {
+    content: "\f067";
+    font-weight: 900;
+}
+
+.centers-list-item .center-title .badge {
+    background: #eee;
+}
+
+.li-time > div:first-child {
+    margin: 0 !important;
+}
+
+.li-time > div:nth-child(2), .li-time > div:last-child {
+    margin-right: 22px;
+}
+
+.li-time > div:nth-child(2), .li-time > div:last-child {
+    margin-right: 22px;
+}
+
+.li-time > div:first-child:before {
+    font-family: 'FontAwesome';
+    content: "\f017";
+    margin-left: 5px;
+}
+/*End map menu*/

@@ -1,0 +1,65 @@
+﻿<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+
+<asp:TextBox runat="server" CssClass="form-control"></asp:TextBox>
+
+<asp:TextBox runat="server" CssClass="form-control search" SkinID="search"></asp:TextBox>
+
+<asp:TextBox runat="server" CssClass="form-control td-textbox-wd" SkinID="td-textbox-wd"></asp:TextBox>
+
+<asp:TextBox runat="server" CssClass="form-control td-textarea-wd" SkinID="td-textarea-wd"></asp:TextBox>
+
+<asp:TextBox runat="server" CssClass="form-control txt-color" SkinID="txt-color"></asp:TextBox>
+
+<asp:TextBox runat="server" CssClass="form-control txt-tbl-order" SkinID="txt-tbl-order"></asp:TextBox>
+
+<asp:TextBox runat="server" SkinID="sample-color"></asp:TextBox>
+
+<asp:RadioButtonList runat="server" CssClass="radio-btn" SkinID="radio-btn"></asp:RadioButtonList>
+
+
+<asp:DropDownList runat="server" CssClass="form-control" />
+
+<asp:DropDownList runat="server" CssClass="form-control ddlStatus" SkinID="status" />
+
+<asp:DropDownList runat="server" CssClass="form-control units" SkinID="units" />
+
+<asp:RequiredFieldValidator runat="server" CssClass="inp-validate" />
+
+<asp:CustomValidator runat="server" CssClass="inp-validate" />
+
+<asp:RegularExpressionValidator runat="server" CssClass="inp-validate" />
+
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green" SkinID="btn-green" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-red" SkinID="btn-red" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-blue" SkinID="btn-blue" />
+
+<asp:LinkButton runat="server" class="search-bt btn btn-default" SkinID="btn-search" />
+
+<asp:LinkButton  runat="server" CssClass="clear-search" SkinID="clear-search" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green fl-r" SkinID="btn-new" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green" SkinID="btn-new-fl-l" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green fl-r mt20" SkinID="btn-new-mt20" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green fl-r mt25" SkinID="btn-new-mt25" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green fl-r mt25 pull-left" SkinID="btn-new-mt25-fl-l" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green mt20" SkinID="btn-excel" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-close" SkinID="btn-close" />
+
+<asp:LinkButton runat="server" CssClass="btn-main btn-green vertical-bottom" SkinID="btn-new-filter" />
+
+
+<asp:Button runat="server" CssClass="btn-main btn-green btn-save" SkinID="btn-save" />
+
+<asp:Button runat="server" CssClass="btn-main btn-green mt5" SkinID="btn-fill-keywords" />
+
+<asp:Button runat="server" CssClass="btn-main btn-red mt5" SkinID="btn-clear-keywords" />

@@ -1,0 +1,31 @@
+﻿/* =========================================
+   2. Scroll-bar
+============================================ */
+
+::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+    border: none !important;
+    /*display: none;*/
+}
+
+::-webkit-scrollbar-track {
+    background-color: #aaa !important;
+    border-radius: 1px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #666 !important;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px !important;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555 !important;
+    }
+
+
+

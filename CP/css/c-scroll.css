@@ -1,0 +1,46 @@
+﻿
+/* =========================================
+   2. Scroll-bar
+============================================ */
+
+::-webkit-scrollbar {
+    width: 3px !important;
+    height: 8px !important;
+    border: none !important;
+    display: none;
+}
+
+html:hover ::-webkit-scrollbar {
+    display: block !important;
+    transition-delay: .7s;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #eee !important;
+    border-radius: 1px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d5d5d5 !important;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 5px !important;
+    height: 5px !important;
+    border: none !important;
+}
+/*::-webkit-scrollbar-button {
+    display: none;
+}*/
+::-webkit-scrollbar-corner {
+    background: #d5d5d5 !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb !important;
+}

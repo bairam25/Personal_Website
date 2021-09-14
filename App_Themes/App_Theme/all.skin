@@ -1,0 +1,6 @@
+﻿<asp:TextBox runat="server" CssClass="form-control" />
+<asp:TextBox runat="server" CssClass="form-control txt-search" SkinID="txt-search" />
+
+<asp:LinkButton runat="server" CssClass="def-btn"></asp:LinkButton>
+<asp:LinkButton runat="server" CssClass="btn-search" SkinID="btn-search"></asp:LinkButton>
+<asp:LinkButton runat="server" CssClass="list-btn" SkinID="list-btn"></asp:LinkButton>

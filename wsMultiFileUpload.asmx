@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="VB" CodeBehind="wsMultiFileUpload.vb" Class="wsMultiFileUpload" %>
