@@ -109,7 +109,7 @@
                 <div class="sidebar-content">
                     <ul class="navigation" id="UlMenu" runat="server">
                         <li>
-                            <a href="" ><span>الندوات </span> <i class="" ></a>
+                            <a href="" ><span>الندوات </span></a>
                         </li>
                     </ul>
 
