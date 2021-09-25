@@ -93,7 +93,7 @@
                         <asp:Label ID="lblUserGroup" runat="server" Visible="false"></asp:Label>
                         <span>
                             <abbr>مرحبا</abbr>
-                            <asp:Label ID="lblFullName" runat="server"></asp:Label>
+                            <asp:Label ID="lblFullName" runat="server">Admin</asp:Label>
 
                         </span>
                     </a>
