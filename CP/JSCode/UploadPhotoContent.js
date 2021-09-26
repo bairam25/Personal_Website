@@ -15,15 +15,15 @@ function UploadComplete(sender, args) {
         return;
     }
     if (url.split(".").pop().toLowerCase() == "pdf") {
-        document.getElementById('hlViewIndicator').href = '../IndicatorPhotos/' + args.get_fileName();
-        document.getElementById('imgIndicator').src = '../Images/pdf_icon.jpg';
-        document.getElementById('HiddenIndicatorImg').value = '~/IndicatorPhotos/' + args.get_fileName();
+        document.getElementById('hlViewContent').href = '../ContentPhotos/' + args.get_fileName();
+        document.getElementById('imgContent').src = '../Images/pdf_icon.jpg';
+        document.getElementById('HiddenContentImg').value = '~/ContentPhotos/' + args.get_fileName();
     }
 
     else {
-        document.getElementById('hlViewIndicator').href = '../IndicatorPhotos/' + args.get_fileName();
-        document.getElementById('imgIndicator').src = '../IndicatorPhotos/' + args.get_fileName();
-        document.getElementById('HiddenIndicatorImg').value = '~/IndicatorPhotos/' + args.get_fileName();
+        document.getElementById('hlViewContent').href = '../ContentPhotos/' + args.get_fileName();
+        document.getElementById('imgContent').src = '../ContentPhotos/' + args.get_fileName();
+        document.getElementById('HiddenContentImg').value = '~/ContentPhotos/' + args.get_fileName();
     }
 
     img.style.display = 'none';
