@@ -11,9 +11,11 @@ Partial Class News
     Dim pf As New PublicFunctions
     Dim UserId As String = "1"
     Dim ContentTitle As String
+    Dim ContentDate As String
     Dim Description As String
     Dim Photo As String
     Dim OrderNo As String
+    Dim NewsTable As String = "select * from tblContent"
 #End Region
 #Region "Public_Functions"
 
@@ -38,21 +40,197 @@ Partial Class News
     Sub SetControlFields()
         Try
             ContentTitle = txtTitle.Text
-            Description = txtDescription.Text
+            Description = txtDescription.TextValue
             Photo = HiddenContentImg.Text
+            ContentDate = PublicFunctions.DateFormat(txtContentDate.Text, "dd/MM/yyyy")
             OrderNo = PublicFunctions.IntFormat(txtOrderNo.Text)
             FillImages()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+
+#End Region
+#Region "Page Load"
+    ''' <summary>
+    ''' Handle page_load event
+    ''' </summary>
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        lblRes.Visible = False
+        UserId = PublicFunctions.GetUserId(Page)
+        Try
+            If Page.IsPostBack = False Then
+                FillGrid(sender, e)
+            End If
+            'Set Default values of controls
+            SetControlFields()
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+#End Region
+#Region "Fill Grid"
+
+    ''' <summary>
+    ''' Fill Listview with data.
+    ''' </summary>
+    Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
+        Try
+            Dim dt As DataTable = DBManager.Getdatatable(NewsTable & " where isnull(IsDeleted,0)=0 and " & CollectConditions(sender, e))
+            If dt IsNot Nothing Then
+                If dt.Rows.Count > 0 Then
+
+                    ViewState("dtNewsTable") = dt
+                    ' Initialize the sorting expression.
+                    ViewState("SortExpression") = "ModifiedDate DESC"
+                    ' Populate the GridView.
+                    BindListView()
+                    dplvNews.Visible = False
+                    If dt.Rows.Count > ddlPager.SelectedValue Then
+                        dplvNews.Visible = True
+                    End If
+                Else
+                    lvNews.DataSource = Nothing
+                    lvNews.DataBind()
+                    dplvNews.Visible = False
+                End If
+                lblTotalCount.Text = dt.Rows.Count
+            End If
+
+
+
+            'ScriptManager.RegisterClientScriptBlock(UP, Me.[GetType](), Guid.NewGuid().ToString(), "LoadJquery();", True)
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Collect condition string to fill lvNews
+    ''' </summary>
+    Public Function CollectConditions(ByVal sender As Object, ByVal e As System.EventArgs) As String
+        txtSearch.Text = txtSearch.Text.TrimStart.TrimEnd
+        'btnClearSearch.Visible = False
+        'If txtSearch.Text <> String.Empty Then
+        '    btnClearSearch.Visible = True
+        'End If
+        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like '%" & txtSearch.Text & "%')")
+
+        Return Search
+
+    End Function
+
+
+
+    ''' <summary>
+    ''' Load Adjustment data from [TblItemAdjustments] table into the Listview.
+    ''' </summary>
+    Private Sub BindListView()
+        Try
+            If ViewState("dtNewsTable") IsNot Nothing Then
+                ' Get the DataTable from ViewState.
+                Dim dtNewsTable As DataTable = DirectCast(ViewState("dtNewsTable"), DataTable)
+
+                ' Convert the DataTable to DataView.
+                Dim dv As New DataView(dtNewsTable)
+
+                ' Set the sort column and sort order.
+                dv.Sort = ViewState("SortExpression").ToString()
+
+                ' Bind the Listview control.
+                lvNews.DataSource = dv
+                lvNews.DataBind()
+                If dtNewsTable.Rows.Count > 0 Then
+                    dplvNews.DataBind()
+                End If
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Set Number of rows at every page
+    ''' </summary>
+    Protected Sub PageSize_Changed(ByVal sender As Object, ByVal e As System.EventArgs)
+        Try
+            dplvNews.SetPageProperties(0, ddlPager.SelectedValue, True)
+            FillGrid(sender, New EventArgs)
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    ''' <summary>
+    ''' set Pager
+    ''' </summary>
+    Protected Sub OnPagePropertiesChanging(sender As Object, e As PagePropertiesChangingEventArgs)
+        Try
+            dplvNews.SetPageProperties(e.StartRowIndex, e.MaximumRows, False)
+            FillGrid(sender, New EventArgs)
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Sorting Listview
+    ''' </summary>
+    Protected Sub lv_Sorting(sender As Object, e As ListViewSortEventArgs)
+        Try
+            Dim strSortExpression As String() = ViewState("SortExpression").ToString().Split(" "c)
+
+            ' If the sorting column is the same as the previous one, 
+            ' then change the sort order.
+            If strSortExpression(0) = e.SortExpression Then
+                If strSortExpression(1) = "DESC" Then
+                    ViewState("SortExpression") = Convert.ToString(e.SortExpression) & " " & "ASC"
+                Else
+                    ViewState("SortExpression") = Convert.ToString(e.SortExpression) & " " & "DESC"
+                End If
+            Else
+                ' If sorting column is another column, 
+                ' then specify the sort order to "Ascending".
+                ViewState("SortExpression") = Convert.ToString(e.SortExpression) & " " & "ASC"
+            End If
+            ' Rebind the listview control to show sorted data.
+            BindListView()
+            ' add sorting Arrows.
+            ResetArrows()
+
+            If strSortExpression(1) = "ASC" Then
+                CType(lvNews.FindControl(e.SortExpression), HtmlTableCell).Attributes.Add("class", "faDown")
+            Else
+                CType(lvNews.FindControl(e.SortExpression), HtmlTableCell).Attributes.Add("class", "faUp")
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+
+    End Sub
+
+    Sub ResetArrows()
+        Try
+            Dim i As Integer = 0
+            While i < lvNews.Items.Count
+                CType(lvNews.FindControl("Date"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvNews.FindControl("Title"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvNews.FindControl("ShowOrder"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                i += 1
+            End While
+
+        Catch ex As Exception
+            clsMessages.ShowErrorMessgage(lblRes, "Error Code: " & Application("Errors").Select("exType='" & ex.GetType().Name.ToString & "'")(0).ItemArray(2) & "</br> " & Application("Errors").Select("exType='" & ex.GetType().Name.ToString & "'")(0).ItemArray(3), Me)
+        End Try
+
+    End Sub
+
     ''' <summary>
     ''' Update item to be activated or not.
     ''' </summary>
     Sub UpdateActive(sender As Object, e As EventArgs)
         Try
             Dim parent = sender.parent.parent
-            Dim ItemId As String = DirectCast(parent.FindControl("lblId"), Label).Text
+            Dim ItemId As String = DirectCast(parent.FindControl("lblContentId"), Label).Text
             Dim StatusName As String = "Active"
             Dim MSG As String = ""
             Dim chk As CheckBox = DirectCast(sender, CheckBox)
@@ -74,132 +252,7 @@ Partial Class News
         End Try
     End Sub
 #End Region
-#Region "Page Load"
-    ''' <summary>
-    ''' Handle page_load event
-    ''' </summary>
-    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        lblRes.Visible = False
-        UserId = PublicFunctions.GetUserId(Page)
-        Try
-            If Page.IsPostBack = False Then
-                FillGrid()
-            End If
-            'Set Default values of controls
-            SetControlFields()
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-#End Region
-#Region "Fill Grid"
 
-    ''' <summary>
-    ''' Fill gridview with data from tblContent.
-    ''' </summary>
-    Sub FillGrid()
-        Try
-            Dim dtContent As DataTable = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and " + CollectConditions() + "")
-            If dtContent.Rows.Count > 0 Then
-                pgPanel.Visible = True
-                ' Initialize the sorting expression.
-                If SortExpression.Value = String.Empty Then
-                    SortExpression.Value = "Id ASC"
-                End If
-                ' Populate the GridView.
-                ' Convert the DataTable to DataView.
-                Dim dv As New DataView(dtContent)
-
-                ' Set the sort column and sort order.
-                dv.Sort = SortExpression.Value.ToString()
-
-                ' Bind the GridView control.
-                gvContent.DataSource = dv
-                gvContent.DataBind()
-            Else
-                pgPanel.Visible = False
-                gvContent.DataSource = Nothing
-                gvContent.DataBind()
-            End If
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-    ''' <summary>
-    ''' Collect condition string to fill grid
-    ''' </summary>
-    Public Function CollectConditions() As String
-        Dim result As String = "1=1"
-        Try
-            Dim Search As String = IIf(txtSearch.Text = "", "1=1", " (Title Like '%" + txtSearch.Text + "%')")
-            Return Search
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-            Return result
-        End Try
-    End Function
-#End Region
-#Region "Sorting"
-
-    Protected Sub Gv_Sorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
-        Try
-            Dim strSortExpression As String() = SortExpression.Value.ToString().Split(" "c)
-
-            ' If the sorting column is the same as the previous one, 
-            ' then change the sort order.
-            If strSortExpression(0) = e.SortExpression Then
-                If strSortExpression(1) = "ASC" Then
-                    SortExpression.Value = Convert.ToString(e.SortExpression) & " " & "DESC"
-                Else
-                    SortExpression.Value = Convert.ToString(e.SortExpression) & " " & "ASC"
-                End If
-            Else
-                ' If sorting column is another column, 
-                ' then specify the sort order to "Ascending".
-                SortExpression.Value = Convert.ToString(e.SortExpression) & " " & "DESC"
-            End If
-
-            ' Rebind the GridView control to show sorted data.
-            FillGrid()
-
-            ' add sorting Arrows.
-            If strSortExpression(1) = "ASC" Then
-                gvContent.HeaderRow.Cells(PublicFunctions.GetColumnIndex(gvContent, e.SortExpression)).CssClass = "faDown"
-            Else
-                gvContent.HeaderRow.Cells(PublicFunctions.GetColumnIndex(gvContent, e.SortExpression)).CssClass = "faUp"
-            End If
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-#End Region
-#Region "Paging"
-
-    ''' <summary>
-    ''' Paging function
-    ''' </summary>
-    Protected Sub GvContent_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs)
-        Try
-            gvContent.PageIndex = e.NewPageIndex
-            FillGrid()
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-    ''' <summary>
-    ''' Set Number of rows at every page
-    ''' </summary>
-    Protected Sub PageSize_Changed(ByVal sender As Object, ByVal e As System.EventArgs)
-        Try
-            FillGrid()
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-#End Region
 #Region "New"
 
     ''' <summary>
@@ -213,6 +266,7 @@ Partial Class News
             HiddenContentImg.Text = ""
             pf.ClearAll(pnlForm)
             Enabler(True)
+            txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
@@ -246,8 +300,9 @@ Partial Class News
             Dim dt As New DataTable
             dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
-                txtTitle.Text = dt.Rows(0).Item("Name").ToString
-                txtDescription.Text = dt.Rows(0).Item("Description").ToString
+                txtTitle.Text = dt.Rows(0).Item("Title").ToString
+                txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
+                txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
                 HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
                 FillImages()
@@ -273,7 +328,7 @@ Partial Class News
 
             If DBManager.ExcuteQuery("update tblContent SET  Isdeleted = 'True' where Id= '" + ContentId + "'") = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Delete, Me.Page)
-                FillGrid()
+                FillGrid(Sender, e)
             End If
 
         Catch ex As Exception
@@ -331,8 +386,19 @@ Partial Class News
     ''' </summary>
     Protected Function FillDT(ByRef dtContent As TblContent) As Boolean
         Try
+            If Not IsNumeric(OrderNo) Then
+                clsMessages.ShowInfoMessgage(lblRes, "Invalid Order", Me)
+                txtOrderNo.Focus()
+                Return False
+            End If
+            If Not IsDate(ContentDate) Then
+                clsMessages.ShowInfoMessgage(lblRes, "Invalid Date", Me)
+                txtContentDate.Focus()
+                Return False
+            End If
             dtContent.Type = "NEW"
             dtContent.Title = ContentTitle
+            dtContent.Date = ContentDate
             dtContent.Description = Description
             dtContent.Date = DateTime.Now
             dtContent.Photo = Photo
@@ -362,7 +428,7 @@ Partial Class News
             HiddenContentImg.Text = ""
             lblContentId.Text = ""
             Enabler(False)
-            FillGrid()
+            FillGrid(Sender, e)
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
