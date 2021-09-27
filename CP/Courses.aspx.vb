@@ -5,17 +5,18 @@ Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 
 #End Region
-Partial Class News
+Partial Class Courses
     Inherits System.Web.UI.Page
 #Region "Global Variables"
     Dim pf As New PublicFunctions
     Dim UserId As String = "1"
+    Dim ContentCategory As String
     Dim ContentTitle As String
     Dim ContentDate As String
     Dim Description As String
     Dim Photo As String
     Dim OrderNo As String
-    Dim ContentTable As String = "select * from tblContent where Type='NEW'"
+    Dim ContentTable As String = "select * from tblContent where Type='CUR'"
 #End Region
 #Region "Public_Functions"
 
@@ -40,6 +41,7 @@ Partial Class News
     Sub SetControlFields()
         Try
             ContentTitle = txtTitle.Text
+            ContentCategory = txtCategory.Text
             Description = txtDescription.TextValue
             Photo = HiddenContentImg.Text
             ContentDate = PublicFunctions.DateFormat(txtContentDate.Text, "dd/MM/yyyy")
@@ -213,6 +215,7 @@ Partial Class News
             Dim i As Integer = 0
             While i < lvContent.Items.Count
                 CType(lvContent.FindControl("Date"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvContent.FindControl("Category"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("Title"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("ShowOrder"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 i += 1
@@ -253,7 +256,7 @@ Partial Class News
     End Sub
 #End Region
 
-#Region "New"
+#Region "Course"
 
     ''' <summary>
     ''' Handle add button(form grid) click event.
@@ -267,7 +270,7 @@ Partial Class News
             pf.ClearAll(pnlForm)
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
-            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='NEW'")
+            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='CUR'")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -301,6 +304,7 @@ Partial Class News
             dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
+                txtCategory.Text = dt.Rows(0).Item("Category").ToString
                 txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
@@ -396,7 +400,8 @@ Partial Class News
                 txtContentDate.Focus()
                 Return False
             End If
-            dtContent.Type = "NEW"
+            dtContent.Type = "CUR"
+            dtContent.Category = ContentCategory
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description
