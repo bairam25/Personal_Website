@@ -5,7 +5,7 @@ Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 
 #End Region
-Partial Class News
+Partial Class Conferences
     Inherits System.Web.UI.Page
 #Region "Global Variables"
     Dim pf As New PublicFunctions
@@ -15,7 +15,7 @@ Partial Class News
     Dim Description As String
     Dim Photo As String
     Dim OrderNo As String
-    Dim ContentTable As String = "select * from tblContent where Type='NEW'"
+    Dim ContentTable As String = "select * from tblContent where Type='COF'"
 #End Region
 #Region "Public_Functions"
 
@@ -253,7 +253,7 @@ Partial Class News
     End Sub
 #End Region
 
-#Region "New"
+#Region "Conference"
 
     ''' <summary>
     ''' Handle add button(form grid) click event.
@@ -267,7 +267,7 @@ Partial Class News
             pf.ClearAll(pnlForm)
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
-            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='NEW'")
+            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='COF'")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -396,7 +396,7 @@ Partial Class News
                 txtContentDate.Focus()
                 Return False
             End If
-            dtContent.Type = "NEW"
+            dtContent.Type = "COF"
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description

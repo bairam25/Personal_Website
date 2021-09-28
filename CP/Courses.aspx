@@ -1,4 +1,4 @@
-﻿<%@ Page Theme="Theme1" Language="VB" AutoEventWireup="false" CodeFile="News.aspx.vb" Inherits="News" %>
+﻿<%@ Page Theme="Theme1" Language="VB" AutoEventWireup="false" CodeFile="Courses.aspx.vb" Inherits="Courses" %>
 
 <%@ Register Src="UserControls/HTMLEditor.ascx" TagPrefix="uc1" TagName="HTMLEditor" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>الأخبار</title>
+    <title>الكورسات</title>
     <link rel="shortcut icon" href="../images/logo/favi.png" />
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,12 +45,12 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6 col-xs-5 text-left">
-                        <h4>الأخبار</h4>
+                        <h4>الكورسات</h4>
                     </div>
                     <div class="col-sm-6 col-xs-7">
                         <ol class="breadcrumb">
                             <li><a href="Dashboards.aspx"><i class="ti-home"></i></a></li>
-                            <li>الأخبار</li>
+                            <li>الكورسات</li>
                         </ol>
                     </div>
                 </div>
@@ -132,6 +132,9 @@
                                                                         <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
                                                                     </th>
                                                                     <th>الصور</th>
+                                                                    <th class="upnDownArrow" id="Category">
+                                                                        <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
+                                                                    </th>
                                                                     <th class="upnDownArrow" id="Title">
                                                                         <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
                                                                     </th>
@@ -159,6 +162,9 @@
                                                                     <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>'  />
 
                                                                     <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
                                                                 </td>
                                                                 <td>
                                                                     <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
@@ -190,7 +196,7 @@
                                                                             رسالة تأكيد
                                                                         </div>
                                                                         <div class="body">
-                                                                            <label>هل تريد حذف الخبر ؟</label>
+                                                                            <label>هل تريد حذف الكورس ؟</label>
                                                                         </div>
 
                                                                         <div class="footer">
@@ -209,7 +215,7 @@
                                                             <table style="width: 100%;">
                                                                 <tr class="EmptyRowStyle">
                                                                     <td>
-                                                                        <div>لا توجد أخبار</div>
+                                                                        <div>لا توجد كورسات</div>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -314,7 +320,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading" role="tab" id="heading1">
                                                     <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات الخبر</a>
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات الكورس</a>
                                                     </h4>
                                                 </div>
 
@@ -323,10 +329,16 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="col-md-4">
+                                                                    <label class="required">التصنيف</label>
+                                                                    <asp:TextBox runat="server" ID="txtCategory" MaxLength="100"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone"
+                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
+                                                                </div>
+                                                                <div class="col-md-4">
                                                                     <label class="required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
-                                                                        ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل العنوان"></asp:RequiredFieldValidator>
+                                                                        ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل الأسم"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <label class="input-label required">التاريخ</label>
@@ -335,7 +347,7 @@
                                                                         Enabled="True" TargetControlID="txtContentDate" DaysModeTitleFormat="dd/MM/yyyy"
                                                                         TodaysDateFormat="dd/MM/yyyy" Format="dd/MM/yyyy">
                                                                     </asp:CalendarExtender>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="أدخل تاريخ الخبر" ValidationGroup="vNews"
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="أدخل تاريخ الكورس" ValidationGroup="vNews"
                                                                         ControlToValidate="txtContentDate" EnableClientScript="true" Display="Dynamic" SetFocusOnError="true" ErrorMessage="Required News Date"></asp:RequiredFieldValidator>
                                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ValidationGroup="vNews" runat="server"
                                                                         ErrorMessage="Invalid News Date" ControlToValidate="txtContentDate" Display="Dynamic"
