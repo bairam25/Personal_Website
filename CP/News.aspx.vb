@@ -265,6 +265,7 @@ Partial Class News
             imgContent.ImageUrl = "~/images/img-up.png"
             HiddenContentImg.Text = ""
             pf.ClearAll(pnlForm)
+            txtDescription.TextValue = String.Empty
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='NEW'")

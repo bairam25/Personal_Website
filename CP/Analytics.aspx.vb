@@ -268,6 +268,8 @@ Partial Class Analytics
             imgContent.ImageUrl = "~/images/img-up.png"
             HiddenContentImg.Text = ""
             pf.ClearAll(pnlForm)
+            txtDescription.TextValue = String.Empty
+            ddlCategory.SelectedIndex = -1
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
