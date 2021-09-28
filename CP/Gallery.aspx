@@ -168,7 +168,11 @@
                                                                         <label class="input-label">الوصف</label>
                                                                         <asp:TextBox runat="server" ID="txtDescription" MaxLength="500" TextMode="MultiLine" autocomplete="off" placeholder="الوصف" ToolTip="الوصف"></asp:TextBox>
                                                                     </div>
-                                                                    <div class="col-md-3">
+                                                                     <div class="col-md-3">
+                                                                        <label class="input-label">عرض في الرئيسية</label>
+                                                                        <asp:CheckBox runat="server" ID="chkShowInHome" ToolTip="عرض في الرئيسية"></asp:CheckBox>
+                                                                    </div>
+                                                                   <%-- <div class="col-md-3">
                                                                         <label runat="server" id="Label1" for="ddlCategory" class="active">التصنيف</label>
                                                                         <asp:DropDownList runat="server" TabIndex="4" ID="ddlCategory" CssClass="add_padding" AutoPostBack="true" OnSelectedIndexChanged="CategoryChanged"></asp:DropDownList>
                                                                     </div>
@@ -177,7 +181,7 @@
                                                                         <asp:DropDownList runat="server" ID="ddlSubCategory" CssClass="add_padding" TabIndex="5">
                                                                             <asp:ListItem Value="0" Text="-- أختر --"></asp:ListItem>
                                                                         </asp:DropDownList>
-                                                                    </div>
+                                                                    </div>--%>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -258,8 +262,8 @@
                                                                             <ItemTemplate>
                                                                                 <asp:Label ID="lblId" runat="server" Visible="false" Text='<%# Eval("Id")%>' />
                                                                                 <asp:Label ID="lblShowOrder" runat="server" Text='<%# Eval("ShowOrder")%>' Visible="false" />
-                                                                                <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("MediaPath")%>' Width="50px" onclick="ImagePreview(this.src,this.alt)" Visible="false" />
-                                                                                <asp:Image ID="lblMedia" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("MediaPath").ToString.Replace("~/", "../") %>' ImageUrl='<%#IIf(Eval("MediaPath").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("MediaPath").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("MediaPath").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("MediaPath")) %>' Width="50px" onclick="ImagePreview(this.lang)" />
+                                                                                <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Path")%>' Width="50px" onclick="ImagePreview(this.src,this.alt)" Visible="false" />
+                                                                                <asp:Image ID="lblMedia" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' ImageUrl='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("Path")) %>' Width="50px" onclick="ImagePreview(this.lang)" />
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="الترتيب">
@@ -354,12 +358,12 @@
                                                     <tr id="lvItemRow" runat="server">
                                                         <td>
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
-                                                            <asp:Label ID="lblAlbumId" runat="server" Text='<%# Eval("SourceId") %>' Visible="false"></asp:Label>
+                                                            <asp:Label ID="lblAlbumId" runat="server" Text='<%# Eval("AlbumId") %>' Visible="false"></asp:Label>
                                                             <asp:Label ID="lblMediaId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
                                                             <asp:Label ID="lblMain" runat="server" Text='<%# Eval("Main") %>' Visible="false"></asp:Label>
                                                         </td>
                                                         <td>
-                                                            <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("MediaPath").ToString.Replace("~/", "../") %>' ImageUrl='<%#IIf(Eval("MediaPath").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("MediaPath").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("MediaPath").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("MediaPath")) %>' Width="50px" onclick="ImagePreview(this.lang)" />
+                                                            <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' ImageUrl='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("Path")) %>' Width="50px" onclick="ImagePreview(this.lang)" />
                                                         </td>
                                                         <td>
                                                             <asp:Label ID="Label2" runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
@@ -485,12 +489,12 @@
                                                                 <asp:Label ID="lblAlbumId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
                                                             </td>
                                                             <td>
-                                                                <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("AlbumDate").ToString, "dd/MM/yyyy") %>'></asp:Label>
+                                                                <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
                                                             </td>
                                                             <td>
-                                                                <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("MediaPath")%>' Visible="false" />
+                                                                <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("MainURL")%>' Visible="false" />
                                                                 <asp:LinkButton ID="lbShowImages" runat="server" CommandArgument='<%# Eval("Id")%>' OnClick="ViewPhotos">
-                                                                    <asp:Image ID="imgPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# IIf(Eval("MediaType").ToString = "I", IIf(Eval("MediaPath").ToString <> String.Empty, Eval("MediaPath").ToString, "images/noimage.jpg"), "images/video.png")  %>' />
+                                                                    <asp:Image ID="imgPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("MainURL").ToString  %>' />
                                                                 </asp:LinkButton>
                                                             </td>
                                                             <td>
