@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>الكورسات</title>
+    <title>الدورات</title>
     <link rel="shortcut icon" href="../images/logo/favi.png" />
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,12 +45,12 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6 col-xs-5 text-left">
-                        <h4>الكورسات</h4>
+                        <h4>الدورات</h4>
                     </div>
                     <div class="col-sm-6 col-xs-7">
                         <ol class="breadcrumb">
                             <li><a href="Dashboards.aspx"><i class="ti-home"></i></a></li>
-                            <li>الكورسات</li>
+                            <li>الدورات</li>
                         </ol>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
                                                                             رسالة تأكيد
                                                                         </div>
                                                                         <div class="body">
-                                                                            <label>هل تريد حذف الكورس ؟</label>
+                                                                            <label>هل تريد حذف الدورة ؟</label>
                                                                         </div>
 
                                                                         <div class="footer">
@@ -215,7 +215,7 @@
                                                             <table style="width: 100%;">
                                                                 <tr class="EmptyRowStyle">
                                                                     <td>
-                                                                        <div>لا توجد كورسات</div>
+                                                                        <div>لا توجد دورات</div>
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -320,7 +320,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading" role="tab" id="heading1">
                                                     <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات الكورس</a>
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات الدورة</a>
                                                     </h4>
                                                 </div>
 
@@ -347,7 +347,7 @@
                                                                         Enabled="True" TargetControlID="txtContentDate" DaysModeTitleFormat="dd/MM/yyyy"
                                                                         TodaysDateFormat="dd/MM/yyyy" Format="dd/MM/yyyy">
                                                                     </asp:CalendarExtender>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="أدخل تاريخ الكورس" ValidationGroup="vNews"
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="أدخل تاريخ الدورة" ValidationGroup="vNews"
                                                                         ControlToValidate="txtContentDate" EnableClientScript="true" Display="Dynamic" SetFocusOnError="true" ErrorMessage="Required News Date"></asp:RequiredFieldValidator>
                                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ValidationGroup="vNews" runat="server"
                                                                         ErrorMessage="Invalid News Date" ControlToValidate="txtContentDate" Display="Dynamic"

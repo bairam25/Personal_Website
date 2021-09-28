@@ -109,7 +109,22 @@
                 <div class="sidebar-content">
                     <ul class="navigation" id="UlMenu" runat="server">
                         <li>
-                            <a href="" ><span>الندوات </span></a>
+                            <a href="News.aspx" onclick="LoadFrame(this.href);return false;" ><span>الأخبار </span></a>
+                        </li>
+                         <li>
+                            <a href="Seminars.aspx" onclick="LoadFrame(this.href);return false;" ><span>الندوات </span></a>
+                        </li>
+                        <li>
+                            <a href="Courses.aspx" onclick="LoadFrame(this.href);return false;" ><span>الدورات </span></a>
+                        </li>
+                         <li>
+                            <a href="Conferences.aspx" onclick="LoadFrame(this.href);return false;" ><span>المؤتمرات </span></a>
+                        </li>
+                         <li>
+                            <a href="Seminars.aspx" onclick="LoadFrame(this.href);return false;" ><span>تحليلات الاسواق المالية </span></a>
+                        </li>
+                        <li>
+                            <a href="Gallery.aspx" onclick="LoadFrame(this.href);return false;" ><span> معرض الصور </span></a>
                         </li>
                     </ul>
 
@@ -154,9 +169,10 @@
     <script src="../js/jquery-min.js"></script>
     <script src="bootstrap4/js/bootstrap.min.js"></script>
     <script src="js/m-scroll.js"></script>
+      <script src="JSCode/CPMain.js" type="text/javascript"></script>
     <script src="js/fullscreen.js"></script>
     <script src="js/cpcustom.js"></script>
-    <script src="JSCode/CPMain.js" type="text/javascript"></script>
+  
 </body>
 </html>
 
