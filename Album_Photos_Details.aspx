@@ -1,30 +1,35 @@
 ﻿<%@ Page Title="عرض الالبوم" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Album_Photos_Details.aspx.vb" Inherits="Album_Photos_Details" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
+    <asp:Label Text="" ID="lblRes" runat="server" />
+
     <!-- Start Album Photos Area -->
     <div class="rn-blog-area rn-section-gap mt--90" id="blog">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
-                        <span class="subtitle">Photos</span>
-                        <h2 class="title">عنوان الالبوم</h2>
+                        <%--<span class="subtitle">Photos</span>--%>
+                        <h2 class="title">
+                            <asp:Label Text="text" runat="server" ID="lblAlbumTitle" /></h2>
                     </div>
                 </div>
             </div>
             <div class="row row--25 mt--30 mt_md--10 mt_sm--10">
-                <!-- Start Photo -->
+                <asp:ListView runat="server" ID="lvGallery">
+                    <ItemTemplate>
+                         <!-- Start Photo -->
                 <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
                     <div class="rn-blog" data-toggle="modal" data-target="#ModalPhoto">
                         <div class="inner">
                             <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/blog/blog-01.jpg" alt="Personal Portfolio Images">
+                                <a href="javascript:void(0)" onclick="show('<%# Eval("Path").ToString.Replace("~", "")  %>','<%# Eval("Title").ToString   %>')">
+                                    <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString   %>'>
                                 </a>
                             </div>
                             <div class="content">
                                 <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الصورة
+                                    <a href="javascript:void(0)"><%# Eval("Title").ToString   %>
                                                 <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 </h4>
@@ -33,7 +38,10 @@
                     </div>
                 </div>
                 <!-- End Photo -->
-                <!-- Start Photo -->
+                    </ItemTemplate>
+                </asp:ListView>
+               
+               <%-- <!-- Start Photo -->
                 <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
                     <div class="rn-blog" data-toggle="modal" data-target="#">
                         <div class="inner">
@@ -92,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Photo -->
+                <!-- End Photo -->--%>
             </div>
         </div>
     </div>
@@ -111,12 +119,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-content">
-                                <h3 class="text-center">عنوان الصورة</h3>
+                                <h3 class="text-center"><span id="lblImgTitle"></span></h3>
                             </div>
                             <!-- End of .text-content -->
                         </div>
                         <div class="col-lg-12">
-                            <img src="assets/images/blog/blog-big-01.jpg" alt="news modal" class="img-fluid modal-feat-img">
+                            <img id="imgModal" alt="news modal" class="img-fluid modal-feat-img">
                         </div>
                     </div>
                     <!-- End of .row Body-->
@@ -124,5 +132,13 @@
             </div>
         </div>
     </div>
+    <script>    
+        function show(s,t) {
+            let img = document.getElementById("imgModal")
+            let lblImgTitle = document.getElementById("lblImgTitle")
+            img.src = s;
+            lblImgTitle.innerText = t;
+        }
+    </script>
     <!-- End Modal Photo -->
 </asp:Content>
