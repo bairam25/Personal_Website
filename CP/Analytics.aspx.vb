@@ -5,17 +5,18 @@ Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 
 #End Region
-Partial Class Conferences
+Partial Class Analytics
     Inherits System.Web.UI.Page
 #Region "Global Variables"
     Dim pf As New PublicFunctions
     Dim UserId As String = "1"
+    Dim ContentCategory As String
     Dim ContentTitle As String
     Dim ContentDate As String
     Dim Description As String
     Dim Photo As String
     Dim OrderNo As String
-    Dim ContentTable As String = "select * from tblContent where Type='COF'"
+    Dim ContentTable As String = "select * from tblContent where Type='ANL'"
 #End Region
 #Region "Public_Functions"
 
@@ -40,6 +41,7 @@ Partial Class Conferences
     Sub SetControlFields()
         Try
             ContentTitle = txtTitle.Text
+            ContentCategory = ddlCategory.SelectedValue
             Description = txtDescription.TextValue
             Photo = HiddenContentImg.Text
             ContentDate = PublicFunctions.DateFormat(txtContentDate.Text, "dd/MM/yyyy")
@@ -213,6 +215,7 @@ Partial Class Conferences
             Dim i As Integer = 0
             While i < lvContent.Items.Count
                 CType(lvContent.FindControl("Date"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvContent.FindControl("Category"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("Title"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("ShowOrder"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 i += 1
@@ -267,7 +270,7 @@ Partial Class Conferences
             pf.ClearAll(pnlForm)
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
-            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='COF'")
+            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -301,6 +304,7 @@ Partial Class Conferences
             dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
+                ddlCategory.SelectedValue = dt.Rows(0).Item("Category").ToString
                 txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
@@ -396,7 +400,8 @@ Partial Class Conferences
                 txtContentDate.Focus()
                 Return False
             End If
-            dtContent.Type = "COF"
+            dtContent.Type = "ANL"
+            dtContent.Category = ContentCategory
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description

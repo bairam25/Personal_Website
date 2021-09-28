@@ -23,6 +23,7 @@ Partial Class Gallery
     Dim Category As String
     Dim SubCategory As String
     Dim Description As String
+    Dim ShowInHome As Boolean
     Dim AlbumTable As String = "select * from vw_Allbum"
     Dim ItemsImgs As New List(Of TblAlbumDetails)
     Dim daItemsImgs As New TblAlbumDetailsFactory
@@ -68,12 +69,13 @@ Partial Class Gallery
     ''' </summary>
     Sub SetControlFields()
         Try
-            Category = ddlCategory.SelectedValue
-            SubCategory = ddlSubCategory.SelectedValue
+            'Category = ddlCategory.SelectedValue
+            'SubCategory = ddlSubCategory.SelectedValue
             ShowOrder = txtShowOrder.Text
             STitle = txtTitle.Text
             Description = txtDescription.Text
             AlbumDate = PublicFunctions.DateFormat(txtAlbumDate.Text, "dd/MM/yyyy")
+            ShowInHome = chkShowInHome.Checked
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -107,7 +109,7 @@ Partial Class Gallery
             If Not Page.IsPostBack Then
                 FillGrid(sender, e)
                 '2) Fill Category DDL
-                clsBindDDL.BindLookupDDLs("GalleryCategory", ddlCategory, True, "-- أختر --")
+                'clsBindDDL.BindLookupDDLs("GalleryCategory", ddlCategory, True, "-- أختر --")
             Else
                 If pnlForm.Visible Then
                     ScriptManager.RegisterClientScriptBlock(up, Me.[GetType](), "MyAction", "document.getElementById('pnlPhotos').style.display='Block';", True)
@@ -133,7 +135,7 @@ Partial Class Gallery
             Enabler(True)
             pf.ClearAll(pnlForm)
             'Reset Category & Sub Category
-            ddlCategory.SelectedIndex = 0
+            'ddlCategory.SelectedIndex = 0
             CategoryChanged(Sender, e)
             txtAlbumDate.Text = DateTime.Now.ToShortDateString
             txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
@@ -146,12 +148,12 @@ Partial Class Gallery
     ''' in case of not selected , remove sub categories items and show -- أختر -- text with 0 value
     ''' </summary>
     Protected Sub CategoryChanged(ByVal Sender As Object, ByVal e As System.EventArgs)
-        If ddlCategory.SelectedValue = 0 Then
-            ddlSubCategory.Items.Clear()
-            ddlSubCategory.Items.Add(New ListItem("-- أختر --", 0))
-            Return
-        End If
-        clsBindDDL.BindLookupDDLs("GallerySubCategory", ddlSubCategory, True, "-- أختر --", "ASC", ddlCategory.SelectedValue)
+        'If ddlCategory.SelectedValue = 0 Then
+        '    ddlSubCategory.Items.Clear()
+        '    ddlSubCategory.Items.Add(New ListItem("-- أختر --", 0))
+        '    Return
+        'End If
+        'clsBindDDL.BindLookupDDLs("GallerySubCategory", ddlSubCategory, True, "-- أختر --", "ASC", ddlCategory.SelectedValue)
     End Sub
 #End Region
 
@@ -173,7 +175,7 @@ Partial Class Gallery
                 _sqltrans = _sqlconn.BeginTransaction
                 If daAlbum.InsertTrans(dtAlbum, _sqlconn, _sqltrans) Then
                     'Add Album Media
-                    If SaveAlbumMedia("Insert") Then
+                    If SaveAlbumMedia(dtAlbum, "Insert") Then
                         clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Insert, Page)
                         _sqltrans.Commit()
                         _sqlconn.Close()
@@ -198,7 +200,7 @@ Partial Class Gallery
                 _sqltrans = _sqlconn.BeginTransaction
                 If daAlbum.UpdateTrans(dtAlbum, _sqlconn, _sqltrans) Then
                     'Update Album Media
-                    If SaveAlbumMedia("Update") Then
+                    If SaveAlbumMedia(dtAlbum, "Update") Then
                         clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Update, Page)
                         _sqltrans.Commit()
                         _sqlconn.Close()
@@ -242,6 +244,8 @@ Partial Class Gallery
             End If
             'dtAlbum.Category = Category
             'dtAlbum.SubCategory = SubCategory
+            dtAlbum.ShowInHome = ShowInHome
+            dtAlbum.Type = "A"
             dtAlbum.ShowOrder = ShowOrder
             dtAlbum.Date = AlbumDate
             dtAlbum.Title = STitle
@@ -263,24 +267,24 @@ Partial Class Gallery
     ''' <summary>
     ''' Fill tblAlbumDetails from controls in the panel photos.
     ''' </summary>
-    Protected Function SaveAlbumMedia(ByVal Operation As String) As Boolean
+    Protected Function SaveAlbumMedia(dtTable As TblAlbum, ByVal Operation As String) As Boolean
         Dim daImgs As New TblAlbumDetailsFactory
         Dim dtImgs As New TblAlbumDetails
-        Dim AlbumId As String = String.Empty
+        Dim AlbumId As Integer = 0
         Try
             Select Case Operation.ToLower
                 Case "insert"
-                    AlbumId = PublicFunctions.GetIdentity(_sqlconn, _sqltrans)
+                    AlbumId = dtTable.Id
                 Case "update"
                     AlbumId = lblAlbumId.Text
                     'delete old images in case of update
-                    ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("delete from tblAlbumDetails where SourceId='" & AlbumId & "' and Type='A'"))
-                    'daImgs.DeleteTrans(tblAlbumDetails.tblAlbumDetailsFields.SourceId, AlbumId, _sqlconn, _sqltrans)
+                    ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("delete from tblAlbumDetails where AlbumId='" & AlbumId & "'"))
+                    'daImgs.DeleteTrans(tblAlbumDetails.tblAlbumDetailsFields.AlbumId, AlbumId, _sqlconn, _sqltrans)
             End Select
             'loop to get images details from images gridview
             For Each gvRow As GridViewRow In gvItemsImgs.Rows
                 dtImgs.AlbumId = AlbumId
-                dtImgs.Type = "A"
+                'dtImgs.Type = "A"
                 dtImgs.Path = CType(gvRow.FindControl("lblImg"), System.Web.UI.WebControls.Image).ImageUrl
                 dtImgs.IsURL = False
                 dtImgs.ShowOrder = CType(gvRow.FindControl("ddlShowOrder"), System.Web.UI.WebControls.DropDownList).SelectedValue
@@ -289,9 +293,9 @@ Partial Class Gallery
                 dtImgs.CreatedDate = Date.Now
                 dtImgs.Main = CType(gvRow.FindControl("rblSelect"), RadioButton).Checked
                 dtImgs.Type = IIf(dtImgs.Path.ToString.Split(".").Last.ToLower = "mp4" OrElse dtImgs.Path.ToString.Split(".").Last.ToLower = "wmv" OrElse dtImgs.Path.ToString.Split(".").Last.ToLower = "webm", "V", "I")
-                If dtImgs.Type = "I" Then
-                    dtImgs.Path = dtImgs.Path.Replace(dtImgs.Path.Split("/").Last, "Thumb_" + dtImgs.Path.Split("/").Last)
-                End If
+                'If dtImgs.Type = "I" Then
+                '    dtImgs.Path = dtImgs.Path.Replace(dtImgs.Path.Split("/").Last, "Thumb_" + dtImgs.Path.Split("/").Last)
+                'End If
                 dtImgs.IsDeleted = False
                 If Not daImgs.InsertTrans(dtImgs, _sqlconn, _sqltrans) Then
                     clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page)
@@ -322,16 +326,17 @@ Partial Class Gallery
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
                 txtDescription.Text = dt.Rows(0).Item("Description").ToString
                 txtShowOrder.Text = dt.Rows(0).Item("ShowOrder").ToString
-                txtAlbumDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("AlbumDate").ToString, "dd/MM/yyyy")
-                Dim Category As String = dt.Rows(0).Item("Category").ToString
-                Dim SubCategory As String = dt.Rows(0).Item("SubCategory").ToString
-                If ddlCategory.Items.FindByValue(Category) IsNot Nothing Then
-                    ddlCategory.SelectedValue = Category
-                End If
-                CategoryChanged(Nothing, New EventArgs)
-                If ddlSubCategory.Items.FindByValue(SubCategory) IsNot Nothing Then
-                    ddlSubCategory.SelectedValue = SubCategory
-                End If
+                txtAlbumDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
+                chkShowInHome.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("ShowInHome").ToString)
+                'Dim Category As String = dt.Rows(0).Item("Category").ToString
+                'Dim SubCategory As String = dt.Rows(0).Item("SubCategory").ToString
+                'If ddlCategory.Items.FindByValue(Category) IsNot Nothing Then
+                '    ddlCategory.SelectedValue = Category
+                'End If
+                'CategoryChanged(Nothing, New EventArgs)
+                'If ddlSubCategory.Items.FindByValue(SubCategory) IsNot Nothing Then
+                '    ddlSubCategory.SelectedValue = SubCategory
+                'End If
                 'Fill Album Media
                 FillPhotos(lblAlbumId.Text)
                 Enabler(True)
@@ -349,7 +354,7 @@ Partial Class Gallery
     Protected Sub Delete(ByVal Sender As Object, ByVal e As System.EventArgs)
         Dim AlbumId As String = Sender.commandargument.ToString
         Try
-            If DBManager.ExcuteQuery("update TblAlbum SET Isdeleted = 'True',DeletedDate=GETDATE() where Id= '" & AlbumId & "';Update tblAlbumDetails SET Isdeleted = 'True',DeletedDate=GETDATE() where SourceId= '" & AlbumId & "' and Type='A'") = 1 Then
+            If DBManager.ExcuteQuery("update TblAlbum SET Isdeleted = 'True',DeletedDate=GETDATE() where Id= '" & AlbumId & "';Update tblAlbumDetails SET Isdeleted = 'True',DeletedDate=GETDATE() where AlbumId= '" & AlbumId & "'") = 1 Then
                 FillGrid(Sender, e)
                 clsMessages.ShowMessage(lblRes, MessageTypesEnum.Delete, Me)
             End If
@@ -375,13 +380,13 @@ Partial Class Gallery
             _sqlconn.Open()
             _sqltrans = _sqlconn.BeginTransaction
 
-            If ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET Isdeleted = 'True',DeletedDate=GETDATE() where Id= '" & MediaId & "' and Type='A' and SourceId='" & AlbumId & "';update TblAlbum SET MediaCount=MediaCount-1 where Id= '" & AlbumId & "'")) Then
+            If ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET Isdeleted = 'True',DeletedDate=GETDATE() where Id= '" & MediaId & "'  and AlbumId='" & AlbumId & "';update TblAlbum SET MediaCount=MediaCount-1 where Id= '" & AlbumId & "'")) Then
                 'Update MediaCount feild in the main table
                 BindAlbumMedia(AlbumId, _sqlconn, _sqltrans)
                 'If Main is deleting , then set first row as the new main one
                 If Main Then
                     Dim FirstPhotoId As String = DirectCast(lvImages.Items(0).FindControl("lblMediaId"), Label).Text
-                    If Not ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET Main=1 where Id= '" & FirstPhotoId & "' and SourceId='" & AlbumId & "' and Type='A'")) Then
+                    If Not ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET Main=1 where Id= '" & FirstPhotoId & "' and AlbumId='" & AlbumId & "' ")) Then
                         _sqltrans.Rollback()
                         clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page)
                     End If
@@ -391,7 +396,7 @@ Partial Class Gallery
                 For Each gvRow As ListViewItem In lvImages.Items
                     Dim id = DirectCast(gvRow.FindControl("lblMediaId"), Label).Text
                     Dim serialNo = DirectCast(gvRow.FindControl("srialNo"), Label).Text
-                    If Not ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET ShowOrder = " & serialNo & " where Id= '" & id & "' and SourceId='" & AlbumId & "' and Type='A'")) Then
+                    If Not ExecuteQuery.ExecuteAlCommands(_sqltrans, _sqlconn, New SqlCommand("update tblAlbumDetails SET ShowOrder = " & serialNo & " where Id= '" & id & "' and AlbumId='" & AlbumId & "'")) Then
                         _sqltrans.Rollback()
                         clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page)
                     End If
@@ -412,7 +417,7 @@ Partial Class Gallery
 
     Private Sub BindAlbumMedia(ByVal AlbumId As String, ByRef _sqlconn As SqlConnection, ByRef _sqltrans As SqlTransaction)
         Try
-            Dim dtNewsImgs As DataTable = ExecuteQuery.ExecuteQueryAndReturnDataTable("select Id,SourceId,ShowOrder,Main,Path,MediaThumbPath from tblAlbumDetails where isnull(Isdeleted,0)=0 and SourceId='" + AlbumId + "' and Type='A'", _sqlconn, _sqltrans)
+            Dim dtNewsImgs As DataTable = ExecuteQuery.ExecuteQueryAndReturnDataTable("select Id,AlbumId,ShowOrder,Main,Path from tblAlbumDetails where isnull(Isdeleted,0)=0 and AlbumId='" + AlbumId + "'  ", _sqlconn, _sqltrans)
             lvImages.DataSource = dtNewsImgs
             lvImages.DataBind()
             mpPopupImgs.Show()
@@ -624,7 +629,7 @@ Partial Class Gallery
     ''' </summary>
     Sub FillPhotos(ByVal AlbumId As String)
         Try
-            Dim dtItemImgs As DataTable = DBManager.Getdatatable("select * from tblAlbumDetails where isnull(Isdeleted,0)=0 and  SourceId='" & AlbumId & "' and Type='A'")
+            Dim dtItemImgs As DataTable = DBManager.Getdatatable("select * from tblAlbumDetails where isnull(Isdeleted,0)=0 and  AlbumId='" & AlbumId & "' ")
             If dtItemImgs.Rows.Count > 0 Then
                 gvItemsImgs.DataSource = dtItemImgs
                 gvItemsImgs.DataBind()
@@ -711,7 +716,7 @@ Partial Class Gallery
     Sub BindMainImg()
         Try
             Dim dtItems As New DataTable
-            dtItems = DBManager.Getdatatable("select Path from tblAlbumDetails where Main='1' and SourceId='" + lblAlbumId.Text + "'")
+            dtItems = DBManager.Getdatatable("select Path from tblAlbumDetails where Main='1' and AlbumId='" + lblAlbumId.Text + "'")
             If dtItems.Rows.Count <> 0 Then
                 Dim Photo = dtItems.Rows(0).Item("Path").ToString
                 SelectMainImg(Photo)
@@ -844,7 +849,7 @@ Partial Class Gallery
             Dim AlbumId As String = sender.CommandArgument
             'Dim ImgbigPhoto As Image = DirectCast(parent.FindControl("ImgbigPhoto"), Image)
             'imgMain.ImageUrl = ImgbigPhoto.ImageUrl
-            Dim dtNewsImgs As DataTable = DBManager.Getdatatable("select Id,SourceId,ShowOrder,Main,Path from tblAlbumDetails where isnull(Isdeleted,0)=0 and SourceId='" + AlbumId + "' and Type='A'")
+            Dim dtNewsImgs As DataTable = DBManager.Getdatatable("select Id,AlbumId,ShowOrder,Main,Path from tblAlbumDetails where isnull(Isdeleted,0)=0 and AlbumId='" + AlbumId + "'")
             lvImages.DataSource = dtNewsImgs
             lvImages.DataBind()
             mpPopupImgs.Show()
@@ -882,12 +887,5 @@ Partial Class Gallery
     End Sub
 #End Region
 
-#Region "Permissions"
-    Private Sub ListView_DataBound(sender As Object, e As EventArgs) Handles lvGallery.DataBound
-        Try
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-#End Region
+
 End Class

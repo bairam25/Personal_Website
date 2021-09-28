@@ -256,7 +256,7 @@ Partial Class Courses
     End Sub
 #End Region
 
-#Region "Course"
+#Region "New"
 
     ''' <summary>
     ''' Handle add button(form grid) click event.
