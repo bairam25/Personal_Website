@@ -656,11 +656,8 @@ Partial Class Gallery
                     While i < dt.Rows.Count
                         Dim dtDoc As New TblAlbumDetails
                         dtDoc.Path = "~/" + dt(i)("URL").ToString
-                        dtDoc.Type = dt(i)("Type").ToString
                         dtDoc.Id = i + 1
-                        If dtDoc.Type = "jpeg" Or dtDoc.Type = "jpg" Or dtDoc.Type = "png" Or dtDoc.Type = "gif" Then
-                            ItemsImgs.Add(dtDoc)
-                        End If
+                        ItemsImgs.Add(dtDoc)
                         i += 1
                     End While
                     gvItemsImgs.Visible = True

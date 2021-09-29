@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Gallery.aspx.vb" Inherits="Gallery" Theme="Theme1" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="VedioGallery.aspx.vb" Inherits="Gallery" Theme="Theme1" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -220,7 +220,7 @@
                                                                     <div class="modal-body">
                                                                         <div class="clear"></div>
                                                                         <asp:AjaxFileUpload ID="AjaxFileUpload1" ClientIDMode="static" runat="server" OnClientUploadStart="UploadFileStart" OnClientUploadComplete="uploadFileComplete"
-                                                                            MaximumNumberOfFiles="100" MaxFileSize="20480" AllowedFileTypes="jpeg,jpg,png,gif" />
+                                                                            MaximumNumberOfFiles="100" MaxFileSize="20480" AllowedFileTypes="jpeg,jpg,png,gif,mp4,webm,wmv" />
                                                                         <div class="clear"></div>
                                                                     </div>
                                                                     <div class="modal-footer">
