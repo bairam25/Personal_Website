@@ -126,6 +126,9 @@
                         <li>
                             <a href="Gallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الصور </span></a>
                         </li>
+                         <li>
+                            <a href="VedioGallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الفيديو </span></a>
+                        </li>
                     </ul>
 
                 </div>

@@ -321,7 +321,7 @@ Partial Class Gallery
         lblAlbumId.Text = Sender.commandargument
         pf.ClearAll(pnlForm)
         Try
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Id ='" & lblAlbumId.Text & "' ")
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Type='A' and Id ='" & lblAlbumId.Text & "' ")
             If dt.Rows.Count <> 0 Then
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
                 txtDescription.Text = dt.Rows(0).Item("Description").ToString
@@ -436,7 +436,7 @@ Partial Class Gallery
     ''' </summary>
     Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where " & CollectConditions(sender, e))
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Type='A' and " & CollectConditions(sender, e))
             If dt IsNot Nothing Then
                 If dt.Rows.Count > 0 Then
                     ViewState("dtAlbumTable") = dt
