@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="الرئيسية" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Home.aspx.vb" Inherits="Home" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
+    <asp:Label ID="lblRes" runat ="server" ></asp:Label>
     <!-- Start Slider Area -->
     <div id="home" class="rn-slider-area">
         <div class="slide slider-style-1">
@@ -76,168 +77,39 @@
             </div>
 
             <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
-                <!-- Start News -->
+                  <asp:ListView ID="lvNews" runat="server">
+                        <ItemTemplate>
+   <!-- Start News -->
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio" onclick="location.href='News_Details.aspx'">
+                    <div class="rn-portfolio" onclick="location.href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'">
                         <div class="inner">
                             <div class="thumbnail">
                                 <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-1.jpg" alt="News Photo">
+                                    <asp:Image ID="imgPhoto" runat ="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="News Photo" />
                                 </a>
                             </div>
                             <div class="content">
                                 <div class="category-info">
-                                    <div class="category-list">
+                                    <%--<div class="category-list">
                                         <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
+                                    </div>--%>
                                     <div class="meta">
-                                        <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
+                                        <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
                                     </div>
                                 </div>
                                 <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
+                                    <a href="javascript:void(0)"><%# Eval("Title") %></a>
                                 </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
+                                <p class="description"><%# Eval("Description") %></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End News -->
-                <!-- Start News -->
-                <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-2.jpg" alt="News Photo">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
-                                    <div class="meta">
-                                        <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
-                                </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End News -->
-                <!-- Start News -->
-                <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-3.jpg" alt="News Photo">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
-                                    <div class="meta">
-                                        <span><i class="far fa-clock"></i>Aug 5, 2021 - 2:15 PM</span>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
-                                </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End News -->
-                <!-- Start News -->
-                <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-4.jpg" alt="News Photo">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
-                                    <div class="meta">
-                                        <span><i class="far fa-clock"></i>May 25, 2021 - 7:55 PM</span>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
-                                </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End News -->
-                <!-- Start News -->
-                <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-5.jpg" alt="News Photo">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
-                                    <div class="meta">
-                                        <span><i class="far fa-clock"></i>May 17, 2021 - 3:00 PM</span>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
-                                </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End News -->
-                <!-- Start News -->
-                <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                    <div class="rn-portfolio">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/news/news-6.jpg" alt="News Photo">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>
-                                    <div class="meta">
-                                        <span><i class="far fa-clock"></i>May 8, 2021 - 1:25 PM</span>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الخبر</a>
-                                </h4>
-                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End News -->
+                        </ItemTemplate>
+                      </asp:ListView>
+             
+              
             </div>
 
             <a id="LinkButton2" class="rn-btn d-block text-center mt--60 btn-more" href="News.aspx">
@@ -424,81 +296,37 @@
                         <!-- Start Single Tab  -->
                         <div class="tab-pane fade " id="Conferences" role="tabpanel" aria-labelledby="Conferences-tab">
                             <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
-                                <!-- Start News -->
-                                <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                    <div class="rn-portfolio">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-1.jpg" alt="News Photo">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان المؤتمر<i class="fas fa-external-link-alt"></i>
-                                                    </a>
-                                                </h4>
-                                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                                            </div>
-                                        </div>
+                                   <asp:ListView ID="lvConferences" runat="server">
+                        <ItemTemplate>
+   <!-- Start News -->
+                <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div class="rn-portfolio" onclick="location.href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'">
+                        <div class="inner">
+                            <div class="thumbnail">
+                                <a href="javascript:void(0)">
+                                    <asp:Image ID="imgPhoto" runat ="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="News Photo" />
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="category-info">
+                                    <%--<div class="category-list">
+                                        <a href="javascript:void(0)">تصنيف الخبر</a>
+                                    </div>--%>
+                                    <div class="meta">
+                                        <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
                                     </div>
                                 </div>
-                                <!-- End News -->
-                                <!-- Start News -->
-                                <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                    <div class="rn-portfolio">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-2.jpg" alt="News Photo">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان المؤتمر<i class="fas fa-external-link-alt"></i>
-                                                    </a>
-                                                </h4>
-                                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End News -->
-                                <!-- Start News -->
-                                <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                    <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                                        <div class="inner">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-3.jpg" alt="News Photo">
-                                                </a>
-                                            </div>
-                                            <div class="content">
-                                                <div class="category-info">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 5, 2021 - 2:15 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان المؤتمر<i class="fas fa-external-link-alt"></i>
-                                                    </a>
-                                                </h4>
-                                                <p class="description">لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End News -->
+                                <h4 class="title">
+                                    <a href="javascript:void(0)"><%# Eval("Title") %></a>
+                                </h4>
+                                <p class="description"><%# Eval("Description") %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End News -->
+                        </ItemTemplate>
+                      </asp:ListView>
                             </div>
 
                             <asp:LinkButton ID="LinkButton5" runat="server" CssClass="rn-btn d-block text-center mt--60 btn-more">
@@ -883,7 +711,16 @@
                     <div class="d-flex flex-wrap align-content-start h-100">
                         <div class="position-sticky clients-wrapper sticky-top rbt-sticky-top-adjust">
                             <ul class="nav tab-navigation-button flex-column nav-pills me-3 mt--30 mt_md--30 mt_sm--30" id="v-tab" role="tablist">
-                                <li class="nav-item">
+
+                                <asp:ListView ID="lvAnlyticsCategories" runat="server">
+                                    <ItemTemplate>
+                                         <li class="nav-item">
+                                    <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>' id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' role="tab" aria-selected="true"><%# Eval("Category") %></a>
+                                </li>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                                
+                                <%--<li class="nav-item">
                                     <a class="nav-link" id="v-tab-1" data-toggle="tab" href="#v-pills-1" role="tab" aria-selected="true">تحليلات الاسواق العالمية</a>
                                 </li>
 
@@ -893,7 +730,7 @@
 
                                 <li class="nav-item">
                                     <a class="nav-link" id="v-tab-3" data-toggle="tab" href="#v-pills-3" role="tab" aria-selected="true">تحليلات السوق السعودى</a>
-                                </li>
+                                </li>--%>
                             </ul>
                         </div>
                     </div>
@@ -903,7 +740,49 @@
                     <div class="tab-area">
                         <div class="d-flex align-items-start">
                             <div class="tab-content w-100" id="v-tabContent">
-                                <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-tab-1">
+                                 <asp:ListView ID="lvCategories" runat="server">
+                                    <ItemTemplate>
+                                                                                <asp:Label ID="lblCategory" runat ="server" Text='<%# Eval("Category") %>' Visible="false" ></asp:Label>
+                                          <div class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "tab-pane fade show active", "tab-pane fade") %>' id='<%# "v-pills-" + Container.DataItemIndex.ToString %>' role="tabpanel" aria-labelledby='<%#"v-tab-" + Container.DataItemIndex.ToString %>'>
+                                     <asp:ListView ID="lvAnalytics" runat="server">
+                                    <ItemTemplate>
+                                          <!-- Start Section -->
+                                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
+                                        <div class="rn-portfolio" data-toggle="modal" data-target="#">
+                                            <div class="inner row">
+                                                <div class="col-md-3">
+                                                    <div class="thumbnail">
+                                                        <a href="javascript:void(0)">
+                                                             <asp:Image ID="imgAnalyticsPhoto" runat ="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Category") %>' />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="content">
+                                                        <div class="category-info pb--0">
+                                                            <div class="meta">
+                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="javascript:void(0)"><%# Eval("Title") %></a>
+                                                        </h4>
+                                                        <p class="description">
+                                                        <%# Eval("Description") %>   
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Section -->
+                                    </ItemTemplate>
+                                         </asp:ListView>
+                            
+                                </div>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                                   <%--  <div class="tab-pane fade" id="v-pills-1" role="tabpanel" aria-labelledby="v-tab-1">
                                     <!-- Start Section -->
                                     <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
                                         <div class="rn-portfolio" data-toggle="modal" data-target="#">
@@ -1090,7 +969,9 @@
                                         </div>
                                     </div>
                                     <!-- End Section -->
-                                </div>
+                                </div>--%>
+
+                                
                             </div>
                         </div>
                     </div>

@@ -121,7 +121,7 @@
                             <a href="Conferences.aspx" onclick="LoadFrame(this);return false;" ><span>المؤتمرات </span></a>
                         </li>
                          <li>
-                            <a href="Seminars.aspx" onclick="LoadFrame(this);return false;" ><span>تحليلات الاسواق المالية </span></a>
+                            <a href="Analytics.aspx" onclick="LoadFrame(this);return false;" ><span>تحليلات الاسواق المالية </span></a>
                         </li>
                         <li>
                             <a href="Gallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الصور </span></a>

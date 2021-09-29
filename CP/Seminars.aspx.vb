@@ -272,6 +272,7 @@ Partial Class Seminars
             HiddenContentImg.Text = ""
             pf.ClearAll(pnlForm)
             Enabler(True)
+            txtDescription.TextValue = String.Empty
             txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='SEM'")
         Catch ex As Exception
