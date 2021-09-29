@@ -657,17 +657,6 @@ Partial Class Gallery
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
-    Protected Sub CancelURL(Sender As Object, e As EventArgs)
-        Try
-            txtYoutubeURL.Text = String.Empty
-            txtYoutubeURL.Focus()
-            hfURLIndex.Value = String.Empty
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-
     ''' <summary>
     ''' Fill Unit object with data
     ''' </summary>
@@ -675,6 +664,11 @@ Partial Class Gallery
         Try
             Dim URL As String = txtYoutubeURL.Text.Trim
             Dim URLID As String = GetVideoId(URL)
+            If String.IsNullOrEmpty(URLID) Then
+                ShowInfoMessgage(lblRes, "اختر رابط يوتيوب صحيح", Me)
+                CancelURL(Nothing, Nothing)
+                Return False
+            End If
             dtDetails.IsURL = True
             dtDetails.Path = "https://img.youtube.com/vi/" & URLID & "/0.jpg"
             dtDetails.ShowOrder = ItemsImgs.Count + 1
@@ -715,6 +709,16 @@ Partial Class Gallery
         Next
         Return String.Empty
     End Function
+
+    Protected Sub CancelURL(Sender As Object, e As EventArgs)
+        Try
+            txtYoutubeURL.Text = String.Empty
+            txtYoutubeURL.Focus()
+            hfURLIndex.Value = String.Empty
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "Photo Upload"

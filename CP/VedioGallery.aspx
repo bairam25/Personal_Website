@@ -280,7 +280,7 @@
                                                                             <asp:RadioButton ID="rblSelect" runat="server" Text=' ' Checked='<%# Eval("Main")%>' OnCheckedChanged="SelectRBL" AutoPostBack="true" />
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
-                                                                    <asp:TemplateField HeaderText="الصور">
+                                                                    <asp:TemplateField HeaderText="الفيديو">
                                                                         <ItemTemplate>
                                                                             <asp:Label ID="lblId" runat="server" Visible="false" Text='<%# Eval("Id")%>' />
                                                                             <asp:Label ID="lblShowOrder" runat="server" Text='<%# Eval("ShowOrder")%>' Visible="false" />
@@ -322,7 +322,7 @@
                                                                                     رسالة تأكيد
                                                                                 </div>
                                                                                 <div class="body">
-                                                                                    <label>هل تريد حذف الصورة ؟</label>
+                                                                                    <label>هل تريد حذف الفيديو ؟</label>
                                                                                 </div>
 
                                                                                 <div class="footer">
@@ -341,7 +341,7 @@
 
                                                                 </Columns>
                                                                 <EmptyDataTemplate>
-                                                                    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp لا توجد صور
+                                                                    <span class="glyphicon glyphicon-exclamation-sign"></span>&nbsp لا توجد ملفات
                                                                 </EmptyDataTemplate>
                                                             </asp:GridView>
                                                         </div>
@@ -362,7 +362,7 @@
                             <asp:Panel ID="pnlPopupImgs" runat="server" ClientIDMode="Static" CssClass="modal-dialog modal-lg top10" align="center" Style="display: none; margin: 30px auto!important;">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title dis-inline-b">الصور</h5>
+                                        <h5 class="modal-title dis-inline-b">الفيديو</h5>
                                         <asp:LinkButton ID="lbClosePopupImages" runat="server" CssClass="close close-popup" OnClientClick="CloseConfirmPopup('mpPopupImgs');triggerLoadMainList();return false;"><span>&times;</span></asp:LinkButton>
                                     </div>
                                     <div class="modal-body body-scroll">
@@ -372,7 +372,7 @@
                                                 <table class="tbl-imgs" runat="server" cellspacing="0" rules="all" border="0" id="gvProductImages">
                                                     <tr class="HeaderStyle">
                                                         <th scope="col">م</th>
-                                                        <th scope="col">الصور </th>
+                                                        <th scope="col">الفيديو </th>
                                                         <th scope="col">الترتيب</th>
                                                         <th scope="col">الرئيسية</th>
                                                         <th scope="col">حذف</th>
@@ -415,7 +415,7 @@
                                                                 رسالة تأكيد
                                                             </div>
                                                             <div class="body">
-                                                                <label>هل تريد حذف الصورة ؟</label>
+                                                                <label>هل تريد حذف الفيديو ؟</label>
                                                             </div>
 
                                                             <div class="footer">
@@ -576,7 +576,7 @@
                                                     <table style="width: 100%;">
                                                         <tr class="EmptyRowStyle">
                                                             <td>
-                                                                <div>لا توجد صور</div>
+                                                                <div>لا توجد ملفات</div>
                                                             </td>
                                                         </tr>
                                                     </table>
