@@ -24,10 +24,14 @@
         video.play();
         video.style.display = "block";
 
-    } else if (Mediarsrc.includes("http")) {
+    } else if (Mediarsrc.includes("img.youtube.com")) {
         const pathname = new URL(Mediarsrc).pathname;
         const paths = pathname.split("/");
         const video_id = paths[2];
+        var divYoutube = document.getElementById('divYoutube');
+        if (divYoutube) {
+            modal = divYoutube;
+        }
         const embedURL = "https://www.youtube.com/embed/" + video_id;
         $('<iframe />', {
             name: 'YouTubeIfram',

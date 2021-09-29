@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/plugins/feature.css" />
     <!-- Style css -->
     <link rel="stylesheet" href="assets/css/style.css" />
+
 </head>
 <body class="template-color-1 spybody" data-spy="scroll" data-target=".navbar-example2" data-offset="70">
     <form id="form1" runat="server">
@@ -196,5 +197,7 @@
     <script src="assets/js/vendor/particles.js"></script>
     <!-- main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="CP/JSCode/jsImagePreview.js"></script>
+
 </body>
 </html>

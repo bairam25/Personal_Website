@@ -13,7 +13,40 @@
                 </div>
             </div>
             <div class="row row--25 mt--30 mt_md--10 mt_sm--10">
-                <!-- Start Video -->
+                <asp:Label Text="" ID="lblRes" runat="server" />
+                <asp:ListView runat="server" ID="lvGallery">
+                    <ItemTemplate>
+                        <!-- Start Photo -->
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                            <div class="rn-blog" onclick="location.href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="javascript:void(0)">
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="category-info">
+                                            <div class="category-list">
+                                                <a href="javascript:void(0)"><i class="fas fa-images ml-1"></i><%# Eval("MediaCount").ToString  %></a>
+                                            </div>
+                                            <div class="meta">
+                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %></span>
+                                            </div>
+                                        </div>
+                                        <h4 class="title">
+                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
+                                                <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Photo -->
+                    </ItemTemplate>
+                </asp:ListView>
+                <%--<!-- Start Video -->
                 <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
                     <div class="rn-blog" onclick="location.href='Album_Videos_Details.aspx'">
                         <div class="inner">
@@ -167,7 +200,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Video -->
+                <!-- End Video -->--%>
             </div>
         </div>
     </div>

@@ -666,7 +666,6 @@ Partial Class Gallery
             Dim URLID As String = GetVideoId(URL)
             If String.IsNullOrEmpty(URLID) Then
                 ShowInfoMessgage(lblRes, "اختر رابط يوتيوب صحيح", Me)
-                CancelURL(Nothing, Nothing)
                 Return False
             End If
             dtDetails.IsURL = True

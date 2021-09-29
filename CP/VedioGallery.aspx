@@ -215,11 +215,11 @@
                                                             </div>
                                                             <div class="input-in">
                                                                 <asp:LinkButton ID="lbSubmitItem" CssClass="btn btn-primary waves-effect waves-themed" runat="server"
-                                                                    ValidationGroup="vUnit" data-toggle="tooltip" data-original-title="Submit" OnClick="SubmitItem">Submit <i class="fal fa-angle-double-right"></i></asp:LinkButton>
+                                                                      data-toggle="tooltip" data-original-title="إضافة" OnClick="SubmitItem">إضافة <i class="fal fa-angle-double-right"></i></asp:LinkButton>
                                                             </div>
                                                             <div class="input-in">
                                                                 <asp:LinkButton ID="lbcancelURL" CssClass="btn btn-primary waves-effect waves-themed" runat="server"
-                                                                    data-toggle="tooltip" data-original-title="Cancel" OnClick="CancelURL">Cancel <i class="fal fa-angle-double-right"></i></asp:LinkButton>
+                                                                    data-toggle="tooltip" data-original-title="إلغاء" OnClick="CancelURL">إلغاء <i class="fal fa-angle-double-right"></i></asp:LinkButton>
                                                             </div>
 
                                                         </asp:Panel>

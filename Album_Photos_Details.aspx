@@ -18,30 +18,30 @@
             <div class="row row--25 mt--30 mt_md--10 mt_sm--10">
                 <asp:ListView runat="server" ID="lvGallery">
                     <ItemTemplate>
-                         <!-- Start Photo -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#ModalPhoto">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)" onclick="show('<%# Eval("Path").ToString.Replace("~", "")  %>','<%# Eval("Title").ToString   %>')">
-                                    <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString   %>'>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">
-                                    <a href="javascript:void(0)"><%# Eval("Title").ToString   %>
+                        <!-- Start Photo -->
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                            <div class="rn-blog" data-toggle="modal" data-target="#ModalPhoto">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="javascript:void(0)" onclick="show('<%# Eval("Path").ToString.Replace("~", "")  %>','<%# Eval("Title").ToString   %>')">
+                                            <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString   %>'>
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">
+                                            <a href="javascript:void(0)"><%# Eval("Title").ToString   %>
                                                 <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </h4>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Photo -->
+                        <!-- End Photo -->
                     </ItemTemplate>
                 </asp:ListView>
-               
-               <%-- <!-- Start Photo -->
+
+                <%-- <!-- Start Photo -->
                 <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
                     <div class="rn-blog" data-toggle="modal" data-target="#">
                         <div class="inner">
@@ -133,7 +133,7 @@
         </div>
     </div>
     <script>    
-        function show(s,t) {
+        function show(s, t) {
             let img = document.getElementById("imgModal")
             let lblImgTitle = document.getElementById("lblImgTitle")
             img.src = s;

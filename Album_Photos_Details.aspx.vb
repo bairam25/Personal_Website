@@ -53,7 +53,7 @@ Partial Class Album_Photos_Details
             If Request.QueryString("ID") IsNot Nothing Then
                 AlbumId = Val(Request.QueryString("ID"))
             End If
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where AlbumId=" & AlbumId)
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Type='I' and AlbumId=" & AlbumId)
             lvGallery.DataSource = dt
             lvGallery.DataBind()
 
