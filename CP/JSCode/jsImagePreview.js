@@ -1,13 +1,16 @@
 ﻿function ImagePreview(Mediarsrc) {
+    //debugger;
     var extention = Mediarsrc.split(".").pop();
-
+    var youtubeIfram = $('#YouTubeIfram');
+    if (youtubeIfram) {
+        $(youtubeIfram).remove();
+    }
     var modal = document.getElementById('previewImage');
     var modalImg = document.getElementById("img01");
     var video = document.getElementById('videoPreview');
     modalImg.style.display = "none";
-    if (video !== null) { video.style.display = "none";} 
-    if (extention === "mp4" || extention === "wmv" || extention === "webm")
-    {
+    if (video !== null) { video.style.display = "none"; }
+    if (extention === "mp4" || extention === "wmv" || extention === "webm") {
         //Remove Previous <scource> tag
         var element = document.getElementsByTagName("source"), index;
         for (index = element.length - 1; index >= 0; index--) {
@@ -20,11 +23,22 @@
         video.appendChild(source);
         video.play();
         video.style.display = "block";
-      
+
+    } else if (Mediarsrc.includes("http")) {
+        const pathname = new URL(Mediarsrc).pathname;
+        const paths = pathname.split("/");
+        const video_id = paths[2];
+        const embedURL = "https://www.youtube.com/embed/" + video_id;
+        $('<iframe />', {
+            name: 'YouTubeIfram',
+            id: 'YouTubeIfram',
+            frameborder: "0",
+            allowfullscreen: true,
+            src: embedURL
+        }).appendTo(modal);
     }
-    else
-    {
-        modalImg.src = Mediarsrc;    
+    else {
+        modalImg.src = Mediarsrc;
         modalImg.style.display = "block";
     }
 
@@ -34,4 +48,8 @@
 
 function closeImgPopup() {
     document.getElementById("previewImage").style.display = "none";
+    var youtubeIfram = $('#YouTubeIfram');
+    if (youtubeIfram) {
+        $(youtubeIfram).remove();
+    }
 }

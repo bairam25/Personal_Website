@@ -136,9 +136,9 @@ Partial Class Gallery
             pf.ClearAll(pnlForm)
             'Reset Category & Sub Category
             'ddlCategory.SelectedIndex = 0
-            CategoryChanged(Sender, e)
+            'CategoryChanged(Sender, e)
             txtAlbumDate.Text = DateTime.Now.ToShortDateString
-            txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
+            txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where Type='A' and isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try

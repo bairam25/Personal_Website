@@ -29,6 +29,8 @@ Partial Class Gallery
     Dim daItemsImgs As New TblAlbumDetailsFactory
     Dim _sqlconn As New SqlConnection(DBManager.GetConnectionString)
     Dim _sqltrans As SqlTransaction
+    Private Const YoutubeLinkRegex As String = "(?:.+?)?(?:\/v\/|watch\/|\?v=|\&v=|youtu\.be\/|\/v=|^youtu\.be\/)([a-zA-Z0-9_-]{11})+"
+
 #End Region
 
 #Region "Public Functions"
@@ -136,9 +138,11 @@ Partial Class Gallery
             pf.ClearAll(pnlForm)
             'Reset Category & Sub Category
             'ddlCategory.SelectedIndex = 0
-            CategoryChanged(Sender, e)
+            'CategoryChanged(Sender, e)
             txtAlbumDate.Text = DateTime.Now.ToShortDateString
-            txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
+            txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where Type='V' and isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
+            rblSRC.SelectedValue = "M"
+            SelectSRC()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -245,7 +249,7 @@ Partial Class Gallery
             'dtAlbum.Category = Category
             'dtAlbum.SubCategory = SubCategory
             dtAlbum.ShowInHome = ShowInHome
-            dtAlbum.Type = "A"
+            dtAlbum.Type = "V"
             dtAlbum.ShowOrder = ShowOrder
             dtAlbum.Date = AlbumDate
             dtAlbum.Title = STitle
@@ -436,7 +440,7 @@ Partial Class Gallery
     ''' </summary>
     Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where " & CollectConditions(sender, e))
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Type='V' and " & CollectConditions(sender, e))
             If dt IsNot Nothing Then
                 If dt.Rows.Count > 0 Then
                     ViewState("dtAlbumTable") = dt
@@ -623,7 +627,98 @@ Partial Class Gallery
     End Sub
 #End Region
 
+#Region "Submit URL"
+    Protected Sub SelectSRC()
+        Try
+            pnlUpload.Visible = (rblSRC.SelectedValue = "M")
+            pnlYoutube.Visible = Not pnlUpload.Visible
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    Protected Sub SubmitItem(Sender As Object, e As EventArgs)
+        Try
+            Dim dtDetails As New TblAlbumDetails
+
+
+
+            ItemsImgs = GetItemImgs()
+
+            If hfURLIndex.Value <> String.Empty Then
+                If FillItemDT(dtDetails, "Update") Then
+                    CancelURL(Sender, New EventArgs)
+                End If
+            Else
+                If FillItemDT(dtDetails, "Insert") Then
+                    CancelURL(Sender, New EventArgs)
+                End If
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    Protected Sub CancelURL(Sender As Object, e As EventArgs)
+        Try
+            txtYoutubeURL.Text = String.Empty
+            txtYoutubeURL.Focus()
+            hfURLIndex.Value = String.Empty
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+
+    ''' <summary>
+    ''' Fill Unit object with data
+    ''' </summary>
+    Private Function FillItemDT(ByRef dtDetails As TblAlbumDetails, ByVal Operation As String) As Boolean
+        Try
+            Dim URL As String = txtYoutubeURL.Text.Trim
+            Dim URLID As String = GetVideoId(URL)
+            dtDetails.IsURL = True
+            dtDetails.Path = "https://img.youtube.com/vi/" & URLID & "/0.jpg"
+            dtDetails.ShowOrder = ItemsImgs.Count + 1
+            dtDetails.Type = "V"
+            dtDetails.AlbumId = 0
+            dtDetails.CreatedDate = DateTime.Now
+            dtDetails.ModifiedDate = DateTime.Now
+            dtDetails.Description = String.Empty
+            dtDetails.Title = String.Empty
+            Dim ItemIndex As Integer = Val(hfURLIndex.Value)
+            Select Case Operation.ToLower
+                Case "insert"
+                    ItemsImgs.Add(dtDetails)
+                Case "update"
+                    If ItemIndex < ItemsImgs.Count Then
+                        ItemsImgs.Remove(ItemsImgs.Item(ItemIndex))
+                        ItemsImgs.Add(dtDetails)
+                    End If
+            End Select
+            gvItemsImgs.DataSource = ItemsImgs
+            gvItemsImgs.DataBind()
+            'Fill Order DDL and set selected value based on row index
+            BindShowOrder()
+            BindMainImg()
+            Return True
+        Catch ex As Exception
+            ShowMessage(lblRes, MessageTypesEnum.ERR, Page, ex)
+            Return False
+        End Try
+    End Function
+
+    Private Function GetVideoId(input As String) As String
+        Dim regex = New Regex(YoutubeLinkRegex, RegexOptions.Compiled)
+        For Each match As Match In regex.Matches(input)
+            For Each data As Group In match.Groups.Cast(Of Group)().Where(Function(groupdata) Not groupdata.ToString().StartsWith("http://") AndAlso Not groupdata.ToString().StartsWith("https://") AndAlso Not groupdata.ToString().StartsWith("youtu") AndAlso Not groupdata.ToString().StartsWith("www."))
+                Return data.ToString()
+            Next
+        Next
+        Return String.Empty
+    End Function
+#End Region
+
 #Region "Photo Upload"
+
     ''' <summary>
     '''Fill Photos gridview.
     ''' </summary>
