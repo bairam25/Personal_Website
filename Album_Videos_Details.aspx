@@ -1,8 +1,17 @@
 ﻿<%@ Page Title="عرض الالبوم" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Album_Videos_Details.aspx.vb" Inherits="Album_Videos_Details" %>
 
+<asp:Content ID="ContentCSS" ContentPlaceHolderID="StyleSheet" runat="Server">
+    <style>
+        #divYoutube iframe {
+            width: 100%;
+            height: 490px;
+        }
+    </style>
+</asp:Content>
+
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <!-- Start Album Videos Area -->
-    <div class="rn-blog-area rn-section-gap mt--90" id="blog">
+    <div class="rn-blog-area rn-section-gap mt--90" id="Videos">
         <div class="container">
             <div class="row">
                 <asp:Label Text="" ID="lblRes" runat="server" />

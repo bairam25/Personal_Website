@@ -11719,6 +11719,23 @@ body.template-color-1 {
     display: flex;
 }
 
+    .header-wrapper .header-left .logo {
+        height: 70px;
+    }
+
+        .header-wrapper .header-left .logo a {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3.5px solid #2e3236;
+        }
+
+        .header-wrapper .header-left .logo a img {
+            width: 100%;
+            max-width: 100% !important;
+        }
+
 .header-wrapper .header-center {
     flex-basis: 100%;
     justify-content: flex-end;
@@ -16089,7 +16106,7 @@ div#featured-project-carousel {
     border-radius: 10px;
     background: var(--background-color-1);
     box-shadow: var(--shadow-1);
-    margin-top: 115px;
+    margin-top: 90px;
 }
 
 @media only screen and (max-width: 479px) {
@@ -16229,7 +16246,7 @@ div#featured-project-carousel {
     right: 0;
     top: -130px;
     background: transparent;
-    background-image: url(../images/icons/quote.png);
+    /*background-image: url(../images/icons/quote.png);*/
     background-size: cover;
     z-index: -1;
     opacity: 0.5;
@@ -18897,9 +18914,41 @@ div#featured-project-carousel {
         object-fit: cover;
     }
 
+#Videos .rn-blog .inner .thumbnail a {
+    position: relative;
+}
+
+    #Videos .rn-blog .inner .thumbnail a:after {
+        content: "";
+        background-image: url(../images/video.png);
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: translate(0, -50%);
+    }
+
+#Photos .rn-blog,
+#Videos .rn-blog {
+    width: 100%;
+}
+
+#Photos .inner .thumbnail a img,
+#Videos .inner .thumbnail a img {
+    height: 260px;
+}
+
+#News .inner .thumbnail a img {
+    height: 230px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .rn-portfolio .inner .thumbnail a img,
-    .rn-blog .inner .thumbnail a img {
+    .rn-portfolio .inner .thumbnail a img, .rn-blog .inner .thumbnail a img {
         height: inherit;
     }
 }
@@ -19076,7 +19125,7 @@ div#featured-project-carousel {
     height: 50px;
     line-height: 46px;
     border-radius: 50%;
-    background-color: #212428;
+    background-color: #ff014f;
     text-align: center;
     z-index: 999 !important;
     box-shadow: var(--shadow-1);
@@ -19101,7 +19150,8 @@ div#featured-project-carousel {
     border-radius: 50%;
     top: 0;
     left: 0;
-    background: linear-gradient(to right bottom, #212428, #16181c);
+    /*background: linear-gradient(to right bottom, #212428, #16181c);*/
+    background: linear-gradient(to right bottom, #c6003d, #ff014f);
     opacity: 0;
     z-index: -1;
 }

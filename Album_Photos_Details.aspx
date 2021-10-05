@@ -4,7 +4,7 @@
     <asp:Label Text="" ID="lblRes" runat="server" />
 
     <!-- Start Album Photos Area -->
-    <div class="rn-blog-area rn-section-gap mt--90" id="blog">
+    <div class="rn-blog-area rn-section-gap mt--90" id="Photos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

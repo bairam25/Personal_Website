@@ -22,6 +22,7 @@
     <!-- Style css -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
+    <asp:ContentPlaceHolder ID="StyleSheet" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="template-color-1 spybody" data-spy="scroll" data-target=".navbar-example2" data-offset="70">
     <form id="form1" runat="server">
@@ -47,8 +48,10 @@
                             <ul class="primary-menu nav nav-pills">
                                 <li class="nav-item"><a class="nav-link smoth-animation active" href="Home.aspx">الرئيسية</a></li>
                                 <li class="nav-item"><a class="nav-link smoth-animation" href="News.aspx">الأخبار</a></li>
-                                <li class="nav-item"><a class="nav-link smoth-animation" href="#">الندوات والمؤتمرات</a></li>
-                                <li class="nav-item"><a class="nav-link smoth-animation" href="Technical_Analysis.aspx">تحليلات الاسواق المالية</a></li>
+                                <li class="nav-item"><a class="nav-link smoth-animation" href="Courses.aspx">الدورات</a></li>
+                                <li class="nav-item"><a class="nav-link smoth-animation" href="Seminars.aspx">الندوات</a></li>
+                                <li class="nav-item"><a class="nav-link smoth-animation" href="#">المؤتمرات</a></li>
+                                <li class="nav-item"><a class="nav-link smoth-animation" href="Technical_Analysis.aspx">تحليلات الاسواق</a></li>
                                 <li class="nav-item"><a class="nav-link smoth-animation" href="Album_Videos.aspx">الفيديوهات</a></li>
                                 <li class="nav-item"><a class="nav-link smoth-animation" href="Album_Photos.aspx">الصور</a></li>
                                 <li class="nav-item"><a class="nav-link smoth-animation" href="About.aspx">عنى</a></li>
@@ -57,7 +60,7 @@
                         </nav>
                         <!-- Start Header Right  -->
                         <div class="header-right">
-                            <a class="rn-btn" target="_blank" href="Contact.aspx"><span>تواصل معى</span></a>
+                            <a class="rn-btn" href="Contact.aspx"><span>تواصل معى</span></a>
                             <div class="hamberger-menu d-block d-xl-none">
                                 <i id="menuBtn" class="humberger-menu fas fa-bars"></i>
                             </div>
@@ -95,12 +98,14 @@
                     <ul class="primary-menu nav nav-pills">
                         <li class="nav-item"><a class="nav-link smoth-animation active" href="Home.aspx">الرئيسية</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="News.aspx">الأخبار</a></li>
-                        <li class="nav-item"><a class="nav-link smoth-animation" href="#">الندوات والمؤتمرات</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="Courses.aspx">الدورات</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="Seminars.aspx">الندوات</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="#">المؤتمرات</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="Technical_Analysis.aspx">تحليلات الاسواق المالية</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="Album_Videos.aspx">الفيديوهات</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="Album_Photos.aspx">الصور</a></li>
-                        <li class="nav-item"><a class="nav-link smoth-animation" href="Contact.aspx">تواصل معى</a></li>
                         <li class="nav-item"><a class="nav-link smoth-animation" href="About.aspx">عنى</a></li>
+                        <li class="nav-item"><a class="nav-link smoth-animation" href="Contact.aspx">تواصل معى</a></li>
                     </ul>
                     <!-- social sharea area -->
                     <div class="social-share-style-1 mt--40">
@@ -170,7 +175,7 @@
 
                             <div class="logo">
                                 <a href="Home.aspx">
-                                    <img src="assets/images/logo/logos-circle.png" alt="logo">
+                                    <img src="assets/images/logo/logos-circle-3.png" alt="logo">
                                 </a>
                             </div>
 

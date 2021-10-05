@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <!-- Start Album Videos Area -->
-    <div class="rn-blog-area rn-section-gap mt--90" id="blog">
+    <div class="rn-blog-area rn-section-gap mt--90" id="Videos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -28,7 +28,7 @@
                                     <div class="content">
                                         <div class="category-info">
                                             <div class="category-list">
-                                                <a href="javascript:void(0)"><i class="fas fa-images ml-1"></i><%# Eval("MediaCount").ToString  %></a>
+                                                <a href="javascript:void(0)"><i class="fas fa-video ml-1"></i><%# Eval("MediaCount").ToString  %></a>
                                             </div>
                                             <div class="meta">
                                                 <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %></span>

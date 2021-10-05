@@ -26,7 +26,7 @@ Partial Class Home
 
     Sub FillNews()
         Try
-            Dim dtNews As DataTable = DBManager.Getdatatable("Select top 6 * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtNews As DataTable = DBManager.Getdatatable("Select top 3 * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder")
             lvNews.DataSource = dtNews
             lvNews.DataBind()
         Catch ex As Exception

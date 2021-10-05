@@ -137,15 +137,8 @@
                                     <span class="link">السيرة الذاتية</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#contacts-card">
-                                    <span class="fas fa-phone"></span>
-                                    <span class="link">اتصل</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
-
                 </header>
 
                 <!--
@@ -183,7 +176,7 @@
                                 <span class="text">تحميل السيرة الذاتية</span>
                                 <span class="fas fa-paperclip vertical-middle mr-1"></span>
                             </a>
-                            <a href="#" class="lnk discover">
+                            <a href="Contact.aspx" class="lnk discover">
                                 <span class="text">اتصل بي</span>
                                 <span class="fas fa-envelope vertical-middle mr-1"></span>
                             </a>
@@ -230,66 +223,6 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-
-                        </div>
-
-                        <!--
-						Services
-					-->
-                        <div class="content services">
-
-                            <!-- title -->
-                            <div class="title">خدماتي</div>
-
-                            <!-- content -->
-                            <div class="row service-items border-line-v">
-
-                                <!-- service item -->
-                                <div class="col col-d-6 col-t-6 col-m-12 border-line-h">
-                                    <div class="service-item">
-                                        <div class="icon"><span class="fas fa-code"></span></div>
-                                        <div class="name">تطوير الشبكة</div>
-                                        <p>
-                                            موقع إلكتروني حديث وجاهز يساعدك
-الوصول إلى كل التسويق الخاص بك.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- service item -->
-                                <div class="col col-d-6 col-t-6 col-m-12 border-line-h">
-                                    <div class="service-item">
-                                        <div class="icon"><span class="fas fa-music"></span></div>
-                                        <div class="name">الكتابة الموسيقية</div>
-                                        <p>
-                                            نسخ الموسيقى والنسخ والترتيب والتكوين.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- service item -->
-                                <div class="col col-d-6 col-t-6 col-m-12">
-                                    <div class="service-item">
-                                        <div class="icon"><span class="fas fa-volume-up"></span></div>
-                                        <div class="name">إعلان</div>
-                                        <p>
-                                            وتشمل الخدمات الإعلانية التلفزيون والراديو والطباعة والبريد والويب.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- service item -->
-                                <div class="col col-d-6 col-t-6 col-m-12">
-                                    <div class="service-item">
-                                        <div class="icon"><span class="fas fa-gamepad"></span></div>
-                                        <div class="name">تطوير اللعبة</div>
-                                        <p>
-                                            تطوير الروبوت المحمول لا تنسى وفريدة من نوعها ، ألعاب ios.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -312,7 +245,7 @@
                             <div class="row">
 
                                 <!-- experience -->
-                                <div class="col col-d-6 col-t-6 col-m-12 border-line-v pt-0">
+                                <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
                                     <div class="resume-items">
                                         <div class="resume-item border-line-h active">
                                             <div class="date">2013 - حتى الآن</div>
@@ -330,7 +263,7 @@
                                                 مراقبة الجوانب الفنية لعملية التسليم الأمامية للعديد من المشاريع.
                                             </p>
                                         </div>
-                                        <div class="resume-item">
+                                        <div class="resume-item border-line-h">
                                             <div class="date">2009 - 2010</div>
                                             <div class="name">مطور خبير</div>
                                             <div class="company">Abc Inc.</div>
@@ -338,12 +271,6 @@
                                                 تحسين أداء موقع الويب باستخدام أحدث التقنيات.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <!-- education -->
-                                <div class="col col-d-6 col-t-6 col-m-12 border-line-v pt-0">
-                                    <div class="resume-items">
                                         <div class="resume-item border-line-h">
                                             <div class="date">2006 - 2008</div>
                                             <div class="name">جامعة الفن</div>
@@ -370,49 +297,12 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="clear"></div>
                             </div>
 
                         </div>
                     </div>
                 </div>
-
-                <!--
-				Card - Contacts
-			-->
-                <div class="card-inner contacts" id="contacts-card">
-                    <div class="card-wrap">
-
-                        <!--
-						Conacts Info
-					-->
-                        <div class="content contacts">
-
-                            <!-- title -->
-                            <div class="title">ابقى على تواصل</div>
-
-                            <!-- content -->
-                            <div class="row">
-                                <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
-                                    <div class="map">
-                                        <img class="w-100" src="assets/images/map.JPG" />
-                                    </div>
-                                    <div class="info-list">
-                                        <ul>
-                                            <li><strong>عنوان</strong> القاهرة، مصر</li>
-                                            <li><strong>البريد الإلكتروني</strong> admin@example.com</li>
-                                            <li><strong>هاتف</strong> 01234567890</li>
-                                            <li><strong>حسابهم الخاص</strong> متاح</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </form>

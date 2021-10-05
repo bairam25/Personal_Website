@@ -2,13 +2,13 @@
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <!-- Start News Area -->
-    <div class="rn-portfolio-area rn-section-gap mt--90" id="portfolio">
+    <div class="rn-portfolio-area rn-section-gap mt--90" id="News">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
-                        <span class="subtitle">Latest News</span>
-                        <h2 class="title">اخر الأخبار</h2>
+                        <span class="subtitle">News</span>
+                        <h2 class="title">الأخبار</h2>
                     </div>
                 </div>
             </div>

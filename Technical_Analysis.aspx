@@ -51,7 +51,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
@@ -81,7 +81,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
@@ -114,7 +114,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
@@ -144,7 +144,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
@@ -177,7 +177,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
@@ -207,7 +207,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div class="content">
+                                                    <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
                                                                 <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
