@@ -10,7 +10,7 @@
     <meta name="keywords" content="aldealer.com, aldealer">
     <meta name="description" content="your company is an...">
 
-    <title>UELPD</title>
+    <title>وحدة التحكم</title>
     <link rel="shortcut icon" href="../images/logo/favi.png">
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -128,6 +128,9 @@
                         </li>
                          <li>
                             <a href="VedioGallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الفيديو </span></a>
+                        </li>
+                          <li>
+                            <a href="About.aspx" onclick="LoadFrame(this);return false;" ><span> السيرة الذاتية </span></a>
                         </li>
                     </ul>
 
