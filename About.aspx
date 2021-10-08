@@ -82,7 +82,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- background -->
             <div class="background gradient">
                 <ul class="bg-bubbles">
@@ -98,212 +97,164 @@
                     <li></li>
                 </ul>
             </div>
+            <asp:Label Text="" ID="lblRes" runat="server" />
+            <asp:Repeater runat="server" ID="rpAbout">
+                <ItemTemplate>
+                    <!-- 	Container 		-->
+                    <div class="container opened" data-animation-in="fadeInRight" data-animation-out="fadeOutRight">
 
-            <!--
-			Container
-		-->
-            <div class="container opened" data-animation-in="fadeInRight" data-animation-out="fadeOutRight">
-
-                <!--
-				Header
-			-->
-                <header class="header">
-                    <!-- header profile -->
-                    <div class="profile">
-                        <div class="title">السيد حسين</div>
-                        <div class="subtitle subtitle-typed">
-                            <div class="typing-title">
-                                <p>خبير أسواق</p>
-                                <p>المال والأعمال</p>
+                        <!--				Header			-->
+                        <header class="header">
+                            <!-- header profile -->
+                            <div class="profile">
+                                <div class="title"><%# Eval("Name").ToString  %></div>
+                                <div class="subtitle subtitle-typed">
+                                    <div class="typing-title">
+                                        <p>خبير أسواق</p>
+                                        <p>المال والأعمال</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- menu btn -->
-                    <a href="Home.aspx" class="menu-btn"><i class="fas fa-home"></i></a>
+                            <!-- menu btn -->
+                            <a href="Home.aspx" class="menu-btn"><i class="fas fa-home"></i></a>
 
-                    <!-- menu -->
-                    <div class="top-menu">
-                        <ul>
-                            <li class="active">
-                                <a href="#about-card">
-                                    <span class="fas fa-user"></span>
-                                    <span class="link">عني</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#resume-card">
-                                    <span class="fas fa-address-card"></span>
-                                    <span class="link">السيرة الذاتية</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </header>
+                            <!-- menu -->
+                            <div class="top-menu">
+                                <ul>
+                                    <li class="active">
+                                        <a href="#about-card">
+                                            <span class="fas fa-user"></span>
+                                            <span class="link">عني</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#resume-card">
+                                            <span class="fas fa-address-card"></span>
+                                            <span class="link">السيرة الذاتية</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
 
-                <!--
-				Card - Started
-			-->
-                <div class="card-started" id="home-card">
+                        <!--				Card - Started			-->
+                        <div class="card-started" id="home-card">
 
-                    <!--
+                            <!--
 					Profile
 				-->
-                    <div class="profile no-photo">
+                            <div class="profile no-photo">
 
-                        <!-- profile image -->
-                        <div class="slide" style="background-image: url(assets/images/slider/banner-01.png);"></div>
+                                <!-- profile image -->
+                                <div class="slide" style='background-image: url(<%# Eval("Photo").ToString.replace("~/","")  %>);'></div>
+ 
+                                <!-- profile titles -->
+                                <div class="title"><%# Eval("Name").ToString  %></div>
+                                <div class="subtitle subtitle-typed">
+                                    <div class="typing-title">
+                                        <p>خبير أسواق</p>
+                                        <p>المال والأعمال</p>
+                                    </div>
+                                </div>
 
-                        <!-- profile titles -->
-                        <div class="title">السيد حسين</div>
-                        <div class="subtitle subtitle-typed">
-                            <div class="typing-title">
-                                <p>خبير أسواق</p>
-                                <p>المال والأعمال</p>
+                                <!-- profile socials -->
+                                <div class="social">
+                                    <a target="_blank" href="<%# Eval("FacebookURL").ToString  %>"><span class="fab fa-facebook"></span></a>
+                                    <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><span class="fab fa-instagram"></span></a>
+                                    <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><span class="fab fa-linkedin"></span></a>
+                                </div>
+
+                                <!-- profile buttons -->
+                                <div class="lnks">
+                                    <a href="<%# Eval("CVURL").ToString  %>" class="lnk" download>
+                                        <span class="text">تحميل السيرة الذاتية</span>
+                                        <span class="fas fa-paperclip vertical-middle mr-1"></span>
+                                    </a>
+                                    <a href="Contact.aspx" class="lnk discover">
+                                        <span class="text">اتصل بي</span>
+                                        <span class="fas fa-envelope vertical-middle mr-1"></span>
+                                    </a>
+                                </div>
+
                             </div>
+
                         </div>
 
-                        <!-- profile socials -->
-                        <div class="social">
-                            <a target="_blank" href="#"><span class="fab fa-facebook"></span></a>
-                            <a target="_blank" href="#"><span class="fab fa-instagram"></span></a>
-                            <a target="_blank" href="#"><span class="fab fa-linkedin"></span></a>
-                        </div>
+                        <!-- 				Card - About			-->
+                        <div class="card-inner animated active" id="about-card">
+                            <div class="card-wrap">
 
-                        <!-- profile buttons -->
-                        <div class="lnks">
-                            <a href="#" class="lnk">
-                                <span class="text">تحميل السيرة الذاتية</span>
-                                <span class="fas fa-paperclip vertical-middle mr-1"></span>
-                            </a>
-                            <a href="Contact.aspx" class="lnk discover">
-                                <span class="text">اتصل بي</span>
-                                <span class="fas fa-envelope vertical-middle mr-1"></span>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- 
-				Card - About
-			-->
-                <div class="card-inner animated active" id="about-card">
-                    <div class="card-wrap">
-
-                        <!-- 
+                                <!-- 
 						About 
 					-->
-                        <div class="content about">
+                                <div class="content about">
 
-                            <!-- title -->
-                            <div class="title">عني</div>
+                                    <!-- title -->
+                                    <div class="title">عني</div>
 
-                            <!-- content -->
-                            <div class="row">
-                                <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
-                                    <div class="text-box">
-                                        <p>
-                                            أنا ريان أدلارد ، مصمم ويب من الولايات المتحدة الأمريكية ، كاليفورنيا. لدي خبرة غنية في
-تصميم موقع على شبكة الإنترنت وبناء والتخصيص ، كما أنني جيدة في وورد.
-أنا أحب أن أتحدث معك عن موقعنا الفريد.
-                                        </p>
+                                    <!-- content -->
+                                    <div class="row">
+                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
+                                            <div class="text-box">
+                                                <p><%# Eval("Bio").ToString  %></p>
+                                            </div>
+                                        </div>
+                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
+                                            <div class="info-list">
+                                                <ul>
+                                                    <li>
+                                                        <asp:Panel runat="server" ID="pnlAge" Visible='<%# Not String.IsNullOrEmpty(Eval("Age").ToString)  %>'><strong>عمر </strong><%# Eval("Age").ToString  %></asp:Panel>
+                                                    </li>
+                                                    <li>
+                                                        <asp:Panel runat="server" ID="pnlCountry" Visible='<%# Not String.IsNullOrEmpty(Eval("Country").ToString)  %>'><strong>إقامة </strong><%# Eval("Country").ToString  %></asp:Panel>
+                                                    </li>
+                                                    <li>
+                                                        <asp:Panel runat="server" ID="pnlEmail" Visible='<%# Not String.IsNullOrEmpty(Eval("Email").ToString)  %>'><strong>الحساب الخاص </strong><%# Eval("Email").ToString  %></asp:Panel>
+                                                    </li>
+                                                    <li>
+                                                        <asp:Panel runat="server" ID="pnlAddress" Visible='<%# Not String.IsNullOrEmpty(Eval("Address").ToString)  %>'><strong>عنوان </strong><%# Eval("Address").ToString  %></asp:Panel>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
-                                    <div class="info-list">
-                                        <ul>
-                                            <li><strong>عمر </strong> 30</li>
-                                            <li><strong>إقامة </strong> مصر</li>
-                                            <li><strong>الحساب الخاص </strong> متاح</li>
-                                            <li><strong>عنوان </strong> مصر</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!--
-				Card - Resume
-			-->
-                <div class="card-inner" id="resume-card">
-                    <div class="card-wrap">
+                        <!--				Card - Resume			-->
+                        <div class="card-inner" id="resume-card">
+                            <div class="card-wrap">
 
-                        <!--
+                                <!--
 						Resume
 					-->
-                        <div class="content resume">
+                                <div class="content resume">
 
-                            <!-- title -->
-                            <div class="title">السيرة الذاتية</div>
+                                    <!-- title -->
+                                    <div class="title">السيرة الذاتية</div>
 
-                            <!-- content -->
-                            <div class="row">
+                                    <!-- content -->
+                                    <div class="row">
 
-                                <!-- experience -->
-                                <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
-                                    <div class="resume-items">
-                                        <div class="resume-item border-line-h active">
-                                            <div class="date">2013 - حتى الآن</div>
-                                            <div class="name">مدير فني</div>
-                                            <div class="company">Facebook Inc.</div>
-                                            <p>
-                                                التعاون مع فرق التطوير والإبداع في تنفيذ الأفكار.
-                                            </p>
+                                        <!-- experience -->
+                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
+                                            <div class="resume-items">
+                                               <%# Eval("experience").ToString  %>
+                                            </div>
                                         </div>
-                                        <div class="resume-item border-line-h">
-                                            <div class="date">2011 - 2012</div>
-                                            <div class="name">المطور الأمامي</div>
-                                            <div class="company">Google Inc.</div>
-                                            <p>
-                                                مراقبة الجوانب الفنية لعملية التسليم الأمامية للعديد من المشاريع.
-                                            </p>
-                                        </div>
-                                        <div class="resume-item border-line-h">
-                                            <div class="date">2009 - 2010</div>
-                                            <div class="name">مطور خبير</div>
-                                            <div class="company">Abc Inc.</div>
-                                            <p>
-                                                تحسين أداء موقع الويب باستخدام أحدث التقنيات.
-                                            </p>
-                                        </div>
-                                        <div class="resume-item border-line-h">
-                                            <div class="date">2006 - 2008</div>
-                                            <div class="name">جامعة الفن</div>
-                                            <div class="company">نيويورك</div>
-                                            <p>
-                                                درجة البكالوريوس في علوم الكمبيوتر معهد ABC التقني ، جيفرسون ، ميسوري
-                                            </p>
-                                        </div>
-                                        <div class="resume-item border-line-h">
-                                            <div class="date">2005 - 2006</div>
-                                            <div class="name">دورة البرمجة</div>
-                                            <div class="company">باريس</div>
-                                            <p>
-                                                الدورات الدراسية - Git و WordPress و Javascript و iOS و Android.
-                                            </p>
-                                        </div>
-                                        <div class="resume-item">
-                                            <div class="date">2004 - 2005</div>
-                                            <div class="name">دورة تصميم الويب</div>
-                                            <div class="company">لندن</div>
-                                            <p>
-                                                تحويل تصميمات Photoshop إلى صفحات الويب باستخدام HTML و CSS وجافا سكريبت
-                                            </p>
-                                        </div>
+                                        <div class="clear"></div>
                                     </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
 
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </form>
     <!--

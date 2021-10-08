@@ -182,23 +182,23 @@
                                                                  </div>
                                                                   <div class="col-md-4">
                                                                     <label class="required">الدرجة العلمية</label>
-                                                                    <asp:TextBox runat="server" ID="txtDegree" MaxLength="500"></asp:TextBox>
-                                                                </div>
+                                                                      <uc1:HTMLEditor ID="txtDegree" runat="server" />
+                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label >الخبرات</label>
-                                                                    <asp:TextBox runat="server" ID="txtExperience" MaxLength="500"></asp:TextBox>
+                                                                     <uc1:HTMLEditor ID="txtExperience" runat="server" />
                                                                 </div>
                                                                  <div class="col-md-4">
-                                                                    <label>الدرجة العلمية</label>
-                                                                    <asp:TextBox runat="server" ID="txtCertificates" MaxLength="8000"></asp:TextBox>
+                                                                    <label>الشهادات</label>
+                                                                      <uc1:HTMLEditor ID="txtCertificates" runat="server" />
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label >المهارات</label>
-                                                                    <asp:TextBox runat="server" ID="txtSkills" MaxLength="8000"></asp:TextBox>
+                                                                     <uc1:HTMLEditor ID="txtSkills" runat="server" />
                                                                 </div>
                                                                   <div class="col-md-4">
                                                                     <label >الرؤية</label>
-                                                                    <asp:TextBox runat="server" ID="txtVision" MaxLength="8000"></asp:TextBox>
+                                                                       <uc1:HTMLEditor ID="txtVision" runat="server" />
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label >الفيسبوك</label>
