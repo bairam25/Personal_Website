@@ -702,7 +702,7 @@
     </div>
     <!-- End Technical Analysis -->
     <!-- Start Album Videos Area -->
-    <div class="rn-blog-area rn-section-gap section-separator" id="blog" style="direction: ltr;">
+    <div class="rn-blog-area rn-section-gap section-separator" id="Videos" style="direction: ltr;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -758,7 +758,7 @@
     </div>
     <!-- ENd Album Videos Area -->
     <!-- Start Album Photos Area -->
-    <div class="rn-blog-area rn-section-gap section-separator" id="blog" style="direction: ltr;">
+    <div class="rn-blog-area rn-section-gap section-separator" id="Photos" style="direction: ltr;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
