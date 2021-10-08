@@ -6,60 +6,65 @@
     <div id="home" class="rn-slider-area">
         <div class="slide slider-style-1">
             <div class="container">
-                <div class="row row--30 align-items-center">
-                    <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30">
-                        <div class="content">
-                            <div class="inner">
-                                <span class="subtitle">مرحبا بكم ...</span>
-                                <h1 class="title">مرحباً ,أنا <span>السيد حسين</span><br>
-                                    <span class="header-caption" id="page-top">
-                                        <!-- type headline start-->
-                                        <span class="cd-headline clip is-full-width">
-                                            <!-- ROTATING TEXT -->
-                                            <span class="cd-words-wrapper">
-                                                <b class="is-visible">خبير أسواق.</b>
-                                                <b class="is-hidden">المال والأعمال.</b>
+                <asp:ListView runat="server" ID="lvMaster">
+                    <ItemTemplate>
+                        <div class="row row--30 align-items-center">
+                            <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30">
+                                <div class="content">
+                                    <div class="inner">
+                                        <span class="subtitle">مرحبا بكم ...</span>
+                                        <h1 class="title">مرحباً ,أنا <span><%# Eval("Name").ToString  %></span><br>
+                                            <span class="header-caption" id="page-top">
+                                                <!-- type headline start-->
+                                                <span class="cd-headline clip is-full-width">
+                                                    <!-- ROTATING TEXT -->
+                                                    <span class="cd-words-wrapper">
+                                                        <b class="is-visible">خبير أسواق.</b>
+                                                        <b class="is-hidden">المال والأعمال.</b>
+                                                    </span>
+                                                </span>
+                                                <!-- type headline end -->
                                             </span>
-                                        </span>
-                                        <!-- type headline end -->
-                                    </span>
-                                </h1>
+                                        </h1>
 
-                                <div>
-                                    <p class="description">
-                                        لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريقه وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعه ... بروشور او فلاير على سبيل المثال ... او نماذج مواقع انترنت ...
-                                    </p>
+                                        <div>
+                                            <p class="description">
+                                                <%# Eval("Bio").ToString  %>
+                                             </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <div class="social-share-inner-left">
+                                                <span class="title">تواصل معى عبر</span>
+                                                <ul class="social-share d-flex liststyle">                            
+                                                    <li class="facebook">
+                                                        <a target="_blank" href="<%# Eval("FacebookURL").ToString  %>"><i data-feather="facebook"></i></a>
+                                                    </li>
+                                                    <li class="instagram">
+                                                        <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
+                                                    </li>
+                                                    <li class="linkedin">
+                                                        <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <div class="social-share-inner-left">
-                                        <span class="title">تواصل معى عبر</span>
-                                        <ul class="social-share d-flex liststyle">
-                                            <li class="facebook">
-                                                <a href="#"><i data-feather="facebook"></i></a>
-                                            </li>
-                                            <li class="instagram">
-                                                <a href="#"><i data-feather="instagram"></i></a>
-                                            </li>
-                                            <li class="linkedin">
-                                                <a href="#"><i data-feather="linkedin"></i></a>
-                                            </li>
-                                        </ul>
+
+                            <div class="order-1 order-lg-2 col-lg-5">
+                                <div class="thumbnail">
+                                    <div class="inner">
+                                        <img src='<%# Eval("Photo").ToString.replace("~/","")  %>' alt='<%# Eval("Name").ToString   %>'>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="order-1 order-lg-2 col-lg-5">
-                        <div class="thumbnail">
-                            <div class="inner">
-                                <img src="assets/images/slider/banner-01.png" alt="Personal Portfolio Images">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </ItemTemplate>
+                </asp:ListView>
             </div>
         </div>
     </div>
@@ -112,7 +117,7 @@
 
             </div>
 
-            <a id="LinkButton2" class="rn-btn d-block text-center mt--60 btn-more" href="News.aspx">
+            <a id="lbShowMoreNews" class="rn-btn d-block text-center mt--60 btn-more" href="News.aspx">
                 <span>مشاهدة المزيد</span>
             </a>
         </div>
@@ -690,7 +695,7 @@
                 </div>
             </div>
 
-            <a id="LinkButton7" class="rn-btn d-block text-center mt--60 btn-more" href="Technical_Analysis.aspx">
+            <a id="lbShowMoreTechAnalysis" class="rn-btn d-block text-center mt--60 btn-more" href="Technical_Analysis.aspx">
                 <span>مشاهدة المزيد</span>
             </a>
         </div>
@@ -708,159 +713,45 @@
                 </div>
             </div>
             <div class="testimonial-activation testimonial-activation-3 row row--25 mt--30 mt_md--10 mt_sm--10">
-                <!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" onclick="location.href='Album_Videos_Details.aspx'">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-1.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="meta">
-                                        <span>Aug 30, 2021 - 10:45 PM<i class="far fa-clock"></i></span>
+                <asp:ListView runat="server" ID="lvGallery">
+                    <ItemTemplate>
+                        <!-- Start Video -->
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                            <div class="rn-blog" onclick="location.href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="javascript:void(0)">
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                            <%--<video>
+                                                <source src="assets/videos/video-1.mp4" type="video/mp4" />
+                                                Your browser does not support the video tag.
+                                            </video>--%>
+                                        </a>
                                     </div>
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">6<i class="fas fa-video ml-1"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الالبوم
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Video -->
-                <!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-2.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="meta">
-                                        <span>Aug 5, 2021 - 2:15 PM<i class="far fa-clock"></i></span>
-                                    </div>
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">12<i class="fas fa-video ml-1"></i></a>
+                                    <div class="content">
+                                        <div class="category-info">
+                                            <div class="meta">
+                                                <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
+                                            </div>
+                                            <div class="category-list">
+                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
+                                            </div>
+                                        </div>
+                                        <h4 class="title">
+                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
+                                            </a>
+                                        </h4>
                                     </div>
                                 </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الالبوم
-                                    </a>
-                                </h4>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- End Video -->
-                <!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-3.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="meta">
-                                        <span>May 17, 2021 - 3:00 PM<i class="far fa-clock"></i></span>
-                                    </div>
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">4<i class="fas fa-video ml-1"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الالبوم
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Video -->
-                <!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-3.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="meta">
-                                        <span>May 17, 2021 - 3:00 PM<i class="far fa-clock"></i></span>
-                                    </div>
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">4<i class="fas fa-video ml-1"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الالبوم
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Video -->
-                <!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-3.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <div class="category-info">
-                                    <div class="meta">
-                                        <span>May 17, 2021 - 3:00 PM<i class="far fa-clock"></i></span>
-                                    </div>
-                                    <div class="category-list">
-                                        <a href="javascript:void(0)">4<i class="fas fa-video ml-1"></i></a>
-                                    </div>
-                                </div>
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الالبوم
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Video -->
+                        <!-- End Video -->
+                    </ItemTemplate>
+                </asp:ListView>
+
             </div>
 
-            <a id="LinkButton3" class="rn-btn d-block text-center mt--60 btn-more" href="Album_Videos.aspx">
+            <a id="lbShowMoreVideos" class="rn-btn d-block text-center mt--60 btn-more" href="Album_Videos.aspx">
                 <span>مشاهدة المزيد</span>
             </a>
         </div>
@@ -878,7 +769,39 @@
                 </div>
             </div>
             <div class="testimonial-activation testimonial-activation-3 row row--25 mt--30 mt_md--10 mt_sm--10">
-                <!-- Start Photo -->
+                <asp:ListView runat="server" ID="lvPhotos">
+                    <ItemTemplate>
+                        <!-- Start Photo -->
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                            <div class="rn-blog" onclick="location.href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                                <div class="inner">
+                                    <div class="thumbnail">
+                                        <a href="javascript:void(0)">
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="category-info">
+                                            <div class="meta">
+                                                <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
+                                            </div>
+                                            <div class="category-list">
+                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-images ml-1"></i></a>
+                                            </div>
+                                        </div>
+                                        <h4 class="title">
+                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Photo -->
+                    </ItemTemplate>
+                </asp:ListView>
+
+                <%-- <!-- Start Photo -->
                 <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
                     <div class="rn-blog" onclick="location.href='Album_Photos_Details.aspx'">
                         <div class="inner">
@@ -1012,7 +935,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Photo -->
+                <!-- End Photo -->--%>
             </div>
 
             <a id="LinkButton4" class="rn-btn d-block text-center mt--60 btn-more" href="Album_Photos.aspx">

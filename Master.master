@@ -158,9 +158,14 @@
             <!-- Start Left Social  -->
             <div class="rn-left-social">
                 <div class="demo-button">
-                    <a class="btn-social" href="#"><i data-feather="facebook"></i></a>
-                    <a class="btn-social" href="#"><i data-feather="instagram"></i></a>
-                    <a class="btn-social" href="#"><i data-feather="linkedin"></i></a>
+                    <asp:ListView runat="server" ID="lvSocialMedia">
+                        <ItemTemplate>
+                            <a class="btn-social" href="<%# Eval("FacebookURL").ToString  %>"><i data-feather="facebook"></i></a>
+                            <a class="btn-social" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
+                            <a class="btn-social" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
+                        </ItemTemplate>
+                    </asp:ListView>
+
                 </div>
             </div>
             <!-- End Left Social  -->

@@ -15,10 +15,23 @@ Partial Class Home
             lblRes.Visible = False
 
             If Not Page.IsPostBack Then
+                FillMasterProfile()
                 FillNews()
                 FillConferences()
                 FillCategories()
+                FillVediosGallary()
+                FillPhotoGallary()
             End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+    Sub FillMasterProfile()
+        Try
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select * from tblProfile")
+            lvMaster.DataSource = dtGallery
+            lvMaster.DataBind()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -29,6 +42,24 @@ Partial Class Home
             Dim dtNews As DataTable = DBManager.Getdatatable("Select top 3 * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder")
             lvNews.DataSource = dtNews
             lvNews.DataBind()
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    Sub FillVediosGallary()
+        Try
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select top 3 * from vw_Allbum where Type='V'  order by ShowOrder")
+            lvGallery.DataSource = dtGallery
+            lvGallery.DataBind()
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    Sub FillPhotoGallary()
+        Try
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select top 3 * from vw_Allbum where Type='A'  order by ShowOrder")
+            lvPhotos.DataSource = dtGallery
+            lvPhotos.DataBind()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
