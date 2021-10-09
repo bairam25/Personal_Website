@@ -131,9 +131,12 @@
                                                             <th class="upnDownArrow" id="Date">
                                                                 <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
                                                             </th>
+                                                            <th class="upnDownArrow" id="Name">
+                                                                <asp:LinkButton ID="lbName" CommandArgument="Name" CommandName="Sort" runat="server">الأسم</asp:LinkButton>
+                                                            </th>
                                                             <th>الصور</th>
                                                             <th class="upnDownArrow" id="Category">
-                                                                <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
+                                                                <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">المسمي الوظيفي</asp:LinkButton>
                                                             </th>
                                                             <th class="upnDownArrow" id="Title">
                                                                 <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
@@ -157,6 +160,9 @@
                                                         </td>
                                                         <td>
                                                             <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                                         </td>
                                                         <td>
                                                             <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>' />
@@ -336,6 +342,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label class="required">المسمي الوظيفي</label>
+
                                                                     <asp:TextBox runat="server" ID="txtCategory" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
@@ -346,7 +353,7 @@
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل الأسم"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="input-label required">التاريخ</label>
                                                                     <asp:TextBox ID="txtContentDate" runat="server" MaxLength="10" onkeypress="return isDate(event);"></asp:TextBox>
                                                                     <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender1" runat="server"
@@ -368,7 +375,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label>الوصف</label>
-                                                                     <uc1:HTMLEditor ID="txtDescription" runat="server" />
+                                                                    <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>
                                                             </div>
