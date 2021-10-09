@@ -59,7 +59,7 @@ Partial Class Contact
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("eng.a7med3adel@gmail.com", "Your-password")
+            Smtp_Server.Credentials = New Net.NetworkCredential("eng.a7med3adel@gmail.com", "*************")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
@@ -71,12 +71,20 @@ Partial Class Contact
             e_mail.IsBodyHtml = True
             e_mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Message : " & msg
             Smtp_Server.Send(e_mail)
-            'MsgBox("Mail Sent")
             ShowInfoMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
+            Clear()
         Catch ex As Exception
             Throw ex
-            'clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
+    End Sub
+
+    Private Sub Clear()
+        txtEmail.Text = String.Empty
+        txtUsername.Text = String.Empty
+        txtMobile.Text = String.Empty
+        txtTitle.Text = String.Empty
+        txtMessage.Text = String.Empty
     End Sub
 #End Region
 End Class

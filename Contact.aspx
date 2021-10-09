@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="تواصل معى" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Contact.aspx.vb" Inherits="Contact" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
+    <script src="JsCode/KeypressValidators.js"></script>
+     <asp:ToolkitScriptManager ID="Toolkitscriptmanager1" runat="server" ScriptMode="Release">
+            
+        </asp:ToolkitScriptManager>
     <!-- Start Contact section -->
     <div class="rn-contact-area rn-section-gap mt--90" id="contacts">
         <div class="container">
@@ -60,18 +66,25 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <asp:Label ID="lblUsername" runat="server" AssociatedControlID="txtUsername">الاسم</asp:Label>
-                                        <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control form-control-lg" MaxLength="100"></asp:TextBox>
+                                        <asp:TextBox ID="txtUsername" runat="server" onkeyup="ValidateChars(this);" CssClass="form-control form-control-lg" MaxLength="100"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone" ForeColor="Red"
                                             ValidationGroup="vContent" ControlToValidate="txtUsername" ErrorMessage="أدخل الاسم"></asp:RequiredFieldValidator>
+                                        <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="LowercaseLetters,UppercaseLetters" TargetControlID="txtUsername" />
+
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <asp:Label ID="lblMobile" runat="server" AssociatedControlID="txtMobile">رقم الهاتف</asp:Label>
-                                        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" MaxLength="15"></asp:TextBox>
+                                        <asp:Label ID="lblMobile" runat="server" AssociatedControlID="txtMobile">رقم الموبايل</asp:Label>
+                                        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" MaxLength="15" onkeypress="return isNumber(event);"></asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone" ForeColor="Red"
                                             ValidationGroup="vContent" ControlToValidate="txtMobile" ErrorMessage="أدخل الموبايل"></asp:RequiredFieldValidator>
+                                        <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtMobile" />
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                                            ControlToValidate="txtMobile" runat="server"
+                                            ErrorMessage="رقم الموبايل غير صحيح" ValidationGroup="vContent"
+                                            ValidationExpression="^[0-9]{15}$" />
                                     </div>
                                 </div>
 
