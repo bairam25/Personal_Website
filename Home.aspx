@@ -57,6 +57,7 @@
                             <div class="order-1 order-lg-2 col-lg-5">
                                 <div class="thumbnail">
                                     <div class="inner">
+                                        <%--<img src="assets/images/slider/banner-01.png" />--%>
                                         <img src='<%# Eval("Photo").ToString.replace("~/","")  %>' alt='<%# Eval("Name").ToString   %>'>
                                     </div>
                                 </div>

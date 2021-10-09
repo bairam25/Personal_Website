@@ -2,6 +2,10 @@
 #Region "Import"
 Imports System.Data
 Imports System.Data.SqlClient
+Imports System.Drawing
+Imports System.Drawing.Imaging
+Imports System.IO
+Imports AjaxControlToolkit
 Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 
@@ -88,6 +92,7 @@ Partial Class Profile
     End Sub
 
 #End Region
+
 #Region "Page Load"
     ''' <summary>
     ''' Handle page_load event
@@ -148,9 +153,6 @@ Partial Class Profile
     End Function
 #End Region
 
-
-
-
 #Region "Cancel"
     Protected Sub cancel(ByVal Sender As Object, ByVal e As System.EventArgs)
 
@@ -178,7 +180,7 @@ Partial Class Profile
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page)
                 Exit Sub
             End If
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Insert, Page)
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Update, Page)
             _sqltrans.Commit()
             _sqlconn.Close()
 
@@ -222,46 +224,90 @@ Partial Class Profile
     End Function
 #End Region
 
-
-
 #Region "Uploader"
+    Protected Sub UploadFile(sender As Object, e As EventArgs)
+        Dim folderPath As String = Server.MapPath("~/PersonalPhotos/")
+
+        'Check whether Directory (Folder) exists.
+        If Not Directory.Exists(folderPath) Then
+            'If Directory (Folder) does not exists. Create it.
+            Directory.CreateDirectory(folderPath)
+        End If
+        If sender.HasFile Then
+            Dim reg As Regex = New Regex("(?i).*\.(jpe?g|png)$")
+            Dim uFile As String = sender.FileName
+            If reg.IsMatch(uFile) Then
+                'Save the File to the Directory (Folder).
+                sender.SaveAs(folderPath & Path.GetFileName(sender.FileName))
+
+                'Display the success message.
+                'lblRes.Text = Path.GetFileName(sender.FileName) + " has been uploaded."
+            End If
+        End If
+
+    End Sub
+
     Protected Sub ContentPhotoUploaded(ByVal sender As Object, ByVal e As EventArgs)
         Try
-            ' Check that there is a file
-            If fuPhoto.PostedFile IsNot Nothing Then
 
-                Dim filePath As String = "~/ContentPhotos/" & fuPhoto.FileName
+            If sender.HasFile Then
+                Dim reg As Regex = New Regex("(?i).*\.(gif|jpe?g|png|tif)$")
+                Dim uFile As String = sender.FileName
+                If reg.IsMatch(uFile) Then
+                    Dim saveDir As String = Server.MapPath("~/ContentPhotos/")
+                    Dim SavePath As String = (saveDir _
+                                + (Path.GetFileName(uFile) + ".png"))
 
-                ' Check file size (mustn’t be 0)
-                Dim myFile As HttpPostedFile = fuPhoto.PostedFile
-                Dim nFileLen As Integer = myFile.ContentLength
-                If (nFileLen > 0) Then
-                    ' Read file into a data stream
-                    Dim myData As Byte() = New [Byte](nFileLen - 1) {}
-                    myFile.InputStream.Read(myData, 0, nFileLen)
-                    myFile.InputStream.Dispose()
+                    'Dim File = sender.FileContent
+                    'File.Seek(0, SeekOrigin.Begin)
 
-                    ' Save the stream to disk as temporary file. make sure the path is unique!
-                    Dim newFile As New System.IO.FileStream(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""), System.IO.FileMode.Create)
-                    newFile.Write(myData, 0, myData.Length)
-
-
-                    ' run ALL the image optimisations you want here..... make sure your paths are unique
-                    ' you can use these booleans later if you need the results for your own labels or so.
-                    ' dont call the function after the file has been closed.
-                    ''''''''''''''''''''''''''''''''' Main Photo Size'''''''''''''''''''''''''''''''
-
-                    Dim MainWidth As String = "800"
-                    Dim MainHeight As String = "600"
-
-                    ImgResize.ResizeImageAndUpload(newFile, filePath, MainHeight, MainWidth)
-
-
-                    ' tidy up and delete the temp file.
-                    newFile.Close()
-                    System.IO.File.Delete(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""))
+                    'Dim img As Image = CType(Image.FromStream(File), Image)
+                    Dim b As Bitmap = CType(Bitmap.FromStream(sender.PostedFile.InputStream), Bitmap)
+                    b.Save(SavePath, ImageFormat.Png)
+                Else
+                    Response.Write("Error")
                 End If
             End If
+
+
+
+
+
+            ' Check that there is a file
+            'If fuPhoto.PostedFile IsNot Nothing Then
+
+            '    Dim filePath As String = "~/ContentPhotos/" & fuPhoto.FileName
+
+            '    ' Check file size (mustn’t be 0)
+            '    Dim myFile As HttpPostedFile = fuPhoto.PostedFile
+            '    Dim nFileLen As Integer = myFile.ContentLength
+            '    If (nFileLen > 0) Then
+            '        ' Read file into a data stream
+            '        Dim myData As Byte() = New [Byte](nFileLen - 1) {}
+            '        myFile.InputStream.Read(myData, 0, nFileLen)
+            '        myFile.InputStream.Dispose()
+
+            '        ' Save the stream to disk as temporary file. make sure the path is unique!
+            '        Dim newFile As New System.IO.FileStream(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""), System.IO.FileMode.Create)
+            '        newFile.Write(myData, 0, myData.Length)
+
+
+            '        ' run ALL the image optimisations you want here..... make sure your paths are unique
+            '        ' you can use these booleans later if you need the results for your own labels or so.
+            '        ' dont call the function after the file has been closed.
+            '        ''''''''''''''''''''''''''''''''' Main Photo Size'''''''''''''''''''''''''''''''
+
+            '        Dim MainWidth As String = "800"
+            '        Dim MainHeight As String = "600"
+
+            '        'ImgResize.ResizeImageAndUpload(newFile, filePath, MainHeight, MainWidth)
+
+
+            '        ' tidy up and delete the temp file.
+            '        newFile.Close()
+            '        System.IO.File.Delete(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""))
+            '    End If
+            'End If
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try

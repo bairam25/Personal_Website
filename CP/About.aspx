@@ -28,8 +28,7 @@
     <script src="js/sidebar-nav.min.js" type="text/javascript"></script>
     <script src="JSCode/KeypressValidators.js"></script>
     <script src="JSCode/Popup.js"></script>
-    <script src="JSCode/UploadPhotoContent.js"></script>
-
+     <script src="JSCode/UploadPersonalPhoto.js"></script>
 </head>
 <body>
     <form id="form1" runat="server" enctype="multipart/form-data" autocomplete="off">
@@ -254,7 +253,7 @@
 
                                                         <asp:Panel ID="pnlfuPhoto" runat="server" CssClass="photo-upload-box_inactive">
                                                             <label class="custom-file-container__custom-file">
-                                                                <asp:AsyncFileUpload ID="fuPhoto" CssClass="inputfile inputfile-1" runat="server" OnUploadedComplete="ContentPhotoUploaded"
+                                                                <asp:AsyncFileUpload ID="fuPhoto" CssClass="inputfile inputfile-1" runat="server" OnUploadedComplete="UploadFile"
                                                                     OnClientUploadComplete="UploadComplete" OnClientUploadError="UploadError" OnClientUploadStarted="UploadStarted"
                                                                     FailedValidation="False" />
 
