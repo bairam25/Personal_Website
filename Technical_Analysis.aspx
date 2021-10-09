@@ -49,7 +49,7 @@
                                                             <div class="inner row">
                                                                 <div class="col-md-3">
                                                                     <div class="thumbnail">
-                                                                        <a href='<%# "Technical_Analysis_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                                        <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
                                                                             <asp:Image ID="imgAnalyticsPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Category") %>' />
                                                                         </a>
                                                                     </div>
@@ -62,7 +62,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <h4 class="title">
-                                                                            <a  href='<%# "Technical_Analysis_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
+                                                                            <a  href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                                                         </h4>
                                                                         <p class="description">
                                                                             <%# Eval("Description") %>

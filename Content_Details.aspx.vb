@@ -4,7 +4,7 @@ Imports System.Data.SqlClient
 Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 #End Region
-Partial Class News_Details
+Partial Class Content_Details
     Inherits System.Web.UI.Page
     ''' <summary>
     ''' Handle page load event

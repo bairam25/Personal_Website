@@ -1,4 +1,4 @@
-﻿<%@ Page Title="التفاصيل" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Content_Details.aspx.vb" Inherits="News_Details" %>
+﻿<%@ Page Title="التفاصيل" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Content_Details.aspx.vb" Inherits="Content_Details" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <!-- Start News Area -->
