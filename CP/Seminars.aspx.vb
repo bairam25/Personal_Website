@@ -10,7 +10,6 @@ Partial Class Seminars
 #Region "Global Variables"
     Dim pf As New PublicFunctions
     Dim UserId As String = "1"
-    Dim ContentName As String
     Dim ContentCategory As String
     Dim ContentTitle As String
     Dim ContentDate As String
@@ -41,8 +40,6 @@ Partial Class Seminars
     ''' </summary>
     Sub SetControlFields()
         Try
-            ContentName = txtName.Text
-            ContentCategory = txtCategory.Text
             ContentTitle = txtTitle.Text
             Description = txtDescription.TextValue
             Photo = HiddenContentImg.Text
@@ -217,8 +214,6 @@ Partial Class Seminars
             Dim i As Integer = 0
             While i < lvContent.Items.Count
                 CType(lvContent.FindControl("Date"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
-                CType(lvContent.FindControl("Name"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
-                CType(lvContent.FindControl("Category"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("Title"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("ShowOrder"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 i += 1
@@ -307,8 +302,6 @@ Partial Class Seminars
             Dim dt As New DataTable
             dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
-                txtName.Text = dt.Rows(0).Item("Name").ToString
-                txtCategory.Text = dt.Rows(0).Item("Category").ToString
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
                 txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
@@ -406,8 +399,6 @@ Partial Class Seminars
                 Return False
             End If
             dtContent.Type = "SEM"
-            dtContent.Name = txtName.Text
-            dtContent.Category = ContentCategory
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description

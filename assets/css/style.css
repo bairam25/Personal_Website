@@ -18938,6 +18938,11 @@ div#featured-project-carousel {
     width: 100%;
 }
 
+#Photos .slick-track,
+#Videos .slick-track {
+    width: unset !important;
+}
+
 #Photos .inner .thumbnail a img,
 #Videos .inner .thumbnail a img {
     height: 260px;

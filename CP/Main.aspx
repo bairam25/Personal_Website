@@ -22,6 +22,7 @@
     <![endif]-->
     <!-- Resource style -->
     <link href="css/themify-icons.css" rel="stylesheet" />
+    <link href="fontawsome-5.4.1/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/cpmenu.css" />
     <link rel="stylesheet" href="css/m-scroll.css" />
     <link rel="stylesheet" href="css/main-c-scroll.css" />
@@ -42,7 +43,7 @@
         }
     </style>
 </head>
-<body class="sidebar-narrow">
+<body>
     <form id="form1" runat="server" autocomplete="off">
         <asp:Label ID="lblRes" CssClass="res-label-info " runat="server"></asp:Label>
         <!--============================= Navigation =============================-->
@@ -108,29 +109,29 @@
             <div class="sidebar w-scroll" id="content-3">
                 <div class="sidebar-content">
                     <ul class="navigation" id="UlMenu" runat="server">
-                        <li>
-                            <a href="News.aspx" onclick="LoadFrame(this);return false;" ><span>الأخبار </span></a>
+                        <li class="active">
+                            <a href="News.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-newspaper-o"></i><span>الأخبار</span></a>
                         </li>
                          <li>
-                            <a href="Seminars.aspx" onclick="LoadFrame(this);return false;" ><span>الندوات </span></a>
-                        </li>
-                        <li>
-                            <a href="Courses.aspx" onclick="LoadFrame(this);return false;" ><span>الدورات </span></a>
-                        </li>
-                         <li>
-                            <a href="Conferences.aspx" onclick="LoadFrame(this);return false;" ><span>المؤتمرات </span></a>
-                        </li>
-                         <li>
-                            <a href="Analytics.aspx" onclick="LoadFrame(this);return false;" ><span>تحليلات الاسواق المالية </span></a>
+                            <a href="Seminars.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-chalkboard-teacher"></i><span>الندوات</span></a>
                         </li>
                         <li>
-                            <a href="Gallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الصور </span></a>
+                            <a href="Courses.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-book"></i><span>الدورات</span></a>
                         </li>
                          <li>
-                            <a href="VedioGallery.aspx" onclick="LoadFrame(this);return false;" ><span> معرض الفيديو </span></a>
+                            <a href="Conferences.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-solar-panel"></i><span>المؤتمرات</span></a>
+                        </li>
+                         <li>
+                            <a href="Analytics.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-chart-bar"></i><span>تحليلات الاسواق المالية</span></a>
+                        </li>
+                        <li>
+                            <a href="Gallery.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-images"></i><span>معرض الصور</span></a>
+                        </li>
+                         <li>
+                            <a href="VedioGallery.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-video"></i><span>معرض الفيديو</span></a>
                         </li>
                           <li>
-                            <a href="About.aspx" onclick="LoadFrame(this);return false;" ><span> السيرة الذاتية </span></a>
+                            <a href="About.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-address-card"></i><span>السيرة الذاتية</span></a>
                         </li>
                     </ul>
 
@@ -148,7 +149,7 @@
                         <div class="col-md-12" style="height: 100%;">
                             <div class="widget" style="height: 100%;">
                                 <div class="w-body w-no-hf" style="height: 100%;">
-                                    <iframe id="MyFrame"  name="myiframe" class="iframe1-f"></iframe>
+                                    <iframe id="MyFrame"  name="myiframe" class="iframe1-f" src="News.aspx"></iframe>
                                 </div>
                             </div>
                         </div>

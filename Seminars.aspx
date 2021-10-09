@@ -17,156 +17,40 @@
                 <div class="col-lg-12">
                     <div class="tab-area">
                         <div class="row">
-                            <!-- Start Section -->
-                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                <div class="rn-portfolio" data-toggle="modal" data-target="#">
-                                    <div class="inner row">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-1.jpg" alt="Technical Analysis Photo">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="content pt--0">
-                                                <div class="category-info pb--0">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
+                            <asp:Label ID="lblRes" runat="server"></asp:Label>
+                            <asp:ListView ID="lvSeminars" runat="server">
+                                <ItemTemplate>
+                                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30 p-0">
+                                        <div class="rn-portfolio" data-toggle="modal" data-target="#">
+                                            <div class="inner row">
+                                                <div class="col-md-2">
+                                                    <div class="thumbnail">
+                                                        <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="Seminar Photo" />
+                                                        </a>
                                                     </div>
                                                 </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان الندوة</a>
-                                                </h4>
-                                                <p class="description">
-                                                    لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-                                                </p>
+                                                <div class="col-md-10">
+                                                    <div class="content pt--0">
+                                                        <div class="category-info pb--0">
+                                                            <div class="meta">
+                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                            </div>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
+                                                        </h4>
+                                                        <p class="description">
+                                                            <%# Eval("Description") %>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- End Section -->
-                            <!-- Start Section -->
-                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                <div class="rn-portfolio" data-toggle="modal" data-target="#">
-                                    <div class="inner row">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-2.jpg" alt="Technical Analysis Photo">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="content pt--0">
-                                                <div class="category-info pb--0">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان الندوة</a>
-                                                </h4>
-                                                <p class="description">
-                                                    لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Section -->
-                            <!-- Start Section -->
-                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                <div class="rn-portfolio" onclick="location.href='Technical_Analysis_Details.aspx'">
-                                    <div class="inner row">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-3.jpg" alt="Technical Analysis Photo">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="content pt--0">
-                                                <div class="category-info pb--0">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان الندوة</a>
-                                                </h4>
-                                                <p class="description">
-                                                    لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Section -->
-                            <!-- Start Section -->
-                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                <div class="rn-portfolio" data-toggle="modal" data-target="#">
-                                    <div class="inner row">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-1.jpg" alt="Technical Analysis Photo">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="content pt--0">
-                                                <div class="category-info pb--0">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 10, 2021 - 5:30 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان الندوة</a>
-                                                </h4>
-                                                <p class="description">
-                                                    لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Section -->
-                            <!-- Start Section -->
-                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                <div class="rn-portfolio" data-toggle="modal" data-target="#">
-                                    <div class="inner row">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail">
-                                                <a href="javascript:void(0)">
-                                                    <img src="assets/images/meeting/meeting-2.jpg" alt="Technical Analysis Photo">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <div class="content pt--0">
-                                                <div class="category-info pb--0">
-                                                    <div class="meta">
-                                                        <span><i class="far fa-clock"></i>Aug 30, 2021 - 10:45 PM</span>
-                                                    </div>
-                                                </div>
-                                                <h4 class="title">
-                                                    <a href="javascript:void(0)">عنوان الندوة</a>
-                                                </h4>
-                                                <p class="description">
-                                                    لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات .
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Section -->
+                                    <!-- End Section -->
+                                </ItemTemplate>
+                            </asp:ListView>
                         </div>
                     </div>
                 </div>

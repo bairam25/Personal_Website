@@ -6,7 +6,7 @@ Imports clsMessages
 #End Region
 Partial Class Home
     Inherits System.Web.UI.Page
-#Region "Page_Load"
+
     ''' <summary>
     ''' Handle page load event
     ''' </summary>
@@ -17,6 +17,8 @@ Partial Class Home
             If Not Page.IsPostBack Then
                 FillMasterProfile()
                 FillNews()
+                FillCourses()
+                FillSeminars()
                 FillConferences()
                 FillCategories()
                 FillVediosGallary()
@@ -64,7 +66,24 @@ Partial Class Home
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
-
+    Sub FillSeminars()
+        Try
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select top 3 * from tblContent where Active='1' and Type='SEM' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            lvSeminars.DataSource = dtCon
+            lvSeminars.DataBind()
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+    Sub FillCourses()
+        Try
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select top 3 * from tblContent where Active='1' and Type='CUR' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            lvCourses.DataSource = dtCon
+            lvCourses.DataBind()
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
     Sub FillConferences()
         Try
             Dim dtCon As DataTable = DBManager.Getdatatable("Select top 3 * from tblContent where Active='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder")
@@ -94,5 +113,5 @@ Partial Class Home
         End Try
     End Sub
 
-#End Region
+
 End Class
