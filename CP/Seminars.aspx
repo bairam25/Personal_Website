@@ -335,19 +335,19 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="col-md-4">
-                                                                    <label class="required">الأسم</label>
+                                                                    <label class="input-label required">الأسم</label>
                                                                     <asp:TextBox runat="server" ID="txtName" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtName" ErrorMessage="أدخل الأسم"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="required">المسمي الوظيفي</label>
+                                                                    <label class="input-label required">المسمي الوظيفي</label>
                                                                     <asp:TextBox runat="server" ID="txtCategory" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="المسمي الوظيفي"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="required">العنوان</label>
+                                                                    <label class="input-label required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل الأسم"></asp:RequiredFieldValidator>
@@ -367,13 +367,13 @@
                                                                         CssClass="in-validate" SetFocusOnError="true"></asp:RegularExpressionValidator>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label class="required">الترتيب</label>
+                                                                    <label class="input-label required">الترتيب</label>
                                                                     <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="2" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label>الوصف</label>
+                                                                    <label class="input-label">الوصف</label>
                                                                      <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>

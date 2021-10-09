@@ -161,8 +161,10 @@
                                 <!-- profile socials -->
                                 <div class="social">
                                     <a target="_blank" href="<%# Eval("FacebookURL").ToString  %>"><span class="fab fa-facebook"></span></a>
+                                    <a target="_blank" href="<%# Eval("TwitterURL").ToString  %>"><span class="fab fa-twitter"></span></a>
                                     <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><span class="fab fa-instagram"></span></a>
                                     <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><span class="fab fa-linkedin"></span></a>
+                                    <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><span class="fab fa-youtube"></span></a>
                                 </div>
 
                                 <!-- profile buttons -->

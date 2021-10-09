@@ -1373,9 +1373,9 @@ body.boxed {
         .navigation > li > a > i {
             position: absolute;
             right: 10px;
-            top: 12px;
+            top: 15px;
             width: 1rem;
-            font-size: 22px;
+            font-size: 20px;
             color: #787e94;
             opacity: 1;
             filter: alpha(Opacity=80);

@@ -41,11 +41,17 @@
                                                     <li class="facebook">
                                                         <a target="_blank" href="<%# Eval("FacebookURL").ToString  %>"><i data-feather="facebook"></i></a>
                                                     </li>
+                                                    <li class="twitter">
+                                                        <a target="_blank" href="<%# Eval("TwitterURL").ToString  %>"><i data-feather="twitter"></i></a>
+                                                    </li>
                                                     <li class="instagram">
                                                         <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
                                                     </li>
                                                     <li class="linkedin">
                                                         <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
+                                                    </li>
+                                                    <li class="youtube">
+                                                        <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
