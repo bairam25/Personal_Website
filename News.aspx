@@ -19,10 +19,10 @@
                     <ItemTemplate>
                         <!-- Start News -->
                         <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                            <div class="rn-portfolio" onclick="location.href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'">
+                            <div class="rn-portfolio" onclick="location.href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                        <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
                                             <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="News Photo" />
                                         </a>
                                     </div>
@@ -36,7 +36,7 @@
                                             </div>
                                         </div>
                                         <h4 class="title">
-                                            <a href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
+                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                         </h4>
                                         <p class="description"><%# Eval("Description") %></p>
                                     </div>
