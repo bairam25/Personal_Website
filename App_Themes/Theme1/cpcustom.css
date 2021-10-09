@@ -1859,11 +1859,11 @@ input[type="file"] {
     [type="radio"]:not(:checked) + label,
     [type="radio"]:checked + label {
         position: relative;
-        padding-left: 22px;
+        padding-right: 22px;
         cursor: pointer;
         display: inline-block;
         height: 26px;
-        margin-right: 10px;
+        margin-left: 10px;
         font-family: 'poppins';
         font-weight: 400 !important;
         color: #575962;
@@ -1878,7 +1878,7 @@ input[type="file"] {
 [type="radio"] + label:after {
     content: '';
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
     margin: 5px 0px;
     width: 16px;
@@ -2097,7 +2097,7 @@ form p {
 
 .c-check [type="checkbox"] + label {
     position: relative;
-    padding-left: 25px;
+    padding-right: 25px;
     cursor: pointer;
     display: inline-block;
     height: 22px;

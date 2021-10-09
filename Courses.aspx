@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title text-center">
-                        <span class="subtitle">Seminars</span>
+                        <span class="subtitle">Courses</span>
                         <h2 class="title">الدورات</h2>
                     </div>
                 </div>
@@ -17,155 +17,40 @@
                 <div class="col-lg-12">
                     <div class="tab-area">
                         <div class="row">
+                            <asp:Label ID="lblRes" runat="server"></asp:Label>
                             <!-- Start Single Seminars -->
-                            <div class="testimonial mt--20 mt_md--40 mt_sm--40">
-                                <div class="inner d-rtl">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="assets/images/testimonial/final-home--1st.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <h3 class="title">الاسم</h3>
-                                            <span class="designation">المسمى الوظيفى</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description mt--0">
-                                        <div class="title-area">
-                                            <div class="title-info text-right">
-                                                <h3 class="title">عنوان الدورة</h3>
-                                                <span class="date"><i class="far fa-clock ml-2"></i>Aug 30, 2021</span>
+                            <asp:ListView ID="lvCourses" runat="server">
+                                <ItemTemplate>
+                                    <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                        <div class="inner d-rtl">
+                                            <div class="card-info">
+                                                <div class="card-thumbnail">
+                                                    <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="Person Photo" />
+                                                </div>
+                                                <div class="card-content">
+                                                    <h3 class="title"><%# Eval("Name") %></h3>
+                                                    <span class="designation"><%# Eval("Category") %></span>
+                                                </div>
                                             </div>
-                                            <asp:LinkButton ID="lbMoreCourses" runat="server" CssClass="rn-btn">
+                                            <div class="card-description">
+                                                <div class="title-area">
+                                                    <div class="title-info text-right">
+                                                        <h3 class="title"><%# Eval("Title") %></h3>
+                                                        <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                    </div>
+                                                    <asp:LinkButton Visible="false" ID="lbMoreDetails" runat="server" CssClass="rn-btn" href='<%# "News_Details.aspx?Id=" + Eval("Id").ToString  %>'>
                                                         <span>قراءة المزيد</span>
-                                            </asp:LinkButton>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Seminars -->
-                            <!-- Start Single Seminars -->
-                            <div class="testimonial mt--20 mt_md--40 mt_sm--40">
-                                <div class="inner d-rtl">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="assets/images/testimonial/final-home--2nd.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <h3 class="title">الاسم</h3>
-                                            <span class="designation">المسمى الوظيفى</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description mt--0">
-                                        <div class="title-area">
-                                            <div class="title-info text-right">
-                                                <h3 class="title">عنوان الدورة</h3>
-                                                <span class="date"><i class="far fa-clock ml-2"></i>Aug 30, 2021</span>
+                                                    </asp:LinkButton>
+                                                </div>
+                                                <div class="seperator"></div>
+                                                <p class="discription">
+                                                    <%# Eval("Description") %>
+                                                </p>
                                             </div>
-                                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="rn-btn">
-                                                        <span>قراءة المزيد</span>
-                                            </asp:LinkButton>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Seminars -->
-                            <!-- Start Single Seminars -->
-                            <div class="testimonial mt--20 mt_md--40 mt_sm--40">
-                                <div class="inner d-rtl">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="assets/images/testimonial/final-home--3rd.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <h3 class="title">الاسم</h3>
-                                            <span class="designation">المسمى الوظيفى</span>
                                         </div>
                                     </div>
-                                    <div class="card-description mt--0">
-                                        <div class="title-area">
-                                            <div class="title-info text-right">
-                                                <h3 class="title">عنوان الدورة</h3>
-                                                <span class="date"><i class="far fa-clock ml-2"></i>Aug 30, 2021</span>
-                                            </div>
-                                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="rn-btn">
-                                                        <span>قراءة المزيد</span>
-                                            </asp:LinkButton>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Seminars -->
-                            <!-- Start Single Seminars -->
-                            <div class="testimonial mt--20 mt_md--40 mt_sm--40">
-                                <div class="inner d-rtl">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="assets/images/testimonial/final-home--4th.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <h3 class="title">الاسم</h3>
-                                            <span class="designation">المسمى الوظيفى</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description mt--0">
-                                        <div class="title-area">
-                                            <div class="title-info text-right">
-                                                <h3 class="title">عنوان الدورة</h3>
-                                                <span class="date"><i class="far fa-clock ml-2"></i>Aug 30, 2021</span>
-                                            </div>
-                                            <asp:LinkButton ID="LinkButton3" runat="server" CssClass="rn-btn">
-                                                        <span>قراءة المزيد</span>
-                                            </asp:LinkButton>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single Seminars -->
-                            <!-- Start Single Seminars -->
-                            <div class="testimonial mt--20 mt_md--40 mt_sm--40">
-                                <div class="inner d-rtl">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="assets/images/testimonial/final-home--5th.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <h3 class="title">الاسم</h3>
-                                            <span class="designation">المسمى الوظيفى</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description mt--0">
-                                        <div class="title-area">
-                                            <div class="title-info text-right">
-                                                <h3 class="title">عنوان الدورة</h3>
-                                                <span class="date"><i class="far fa-clock ml-2"></i>Aug 30, 2021</span>
-                                            </div>
-                                            <asp:LinkButton ID="LinkButton4" runat="server" CssClass="rn-btn">
-                                                        <span>قراءة المزيد</span>
-                                            </asp:LinkButton>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                                </ItemTemplate>
+                            </asp:ListView>
                             <!--End Single Seminars -->
                         </div>
                     </div>

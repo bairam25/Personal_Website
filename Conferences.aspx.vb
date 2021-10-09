@@ -16,18 +16,18 @@ Partial Class News
             lblRes.Visible = False
 
             If Not Page.IsPostBack Then
-                FillNews()
+                FillConferences()
             End If
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
 
-    Sub FillNews()
+    Sub FillConferences()
         Try
-            Dim dtNews As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder")
-            lvNews.DataSource = dtNews
-            lvNews.DataBind()
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            lvConferences.DataSource = dtCon
+            lvConferences.DataBind()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
