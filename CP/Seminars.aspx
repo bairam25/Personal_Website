@@ -120,63 +120,63 @@
 
                             <asp:Panel ID="pnlGV" runat="server">
                                 <div class="col-md-12">
-                                    <div class="table-layer" style="box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.08);">
-                                        <div class="pages-table">
-                                            <asp:ListView ID="lvContent" runat="server" ClientIDMode="AutoID"
-                                                OnPagePropertiesChanging="OnPagePropertiesChanging" OnSorting="lv_Sorting">
-                                                <LayoutTemplate>
-                                                    <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
-                                                        <tr class="HeaderStyle">
-                                                            <th>م</th>
-                                                            <th class="upnDownArrow" id="Date">
-                                                                <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
-                                                            </th>
-                                                            <th>الصور</th>
-                                                            <th class="upnDownArrow" id="Category">
-                                                                <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
-                                                            </th>
-                                                            <th class="upnDownArrow" id="Title">
-                                                                <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
-                                                            </th>
-                                                            <th class="upnDownArrow" id="ShowOrder">
-                                                                <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
-                                                            </th>
-                                                            <th id="ActiveHeader">تفعيل</th>
-                                                            <th id="EditHeader">تعديل</th>
-                                                            <th id="DeleteHeader">حذف</th>
-                                                        </tr>
-                                                        <tr id="itemPlaceholder">
-                                                        </tr>
-                                                    </table>
-                                                </LayoutTemplate>
-                                                <ItemTemplate>
-                                                    <tr id="lvItemRow" runat="server">
-                                                        <td>
-                                                            <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
-                                                            <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>' />
+                                      <div class="table-layer" style="box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.08);">
+                                                <div class="pages-table">
+                                                    <asp:ListView ID="lvContent" runat="server" ClientIDMode="AutoID"
+                                                        OnPagePropertiesChanging="OnPagePropertiesChanging" OnSorting="lv_Sorting">
+                                                        <LayoutTemplate>
+                                                            <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
+                                                                <tr class="HeaderStyle">
+                                                                    <th>م</th>
+                                                                    <th class="upnDownArrow" id="Date">
+                                                                        <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
+                                                                    </th>
+                                                                    <th>الصور</th>
+                                                                    <th class="upnDownArrow" id="Category">
+                                                                        <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
+                                                                    </th>
+                                                                    <th class="upnDownArrow" id="Title">
+                                                                        <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
+                                                                    </th>
+                                                                    <th class="upnDownArrow" id="ShowOrder">
+                                                                        <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
+                                                                    </th>
+                                                                   <th id="ActiveHeader">تفعيل</th>
+                                                                <th id="EditHeader">تعديل</th>
+                                                                <th id="DeleteHeader">حذف</th>
+                                                                </tr>
+                                                                <tr id="itemPlaceholder">
+                                                                </tr>
+                                                            </table>
+                                                        </LayoutTemplate>
+                                                        <ItemTemplate>
+                                                            <tr id="lvItemRow" runat="server">
+                                                                <td>
+                                                                    <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
+                                                                    <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>'  />
 
-                                                            <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
-                                                        </td>
-                                                        <td id="Active">
-                                                            <asp:CheckBox ID="chkActive" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("Active"))%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
-                                                        </td>
-                                                        <td id="Edit">
-                                                            <asp:LinkButton ID="lbUpdate" CssClass="btni-xxxs btn-blue brd-50" runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" ToolTip="تحديث">
+                                                                    <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
+                                                                </td>
+                                                                <td>
+                                                                    <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
+                                                                </td>
+                                                                <td id="Active">
+                                                                    <asp:CheckBox ID="chkActive" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("Active"))%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
+                                                                </td>
+                                                                <td id="Edit">
+                                                                    <asp:LinkButton ID="lbUpdate" CssClass="btni-xxxs btn-blue brd-50" runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" ToolTip="تحديث">
                                                                     <i class="fa-edit fa"></i>
                                                             </asp:LinkButton>
                                                             <%--<asp:LinkButton runat="server" ID="lbEdit" CauseValidation="false" CssClass="btni-xxxs btn-blue brd-50" data-placement="bottom" data-original-title="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" data-toggle="modal"><i class="fa fa-edit"></i></asp:LinkButton>--%>
@@ -328,19 +328,19 @@
                                                     <div class="panel-body">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <div class="col-md-4" style="display: none;">
-                                                                    <label class="input-label required">التصنيف</label>
+                                                                <div class="col-md-4">
+                                                                    <label class="required">التصنيف</label>
                                                                     <asp:TextBox runat="server" ID="txtCategory" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone"
-                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
+                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="المسمي الوظيفي"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <label class="input-label required">العنوان</label>
+                                                                <div class="col-md-4">
+                                                                    <label class="required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل الأسم"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-4">
                                                                     <label class="input-label required">التاريخ</label>
                                                                     <asp:TextBox ID="txtContentDate" runat="server" MaxLength="10" onkeypress="return isDate(event);"></asp:TextBox>
                                                                     <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender1" runat="server"
@@ -354,15 +354,15 @@
                                                                         ValidationExpression="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
                                                                         CssClass="in-validate" SetFocusOnError="true"></asp:RegularExpressionValidator>
                                                                 </div>
-                                                                <div class="col-md-3">
-                                                                    <label class="input-label required">الترتيب</label>
+                                                                <div class="col-md-4">
+                                                                    <label class="required">الترتيب</label>
                                                                     <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="2" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-12">
-                                                                    <label class="input-label">الوصف</label>
-                                                                    <uc1:HTMLEditor ID="txtDescription" runat="server" />
+                                                                <div class="col-md-4">
+                                                                    <label>الوصف</label>
+                                                                     <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>
                                                             </div>
