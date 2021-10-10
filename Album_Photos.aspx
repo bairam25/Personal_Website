@@ -18,26 +18,24 @@
                     <ItemTemplate>
                         <!-- Start Photo -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog" onclick="location.href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                            <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="javascript:void(0)">
+                                        <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
                                         </a>
                                     </div>
                                     <div class="content">
                                         <div class="category-info">
                                             <div class="category-list">
-                                                <a href="javascript:void(0)"><i class="fas fa-images ml-1"></i><%# Eval("MediaCount").ToString  %></a>
+                                                <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><i class="fas fa-images ml-1"></i><%# Eval("MediaCount").ToString  %></a>
                                             </div>
                                             <div class="meta">
                                                 <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %></span>
                                             </div>
                                         </div>
                                         <h4 class="title">
-                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
-                                                <i class="fas fa-external-link-alt"></i>
-                                            </a>
+                                            <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("Title").ToString  %></a>
                                         </h4>
                                     </div>
                                 </div>

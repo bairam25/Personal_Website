@@ -93,7 +93,7 @@
                     <ItemTemplate>
                         <!-- Start News -->
                         <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                            <div class="rn-portfolio" onclick="location.href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'">
+                            <div class="rn-portfolio">
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
@@ -160,7 +160,7 @@
                         <div class="tab-pane show active fade single-tab-area" id="Courses" role="tabpanel" aria-labelledby="Courses-tab">
                             <div class="col-lg-12 p-0">
                                 <div class="testimonial-activation seminars-slider testimonial-pb mb--30 d-ltr">
-                                    <!-- Start Single Seminars -->
+                                    <!-- Start Course -->
                                     <asp:ListView ID="lvCourses" runat="server">
                                         <ItemTemplate>
                                             <div class="testimonial mt--50 mt_md--40 mt_sm--40">
@@ -174,7 +174,7 @@
                                                             <span class="designation"><%# Eval("Category") %></span>
                                                         </div>
                                                     </div>
-                                                    <div class="card-description">
+                                                    <div class="card-description w-100">
                                                         <div class="title-area">
                                                             <div class="title-info text-right">
                                                                 <h3 class="title"><%# Eval("Title") %></h3>
@@ -193,7 +193,7 @@
                                             </div>
                                         </ItemTemplate>
                                     </asp:ListView>
-                                    <!--End Single Seminars -->
+                                    <!--End Course -->
 
                                 </div>
                             </div>
@@ -251,7 +251,7 @@
                                     <ItemTemplate>
                                         <!-- Start News -->
                                         <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                            <div class="rn-portfolio" onclick="location.href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'">
+                                            <div class="rn-portfolio">
                                                 <div class="inner">
                                                     <div class="thumbnail">
                                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
@@ -307,7 +307,6 @@
                     <div class="d-flex flex-wrap align-content-start h-100">
                         <div class="position-sticky clients-wrapper sticky-top rbt-sticky-top-adjust">
                             <ul class="nav tab-navigation-button flex-column nav-pills me-3 mt--30 mt_md--30 mt_sm--30" id="v-tab" role="tablist">
-
                                 <asp:ListView ID="lvAnlyticsCategories" runat="server">
                                     <ItemTemplate>
                                         <li class="nav-item">
@@ -315,8 +314,6 @@
                                         </li>
                                     </ItemTemplate>
                                 </asp:ListView>
-
-
                             </ul>
                         </div>
                     </div>
@@ -397,10 +394,10 @@
                     <ItemTemplate>
                         <!-- Start Video -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog" onclick="location.href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                            <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="javascript:void(0)">
+                                        <a href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
                                             <%--<video>
                                                 <source src="assets/videos/video-1.mp4" type="video/mp4" />
@@ -414,11 +411,11 @@
                                                 <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
                                             </div>
                                             <div class="category-list">
-                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
+                                                <a href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
                                             </div>
                                         </div>
                                         <h4 class="title">
-                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
+                                            <a href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("Title").ToString  %>
                                             </a>
                                         </h4>
                                     </div>
@@ -453,10 +450,10 @@
                     <ItemTemplate>
                         <!-- Start Photo -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog" onclick="location.href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'">
+                            <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="javascript:void(0)">
+                                        <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
                                         </a>
                                     </div>
@@ -466,11 +463,11 @@
                                                 <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
                                             </div>
                                             <div class="category-list">
-                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-images ml-1"></i></a>
+                                                <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("MediaCount").ToString  %><i class="fas fa-images ml-1"></i></a>
                                             </div>
                                         </div>
                                         <h4 class="title">
-                                            <a href="javascript:void(0)"><%# Eval("Title").ToString  %>
+                                            <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("Title").ToString  %>
                                             </a>
                                         </h4>
                                     </div>

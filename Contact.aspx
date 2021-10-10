@@ -4,9 +4,8 @@
 
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <script src="JsCode/KeypressValidators.js"></script>
-     <asp:ToolkitScriptManager ID="Toolkitscriptmanager1" runat="server" ScriptMode="Release">
-            
-        </asp:ToolkitScriptManager>
+    <asp:ToolkitScriptManager ID="Toolkitscriptmanager1" runat="server" ScriptMode="Release">
+    </asp:ToolkitScriptManager>
     <!-- Start Contact section -->
     <div class="rn-contact-area rn-section-gap mt--90" id="contacts">
         <div class="container">
@@ -18,9 +17,19 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
+            <div class="row mt--50 mt_md--40 mt_sm--40">
+                <div class="col-lg-5"></div>
+                <div class="col-lg-7">
+                    <div>
+                        <asp:Label ID="lblRes" runat="server"/>
+                        <asp:ValidationSummary ID="ValidationSummary" CssClass="validation-message" ShowSummary="false"
+                            DisplayMode="BulletList" ValidationGroup="vContent" EnableClientScript="true"
+                            runat="server" Font-Size="Medium" ForeColor="#CC0000" />
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-contact-sm">
                 <div class="col-lg-5">
-                    <asp:Label Text="" ID="lblRes" runat="server" />
                     <asp:Repeater runat="server" ID="rpAbout">
                         <ItemTemplate>
 
@@ -55,10 +64,6 @@
                 </div>
 
                 <div data-aos-delay="600" class="col-lg-7 contact-input">
-                    <asp:ValidationSummary ID="ValidationSummary" CssClass="validation-message" ShowSummary="false"
-                        DisplayMode="BulletList" ValidationGroup="vContent" EnableClientScript="true"
-                        runat="server" Font-Size="Medium" ForeColor="#CC0000" />
-
                     <div class="contact-form-wrapper">
                         <div class="introduce">
                             <div class="rnt-contact-form rwt-dynamic-form row">
@@ -67,7 +72,7 @@
                                     <div class="form-group">
                                         <asp:Label ID="lblUsername" runat="server" AssociatedControlID="txtUsername">الاسم</asp:Label>
                                         <asp:TextBox ID="txtUsername" runat="server" onkeyup="ValidateChars(this);" CssClass="form-control form-control-lg" MaxLength="100"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone" ForeColor="Red"
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="inp-valid"
                                             ValidationGroup="vContent" ControlToValidate="txtUsername" ErrorMessage="أدخل الاسم"></asp:RequiredFieldValidator>
                                         <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="LowercaseLetters,UppercaseLetters" TargetControlID="txtUsername" />
 
@@ -78,11 +83,11 @@
                                     <div class="form-group">
                                         <asp:Label ID="lblMobile" runat="server" AssociatedControlID="txtMobile">رقم الموبايل</asp:Label>
                                         <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" MaxLength="15" onkeypress="return isNumber(event);"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone" ForeColor="Red"
-                                            ValidationGroup="vContent" ControlToValidate="txtMobile" ErrorMessage="أدخل الموبايل"></asp:RequiredFieldValidator>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="inp-valid"
+                                            ValidationGroup="vContent" ControlToValidate="txtMobile" ErrorMessage="أدخل الموبايل" Display="Dynamic"></asp:RequiredFieldValidator>
                                         <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtMobile" />
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
-                                            ControlToValidate="txtMobile" runat="server"
+                                            ControlToValidate="txtMobile" runat="server" CssClass="inp-valid"
                                             ErrorMessage="رقم الموبايل غير صحيح" ValidationGroup="vContent"
                                             ValidationExpression="^[0-9]{15}$" />
                                     </div>
@@ -95,7 +100,7 @@
                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail"
                                             ForeColor="Red" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                                             Display="Dynamic" ErrorMessage="بريد الكتروني غير صحيح" />
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="displaynone" ForeColor="Red"
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="inp-valid"
                                             ValidationGroup="vContent" ControlToValidate="txtEmail" ErrorMessage="أدخل البريد الإلكتروني"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -104,7 +109,7 @@
                                     <div class="form-group">
                                         <asp:Label ID="lblTitle" runat="server" AssociatedControlID="txtTitle">عنوان الرسالة</asp:Label>
                                         <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control form-control-sm" MaxLength="500"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="displaynone" ForeColor="Red"
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="inp-valid"
                                             ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل العنوان"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
@@ -113,7 +118,7 @@
                                     <div class="form-group">
                                         <asp:Label ID="lblMessage" runat="server" AssociatedControlID="txtMessage">رسالتك</asp:Label>
                                         <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone" ForeColor="Red"
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="inp-valid"
                                             ValidationGroup="vContent" ControlToValidate="txtMessage" ErrorMessage="أدخل الرسالة"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>

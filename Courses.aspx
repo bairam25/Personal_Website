@@ -21,7 +21,7 @@
                             <!-- Start Single Seminars -->
                             <asp:ListView ID="lvCourses" runat="server">
                                 <ItemTemplate>
-                                    <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                    <div class="testimonial mt--50 mt_md--40 mt_sm--40 col-md-12 p-0">
                                         <div class="inner d-rtl">
                                             <div class="card-info">
                                                 <div class="card-thumbnail">
@@ -32,7 +32,7 @@
                                                     <span class="designation"><%# Eval("Category") %></span>
                                                 </div>
                                             </div>
-                                            <div class="card-description">
+                                            <div class="card-description w-100">
                                                 <div class="title-area">
                                                     <div class="title-info text-right">
                                                         <h3 class="title"><%# Eval("Title") %></h3>

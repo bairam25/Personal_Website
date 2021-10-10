@@ -48,6 +48,32 @@
     src: url('../fonts/Tajawal-Bold.ttf'), url('../fonts/Tajawal-ExtraBold.ttf'), url('../fonts/Tajawal-ExtraLight.ttf'), url('../fonts/Tajawal-Light.ttf'), url('../fonts/Tajawal-Medium.ttf'), url('../fonts/Tajawal-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Droid-Arabic-Kufi';
+    src: url('../fonts/Droid-Arabic-Kufi.ttf.woff') format('woff'), url('../fonts/Droid-Arabic-Kufi.ttf.svg#Droid-Arabic-Kufi') format('svg'), url('../fonts/Droid-Arabic-Kufi.ttf.eot'), url('../fonts/Droid-Arabic-Kufi.ttf.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AraJozoor-Regular';
+    src: url('../fonts/AraJozoor-Regular.woff') format('woff'), url('../fonts/AraJozoor-Regular.ttf') format('truetype'), url('../fonts/AraJozoor-Regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../fonts/Cairo-Black.ttf');
+    src: url('../fonts/Cairo-Bold.ttf'), url('../fonts/Cairo-ExtraLight.ttf'), url('../fonts/Cairo-Light.ttf'), url('../fonts/Cairo-Regular.ttf'), url('../fonts/Cairo-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'ElMessiri';
+    src: url('../fonts/ElMessiri-Bold.ttf');
+    src: url('../fonts/ElMessiri-Medium.ttf'), url('../fonts/ElMessiri-Regular.ttf'), url('../fonts/ElMessiri-SemiBold.ttf');
+}
+
 :root {
     --direction: rtl;
     --text-align: right;
@@ -106,9 +132,18 @@
     --transition: 0.4s;
     --font-primary: "Tajawal", "Poppins", sans-serif;
     --font-secondary: "Tajawal", "Montserrat", sans-serif;
+    --font-primary: "Droid-Arabic-Kufi", "Poppins", sans-serif;
+    --font-secondary: "Droid-Arabic-Kufi", "Montserrat", sans-serif;
+    --font-primary: "AraJozoor-Regular", "Poppins", sans-serif;
+    --font-secondary: "AraJozoor-Regular", "Montserrat", sans-serif;
+    --font-primary: "Cairo", "Poppins", sans-serif;
+    --font-secondary: "Cairo", "Montserrat", sans-serif;
+    --font-primary: "ElMessiri", "Poppins", sans-serif;
+    --font-secondary: "ElMessiri", "Montserrat", sans-serif;
     --font-size-b1: 18px;
     --font-size-b2: 22px;
     --font-size-b3: 14px;
+    --font-size-b4: 13px;
     --line-height-b1: 1.50;
     --line-height-b2: 1.6;
     --line-height-b3: 1.7;
@@ -11731,10 +11766,10 @@ body.template-color-1 {
             border: 3.5px solid #2e3236;
         }
 
-        .header-wrapper .header-left .logo a img {
-            width: 100%;
-            max-width: 100% !important;
-        }
+            .header-wrapper .header-left .logo a img {
+                width: 100%;
+                max-width: 100% !important;
+            }
 
 .header-wrapper .header-center {
     flex-basis: 100%;
@@ -16049,6 +16084,7 @@ div#featured-project-carousel {
     border-radius: 10px;
     margin-bottom: 27px;
     display: flex;
+    height: 280px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -17763,7 +17799,7 @@ div#featured-project-carousel {
     box-shadow: var(--shadow-1);
     padding: 30px;
     border-radius: 10px;
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     height: 100%;
 }
 
@@ -17788,7 +17824,7 @@ div#featured-project-carousel {
 }
 
 .contact-form-wrapper label {
-    font-size: 12px;
+    font-size: 15px;
     color: #a0a8b3;
     font-weight: 500;
     letter-spacing: 1px;
@@ -21775,3 +21811,27 @@ body.white-version {
     padding: 0 !important;
 }
 /* End modal page */
+
+.inp-valid {
+    font-size: var(--font-size-b4);
+    color: #ff014f;
+}
+
+.alert-success {
+    color: #35c892;
+    background-color: rgba(15, 206, 136, 0.3);
+    padding: 0.4rem 3.5rem 0.4rem 1.25rem;
+    border-color: #35c58c;
+    margin-bottom: 1rem;
+    display: block;
+    font-size: var(--font-size-b3);
+    z-index: 10;
+}
+
+    .alert-success:after {
+        content: "\f058";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        right: 15px;
+    }

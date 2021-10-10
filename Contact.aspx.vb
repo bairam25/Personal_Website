@@ -71,7 +71,7 @@ Partial Class Contact
             e_mail.IsBodyHtml = True
             e_mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Message : " & msg
             Smtp_Server.Send(e_mail)
-            ShowInfoMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
+            ShowSuccessMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
             Clear()
         Catch ex As Exception
             Throw ex

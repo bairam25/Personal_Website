@@ -106,7 +106,7 @@ Public Class clsMessages
 
     Public Shared Sub ShowInfoMessgage(ByRef lblRes As Label, ByVal message As String, ByVal page As Page)
         Try
-            ShowMessgage(lblRes, message, "lbl-validate", page)
+            ShowMessgage(lblRes, message, "alert alert-info", page)
         Catch ex As Exception
         End Try
     End Sub
