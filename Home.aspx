@@ -393,7 +393,7 @@
                 <asp:ListView runat="server" ID="lvGallery">
                     <ItemTemplate>
                         <!-- Start Video -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30 w-100">
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
@@ -449,7 +449,7 @@
                 <asp:ListView runat="server" ID="lvPhotos">
                     <ItemTemplate>
                         <!-- Start Photo -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
+                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30 w-100">
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">

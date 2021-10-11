@@ -11769,6 +11769,8 @@ body.template-color-1 {
             .header-wrapper .header-left .logo a img {
                 width: 100%;
                 max-width: 100% !important;
+                height: 100%;
+                max-height: unset;
             }
 
 .header-wrapper .header-center {
@@ -12331,7 +12333,7 @@ body.template-color-1 {
 
 @media only screen and (max-width: 479px) {
     .popup-mobile-menu .inner .menu-top .menu-header .close-button .close {
-        right: 9px;
+        left: 9px;
     }
 }
 

@@ -52,8 +52,10 @@
                                     <div class="name">تواصل معى عبر</div>
                                     <div class="social-icone">
                                         <a target="_blank" href="<%# Eval("FacebookURL").ToString  %>"><i data-feather="facebook"></i></a>
+                                        <a target="_blank" href="<%# Eval("TwitterURL").ToString  %>"><i data-feather="twitter"></i></a>
                                         <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
                                         <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
+                                        <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
                                     </div>
                                 </div>
                             </div>

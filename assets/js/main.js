@@ -344,7 +344,7 @@
             });
 
             $('.close-menu-activation, .popup-mobile-menu .primary-menu .nav-item a').on('click', function(e) {
-                e.preventDefault();
+                //e.preventDefault();
                 $('.popup-mobile-menu').removeClass('menu-open');
                 $('.has-droupdown > a').removeClass('open').siblings('.submenu').removeClass('active').slideUp('400');
                 imJs._html.css({

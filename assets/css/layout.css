@@ -529,6 +529,7 @@
 @media (max-width: 560px) {
     .card-started {
         height: 480px;
+        padding-top: 60px;
     }
     .card-started:after {
         display: none;
