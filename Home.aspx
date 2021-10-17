@@ -53,6 +53,12 @@
                                                     <li class="youtube">
                                                         <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
                                                     </li>
+                                                    <li class="telegram-plane">
+                                                        <a target="_blank" href="#"><i class="fab fa-telegram-plane"></i></a>
+                                                    </li>
+                                                    <li class="tiktok">
+                                                        <a target="_blank" href="#"><i class="fab fa-tiktok"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -64,7 +70,7 @@
                                 <div class="thumbnail">
                                     <div class="inner">
                                         <%--<img src="assets/images/slider/banner-01.png" />--%>
-                                        <img src='<%# Eval("Photo").ToString.replace("~/","")  %>' alt='<%# Eval("Name").ToString   %>'>
+                                        <img src='<%# Eval("Photo").ToString.Replace("~/", "")  %>' alt='<%# Eval("Name").ToString   %>'>
                                     </div>
                                 </div>
                             </div>

@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Load CSS -->
+    <link href="assets/fontawsome-5.4.1/css/pro.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/fontawsome-5.4.1/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/basic.css" />
     <link rel="stylesheet" href="assets/css/layout.css" />
@@ -165,6 +166,8 @@
                                     <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><span class="fab fa-instagram"></span></a>
                                     <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><span class="fab fa-linkedin"></span></a>
                                     <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><span class="fab fa-youtube"></span></a>
+                                    <a target="_blank" href="#"><span class="fab fa-telegram-plane"></span></a>
+                                    <a target="_blank" href="#"><span class="fab fa-tiktok"></span></a>
                                 </div>
 
                                 <!-- profile buttons -->

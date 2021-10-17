@@ -56,6 +56,8 @@
                                         <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
                                         <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
                                         <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
+                                        <a target="_blank" href="#"><i class="fab fa-telegram-plane"></i></a>
+                                        <a target="_blank" href="#"><i class="fab fa-tiktok"></i></a>
                                     </div>
                                 </div>
                             </div>

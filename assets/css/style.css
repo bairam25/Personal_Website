@@ -522,7 +522,7 @@ ul {
         line-height: 30px;
         color: var(--color-body);
         position: relative;
-        padding-left: 30px;
+        padding-right: 30px;
     }
 
 @media only screen and (max-width: 767px) {
@@ -538,7 +538,7 @@ ul.liststyle.bullet li::before {
     height: 6px;
     border-radius: 100%;
     background: var(--color-body);
-    left: 0;
+    right: 0;
     top: 10px;
 }
 
@@ -8112,6 +8112,10 @@ textarea:-ms-input-placeholder {
             box-shadow: var(--shadow-1);
         }
 
+            .social-share-style-1 .social-share li a i.fab {
+                font-size: 18px;
+            }
+
             .social-share-style-1 .social-share li a.only-border {
                 background: transparent;
                 border: 1px solid #ff014f87;
@@ -8168,7 +8172,8 @@ textarea:-ms-input-placeholder {
                     opacity: 1;
                 }
 
-            .social-share-style-1 .social-share li a svg {
+            .social-share-style-1 .social-share li a svg,
+            .social-share-style-1 .social-share li a i.fab {
                 color: var(--color-lightn);
                 transition: var(--transition);
                 stroke-width: 2;
@@ -12448,7 +12453,7 @@ body.template-color-1 {
     position: fixed;
     z-index: 99;
     left: 0px;
-    top: calc(50% - 55px);
+    top: calc(50% - 150px);
 }
 
     .rn-left-social .demo-button {
@@ -12490,13 +12495,17 @@ body.template-color-1 {
             padding: .8rem 0;
         }
 
-        .rn-left-social .demo-button .text {
-            -webkit-writing-mode: vertical-rl;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
+            .rn-left-social .demo-button .btn-social i.fab {
+                font-size: 22px;
+            }
+
+            .rn-left-social .demo-button .text {
+                -webkit-writing-mode: vertical-rl;
+                writing-mode: vertical-rl;
+                text-orientation: upright;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
 
 .demo-modal-area {
     width: 100%;
@@ -13693,21 +13702,27 @@ figcaption {
     position: relative;
 }
 
-    .slide .social-share-inner-left .social-share li a::before {
-        content: "";
-        position: absolute;
-        transition: var(--transition);
-        width: 100%;
-        height: 100%;
-        border-radius: 6px;
-        top: 0;
-        left: 0;
-        background: linear-gradient(to right bottom, #212428, #16181c);
-        opacity: 0;
-        z-index: -1;
-    }
+.slide .social-share-inner-left .social-share li.telegram-plane a,
+.slide .social-share-inner-left .social-share li.tiktok a {
+    font-size: 18px;
+}
 
-    .slide .social-share-inner-left .social-share li a svg {
+.slide .social-share-inner-left .social-share li a::before {
+    content: "";
+    position: absolute;
+    transition: var(--transition);
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right bottom, #212428, #16181c);
+    opacity: 0;
+    z-index: -1;
+}
+
+    .slide .social-share-inner-left .social-share li a svg,
+    .slide .social-share-inner-left .social-share li a i.fab {
         color: var(--color-lightn);
         transition: var(--transition);
         stroke-width: 2;
@@ -15118,12 +15133,18 @@ body.modal-open {
     padding-left: 2rem;
 }
 
-    .modal .modal-dialog .modal-content .modal-body .text-content h3 {
+    .modal .modal-dialog .modal-content .modal-body .text-content h3,
+    .modal .modal-dialog .modal-content .modal-body .text-content h5 {
         margin-bottom: 20px;
         font-size: 34px;
         font-weight: 700;
         color: var(--color-lightn);
         line-height: 1.3;
+    }
+
+    .modal .modal-dialog .modal-content .modal-body .text-content h5 {
+        font-size: var(--h5);
+        line-height: 1.24;
     }
 
         .modal .modal-dialog .modal-content .modal-body .text-content h3 span {
@@ -17753,6 +17774,7 @@ div#featured-project-carousel {
         height: 61px;
         line-height: 57px;
         margin-left: 15px;
+        margin-bottom: 20px;
         box-shadow: var(--shadow-1);
         border-radius: 6px;
         transition: var(--transition);
@@ -17774,7 +17796,8 @@ div#featured-project-carousel {
             z-index: -1;
         }
 
-        .contact-about-area .social-area .social-icone a svg {
+        .contact-about-area .social-area .social-icone a svg,
+        .contact-about-area .social-area .social-icone a i.fab {
             stroke-width: 2;
             width: 20px;
             color: var(--color-lightn);
@@ -18665,17 +18688,34 @@ div#featured-project-carousel {
     margin-bottom: 23px;
 }
 
+.footer-area .links,
 .footer-area .description {
     font-size: 17px;
     color: var(--color-body);
     font-family: var(--font-primary);
 }
 
+    .footer-area .links a,
     .footer-area .description a {
         color: var(--color-body);
         transition: var(--transition);
         position: relative;
     }
+
+    .footer-area .links a {
+        font-size: 13px;
+        color: var(--color-white);
+        border-left: 2px solid var(--color-white);
+        padding: 0px 10px;
+    }
+
+        .footer-area .links a:last-child {
+            border: 0;
+        }
+
+        .footer-area .links a:hover {
+            color: var(--color-primary);
+        }
 
         .footer-area .description a::before {
             position: absolute;
