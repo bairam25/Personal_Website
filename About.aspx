@@ -135,6 +135,18 @@
                                             <span class="link">السيرة الذاتية</span>
                                         </a>
                                     </li>
+                                     <li>
+                                        <a href="#vision-card">
+                                            <span class="fas fa-eye"></span>
+                                            <span class="link">الرؤية</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="#mission-card">
+                                            <span class="fas fa-book"></span>
+                                            <span class="link">الأهداف</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </header>
@@ -142,9 +154,7 @@
                         <!--				Card - Started			-->
                         <div class="card-started" id="home-card">
 
-                            <!--
-					Profile
-				-->
+                            <!--					Profile				-->
                             <div class="profile no-photo">
 
                                 <!-- profile image -->
@@ -190,9 +200,7 @@
                         <div class="card-inner animated active" id="about-card">
                             <div class="card-wrap">
 
-                                <!-- 
-						About 
-					-->
+                                <!-- 	About -->
                                 <div class="content about">
 
                                     <!-- title -->
@@ -233,9 +241,7 @@
                         <div class="card-inner" id="resume-card">
                             <div class="card-wrap">
 
-                                <!--
-						Resume
-					-->
+                                <!--	Resume		-->
                                 <div class="content resume">
 
                                     <!-- title -->
@@ -248,6 +254,58 @@
                                         <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
                                             <div class="resume-items">
                                                <%# Eval("experience").ToString  %>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                         <!--				Card - Vision			-->
+                        <div class="card-inner" id="vision-card">
+                            <div class="card-wrap">
+
+                                <!--	Resume		-->
+                                <div class="content resume">
+
+                                    <!-- title -->
+                                    <div class="title">الرؤية</div>
+
+                                    <!-- content -->
+                                    <div class="row">
+
+                                        <!-- experience -->
+                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
+                                            <div class="resume-items">
+                                                <%# Eval("vision").ToString  %>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                           <!--				Card - mission			-->
+                        <div class="card-inner" id="mission-card">
+                            <div class="card-wrap">
+
+                                <!--	Resume		-->
+                                <div class="content resume">
+
+                                    <!-- title -->
+                                    <div class="title">الأهداف</div>
+
+                                    <!-- content -->
+                                    <div class="row">
+
+                                        <!-- experience -->
+                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v pt-0">
+                                            <div class="resume-items">
+                                                 <%# Eval("skills").ToString  %>
                                             </div>
                                         </div>
                                         <div class="clear"></div>
