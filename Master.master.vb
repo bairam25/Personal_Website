@@ -24,4 +24,20 @@ Partial Class Master
     End Sub
 
 #End Region
+
+#Region "Search"
+    Sub Search(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim FilterType As String = ddlFilterType.SelectedValue
+        Dim SearchValue As String = txtSearch.Text.Replace(" ", "-")
+        Select Case FilterType
+            Case "A"
+                Response.Redirect("~/Technical_Analysis.aspx?search=" + SearchValue + "")
+            Case "N"
+                Response.Redirect("~/News.aspx?search=" + SearchValue + "")
+            Case "V"
+                Response.Redirect("~/Album_Videos.aspx?search=" + SearchValue + "")
+        End Select
+    End Sub
+#End Region
+
 End Class

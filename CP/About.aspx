@@ -192,7 +192,7 @@
                                                                       <uc1:HTMLEditor ID="txtCertificates" runat="server" />
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <label >المهارات</label>
+                                                                    <label >الأهداف</label>
                                                                      <uc1:HTMLEditor ID="txtSkills" runat="server" />
                                                                 </div>
                                                                   <div class="col-md-4">

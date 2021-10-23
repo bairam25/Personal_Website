@@ -23,15 +23,21 @@ Partial Class Technical_Analysis
 
     Sub FillCategories()
         Try
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category from tblContent where Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 ")
+            Dim SeachFilter As String = "1=1"
+            If Request.QueryString("search") IsNot Nothing Then
+                Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
+                SeachFilter = "(Title like '%" + searchValue + "%' or Description like '%" + searchValue + "%')"
+            End If
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category from tblContent where Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + "")
             lvAnlyticsCategories.DataSource = dtAnlyticsCategory
             lvAnlyticsCategories.DataBind()
             lvCategories.DataSource = dtAnlyticsCategory
             lvCategories.DataBind()
+
             For Each item As ListViewItem In lvCategories.Items
                 Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category='" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category='" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next

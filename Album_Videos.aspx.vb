@@ -48,7 +48,12 @@ Partial Class Album_Videos
     ''' </summary>
     Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable)
+            Dim SeachFilter As String = "1=1"
+            If Request.QueryString("search") IsNot Nothing Then
+                Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
+                SeachFilter = "(Title like '%" + searchValue + "%' or Description like '%" + searchValue + "%')"
+            End If
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable + " and " + SeachFilter)
             If dt IsNot Nothing Then
                 If dt.Rows.Count > 0 Then
                     ViewState("dtAlbumTable") = dt
