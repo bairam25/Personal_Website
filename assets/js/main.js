@@ -387,5 +387,8 @@
     }
     imJs.m();
 
+    $('#btnSearchIcon').on('click', function () {
+        $('.search-container').toggleClass('show');
+    });
 
 })(jQuery, window)
