@@ -54,10 +54,10 @@
                                                         <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
                                                     </li>
                                                     <li class="telegram-plane">
-                                                        <a target="_blank" href="#"><i class="fab fa-telegram-plane"></i></a>
+                                                        <a target="_blank" href="<%# Eval("TelegramURL").ToString  %>"><i class="fab fa-telegram-plane"></i></a>
                                                     </li>
                                                     <li class="tiktok">
-                                                        <a target="_blank" href="#"><i class="fab fa-tiktok"></i></a>
+                                                        <a target="_blank" href="<%# Eval("TikTokURL").ToString  %>"><i class="fab fa-tiktok"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>

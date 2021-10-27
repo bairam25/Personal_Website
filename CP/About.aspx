@@ -223,8 +223,14 @@
                                                                     <label >لينكد ان</label>
                                                                     <asp:TextBox runat="server" ID="txtLinkedIn" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                               
-                                                                
+                                                                <div class="col-md-4">
+                                                                    <label >تليجرام</label>
+                                                                    <asp:TextBox runat="server" ID="txtTelegram" MaxLength="8000"></asp:TextBox>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                    <label >تيك توك</label>
+                                                                    <asp:TextBox runat="server" ID="txtTikTok" MaxLength="8000"></asp:TextBox>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

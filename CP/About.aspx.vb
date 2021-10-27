@@ -35,6 +35,8 @@ Partial Class Profile
     Dim InstagramURL As String
     Dim LinkedInURL As String
     Dim TwitterURL As String
+    Dim TikTokURL As String
+    Dim TelegramURL As String
     Dim CVURL As String
     Dim ContentTable As String = "select * from tblProfile "
 
@@ -82,6 +84,8 @@ Partial Class Profile
             InstagramURL = txtInstagram.Text
             LinkedInURL = txtLinkedIn.Text
             TwitterURL = txtTwitter.Text
+            TikTokURL = txtTikTok.Text
+            TelegramURL = txtTelegram.Text
             CVURL = txtCVURL.Text
             PHoto = HiddenContentImg.Text
 
@@ -132,11 +136,14 @@ Partial Class Profile
                 txtCertificates.TextValue = dt.Rows(0).Item("Certificates").ToString
                 txtSkills.TextValue = dt.Rows(0).Item("skills").ToString
                 txtVision.TextValue = dt.Rows(0).Item("Vision").ToString
+                'Social Media
                 txtFacebook.Text = dt.Rows(0).Item("FacebookURL").ToString
                 txtYouTube.Text = dt.Rows(0).Item("YoutubeURL").ToString
                 txtInstagram.Text = dt.Rows(0).Item("InstagramURL").ToString
                 txtLinkedIn.Text = dt.Rows(0).Item("LinkedInURL").ToString
                 txtTwitter.Text = dt.Rows(0).Item("TwitterURL").ToString
+                txtTelegram.Text = dt.Rows(0).Item("TelegramURL").ToString
+                txtTikTok.Text = dt.Rows(0).Item("TikTokURL").ToString
                 txtCVURL.Text = dt.Rows(0).Item("CVURL").ToString
                 PHoto = HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
                 HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
@@ -212,6 +219,8 @@ Partial Class Profile
             dtProfile.YoutubeURL = YoutubeURL
             dtProfile.InstagramURL = InstagramURL
             dtProfile.LinkedinURL = LinkedInURL
+            dtProfile.TelegramURL = TelegramURL
+            dtProfile.TikTokURL = TikTokURL
             dtProfile.CVURL = CVURL
             dtProfile.TwitterURL = TwitterURL
             dtProfile.Vision = Vision

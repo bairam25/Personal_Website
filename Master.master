@@ -161,12 +161,12 @@
                                 </a>
                             </li>
                             <li class="telegram-plane">
-                                <a href="#" target="_blank">
+                                <a href="<%# Eval("TelegramURL").ToString  %>" target="_blank">
                                     <i class="fab fa-telegram-plane"></i>
                                 </a>
                             </li>
                             <li class="tiktok">
-                                <a href="#" target="_blank">
+                                <a href="<%# Eval("TikTokURL").ToString  %>" target="_blank">
                                     <i class="fab fa-tiktok"></i>
                                 </a>
                             </li>
@@ -199,8 +199,8 @@
                             <a class="btn-social" href="<%# Eval("InstagramURL").ToString  %>" target="_blank"><i data-feather="instagram"></i></a>
                             <a class="btn-social" href="<%# Eval("LinkedInURL").ToString  %>" target="_blank"><i data-feather="linkedin"></i></a>
                             <a class="btn-social" href="<%# Eval("YoutubeURL").ToString  %>" target="_blank"><i data-feather="youtube"></i></a>
-                            <a class="btn-social" href="#" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-                            <a class="btn-social" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a class="btn-social" href="<%# Eval("TelegramURL").ToString  %>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                            <a class="btn-social" href="<%# Eval("TikTokURL").ToString  %>" target="_blank"><i class="fab fa-tiktok"></i></a>
                         </ItemTemplate>
                     </asp:ListView>
 

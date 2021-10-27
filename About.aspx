@@ -176,8 +176,8 @@
                                     <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><span class="fab fa-instagram"></span></a>
                                     <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><span class="fab fa-linkedin"></span></a>
                                     <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><span class="fab fa-youtube"></span></a>
-                                    <a target="_blank" href="#"><span class="fab fa-telegram-plane"></span></a>
-                                    <a target="_blank" href="#"><span class="fab fa-tiktok"></span></a>
+                                    <a target="_blank" href="<%# Eval("TelegramURL").ToString  %>#"><span class="fab fa-telegram-plane"></span></a>
+                                    <a target="_blank" href="<%# Eval("TikTokURL").ToString  %>"><span class="fab fa-tiktok"></span></a>
                                 </div>
 
                                 <!-- profile buttons -->
