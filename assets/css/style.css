@@ -11790,6 +11790,7 @@ body.template-color-1 {
     justify-content: flex-end;
     display: flex;
     margin-left: -18px;
+    align-items: center;
 }
 
 @media only screen and (max-width: 575px) {
@@ -11827,7 +11828,7 @@ body.template-color-1 {
     }
 }
 
-.header-wrapper .header-right i {
+.header-wrapper .header-right i:not(.fa-search) {
     z-index: 800;
     color: var(--color-primary);
     font-size: 36px;
@@ -17890,50 +17891,40 @@ div#featured-project-carousel {
     width: 35px;
     height: 35px;
     color: #fff !important;
-    display: none;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     float: left;
     cursor: pointer;
+    margin: 0 15px;
 }
 
 .search-container {
+    display: none;
     flex-direction: row-reverse;
+    position: absolute;
+    top: 60px;
+    padding: 15px 10px;
+    background-color: #191b1e;
+    width: 450px;
+    left: 0;
 }
 
-@media (max-width: 625px) {
-    .btn-search {
-        display: inline-flex;
-    }
-
-    .search-container {
-        display: none;
-        flex-direction: row-reverse;
+    .search-container:before {
+        content: "";
         position: absolute;
-        top: 60px;
-        padding: 15px 10px;
-        background-color: #191b1e;
-        width: auto;
-        left: -30px;
-        right: -30px;
+        left: 38px;
+        top: -11px;
+        width: 0px;
+        height: 0px;
+        border-bottom: 15px solid #191b1e;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
     }
 
-        .search-container:before {
-            content: "";
-            position: absolute;
-            left: 48px;
-            top: -15px;
-            width: 0px;
-            height: 0px;
-            border-bottom: 15px solid #191b1e;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-        }
-
-        .search-container.show {
-            display: flex;
-        }
-}
+    .search-container.show {
+        display: flex;
+    }
 
     .search-container input,
     .search-container select {
@@ -17961,6 +17952,23 @@ div#featured-project-carousel {
                 border-color: #ff014f;
                 box-shadow: unset;
             }
+
+@media (max-width: 1200px) {
+    .search-container:before {
+        left: 70px;
+    }
+}
+
+@media (max-width: 575px) {
+    .search-container {
+        width: calc(100vw - 30px);
+        left: 15px;
+    }
+
+        .search-container:before {
+            left: 56px;
+        }
+}
 
 @media only screen and (max-width: 479px) {
     .contact-form-wrapper input {

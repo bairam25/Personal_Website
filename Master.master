@@ -31,7 +31,7 @@
         <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
             <div class="header-wrapper rn-popup-mobile-menu m--0 row align-items-center">
                 <!-- Start Header Left -->
-                <div class="col-lg-1 col-md-2 col-2">
+                <div class="col-lg-2 col-6">
                     <div class="header-left">
                         <div class="logo">
                             <a href="Home.aspx">
@@ -41,24 +41,8 @@
                     </div>
                 </div>
                 <!-- End Header Left -->
-                <div class="col">
-                    <a id="btnSearchIcon" class="btn-search" onclick="showSearch();"><i class="fas fa-search"></i></a>
-                    <div class="input-group search-container">
-                        <div class="input-group-prepend">
-                            <asp:Button ID="btnSearch" runat="server" CssClass="btn" Text="بحث" OnClick="Search" />
-                        </div>
-                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="بحث"></asp:TextBox>
-                        <div class="input-group-append">
-                            <asp:DropDownList ID="ddlFilterType" runat="server" CssClass="form-control">
-                                <asp:ListItem Value="A">التحليلات</asp:ListItem>
-                                <asp:ListItem Value="N">الأخبار</asp:ListItem>
-                                <asp:ListItem Value="V">الفيديو</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                </div>
                 <!-- Start Header Center -->
-                <div class="col-lg-7 col-md-2 col-2">
+                <div class="col-lg-10 col-6">
                     <div class="header-center">
                         <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block">
                             <!-- Start Mainmanu Nav -->
@@ -79,6 +63,22 @@
                         <!-- Start Header Right  -->
                         <div class="header-right">
                             <a class="rn-btn" href="Contact.aspx"><span>تواصل معى</span></a>
+                            <!-- Start Search -->
+                            <a id="btnSearchIcon" class="btn-search" onclick="showSearch();"><i class="fas fa-search"></i></a>
+                            <div class="input-group search-container">
+                                <div class="input-group-prepend">
+                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn" Text="بحث" OnClick="Search" />
+                                </div>
+                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="بحث"></asp:TextBox>
+                                <div class="input-group-append">
+                                    <asp:DropDownList ID="ddlFilterType" runat="server" CssClass="form-control">
+                                        <asp:ListItem Value="A">التحليلات</asp:ListItem>
+                                        <asp:ListItem Value="N">الأخبار</asp:ListItem>
+                                        <asp:ListItem Value="V">الفيديو</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <!-- End Search -->
                             <div class="hamberger-menu d-block d-xl-none">
                                 <i id="menuBtn" class="humberger-menu fas fa-bars"></i>
                             </div>
@@ -89,7 +89,6 @@
                             </div>
                         </div>
                         <!-- End Header Right  -->
-
                     </div>
                 </div>
                 <!-- End Header Center -->
