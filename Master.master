@@ -64,7 +64,7 @@
                         <div class="header-right">
                             <a class="rn-btn" href="Contact.aspx"><span>تواصل معى</span></a>
                             <!-- Start Search -->
-                            <a id="btnSearchIcon" class="btn-search" onclick="showSearch();"><i class="fas fa-search"></i></a>
+                            <a id="btnSearchIcon" class="btn-search"><i class="fas fa-search"></i></a>
                             <div class="input-group search-container">
                                 <div class="input-group-prepend">
                                     <asp:Button ID="btnSearch" runat="server" CssClass="btn" Text="بحث" OnClick="Search" />
