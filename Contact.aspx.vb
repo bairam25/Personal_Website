@@ -55,11 +55,11 @@ Partial Class Contact
                 ShowInfoMessgage(lblRes, "Email Address is not valid!", Me)
                 Exit Sub
             End If
-            Dim ToEmail = "eng.a7med3adel@gmail.com"
+            Dim ToEmail = "elsayed@elsayedhussein.com"
             Dim Smtp_Server As New SmtpClient
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
-            Smtp_Server.Credentials = New Net.NetworkCredential("eng.a7med3adel@gmail.com", "*************")
+            Smtp_Server.Credentials = New Net.NetworkCredential("elsayedhussein.website@gmail.com", "Sayed@789123")
             Smtp_Server.Port = 587
             Smtp_Server.EnableSsl = True
             Smtp_Server.Host = "smtp.gmail.com"
@@ -69,7 +69,7 @@ Partial Class Contact
             e_mail.To.Add(ToEmail)
             e_mail.Subject = title
             e_mail.IsBodyHtml = True
-            e_mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Message : " & msg
+            e_mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Email : " & Email & "<br/> Message : " & msg
             Smtp_Server.Send(e_mail)
             ShowSuccessMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
             Clear()
