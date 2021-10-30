@@ -8,7 +8,10 @@ Partial Class Master
     ''' Handle page load event
     ''' </summary>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Response.Redirect("~/comingsoon/index.html")
+        If Not PublicFunctions.CheckLogged() Then
+            Response.Redirect("~/comingsoon/index.html")
+        End If
+
         Try
             If Not Page.IsPostBack Then
                 FillContent()
