@@ -69,7 +69,7 @@
                                 <div class="input-group-prepend">
                                     <asp:Button ID="btnSearch" runat="server" CssClass="btn" Text="بحث" OnClick="Search" />
                                 </div>
-                                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="بحث"></asp:TextBox>
+                                <asp:TextBox ID="txtSearch" runat="server" required CssClass="form-control" placeholder="بحث"></asp:TextBox>
                                 <div class="input-group-append">
                                     <asp:DropDownList ID="ddlFilterType" runat="server" CssClass="form-control">
                                         <asp:ListItem Value="A">التحليلات</asp:ListItem>
