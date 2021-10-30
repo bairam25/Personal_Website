@@ -53,7 +53,7 @@ Partial Class cp_login
                 Exit Sub
             End If
             'Admin@AppProf_2050
-            If Username.ToLower = "admin" And Password = "12345" Then
+            If Username.ToLower = "admin" And Password = "Admin@SH$2022%" Then
                 If CreateCookie(Username) Then
                     Response.Redirect("Main.aspx")
                 Else
