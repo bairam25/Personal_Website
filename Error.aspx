@@ -49,6 +49,7 @@
             color: var(--color);
             perspective: 1200px;
             margin: 0;
+            direction: rtl;
         }
 
         a {
@@ -173,14 +174,14 @@
         </div>
     </div>
     <div class="info">
-        <h2>We can't find that page</h2>
+        <h2>لا يمكننا العثور على تلك الصفحة</h2>
         <p style="margin-bottom: 1rem;">
-            Unfortunately the page you were looking for could not be found. It may be temporarily unavailable, moved or no longer exist.
+            للأسف الصفحة التي تبحث عنها لا يمكن العثور عليها. قد يكون غير متاح مؤقتًا أو تم نقله أو لم يعد موجودًا.
         </p>
         <p>
-            Check the URL you entered for any mistakes and try again. Alternatively, search for whatever is missing or take a look around the rest of our site.
+            تحقق من عنوان URL الذي أدخلته بحثًا عن أي أخطاء وحاول مرة أخرى. بدلاً من ذلك ، ابحث عن كل ما هو مفقود أو ألق نظرة على بقية موقعنا.
         </p>
-        <a href="../Home.aspx">Home</a>
+        <a href="../Home.aspx">الرئيسية</a>
     </div>
 </body>
 </html>
