@@ -8,6 +8,7 @@ Partial Class Master
     ''' Handle page load event
     ''' </summary>
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Response.Redirect("~/comingsoon/index.html")
         Try
             If Not Page.IsPostBack Then
                 FillContent()
@@ -29,6 +30,9 @@ Partial Class Master
     Sub Search(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim FilterType As String = ddlFilterType.SelectedValue
         Dim SearchValue As String = txtSearch.Text.Replace(" ", "-")
+        If String.IsNullOrEmpty(SearchValue) Then
+            Exit Sub
+        End If
         Select Case FilterType
             Case "A"
                 Response.Redirect("~/Technical_Analysis.aspx?search=" + SearchValue + "")
