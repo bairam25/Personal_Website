@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-sm-6 col-xs-7">
                                 <ol class="breadcrumb">
-                                    <li><a href="Dashboards.aspx"><i class="ti-home"></i></a></li>
+                                    <li><a href="../Home.aspx" target="_blank"><i class="ti-home"></i></a></li>
                                     <li>معرض الفيديو</li>
                                 </ol>
                             </div>
