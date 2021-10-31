@@ -192,6 +192,7 @@ Partial Class Profile
             _sqlconn.Close()
 
         Catch ex As Exception
+            _sqltrans.Rollback()
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
 
