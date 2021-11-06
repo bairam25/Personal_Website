@@ -79,7 +79,7 @@
              </p>
             
              </div>
-        <a href="Dashboards.aspx" class="animated fadeInUp btn-main btn-blue" style="animation-delay:1.5s;">Back To Dashboards<i class="ti-back-left"></i></a>
+        <a href="../Home.aspx" target="_blank" class="animated fadeInUp btn-main btn-blue" style="animation-delay:1.5s;">Back To Dashboards<i class="ti-back-left"></i></a>
     </div>
     </form>
 
