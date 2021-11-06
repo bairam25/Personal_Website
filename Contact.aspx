@@ -6,6 +6,8 @@
     <script src="JsCode/KeypressValidators.js"></script>
     <asp:ToolkitScriptManager ID="Toolkitscriptmanager1" runat="server" ScriptMode="Release">
     </asp:ToolkitScriptManager>
+    <asp:UpdatePanel ID="up" runat="server">
+        <ContentTemplate>
     <!-- Start Contact section -->
     <div class="rn-contact-area rn-section-gap mt--90" id="contacts">
         <div class="container">
@@ -142,4 +144,6 @@
         </div>
     </div>
     <!-- End Contuct section -->
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
