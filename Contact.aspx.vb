@@ -74,7 +74,6 @@ Partial Class Contact
             ShowSuccessMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
             Clear()
         Catch ex As Exception
-            Throw ex
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
