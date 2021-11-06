@@ -36,7 +36,7 @@
             <Services>
                 <asp:ServiceReference Path="~/WebService.asmx" />
                 <asp:ServiceReference Path="~/wsMultiFileUpload.asmx" />
-            </Services>href="../Home.aspx" target="_blank" target
+            </Services>
         </asp:ToolkitScriptManager>
 
         <!--============================ Page-header =============================-->
