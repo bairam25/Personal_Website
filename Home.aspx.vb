@@ -104,7 +104,7 @@ Partial Class Home
             For Each item As ListViewItem In lvCategories.Items
                 Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select top 6 * from tblContent where Category='" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select top 6 * from tblContent where Category=N'" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next
