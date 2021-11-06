@@ -19,8 +19,8 @@
                                                 <span class="cd-headline clip is-full-width">
                                                     <!-- ROTATING TEXT -->
                                                     <span class="cd-words-wrapper">
-                                                        <b class="is-visible">خبير أسواق.</b>
-                                                        <b class="is-hidden">المال والأعمال.</b>
+                                                        <b class="is-visible">مدير استثمار.</b>
+                                                        <b class="is-hidden">خبير أسواق مالية.</b>
                                                     </span>
                                                 </span>
                                                 <!-- type headline end -->

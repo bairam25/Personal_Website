@@ -111,8 +111,8 @@
                                 <div class="title"><%# Eval("Name").ToString  %></div>
                                 <div class="subtitle subtitle-typed">
                                     <div class="typing-title">
-                                        <p>خبير أسواق</p>
-                                        <p>المال والأعمال</p>
+                                        <p>مدير استثمار</p>
+                                        <p>خبير أسواق مالية</p>
                                     </div>
                                 </div>
                             </div>
