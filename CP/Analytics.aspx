@@ -328,13 +328,23 @@
                                                     <div class="panel-body">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <div class="col-md-3">
+                                                                 <div class="col-md-3">
+                                                                    <label class="input-label required">التصنيف</label>
+                                                                  <asp:RadioButtonList  ID="rblCategoryType" runat ="server" OnSelectedIndexChanged ="SelectCategoryType" AutoPostBack="true" >
+                                                                     <asp:ListItem Value ="E" Selected="True" >سوق حالي</asp:ListItem>
+                                                                     <asp:ListItem Value ="N">سوق جديد</asp:ListItem>
+                                                                  </asp:RadioButtonList>
+                                                                  
+                                                                </div>
+                                                                <div class="col-md-3" id="divNewCategory" runat="server" visible ="false" >
+                                                                    <label class="input-label required">التصنيف</label>
+                                                                    <asp:TextBox runat="server" ID="txtCategory" MaxLength="200"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone" 
+                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
+                                                                </div>
+                                                                <div class="col-md-3" id="divExistCategory" runat="server">
                                                                     <label class="input-label required">التصنيف</label>
                                                                   <asp:DropDownList ID="ddlCategory" runat ="server" >
-                                                                      <asp:ListItem Value="0">--أختر تصنيف--</asp:ListItem>
-                                                                      <asp:ListItem Value="تحليلات الاسواق العالمية">تحليلات الاسواق العالمية</asp:ListItem>
-                                                                       <asp:ListItem Value="تحليلات السوق المصرى">تحليلات السوق المصرى</asp:ListItem>
-                                                                       <asp:ListItem Value="تحليلات السوق السعودى">تحليلات السوق السعودى</asp:ListItem>
                                                                   </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone" InitialValue="0"
                                                                         ValidationGroup="vContent" ControlToValidate="ddlCategory" ErrorMessage="أختر التصنيف"></asp:RequiredFieldValidator>

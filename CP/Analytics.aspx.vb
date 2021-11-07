@@ -70,6 +70,8 @@ Partial Class Analytics
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+
+
 #End Region
 #Region "Fill Grid"
 
@@ -270,14 +272,33 @@ Partial Class Analytics
             pf.ClearAll(pnlForm)
             txtDescription.TextValue = String.Empty
             ddlCategory.SelectedIndex = -1
+            rblCategoryType.SelectedIndex = 0
+            SelectCategoryType()
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
+            clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlCategory, True, "--أختر تصنيف--")
+
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
 
+    Sub SelectCategoryType()
+        Try
+            Select Case rblCategoryType.SelectedValue
+                Case "N"
+                    divExistCategory.Visible = False
+                    divNewCategory.Visible = True
+                Case "E"
+                    divExistCategory.Visible = True
+                    divNewCategory.Visible = False
+            End Select
+
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
 #End Region
 #Region "Edit"
 
@@ -403,7 +424,14 @@ Partial Class Analytics
                 Return False
             End If
             dtContent.Type = "ANL"
-            dtContent.Category = ContentCategory
+
+            Select Case rblCategoryType.SelectedValue
+                Case "N"
+                    dtContent.Category = txtCategory.Text.Trim
+                Case "E"
+                    dtContent.Category = ContentCategory
+            End Select
+
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description
@@ -434,8 +462,13 @@ Partial Class Analytics
             imgContent.ImageUrl = "~/images/img-up.png"
             HiddenContentImg.Text = ""
             lblContentId.Text = ""
+            txtDescription.TextValue = String.Empty
+            ddlCategory.SelectedIndex = -1
+            rblCategoryType.SelectedIndex = 0
+            SelectCategoryType()
             Enabler(False)
             FillGrid(Sender, e)
+            clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlCategory, True, "--أختر تصنيف--")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
