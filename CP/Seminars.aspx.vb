@@ -252,6 +252,33 @@ Partial Class Seminars
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+    ''' <summary>
+    ''' Update item to be Show in home or not.
+    ''' </summary>
+    Sub UpdateShowHome(sender As Object, e As EventArgs)
+        Try
+            Dim parent = sender.parent.parent
+            Dim ItemId As String = DirectCast(parent.FindControl("lblContentId"), Label).Text
+            Dim StatusName As String = "Show"
+            Dim MSG As String = ""
+            Dim chk As CheckBox = DirectCast(sender, CheckBox)
+
+            Dim Updated As Integer = 0
+            If chk.Checked Then
+                StatusName = "Show"
+                MSG = "تم العرض بنجاح"
+            Else
+                StatusName = "Hide"
+                MSG = "تم إالغاء العرض بنجاح"
+            End If
+            Updated = DBManager.ExcuteQuery("Update tblContent set ShowInHome ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
+            If Updated = 1 Then
+                clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.CUSTOMSuccess, Page, Nothing, MSG)
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "New"
