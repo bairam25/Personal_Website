@@ -26,7 +26,7 @@ Partial Class Technical_Analysis
             Dim SeachFilter As String = "1=1"
             If Request.QueryString("search") IsNot Nothing Then
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
-                SeachFilter = "(Title like '%" + searchValue + "%' or Description like '%" + searchValue + "%')"
+                SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
             Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category from tblContent where Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + "")
             lvAnlyticsCategories.DataSource = dtAnlyticsCategory

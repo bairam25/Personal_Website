@@ -338,6 +338,8 @@ Partial Class Analytics
             cmdSave.CommandArgument = "edit"
             lblContentId.Text = Sender.commandargument.ToString
             pf.ClearAll(pnlForm)
+            clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlCategory, True, "--أختر تصنيف--")
+
             If FillForm() Then
                 Enabler(True)
             End If

@@ -51,7 +51,7 @@ Partial Class Album_Videos
             Dim SeachFilter As String = "1=1"
             If Request.QueryString("search") IsNot Nothing Then
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
-                SeachFilter = "(Title like '%" + searchValue + "%' or Description like '%" + searchValue + "%')"
+                SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
             Dim dt As DataTable = DBManager.Getdatatable(AlbumTable + " and " + SeachFilter)
             If dt IsNot Nothing Then
