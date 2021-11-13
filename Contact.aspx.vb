@@ -80,7 +80,7 @@ Partial Class Contact
             Mail.IsBodyHtml = True
 
             Dim SMTP As New SmtpClient("relay-hosting.secureserver.net")
-            SMTP.Credentials = New System.Net.NetworkCredential("elsayedhussein.website@gmail.com", "Sayed@789123")
+            SMTP.Credentials = New System.Net.NetworkCredential("info@elsayedhussein.com", "Sayed@789123")
             SMTP.Port = "25"
             SMTP.Send(Mail)
 
