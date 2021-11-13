@@ -60,9 +60,9 @@ Partial Class Contact
             Dim e_mail As New MailMessage()
             Smtp_Server.UseDefaultCredentials = False
             Smtp_Server.Credentials = New Net.NetworkCredential("elsayedhussein.website@gmail.com", "Sayed@789123")
-            Smtp_Server.Port = 587
-            Smtp_Server.EnableSsl = True
-            Smtp_Server.Host = "smtp.gmail.com"
+            Smtp_Server.Port = 25
+            'Smtp_Server.EnableSsl = True
+            Smtp_Server.Host = "relay-hosting.secureserver.net"
 
             e_mail = New MailMessage()
             e_mail.From = New MailAddress(Email)
@@ -71,6 +71,19 @@ Partial Class Contact
             e_mail.IsBodyHtml = True
             e_mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Email : " & Email & "<br/> Message : " & msg
             Smtp_Server.Send(e_mail)
+
+            'Dim Mail As New MailMessage
+            'Mail.Subject = title
+            'Mail.To.Add("elsayed@elsayedhussein.com")
+            'Mail.From = New MailAddress("elsayedhussein.website@gmail.com", "elsayedhussein")
+            'Mail.Body = "Name : " & Name & "<br/> Mobile : " & mobile & "<br/> Email : " & Email & "<br/> Message : " & msg
+            'Mail.IsBodyHtml = True
+
+            'Dim SMTP As New SmtpClient("relay-hosting.secureserver.net")
+            'SMTP.Credentials = New System.Net.NetworkCredential("elsayedhussein.website@gmail.com", "Sayed@789123")
+            'SMTP.Port = "25"
+            'SMTP.Send(Mail)
+
             ShowSuccessMessgage(lblRes, "شكراً لتواصلكم معنا", Me)
             Clear()
         Catch ex As Exception
