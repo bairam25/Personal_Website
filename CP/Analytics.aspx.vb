@@ -465,7 +465,7 @@ Partial Class Analytics
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description
-            dtContent.Date = DateTime.Now
+
             dtContent.Photo = Photo
             dtContent.ShowOrder = OrderNo
             If cmdSave.CommandArgument = "add" Then
