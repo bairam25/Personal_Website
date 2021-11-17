@@ -20,10 +20,10 @@
                     <ItemTemplate>
                         <!-- Start Photo -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog" data-toggle="modal" data-target="#ModalPhoto">
+                            <div class="rn-blog venobox" href='<%# Eval("Path").ToString.Replace("~", "")  %>' data-gall="venue-gallery">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="javascript:void(0)" onclick="show('<%# Eval("Path").ToString.Replace("~", "")  %>','<%# Eval("Title").ToString   %>')">
+                                        <a href="javascript:void(0)">
                                             <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString   %>'>
                                         </a>
                                     </div>
@@ -132,13 +132,25 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/vendor/jquery.js"></script>
+    <script src="lib/venobox/venobox.min.js"></script>
     <script>    
-        function show(s, t) {
-            let img = document.getElementById("imgModal")
-            let lblImgTitle = document.getElementById("lblImgTitle")
-            img.src = s;
-            lblImgTitle.innerText = t;
-        }
+        //function show(s, t) {
+        //    let img = document.getElementById("imgModal")
+        //    let lblImgTitle = document.getElementById("lblImgTitle")
+        //    img.src = s;
+        //    lblImgTitle.innerText = t;
+        //}
+
+        // Initialize Venobox
+        jQuery(document).ready(function ($) {
+            $('.venobox').venobox({
+                bgcolor: '',
+                overlayColor: 'rgba(6, 12, 34, 0.85)',
+                closeBackground: '',
+                closeColor: '#fff'
+            });
+        });
     </script>
     <!-- End Modal Photo -->
 </asp:Content>

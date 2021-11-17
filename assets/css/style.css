@@ -13703,12 +13703,13 @@ figcaption {
 }
 
 .slide .social-share-inner-left .social-share li a {
-    display: inline-block;
+    display: inline-flex;
     width: 60px;
     height: 60px;
     line-height: 60px;
-    text-align: center;
-    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: 6px;
@@ -13744,7 +13745,8 @@ figcaption {
     stroke-width: 2;
     position: relative;
     z-index: 2;
-    width: 20px;
+    width: 25px;
+    text-align: center;
 }
 
 .slide .social-share-inner-left .social-share li a:hover {
@@ -17892,6 +17894,13 @@ div#featured-project-carousel {
     letter-spacing: 1px;
 }
 
+.search-container select {
+    padding: 0 5px;
+    appearance: auto !important;
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+}
+
 .btn-search {
     background-color: #ff014f;
     font-size: 17px;
@@ -17947,19 +17956,19 @@ div#featured-project-carousel {
             box-shadow: unset !important;
         }
 
-        .search-container select {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            box-shadow: unset;
-        }
+    .search-container select {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        box-shadow: unset;
+    }
 
-            .search-container .btn {
-                background-color: #ff014f !important;
-                color: #fff !important;
-                transform: unset !important;
-                border-color: #ff014f;
-                box-shadow: unset;
-            }
+    .search-container .btn {
+        background-color: #ff014f !important;
+        color: #fff !important;
+        transform: unset !important;
+        border-color: #ff014f;
+        box-shadow: unset;
+    }
 
 @media (max-width: 1200px) {
     .search-container:before {
@@ -18780,8 +18789,7 @@ div#featured-project-carousel {
 /*---------------------------
     Contact Area Styles 
 -----------------------------*/
-
-.footer-area h4 span {
+    .footer-area h4 span {
     padding: 20px 23px;
     box-shadow: var(--shadow-1);
     display: inline-block;

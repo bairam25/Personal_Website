@@ -48,8 +48,11 @@
                                             <p>
                                                 لطلب المساعدة أو الاستفسار يرجى التواصل معى عبر البريد الاليكترونى أو الاتصال بى.
                                             </p>
-                                            <span class="phone">الهاتف: <a href="tel:<%# Eval("Mobile").ToString  %>" style="letter-spacing: 1px;"><%# Eval("Mobile").ToString  %></a></span>
-                                            <span class="mail">البريد الاليكترونى: <a href="mailto:<%# Eval("Email").ToString  %>" style="letter-spacing: 1px;"><%# Eval("Email").ToString  %></a></span>
+                                            <span class="phone" style="direction: ltr;">
+                                                <a href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Mobile").ToString  %></a>
+                                                 :What’app
+                                            </span>
+                                            <span class="mail">البريد الاليكترونى: <a href="mailto:<%# Eval("Email").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Email").ToString  %></a></span>
                                         </div>
                                         <div class="social-area">
                                             <div class="name">تواصل معى عبر</div>
@@ -59,13 +62,12 @@
                                                 <a target="_blank" href="<%# Eval("InstagramURL").ToString  %>"><i data-feather="instagram"></i></a>
                                                 <a target="_blank" href="<%# Eval("LinkedInURL").ToString  %>"><i data-feather="linkedin"></i></a>
                                                 <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><i data-feather="youtube"></i></a>
-                                                <a target="_blank" href="#"><i class="fab fa-telegram-plane"></i></a>
-                                                <a target="_blank" href="#"><i class="fab fa-tiktok"></i></a>
+                                                <a target="_blank" href="<%# Eval("TelegramURL").ToString  %>"><i class="fab fa-telegram-plane"></i></a>
+                                                <a target="_blank" href="<%# Eval("TikTokURL").ToString  %>"><i class="fab fa-tiktok"></i></a>
+                                                <a target="_blank" href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>"><i class="fab fa-whatsapp"></i></a>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>

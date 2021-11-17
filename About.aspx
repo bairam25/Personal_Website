@@ -178,6 +178,7 @@
                                     <a target="_blank" href="<%# Eval("YoutubeURL").ToString  %>"><span class="fab fa-youtube"></span></a>
                                     <a target="_blank" href="<%# Eval("TelegramURL").ToString  %>#"><span class="fab fa-telegram-plane"></span></a>
                                     <a target="_blank" href="<%# Eval("TikTokURL").ToString  %>"><span class="fab fa-tiktok"></span></a>
+                                    <a target="_blank" href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>"><span class="fab fa-whatsapp"></span></a>
                                 </div>
 
                                 <!-- profile buttons -->
@@ -213,7 +214,7 @@
                                                 <p><%# Eval("Bio").ToString  %></p>
                                             </div>
                                         </div>
-                                        <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
+                                        <%--<div class="col col-d-12 col-t-12 col-m-12 border-line-v">
                                             <div class="info-list">
                                                 <ul>
                                                     <li>
@@ -230,7 +231,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>--%>
                                         <div class="clear"></div>
                                     </div>
                                 </div>

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/vendor/slick-theme.css" />
     <link rel="stylesheet" href="assets/css/vendor/aos.css" />
     <link rel="stylesheet" href="assets/css/plugins/feature.css" />
+    <link href="lib/venobox/venobox.css" rel="stylesheet" />
     <!-- Style css -->
     <link rel="stylesheet" href="assets/css/style.css" />
 
@@ -178,6 +179,11 @@
                                     <i class="fab fa-tiktok"></i>
                                 </a>
                             </li>
+                            <li class="whatsapp">
+                                <a href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- end -->
@@ -209,6 +215,7 @@
                             <a class="btn-social" href="<%# Eval("YoutubeURL").ToString  %>" target="_blank"><i data-feather="youtube"></i></a>
                             <a class="btn-social" href="<%# Eval("TelegramURL").ToString  %>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                             <a class="btn-social" href="<%# Eval("TikTokURL").ToString  %>" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a class="btn-social" href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         </ItemTemplate>
                     </asp:ListView>
 

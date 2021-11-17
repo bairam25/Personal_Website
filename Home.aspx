@@ -59,6 +59,9 @@
                                                     <li class="tiktok">
                                                         <a target="_blank" href="<%# Eval("TikTokURL").ToString  %>"><i class="fab fa-tiktok"></i></a>
                                                     </li>
+                                                    <li class="whatsapp">
+                                                        <a target="_blank" href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>"><i class="fab fa-whatsapp"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -186,7 +189,7 @@
                     <ItemTemplate>
                         <!-- Start News -->
                         <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                            <div class="rn-portfolio">
+                            <div class="rn-portfolio w-100">
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
@@ -205,7 +208,7 @@
                                         <h4 class="title">
                                             <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                         </h4>
-                                        <p class="description"><%# Eval("Description") %></p>
+                                        <%--<p class="description"><%# Eval("Description") %></p>--%>
                                     </div>
                                 </div>
                             </div>
