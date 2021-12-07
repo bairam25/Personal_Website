@@ -29,16 +29,16 @@
                     <ItemTemplate>
                         <!-- Start Photo -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog" data-toggle="modal" data-target="#previewImage">
+                            <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href="javascript:void(0)" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#previewImage" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
                                             <img src='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "assets/images/video.png", Eval("Path")) %>' alt='<%# Eval("Description").ToString   %>'>
                                         </a>
                                     </div>
                                     <div class="content">
                                         <h4 class="title">
-                                            <a href="javascript:void(0)"><%# Eval("Title").ToString   %>
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#previewImage" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')"><%# Eval("Title").ToString   %>
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         </h4>
@@ -49,29 +49,6 @@
                         <!-- End Photo -->
                     </ItemTemplate>
                 </asp:ListView>
-                <%--<!-- Start Video -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#previewImage">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <video>
-                                        <source src="assets/videos/video-1.mp4" type="video/mp4" />
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الفيديو
-                                                <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Video -->--%>
             </div>
         </div>
     </div>
