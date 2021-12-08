@@ -19128,10 +19128,10 @@ div#featured-project-carousel {
     width: 100%;
 }
 
-#Photos .slick-track,
+/*#Photos .slick-track,
 #Videos .slick-track {
     width: unset !important;
-}
+}*/
 
 #Photos .inner .thumbnail a img,
 #Videos .inner .thumbnail a img {
@@ -19970,7 +19970,6 @@ Rn Slick Dots Style
 
     .testimonial-activation.testimonial-activation-3 {
         margin: 0 -15px;
-        ;
     }
 
     .testimonial-activation.seminars-slider {
