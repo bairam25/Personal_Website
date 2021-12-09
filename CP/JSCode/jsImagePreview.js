@@ -1,4 +1,4 @@
-﻿function ImagePreview(Mediarsrc) {
+﻿function ImagePreview(Mediarsrc, caption) {
     //debugger;
     var extention = Mediarsrc.split(".").pop();
     var youtubeIfram = $('#YouTubeIfram');
@@ -8,6 +8,10 @@
     var modal = document.getElementById('previewImage');
     var modalImg = document.getElementById("img01");
     var video = document.getElementById('videoPreview');
+    if (document.getElementById('lblImgTitle')) {
+        document.getElementById('lblImgTitle').innerText = caption;
+    }
+
     modalImg.style.display = "none";
     if (video !== null) { video.style.display = "none"; }
     if (extention === "mp4" || extention === "wmv" || extention === "webm") {

@@ -29,7 +29,7 @@
 
                                         <div>
                                             <p class="description">
-                                                <%# Eval("Bio").ToString  %>
+                                                <%# Eval("Degree").ToString  %>
                                             </p>
                                         </div>
                                     </div>
