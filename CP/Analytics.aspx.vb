@@ -118,7 +118,7 @@ Partial Class Analytics
         'If txtSearch.Text <> String.Empty Then
         '    btnClearSearch.Visible = True
         'End If
-        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like '%" & txtSearch.Text & "%')")
+        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like N'%" & txtSearch.Text & "%')")
 
         Return Search
 

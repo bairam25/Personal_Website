@@ -438,7 +438,7 @@
                                                                 <asp:TextBox ID="txtSearch" ToolTip="بحث" data-placement="bottom" runat="server" type="text" class="form-control" placeholder="بحث بالعنوان" MaxLength="100" AutoPostBack="true" OnTextChanged="FillGrid"></asp:TextBox>
                                                                 <asp:LinkButton runat="server" SkinID="clear-search" ID="cmdClear" title="مسح" OnClientClick="$('#txtSearch').val('');">&times;</asp:LinkButton>
                                                                 <span class="input-group-btn">
-                                                                    <asp:LinkButton ID="lbSearchIcon" runat="server" class="search-bt btn btn-default" type="button"> <i class="fa-search fa"></i> </asp:LinkButton>
+                                                                    <asp:LinkButton ID="lbSearchIcon" runat="server" class="search-bt btn btn-default" type="button" OnClick="FillGrid"> <i class="fa-search fa"></i> </asp:LinkButton>
                                                                 </span>
                                                             </div>
                                                         </div>
