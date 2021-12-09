@@ -469,7 +469,7 @@ Partial Class Gallery
     ''' </summary>
     Public Function CollectConditions(ByVal sender As Object, ByVal e As System.EventArgs) As String
         txtSearch.Text = txtSearch.Text.TrimStart.TrimEnd
-        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like '%" & txtSearch.Text & "%' )")
+        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like N'%" & txtSearch.Text & "%' )")
 
         Return Search
 
@@ -597,7 +597,7 @@ Partial Class Gallery
                 StatusName = "Deactive"
                 MSG = "تم إالغاء التفعيل بنجاح"
             End If
-            Updated = DBManager.ExcuteQuery("Update TblAlbum set Active ='" + chk.Checked.ToString + "',ModifiedDate=getdate(),ModifiedBy='" + UserID + "' where Id='" + ItemId + "' ")
+            Updated = DBManager.ExcuteQuery("Update TblAlbum set Active ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
             If Updated = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.CUSTOMSuccess, Page, Nothing, MSG)
             End If
