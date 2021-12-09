@@ -80,7 +80,7 @@
 
     .div_textbox {
         width: 100%;
-        height: 100px;
+        height: 70px;
         border: 1px solid;
         border-color: #e5e5e5;
         background: #ffffff;

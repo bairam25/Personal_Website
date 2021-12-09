@@ -123,7 +123,7 @@
 
                                 <div class="mb0" id="accordion" role="tablist" aria-multiselectable="false">
                                     <div class="user-flex-panel">
-                                        <div class="left-700">
+                                        <div class="left-750">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading" role="tab" id="heading1">
                                                     <h4 class="panel-title">
@@ -134,102 +134,103 @@
                                                 <div id="collapse1" class="panel-collapse collapse in">
                                                     <div class="panel-body">
                                                         <div class="row">
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-12 form-group">
                                                                 <div class="col-md-4">
-                                                                    <label class="required">الاسم</label>
+                                                                    <label class="input-label required">الاسم</label>
                                                                     <asp:TextBox runat="server" ID="txtName" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtName" ErrorMessage="أدخل الاسم"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="required">البريد الالكتروني</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label required">البريد الالكتروني</label>
                                                                     <asp:TextBox runat="server" ID="txtEmail" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtEmail" ErrorMessage="أدخل البريد الالكتروني"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="required">التليفون</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label required">التليفون</label>
                                                                     <asp:TextBox runat="server" ID="txtPhone" MaxLength="100" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtPhone" ErrorMessage="أدخل التليفون"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label class="required">الموبايل</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label required">الموبايل</label>
                                                                     <asp:TextBox runat="server" ID="txtMobile" MaxLength="100" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtMobile" ErrorMessage="أدخل الموبايل"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label>السن</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">السن</label>
                                                                     <asp:TextBox runat="server" ID="txtAge" MaxLength="3" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                 </div>
-                                                                 <div class="col-md-4">
-                                                                    <label >الدولة</label>
+                                                                 <div class="col-md-4 form-group">
+                                                                    <label class="input-label">الدولة</label>
                                                                     <asp:TextBox runat="server" ID="txtCountry" MaxLength="50"></asp:TextBox>
                                                                 </div>
-                                                                 <div class="col-md-4">
-                                                                    <label >المدينة</label>
+                                                                 <div class="col-md-4 form-group">
+                                                                    <label class="input-label">المدينة</label>
                                                                     <asp:TextBox runat="server" ID="txtCity" MaxLength="50"></asp:TextBox>
                                                                 </div>
-                                                                  <div class="col-md-4">
-                                                                    <label >العنوان</label>
+                                                                  <div class="col-md-8 form-group">
+                                                                    <label class="input-label">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtAddress" MaxLength="500"></asp:TextBox>
                                                                 </div>
-                                                                  <div class="col-md-4">
-                                                                    <label class="required">Bio</label>
+                                                                  <div class="col-md-12 form-group">
+                                                                    <label class="input-label required">السيرة الذاتية</label>
                                                                       <uc1:HTMLEditor ID="txtBio" runat="server" />
                                                                  </div>
-                                                                  <div class="col-md-4">
-                                                                    <label class="required">الدرجة العلمية</label>
+                                                                  <div class="col-md-12 form-group">
+                                                                    <label class="input-label required">الدرجة العلمية</label>
                                                                       <uc1:HTMLEditor ID="txtDegree" runat="server" />
                                                                  </div>
-                                                                <div class="col-md-4">
-                                                                    <label >الخبرات</label>
+                                                                <div class="col-md-12 form-group">
+                                                                    <label class="input-label">الخبرات</label>
                                                                      <uc1:HTMLEditor ID="txtExperience" runat="server" />
                                                                 </div>
-                                                                 <div class="col-md-4">
-                                                                    <label>الشهادات</label>
+                                                                 <div class="col-md-12 form-group">
+                                                                    <label class="input-label">الشهادات</label>
                                                                       <uc1:HTMLEditor ID="txtCertificates" runat="server" />
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >الأهداف</label>
+                                                                <div class="col-md-12 form-group">
+                                                                    <label class="input-label">الأهداف</label>
                                                                      <uc1:HTMLEditor ID="txtSkills" runat="server" />
                                                                 </div>
-                                                                  <div class="col-md-4">
-                                                                    <label >الرؤية</label>
+                                                                  <div class="col-md-12 form-group">
+                                                                    <label class="input-label">الرؤية</label>
                                                                        <uc1:HTMLEditor ID="txtVision" runat="server" />
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >الفيسبوك</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">الفيسبوك</label>
                                                                     <asp:TextBox runat="server" ID="txtFacebook" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >تويتر</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">تويتر</label>
                                                                     <asp:TextBox runat="server" ID="txtTwitter" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >انستجرام</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">انستجرام</label>
                                                                     <asp:TextBox runat="server" ID="txtInstagram" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >السيرة الذاتية</label>
-                                                                    <asp:TextBox runat="server" ID="txtCVURL" MaxLength="8000"></asp:TextBox>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label >قناة اليوتيوب</label>
-                                                                    <asp:TextBox runat="server" ID="txtYouTube" MaxLength="8000"></asp:TextBox>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label >لينكد ان</label>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">لينكد ان</label>
                                                                     <asp:TextBox runat="server" ID="txtLinkedIn" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                                <div class="col-md-4">
-                                                                    <label >تليجرام</label>
+                                                                <div class="col-md-8 form-group">
+                                                                    <label class="input-label">قناة اليوتيوب</label>
+                                                                    <asp:TextBox runat="server" ID="txtYouTube" MaxLength="8000"></asp:TextBox>
+                                                                </div>
+                                                                
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">تليجرام</label>
                                                                     <asp:TextBox runat="server" ID="txtTelegram" MaxLength="8000"></asp:TextBox>
                                                                 </div>
-                                                                 <div class="col-md-4">
-                                                                    <label >تيك توك</label>
+                                                                 <div class="col-md-4 form-group">
+                                                                    <label class="input-label">تيك توك</label>
                                                                     <asp:TextBox runat="server" ID="txtTikTok" MaxLength="8000"></asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4 form-group">
+                                                                    <label class="input-label">رابط السيرة الذاتية</label>
+                                                                    <asp:TextBox runat="server" ID="txtCVURL" MaxLength="8000"></asp:TextBox>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -238,7 +239,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="right-300 pos-relavtive">
+                                        <div class="right-250 pos-relavtive">
                                             <div class="demo-upload-head m0">
                                                 <h3 class="required">الصورة الشخصية</h3>
                                             </div>
@@ -250,7 +251,7 @@
                                                 <asp:Panel ID="pnlTLCopy" runat="server" CssClass="demo-upload-container pb5">
                                                     <div class="custom-file-container">
 
-                                                        <asp:HyperLink ID="hlViewContent" CssClass="custom-file-container__image-preview h-img-pre" runat="server" ClientIDMode="Static" Target="_blank">
+                                                        <asp:HyperLink ID="hlViewContent" CssClass="custom-file-container__image-preview" runat="server" ClientIDMode="Static" Target="_blank">
                                                             <asp:Image ID="imgContent" ClientIDMode="Static" runat="server" Style="max-height: 100%; max-width: 100%" ImageUrl="~/images/img-up.png" />
                                                         </asp:HyperLink>
                                                         <asp:TextBox ID="HiddenContentImg" runat="server" ClientIDMode="Static" Style="display: none"></asp:TextBox>
@@ -264,7 +265,7 @@
                                                                     FailedValidation="False" />
 
                                                                 <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                                                <span class="custom-file-container__custom-file__custom-file-control" title="Logo"></span>
+                                                                <span class="custom-file-container__custom-file__custom-file-control" title="الصورة الشخصية"></span>
                                                             </label>
                                                         </asp:Panel>
                                                     </div>

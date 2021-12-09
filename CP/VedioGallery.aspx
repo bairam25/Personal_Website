@@ -610,15 +610,15 @@
                                                         <asp:DataPager ID="dplvGallery" class="pagination" runat="server" PagedControlID="lvGallery" PageSize='<%# ddlPager.SelectedValue %>' style="width: 100%; display: inline-flex;">
                                                             <Fields>
                                                                 <asp:NextPreviousPagerField ButtonType="Link"
-                                                                    ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-left'></i>"
-                                                                    ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-left'></i>"
+                                                                    ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-right'></i>"
+                                                                    ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-right'></i>"
                                                                     ShowLastPageButton="false" ShowNextPageButton="false" />
 
                                                                 <asp:NumericPagerField ButtonType="link" RenderNonBreakingSpacesBetweenControls="false" NextPreviousButtonCssClass="hidedots" />
 
                                                                 <asp:NextPreviousPagerField ButtonType="Link"
-                                                                    ShowNextPageButton="true" NextPageText="<i class='ti-angle-right'></i>"
-                                                                    ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-right'></i>"
+                                                                    ShowNextPageButton="true" NextPageText="<i class='ti-angle-left'></i>"
+                                                                    ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-left'></i>"
                                                                     ShowFirstPageButton="false"
                                                                     ShowPreviousPageButton="false" />
                                                             </Fields>

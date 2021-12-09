@@ -1098,7 +1098,7 @@ body.boxed {
     margin-top: 65px;
     position: relative;
     margin-bottom: 100px;
-    min-height: 120vh;
+    min-height: calc(100vh - 165px);
 }
 
 .page-content {

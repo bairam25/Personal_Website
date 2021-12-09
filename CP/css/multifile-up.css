@@ -69,11 +69,14 @@
     background-clip: padding-box;
     border: 2px solid rgb(96, 191, 77);
     border-radius: 1px;
+    text-align: left;
+    direction: ltr;
 }
 
     .custom-file-container__custom-file__custom-file-control:empty::after {
         box-sizing: border-box;
-        content: "Choose file...";
+        content: "Choose File...";
+        letter-spacing: .5px;
     }
 
     .custom-file-container__custom-file__custom-file-control::before {
@@ -87,6 +90,7 @@
         padding: 0 20px;
         line-height: 34px;
         color: #fff;
+        letter-spacing: .5px;
         background-color: rgb(96, 191, 77);
         border-left: 2px solid rgb(96, 191, 77);
     }

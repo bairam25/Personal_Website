@@ -239,15 +239,15 @@
                                                                 <asp:DataPager ID="dplvContent" class="pagination" runat="server" PagedControlID="lvContent" PageSize='<%# ddlPager.SelectedValue %>' style="width: 100%; display: inline-flex;">
                                                                     <Fields>
                                                                         <asp:NextPreviousPagerField ButtonType="Link"
-                                                                            ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-left'></i>"
-                                                                            ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-left'></i>"
+                                                                            ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-right'></i>"
+                                                                            ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-right'></i>"
                                                                             ShowLastPageButton="false" ShowNextPageButton="false" />
 
                                                                         <asp:NumericPagerField ButtonType="link" RenderNonBreakingSpacesBetweenControls="false" NextPreviousButtonCssClass="hidedots" />
 
                                                                         <asp:NextPreviousPagerField ButtonType="Link"
-                                                                            ShowNextPageButton="true" NextPageText="<i class='ti-angle-right'></i>"
-                                                                            ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-right'></i>"
+                                                                            ShowNextPageButton="true" NextPageText="<i class='ti-angle-left'></i>"
+                                                                            ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-left'></i>"
                                                                             ShowFirstPageButton="false"
                                                                             ShowPreviousPageButton="false" />
                                                                     </Fields>
@@ -326,13 +326,13 @@
                                                     <div class="panel-body">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-7 form-group">
                                                                     <label class="input-label required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="100"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل العنوان"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-3 form-group">
                                                                     <label class="input-label required">التاريخ</label>
                                                                     <asp:TextBox ID="txtContentDate" runat="server" MaxLength="10" onkeypress="return isDate(event);"></asp:TextBox>
                                                                     <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender1" runat="server"
@@ -346,13 +346,13 @@
                                                                         ValidationExpression="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
                                                                         CssClass="in-validate" SetFocusOnError="true"></asp:RegularExpressionValidator>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-2 form-group">
                                                                     <label class="input-label required">الترتيب</label>
                                                                     <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="2" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-12 form-group">
                                                                     <label class="input-label">الوصف</label>
                                                                      <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
