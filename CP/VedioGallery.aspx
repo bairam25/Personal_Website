@@ -505,7 +505,11 @@
                                                             <th class="upnDownArrow" id="ShowOrder">
                                                                 <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
                                                             </th>
-                                                            <th id="ActiveHeader">تفعيل</th>
+                                                            <th class="upnDownArrow" id="Active">
+                                                                
+                                                                <asp:LinkButton ID="lbcActive" CommandArgument="Active" CommandName="Sort" runat="server">تفعيل</asp:LinkButton>
+
+                                                            </th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
                                                         </tr>
