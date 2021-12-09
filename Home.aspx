@@ -314,7 +314,7 @@
                             <asp:ListView ID="lvSeminars" runat="server">
                                 <ItemTemplate>
                                     <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30 p-0">
-                                        <div class="rn-portfolio" data-toggle="modal" data-target="#">
+                                        <div class="rn-portfolio w-100" data-toggle="modal" data-target="#">
                                             <div class="inner row">
                                                 <div class="col-md-2">
                                                     <div class="thumbnail">
@@ -356,7 +356,7 @@
                                     <ItemTemplate>
                                         <!-- Start News -->
                                         <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                            <div class="rn-portfolio">
+                                            <div class="rn-portfolio w-100">
                                                 <div class="inner">
                                                     <div class="thumbnail">
                                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
