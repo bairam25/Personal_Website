@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="الرئيسية" Language="VB" MasterPageFile="~/Master.master" AutoEventWireup="false" CodeFile="Home.aspx.vb" Inherits="Home" %>
 
+<asp:Content ID="ContentCSS" ContentPlaceHolderID="StyleSheet" runat="Server">
+    <style>
+        #divYoutube iframe {
+            width: 100%;
+            height: 490px;
+        }
+    </style>
+</asp:Content>
+
 <asp:Content ID="Content" ContentPlaceHolderID="PageContent" runat="Server">
     <asp:Label ID="lblRes" runat="server"></asp:Label>
     <!-- Start Slider Area -->
@@ -406,7 +415,7 @@
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
+                                        <a data-toggle="modal" data-target="#previewImage" lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
                                             <%--<video>
                                                 <source src="assets/videos/video-1.mp4" type="video/mp4" />
@@ -420,7 +429,7 @@
                                                 <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
                                             </div>
                                             <div class="category-list">
-                                                <a href='Album_Videos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
+                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
                                             </div>
                                         </div>
                                         <h4 class="title">
@@ -496,4 +505,35 @@
         </div>
     </div>
     <!-- ENd Album Photos Area -->
+
+    <!-- Modal Video Start -->
+    <div class="modal fade" id="previewImage" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick='closeImgPopup();'>
+                        <span aria-hidden="true"><i data-feather="x"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="text-content">
+                                <h3 class="text-center"><span id="lblImgTitle"></span></h3>
+                            </div>
+                            <!-- End of .text-content -->
+                        </div>
+                        <div class="col-lg-12" id="divYoutube">
+                            <%--<img id="imgModal" class="img-fluid modal-feat-img">--%>
+                            <!-- Modal Content (The Image) -->
+                            <img class="previewImage-content" id="img01" />
+                            <video id="videoPreview" width="100%" height="490px" autoplay="autoplay" controls="controls" muted=""></video>
+                        </div>
+                    </div>
+                    <!-- End of .row Body-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal Video -->
 </asp:Content>
