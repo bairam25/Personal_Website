@@ -7,8 +7,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
-                        <span class="subtitle">Photos</span>
-                        <h2 class="title">البوم الصور</h2>
+                        <%--<span class="subtitle">Photos</span>--%>
+                        <h4 class="title">الصور</h4>
                     </div>
                 </div>
             </div>

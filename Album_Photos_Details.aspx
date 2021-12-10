@@ -10,8 +10,7 @@
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
                         <%--<span class="subtitle">Photos</span>--%>
-                        <h2 class="title">
-                            <asp:Label Text="text" runat="server" ID="lblAlbumTitle" /></h2>
+                        <h4 class="title" runat="server" id="lblAlbumTitle"></h4>
                     </div>
                 </div>
             </div>
@@ -41,9 +40,9 @@
                         <!-- End Photo -->
                         
                     </ItemTemplate>
-                </asp:ListView>
-
-                 
+                </asp:ListView>                
+            </div>
+             <div class="row" id="divAlbumDescription" runat="server">
             </div>
         </div>
     </div>

@@ -18,9 +18,8 @@
 
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
-                        <span class="subtitle">Videos</span>
-                        <h2 class="title">
-                            <asp:Label Text="text" runat="server" ID="lblAlbumTitle" /></h2>
+                        <%--<span class="subtitle">Videos</span>--%>
+                        <h4 class="title" runat="server" id="lblAlbumTitle"></h4>
                     </div>
                 </div>
             </div>
@@ -42,17 +41,18 @@
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         </h4>
+                                        <%# Eval("Description").ToString  %>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- End Photo -->
 
-                        <div class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30" style="text-align:justify"> 
-                            <%# Eval("Description").ToString  %>
-                        </div>
+
                     </ItemTemplate>
                 </asp:ListView>
+            </div>
+            <div class="row" id="divAlbumDescription" runat="server">
             </div>
         </div>
     </div>
