@@ -52,13 +52,20 @@ Partial Class Album_Videos_Details
             Dim AlbumId = 0
             If Request.QueryString("ID") IsNot Nothing Then
                 AlbumId = Val(Request.QueryString("ID"))
-                Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where  AlbumId=" & AlbumId)
-                lvGallery.DataSource = dt
-                lvGallery.DataBind()
+                Dim dt As DataTable = DBManager.Getdatatable("Select Title , Description from vw_Allbum where Type='V' and Active=1 and Id=" & AlbumId)
+                If dt.Rows.Count > 0 Then
+                    'Fill Master
+                    lblAlbumTitle.InnerHtml = dt.Rows(0).Item("Title").ToString
+                    divAlbumDescription.InnerHtml = dt.Rows(0).Item("Description").ToString
 
-                lblAlbumTitle.Text = PublicFunctions.getValue("Title", "tblAlbum", AlbumId)
+                    'Fill Details
+                    dt = DBManager.Getdatatable(AlbumTable & " where  AlbumId=" & AlbumId)
+                    lvGallery.DataSource = dt
+                    lvGallery.DataBind()
+                Else
+                    Response.Redirect("/")
+                End If
             End If
-
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try

@@ -403,7 +403,7 @@
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
                         <span class="subtitle">Videos</span>
-                        <h2 class="title">البوم الفيديوهات</h2>
+                        <h2 class="title">الفيديو </h2>
                     </div>
                 </div>
             </div>
@@ -459,7 +459,7 @@
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
                         <span class="subtitle">Photos</span>
-                        <h2 class="title">البوم الصور</h2>
+                        <h2 class="title"> الصور</h2>
                     </div>
                 </div>
             </div>

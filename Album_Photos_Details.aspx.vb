@@ -48,22 +48,26 @@ Partial Class Album_Photos_Details
     ''' </summary>
     Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
-
-            Dim AlbumId = 0
             If Request.QueryString("ID") IsNot Nothing Then
-                AlbumId = Val(Request.QueryString("ID"))
-            End If
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Type='I' and AlbumId=" & AlbumId)
-            lvGallery.DataSource = dt
-            lvGallery.DataBind()
+                Dim AlbumId = Val(Request.QueryString("ID"))
+                Dim dt As DataTable = DBManager.Getdatatable("Select * from vw_Allbum where Type='A' and Active=1 and Id=" & AlbumId)
+                If dt.Rows.Count > 0 Then
+                    'Fill Master
+                    lblAlbumTitle.InnerHtml = dt.Rows(0).Item("Title").ToString
+                    divAlbumDescription.InnerHtml = dt.Rows(0).Item("Description").ToString
 
-            lblAlbumTitle.Text = PublicFunctions.getValue("Title", "tblAlbum", AlbumId)
+                    'Fill Details
+                    dt = DBManager.Getdatatable(AlbumTable & " where  AlbumId=" & AlbumId)
+                    lvGallery.DataSource = dt
+                    lvGallery.DataBind()
+                Else
+                    Response.Redirect("/")
+                End If
+            End If
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
-
-
 
 #End Region
 End Class

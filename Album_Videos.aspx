@@ -16,8 +16,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
-                        <span class="subtitle">Videos</span>
-                        <h2 class="title">البوم الفيديو</h2>
+                       <%-- <span class="subtitle">Videos</span>--%>
+                        <h4 class="title"> الفيديو</h4>
                     </div>
                 </div>
             </div>
