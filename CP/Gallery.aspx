@@ -134,7 +134,7 @@
                                                 <div id="collapseOne" class="panel-collapse collapse in">
                                                     <div class="panel-body">
                                                         <div class="row">
-                                                            <div class="col-md-12">           
+                                                            <div class="col-md-12">
                                                                 <div class="col-md-6">
                                                                     <label class="input-label required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="200" autocomplete="off" placeholder="العنوان" ToolTip="العنوان"></asp:TextBox>
@@ -474,6 +474,7 @@
                                                                 <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
                                                             </th>
                                                             <th id="ActiveHeader">تفعيل</th>
+                                                            <th id="ActiveHome">عرض الرئيسية</th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
                                                         </tr>
@@ -507,6 +508,9 @@
                                                         </td>
                                                         <td id="Active">
                                                             <asp:CheckBox ID="chkActive" runat="server" Checked='<%# Eval("Active")%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
+                                                        </td>
+                                                        <td id="Home">
+                                                            <asp:CheckBox ID="chkHome" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("ShowInHome"))%>' AutoPostBack="true" OnCheckedChanged="UpdateShowHome"></asp:CheckBox>
                                                         </td>
                                                         <td id="Edit">
                                                             <asp:LinkButton ID="lbUpdate" CssClass="btni-xxxs btn-blue brd-50" runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" ToolTip="تحديث">
