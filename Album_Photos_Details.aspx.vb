@@ -55,7 +55,9 @@ Partial Class Album_Photos_Details
                     'Fill Master
                     lblAlbumTitle.InnerHtml = dt.Rows(0).Item("Title").ToString
                     divAlbumDescription.InnerHtml = dt.Rows(0).Item("Description").ToString
-
+                    If divAlbumDescription.InnerHtml = "" Then
+                        divAlbumDescription.Visible = False
+                    End If
                     'Fill Details
                     dt = DBManager.Getdatatable(AlbumTable & " where  AlbumId=" & AlbumId)
                     lvGallery.DataSource = dt

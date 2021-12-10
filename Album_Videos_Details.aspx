@@ -21,6 +21,8 @@
                         <%--<span class="subtitle">Videos</span>--%>
                         <h4 class="title" runat="server" id="lblAlbumTitle"></h4>
                     </div>
+                    <div class="album-description" id="divAlbumDescription" runat="server">
+                    </div>
                 </div>
             </div>
             <div class="row row--25 mt--30 mt_md--10 mt_sm--10">
@@ -54,8 +56,7 @@
                     </ItemTemplate>
                 </asp:ListView>
             </div>
-            <div class="album-description" id="divAlbumDescription" runat="server">
-            </div>
+         
         </div>
     </div>
     <!-- ENd Album Videos Area -->

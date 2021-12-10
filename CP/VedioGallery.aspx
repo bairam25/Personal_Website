@@ -450,7 +450,7 @@
                                     <div class="table-top-panel">
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
-                                                <div class="input-field input-180 input-in mb0">
+                                                <div class="input-field input-in mb0">
                                                     <div class="input-group">
                                                         <asp:DropDownList ID="ddlPager" runat="server" CssClass="form-control" placeholder="Pages" AutoPostBack="true" OnSelectedIndexChanged="FillGrid">
                                                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
