@@ -41,7 +41,9 @@
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         </h4>
-                                        <%# Eval("Description").ToString  %>
+                                        <p class="tags">
+                                            <%# Eval("Description").ToString  %>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +54,7 @@
                     </ItemTemplate>
                 </asp:ListView>
             </div>
-            <div class="row" id="divAlbumDescription" runat="server">
+            <div class="album-description" id="divAlbumDescription" runat="server">
             </div>
         </div>
     </div>

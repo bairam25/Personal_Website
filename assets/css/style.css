@@ -18805,6 +18805,7 @@ div#featured-project-carousel {
     font-size: 17px;
     color: var(--color-body);
     font-family: var(--font-primary);
+    margin: 0 4rem;
 }
 
     .footer-area .links a,
@@ -19129,10 +19130,10 @@ div#featured-project-carousel {
     width: 100%;
 }
 
-/*#Photos .slick-track,
+#Photos .slick-track,
 #Videos .slick-track {
-    width: unset !important;
-}*/
+    min-width: 100% !important;
+}
 
 #News .content .title,
 #Photos .content .title,
@@ -19246,6 +19247,18 @@ div#featured-project-carousel {
     .rn-blog .inner .content .description {
         font-size: 1.3rem;
     }
+
+    .rn-portfolio .inner .content .tags,
+    .rn-blog .inner .content .tags {
+        font-size: 1.3rem;
+        color: #ff014f;
+        margin-top: 20px;
+    }
+
+.album-description {
+    margin-top: 5rem;
+    font-size: 1.6rem;
+}
 
 @media only screen and (max-width: 479px) {
     .rn-portfolio .inner .content .title a, .rn-blog .inner .content .title a {
