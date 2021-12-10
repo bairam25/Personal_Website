@@ -50,7 +50,7 @@ Partial Class Home
     End Sub
     Sub FillVediosGallary()
         Try
-            Dim dtGallery As DataTable = DBManager.Getdatatable("Select * from vw_Allbum where Type='V'  order by ShowOrder")
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select * from vw_Allbum where Type='V' and Active='1' and ShowInHome='1'  order by ShowOrder")
             lvGallery.DataSource = dtGallery
             lvGallery.DataBind()
         Catch ex As Exception
@@ -59,7 +59,7 @@ Partial Class Home
     End Sub
     Sub FillPhotoGallary()
         Try
-            Dim dtGallery As DataTable = DBManager.Getdatatable("Select  * from vw_Allbum where Type='A'  order by ShowOrder")
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select  * from vw_Allbum where Type='A' and Active='1' and ShowInHome='1'  order by ShowOrder")
             lvPhotos.DataSource = dtGallery
             lvPhotos.DataBind()
         Catch ex As Exception

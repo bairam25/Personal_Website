@@ -16,7 +16,7 @@ Partial Class Album_Photos
     Inherits System.Web.UI.Page
 #Region "Global_Varaibles"
 
-    Dim AlbumTable As String = "select * from vw_Allbum where Type='A'"
+    Dim AlbumTable As String = "select * from vw_Allbum where Type='A' and Active=1 "
 
 #End Region
 #Region "Page_Load"

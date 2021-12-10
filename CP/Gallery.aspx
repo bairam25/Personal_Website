@@ -134,18 +134,18 @@
                                                 <div id="collapseOne" class="panel-collapse collapse in">
                                                     <div class="panel-body">
                                                         <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="col-md-2">
-                                                                    <label class="input-label required">الترتيب</label>
-                                                                    <asp:TextBox runat="server" ID="txtShowOrder" placeholder="الترتيب" onkeypress="return isNumber(event);" MaxLength="6"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator5" ControlToValidate="txtShowOrder"
-                                                                        ErrorMessage="أدخل ترتيب العرض" SetFocusOnError="true" />
-                                                                </div>
+                                                            <div class="col-md-12">           
                                                                 <div class="col-md-6">
                                                                     <label class="input-label required">العنوان</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="200" autocomplete="off" placeholder="العنوان" ToolTip="العنوان"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtTitle"
                                                                         ErrorMessage="أدخل العنوان" SetFocusOnError="true" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label class="input-label required">الترتيب</label>
+                                                                    <asp:TextBox runat="server" ID="txtShowOrder" placeholder="الترتيب" onkeypress="return isNumber(event);" MaxLength="6"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator5" ControlToValidate="txtShowOrder"
+                                                                        ErrorMessage="أدخل ترتيب العرض" SetFocusOnError="true" />
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <label class="input-label required">التاريخ</label>

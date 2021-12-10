@@ -47,6 +47,10 @@
                             </div>
                         </div>
                         <!-- End Photo -->
+
+                        <div class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30" style="text-align:justify"> 
+                            <%# Eval("Description").ToString  %>
+                        </div>
                     </ItemTemplate>
                 </asp:ListView>
             </div>

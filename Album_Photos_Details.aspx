@@ -33,74 +33,17 @@
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         </h4>
+                                          <%# Eval("Description").ToString  %>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- End Photo -->
+                        
                     </ItemTemplate>
                 </asp:ListView>
 
-                <%-- <!-- Start Photo -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/blog/blog-02.jpg" alt="Personal Portfolio Images">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الصورة
-                                                <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Photo -->
-                <!-- Start Photo -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/blog/blog-03.jpg" alt="Personal Portfolio Images">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الصورة
-                                                <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Photo -->
-                <!-- Start Photo -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                    <div class="rn-blog" data-toggle="modal" data-target="#">
-                        <div class="inner">
-                            <div class="thumbnail">
-                                <a href="javascript:void(0)">
-                                    <img src="assets/images/blog/blog-03.jpg" alt="Personal Portfolio Images">
-                                </a>
-                            </div>
-                            <div class="content">
-                                <h4 class="title">
-                                    <a href="javascript:void(0)">عنوان الصورة
-                                                <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Photo -->--%>
+                 
             </div>
         </div>
     </div>
