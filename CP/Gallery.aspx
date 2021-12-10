@@ -275,7 +275,7 @@
                                                                             <asp:TextBox ID="txtTitle" runat="server" MaxLength="200" placeholder="العنوان" Text='<%# Eval("Title")%>'></asp:TextBox>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
-                                                                    <asp:TemplateField HeaderText="الوصف">
+                                                                    <asp:TemplateField HeaderText="الكلمات المفتاحية">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="txtDescription" runat="server" MaxLength="500" TextMode="MultiLine" placeholder="الوصف" Text='<%# Eval("Description")%>'></asp:TextBox>
                                                                         </ItemTemplate>
