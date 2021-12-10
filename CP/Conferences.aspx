@@ -77,7 +77,7 @@
                                     <div class="table-top-panel">
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
-                                                <asp:Panel ID="pgPanel" CssClass="input-180 input-in" runat="server">
+                                                <asp:Panel ID="pgPanel" CssClass="input-in" runat="server">
                                                     <div class="input-group mt5">
                                                         <asp:DropDownList runat="server" CssClass="form-control ltr" ID="ddlPager" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
                                                             <asp:ListItem Value="10">10</asp:ListItem>
