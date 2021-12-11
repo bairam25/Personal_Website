@@ -23,29 +23,6 @@ Public Class clsEmails
 
 #Region "Class Methods"
 
-
-    ''' <summary>
-    ''' Send Notification Email
-    ''' </summary>
-    Shared Function SendEmail(ByVal Pge As Page) As Boolean
-        Try
-            Dim Mail As New MailMessage
-            Mail.Subject = "ElSayedHussein Exception"
-            Mail.To.Add("ahmed_dl_90@yahoo.com")
-            Mail.From = New MailAddress("info@elsayedhussein.com", "Elsayedhussein")
-            Mail.Body = "Name : "
-            Mail.IsBodyHtml = True
-
-            Dim SMTP As New SmtpClient("relay-hosting.secureserver.net")
-            SMTP.Credentials = New System.Net.NetworkCredential("info@elsayedhussein.com", "Sayed@789123")
-            SMTP.Port = "25"
-            SMTP.Send(Mail)
-            Return True
-        Catch ex As Exception
-            Return False
-        End Try
-    End Function
-
     Public Shared Function SendExceptionMessage(ByRef ex As Exception) As Boolean
         Try
             'WriteInFile(ex)
@@ -111,7 +88,7 @@ Public Class clsEmails
             Mail.IsBodyHtml = True
 
             Dim SMTP As New SmtpClient("relay-hosting.secureserver.net")
-            SMTP.Credentials = New System.Net.NetworkCredential("info@elsayedhussein.com", "Sayed@789123")
+            SMTP.Credentials = New System.Net.NetworkCredential("info@elsayedhussein.com", "Sayed@789123$")
             SMTP.Port = "25"
             SMTP.Send(Mail)
             Return True

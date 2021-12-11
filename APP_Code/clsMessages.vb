@@ -53,7 +53,7 @@ Public Class clsMessages
     Private Shared Sub ShowErrorMessgage(ByRef lblRes As Label, ByVal Message As String, ByVal page As Page, Optional EXX As Exception = Nothing, Optional ByVal DetailedMSG As String = "")
         Try
             ShowMessgage(lblRes, ErrorMsg, "alert alert-danger", page)
-            clsEmails.SendExceptionMessage(EXX)
+            'clsEmails.SendExceptionMessage(EXX)
         Catch ex As Exception
         End Try
     End Sub
