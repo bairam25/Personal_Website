@@ -98,7 +98,7 @@
                                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
                                                     ControlToValidate="txtMobile" runat="server" CssClass="inp-valid"
                                                     ErrorMessage="رقم الموبايل غير صحيح" ValidationGroup="vContent"
-                                                    ValidationExpression="^[0-9]{15}$" />
+                                                    ValidationExpression="^[0-9]{8,15}$" />
                                             </div>
                                         </div>
 
