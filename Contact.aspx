@@ -8,6 +8,23 @@
     </asp:ToolkitScriptManager>
     <asp:UpdatePanel ID="up" runat="server" ClientIDMode="AutoID">
         <ContentTemplate>
+            <div class="page-load">
+                <asp:UpdateProgress ID="upgg" runat="server" AssociatedUpdatePanelID="UP">
+                    <ProgressTemplate>
+                        <div class="spinner">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+            </div>
+
             <!-- Start Contact section -->
             <div class="rn-contact-area rn-section-gap mt--90" id="contacts">
                 <div class="container">
@@ -19,17 +36,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-7">
-                        <div>
+                    <div class="row mt--50 mt_md--40 mt_sm--40">
+                        <div class="col-lg-5"></div>
+                        <div class="col-lg-7">
                             <asp:Label ID="lblRes" runat="server" />
                             <asp:ValidationSummary ID="ValidationSummary" CssClass="validation-message" ShowSummary="false"
                                 DisplayMode="BulletList" ValidationGroup="vContent" EnableClientScript="true"
                                 runat="server" Font-Size="Medium" ForeColor="#CC0000" />
                         </div>
-                    </div>
-                    <div class="row mt--50 mt_md--40 mt_sm--40">
-
-                        <div class="col-lg-5"></div>
                     </div>
                     <div class="row mt-contact-sm">
                         <div class="col-lg-5">
@@ -50,7 +64,7 @@
                                             </p>
                                             <span class="phone" style="direction: ltr;">
                                                 <a href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Mobile").ToString  %></a>
-                                                 :What’app
+                                                :What’app
                                             </span>
                                             <span class="mail">البريد الاليكترونى: <a href="mailto:<%# Eval("Email").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Email").ToString  %></a></span>
                                         </div>
