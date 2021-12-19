@@ -97,8 +97,11 @@
                                                 <asp:TextBox ID="txtUsername" runat="server" onkeyup="ValidateChars(this);" CssClass="form-control form-control-lg" MaxLength="100"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="inp-valid"
                                                     ValidationGroup="vContent" ControlToValidate="txtUsername" ErrorMessage="أدخل الاسم"></asp:RequiredFieldValidator>
-                                                <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="LowercaseLetters,UppercaseLetters" TargetControlID="txtUsername" />
-
+                                                <%--<asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="LowercaseLetters,UppercaseLetters" TargetControlID="txtUsername" />--%>
+                                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8"
+                                                    ControlToValidate="txtUsername" runat="server" CssClass="inp-valid"
+                                                    ErrorMessage="اسم غير صحيح" ValidationGroup="vContent"
+                                                    ValidationExpression="^[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z]+[\u0600-\u065F\u066A-\u06EF\u06FA-\u06FFa-zA-Z-_ ]*$" />
                                             </div>
                                         </div>
 
