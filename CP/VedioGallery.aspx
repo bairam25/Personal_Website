@@ -291,8 +291,8 @@
                                                                         <ItemTemplate>
                                                                             <asp:Label ID="lblId" runat="server" Visible="false" Text='<%# Eval("Id")%>' />
                                                                             <asp:Label ID="lblShowOrder" runat="server" Text='<%# Eval("ShowOrder")%>' Visible="false" />
-                                                                            <asp:Label ID="lblIsURL" runat="server" Text='<%# PublicFunctions.BoolFormat(Eval("IsURl")) %>' Visible="false" />
-                                                                            <asp:Label ID="lblType" runat="server" Text='<%# GetMediaType(Eval("Path").ToString)  %>'  Visible="false" />
+                                                                            <asp:Label ID="lblIsURL" runat="server" Text='<%# PublicFunctions.BoolFormat(Eval("IsURl")) %>'   />
+                                                                            <asp:Label ID="lblType" runat="server" Text='<%# GetMediaType(Eval("Path").ToString)  %>'   />
                                                                             <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Path")%>' Width="50px" onclick="ImagePreview(this.src,this.alt)" Visible="false" />
                                                                             <asp:Image ID="lblMedia" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>'
                                                                                 ImageUrl='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("Path")) %>'
