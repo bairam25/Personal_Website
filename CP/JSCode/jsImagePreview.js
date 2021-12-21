@@ -61,3 +61,15 @@ function closeImgPopup() {
         $(youtubeIfram).remove();
     }
 }
+
+function OpenAlbum(sender) {
+    const VedioID = $(sender).data("id");
+    const MediaCount = $(sender).data("count");
+    const VedioTitle = $(sender).data("title");
+    if (MediaCount > 1) {
+        document.location.href = "Album_Videos_Details.aspx?ID=" + VedioID;
+    } else {
+        $('#previewImage').modal('show');
+        ImagePreview(sender.lang, VedioTitle);
+    }
+}

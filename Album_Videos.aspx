@@ -30,7 +30,12 @@
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a data-toggle="modal" data-target="#previewImage" lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
+                                        <a data-toggle="modal"  
+                                            lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>'
+                                            data-count='<%# Eval("MediaCount").ToString %>'
+                                            data-id='<%# Eval("ID").ToString %>'
+                                            data-title='<%# Eval("Title").ToString %>'
+                                            onclick="OpenAlbum(this);">                                         
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                         </a>
                                     </div>
@@ -88,4 +93,18 @@
         </div>
     </div>
     <!-- End Modal Video -->
+
+    <script>     
+        //function OpenAlbum(sender) {
+        //    const VedioID = $(sender).data("id");
+        //    const MediaCount = $(sender).data("count");
+        //    const VedioTitle = $(sender).data("title");
+        //    if (MediaCount > 1) {
+        //        document.location.href = "Album_Videos_Details.aspx?ID=" + VedioID;
+        //    } else {
+        //        $('#previewImage').modal('show');
+        //        ImagePreview(sender.lang, VedioTitle);
+        //    }         
+        //}
+    </script>
 </asp:Content>

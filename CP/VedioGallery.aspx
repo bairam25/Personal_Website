@@ -136,7 +136,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">                            
                                                                 <div class="col-md-6">
-                                                                    <label class="input-label required">العنوان</label>
+                                                                    <label class="input-label required">عنوان الألبوم</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="200" autocomplete="off" placeholder="العنوان" ToolTip="العنوان"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtTitle"
                                                                         ErrorMessage="أدخل العنوان" SetFocusOnError="true" />
@@ -168,7 +168,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
-                                                                    <label class="input-label">الوصف</label>
+                                                                    <label class="input-label">وصف الألبوم</label>
                                                                     <asp:TextBox runat="server" ID="txtDescription" MaxLength="500" TextMode="MultiLine" autocomplete="off" placeholder="الوصف" ToolTip="الوصف"></asp:TextBox>
                                                                 </div>
                                                                 <%-- <div class="col-md-3">
@@ -234,7 +234,7 @@
 
                                                     <div class="col-md-12 mt20">
                                                         <asp:Panel ID="pnlUpload" runat="server" ClientIDMode="Static">
-                                                            <asp:LinkButton SkinID="btn-blue" ID="lbUpload" runat="server">إضافة فيديو <i class="fa fa-plus"></i></asp:LinkButton>
+                                                            <asp:LinkButton SkinID="btn-blue" ID="lbUpload" runat="server">إضافة وسائط <i class="fa fa-plus"></i></asp:LinkButton>
 
                                                             <asp:ModalPopupExtender ID="mdu" runat="server" BackgroundCssClass="modalBackground" TargetControlID="lbUpload"
                                                                 PopupControlID="pnlFileUpload" ClientIDMode="AutoID" CancelControlID="lbClosePopUp" Enabled="True">
@@ -248,7 +248,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="clear"></div>
                                                                     <asp:AjaxFileUpload ID="AjaxFileUpload1" ClientIDMode="static" runat="server" OnClientUploadStart="UploadFileStart" OnClientUploadComplete="uploadFileComplete"
-                                                                        MaximumNumberOfFiles="100" MaxFileSize="20480" AllowedFileTypes="mp4,webm,wmv" />
+                                                                        MaximumNumberOfFiles="100" MaxFileSize="20480" AllowedFileTypes="jpg,png,jpeg,mp4,webm,wmv" />
                                                                     <div class="clear"></div>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -291,6 +291,8 @@
                                                                         <ItemTemplate>
                                                                             <asp:Label ID="lblId" runat="server" Visible="false" Text='<%# Eval("Id")%>' />
                                                                             <asp:Label ID="lblShowOrder" runat="server" Text='<%# Eval("ShowOrder")%>' Visible="false" />
+                                                                            <asp:Label ID="lblIsURL" runat="server" Text='<%# PublicFunctions.BoolFormat(Eval("IsURl")) %>'   />
+                                                                            <asp:Label ID="lblType" runat="server" Text='<%# GetMediaType(Eval("Path").ToString)  %>'   />
                                                                             <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Path")%>' Width="50px" onclick="ImagePreview(this.src,this.alt)" Visible="false" />
                                                                             <asp:Image ID="lblMedia" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>'
                                                                                 ImageUrl='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("Path")) %>'
@@ -304,12 +306,12 @@
                                                                             <asp:DropDownList ID="ddlShowOrder" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlShowOrder_SelectedIndexChanged"></asp:DropDownList>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
-                                                                    <asp:TemplateField HeaderText="العنوان">
+                                                                    <asp:TemplateField HeaderText="عنوان الفيديو">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="txtTitle" runat="server" MaxLength="200" placeholder="العنوان" Text='<%# Eval("Title")%>'></asp:TextBox>
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
-                                                                    <asp:TemplateField HeaderText="الكلمات المفتاحية">
+                                                                    <asp:TemplateField HeaderText="وصف الفيديو" Visible="false">
                                                                         <ItemTemplate>
                                                                             <asp:TextBox ID="txtDescription" runat="server" MaxLength="500" TextMode="MultiLine" placeholder="الوصف" Text='<%# Eval("Description")%>'></asp:TextBox>
                                                                         </ItemTemplate>
