@@ -45,7 +45,7 @@
                                                 <ItemTemplate>
                                                     <!-- Start Section -->
                                                     <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30">
-                                                        <div class="rn-portfolio" data-toggle="modal" data-target="#">
+                                                        <div class="rn-portfolio w-100" data-toggle="modal" data-target="#">
                                                             <div class="inner row">
                                                                 <div class="col-md-3">
                                                                     <div class="thumbnail">
@@ -64,9 +64,6 @@
                                                                         <h4 class="title">
                                                                             <a  href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                                                         </h4>
-                                                                        <p class="description">
-                                                                            <%# Eval("Description") %>
-                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>

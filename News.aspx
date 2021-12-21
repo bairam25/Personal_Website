@@ -23,7 +23,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
-                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="News Photo" />
+                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
                                         </a>
                                     </div>
                                     <div class="content">

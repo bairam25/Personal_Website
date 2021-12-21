@@ -19147,9 +19147,11 @@ div#featured-project-carousel {
 #Photos .inner .thumbnail a img,
 #Videos .inner .thumbnail a img {
     height: 260px;
+    display: block;
 }
 
-#News .inner .thumbnail a img {
+#News .inner .thumbnail a img,
+#Conferences .inner .thumbnail a img {
     height: 230px;
 }
 
@@ -20022,7 +20024,7 @@ Rn Slick Dots Style
 .testimonial-activation a.slide-arrow {
     font-size: 25px;
     position: absolute;
-    right: 25px;
+    left: 25px;
     width: 60px;
     height: 60px;
     line-height: 60px;
@@ -20042,7 +20044,7 @@ Rn Slick Dots Style
 .testimonial-activation.testimonial-activation-3 button.slide-arrow,
 .testimonial-activation.testimonial-activation-3 a.slide-arrow {
     top: -30px;
-    right: 15px;
+    left: 15px;
 }
 
 .testimonial-activation.seminars-slider button.slide-arrow,
@@ -20055,14 +20057,14 @@ Rn Slick Dots Style
     color: var(--color-primary);
 }
 
-.testimonial-activation button.slide-arrow.prev-arrow,
+/*.testimonial-activation button.slide-arrow.prev-arrow,
 .testimonial-activation a.slide-arrow.prev-arrow {
     right: 105px;
-}
+}*/
 
-.testimonial-activation.testimonial-activation-3 button.slide-arrow.prev-arrow,
-.testimonial-activation.testimonial-activation-3 a.slide-arrow.prev-arrow {
-    left: 15px;
+.testimonial-activation.testimonial-activation-3 button.slide-arrow.next-arrow,
+.testimonial-activation.testimonial-activation-3 a.slide-arrow.next-arrow {
+    right: 15px;
 }
 
 .testimonial-activation.seminars-slider button.slide-arrow.next-arrow,

@@ -25,14 +25,14 @@
                                         <div class="inner d-rtl">
                                             <div class="card-info">
                                                 <div class="card-thumbnail">
-                                                    <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="Person Photo" />
+                                                    <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Name") %>' />
                                                 </div>
                                                 <div class="card-content">
                                                     <h3 class="title"><%# Eval("Name") %></h3>
                                                     <span class="designation"><%# Eval("Category") %></span>
                                                 </div>
                                             </div>
-                                            <div class="card-description w-100">
+                                            <div class="card-description w-100 mt--0">
                                                 <div class="title-area">
                                                     <div class="title-info text-right">
                                                         <h3 class="title"><%# Eval("Title") %></h3>
@@ -43,7 +43,7 @@
                                                     </asp:LinkButton>
                                                 </div>
                                                 <div class="seperator"></div>
-                                                <p class="discription">
+                                                <p class="discription" style="max-height: 250px; overflow: hidden;">
                                                     <%# Eval("Description") %>
                                                 </p>
                                             </div>

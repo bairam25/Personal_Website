@@ -34,7 +34,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="javascript:void(0)" data-toggle="modal" data-target="#previewImage" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
-                                            <img src='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "assets/images/video.png", Eval("Path")) %>' alt='<%# Eval("Description").ToString   %>'>
+                                            <img src='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "assets/images/video.png", Eval("Path")) %>' alt='<%# Eval("Title").ToString   %>'>
                                         </a>
                                     </div>
                                     <div class="content">

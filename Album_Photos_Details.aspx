@@ -25,7 +25,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="javascript:void(0)">
-                                            <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString   %>'>
+                                            <img src='<%# Eval("Path").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString   %>'>
                                         </a>
                                     </div>
                                     <div class="content">

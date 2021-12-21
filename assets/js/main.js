@@ -89,6 +89,7 @@
                 dots: true,
                 arrows: true,
                 adaptiveHeight: true,
+                rtl: true,
                 cssEase: 'linear',
                 prevArrow: '<a class="slide-arrow prev-arrow"><i class="fas fa-arrow-left"></i></a>',
                 nextArrow: '<a class="slide-arrow next-arrow"><i class="fas fa-arrow-right"></i></a>'
@@ -101,6 +102,7 @@
                 dots: true,
                 arrows: true,
                 adaptiveHeight: true,
+                rtl: true,
                 cssEase: 'linear',
                 prevArrow: '<a class="slide-arrow prev-arrow"><i class="fas fa-chevron-left"></i></a>',
                 nextArrow: '<a class="slide-arrow next-arrow"><i class="fas fa-chevron-right"></i></a>'

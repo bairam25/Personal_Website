@@ -31,7 +31,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a data-toggle="modal" data-target="#previewImage" lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
-                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                         </a>
                                     </div>
                                     <div class="content">

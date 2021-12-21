@@ -6,6 +6,10 @@
             width: 100%;
             height: 490px;
         }
+
+        .testimonial-activation:not(.testimonial-activation-3) .slick-list {
+            height: unset !important;
+        }
     </style>
 </asp:Content>
 
@@ -153,9 +157,6 @@
                                                                         <h4 class="title">
                                                                             <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                                                         </h4>
-                                                                        <p class="description">
-                                                                            <%# Eval("Description") %>
-                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -264,7 +265,7 @@
                         <!-- Start Single Tab  -->
                         <div class="tab-pane show active fade single-tab-area" id="Courses" role="tabpanel" aria-labelledby="Courses-tab">
                             <div class="col-lg-12 p-0">
-                                <div class="testimonial-activation seminars-slider testimonial-pb mb--30 d-ltr">
+                                <div class="testimonial-activation seminars-slider testimonial-pb mb--30">
                                     <!-- Start Course -->
                                     <asp:ListView ID="lvCourses" runat="server">
                                         <ItemTemplate>
@@ -272,7 +273,7 @@
                                                 <div class="inner d-rtl">
                                                     <div class="card-info">
                                                         <div class="card-thumbnail">
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="Person Photo" />
+                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Name") %>' />
                                                         </div>
                                                         <div class="card-content">
                                                             <h3 class="title"><%# Eval("Name") %></h3>
@@ -290,7 +291,7 @@
                                                             </asp:LinkButton>
                                                         </div>
                                                         <div class="seperator"></div>
-                                                        <p class="discription">
+                                                        <p class="discription" style="max-height: 155px; overflow: hidden;">
                                                             <%# Eval("Description") %>
                                                         </p>
                                                     </div>
@@ -319,7 +320,7 @@
                                                 <div class="col-md-2">
                                                     <div class="thumbnail">
                                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="Seminar Photo" />
+                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
                                                         </a>
                                                     </div>
                                                 </div>
@@ -333,9 +334,6 @@
                                                         <h4 class="title">
                                                             <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                                         </h4>
-                                                        <p class="description">
-                                                            <%# Eval("Description") %>
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -360,7 +358,7 @@
                                                 <div class="inner">
                                                     <div class="thumbnail">
                                                         <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip="News Photo" />
+                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
                                                         </a>
                                                     </div>
                                                     <div class="content">
@@ -375,7 +373,6 @@
                                                         <h4 class="title">
                                                             <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
                                                         </h4>
-                                                        <p class="description"><%# Eval("Description") %></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -397,7 +394,7 @@
     </div>
     <!-- End Conferences and Courses Area -->
     <!-- Start Album Videos Area -->
-    <div class="rn-blog-area rn-section-gap section-separator" id="Videos" style="direction: ltr;">
+    <div class="rn-blog-area rn-section-gap section-separator" id="Videos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -416,7 +413,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a data-toggle="modal" data-target="#previewImage" lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
-                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                             <%--<video>
                                                 <source src="assets/videos/video-1.mp4" type="video/mp4" />
                                                 Your browser does not support the video tag.
@@ -453,7 +450,7 @@
     </div>
     <!-- ENd Album Videos Area -->
     <!-- Start Album Photos Area -->
-    <div class="rn-blog-area rn-section-gap section-separator" id="Photos" style="direction: ltr;">
+    <div class="rn-blog-area rn-section-gap section-separator" id="Photos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -472,7 +469,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
-                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                         </a>
                                     </div>
                                     <div class="content">

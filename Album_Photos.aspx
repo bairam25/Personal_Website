@@ -22,7 +22,7 @@
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'>
-                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Description").ToString  %>'>
+                                            <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                         </a>
                                     </div>
                                     <div class="content">
