@@ -412,12 +412,13 @@
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                        <a data-toggle="modal" data-target="#previewImage" lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>' onclick="ImagePreview(this.lang,'<%# Eval("Title").ToString   %>')">
+                                         <a data-toggle="modal"  
+                                            lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>'
+                                            data-count='<%# Eval("MediaCount").ToString %>'
+                                            data-id='<%# Eval("ID").ToString %>'
+                                            data-title='<%# Eval("Title").ToString %>'
+                                            onclick="OpenAlbum(this);">                                         
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
-                                            <%--<video>
-                                                <source src="assets/videos/video-1.mp4" type="video/mp4" />
-                                                Your browser does not support the video tag.
-                                            </video>--%>
                                         </a>
                                     </div>
                                     <div class="content">
