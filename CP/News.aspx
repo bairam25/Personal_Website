@@ -138,8 +138,12 @@
                                                             <th class="upnDownArrow" id="ShowOrder">
                                                                 <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
                                                             </th>
-                                                            <th id="ActiveHeader">تفعيل</th>
-                                                            <th id="ActiveHome">عرض الرئيسية</th>
+                                                            <th class="upnDownArrow" id="Active">
+                                                                <asp:LinkButton ID="lbActive" CommandArgument="Active" CommandName="Sort" runat="server">تفعيل</asp:LinkButton>
+                                                            </th>
+                                                            <th class="upnDownArrow" id="ShowInHome">
+                                                                <asp:LinkButton ID="lbShowInHome" CommandArgument="ShowInHome" CommandName="Sort" runat="server">عرض الرئيسية</asp:LinkButton>
+                                                            </th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
                                                         </tr>
