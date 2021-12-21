@@ -5,6 +5,7 @@ Imports System.Data.SqlClient
 Imports System.Security.Cryptography
 Imports System.IO
 Imports System.Globalization
+Imports clsMessages
 #End Region
 
 Public Class PublicFunctions
@@ -516,6 +517,31 @@ Optional ByVal MinNumber As Integer = 0) As Integer
 #End Region
 
 #Region "Grid View Selection"
+    Public Shared Function DeleteAllSelected(lvContent As ListView) As Boolean
+        Try
+            Dim ContentIds As String = " "
+            Dim Count As Integer = 0
+            For Each item As ListViewItem In lvContent.Items
+                Dim chkSelect As CheckBox = CType(item.FindControl("chkSelect"), CheckBox)
+                Dim ContentId As String = CType(item.FindControl("lblContentId"), Label).Text
+                If chkSelect.Checked Then
+                    Count += 1
+                    ContentIds += "'" + ContentId + "',"
+                End If
+            Next
+            ContentIds = ContentIds.Remove(ContentIds.Length - 1, 1)
+            If Count > 0 Then
+                Dim Deleted As Integer = DBManager.ExcuteQuery("update tblContent SET  Isdeleted = 'True' where Id in (" & ContentIds & ")")
+                If Deleted = 1 Then
+                    Return True
+                End If
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
     Public Function CheckAddressSelected(ByVal lv As ListView) As Boolean
         Try
             Dim i As Integer = 0

@@ -88,7 +88,7 @@
                                                         <span class="input-group-addon" id="basic-addon1">سجلات / الصفحة</span>
                                                     </div>
                                                 </asp:Panel>
-
+                                                <asp:LinkButton ID="cmdDelete" SkinID="btn-close" runat="server" OnClick="DeleteAll" ToolTip="حذف">حذف <i class="ti-trash"></i></asp:LinkButton>
 
                                             </div>
                                         </div>
@@ -108,6 +108,7 @@
                                                     <!-- /input-group -->
                                                 </div>
                                                 <asp:LinkButton ID="cmdNew" SkinID="btn-new" runat="server" OnClick="Add" ToolTip="إضافة">إضافة <i class="ti-plus"></i></asp:LinkButton>
+
                                             </div>
                                         </div>
                                     </div>
@@ -127,6 +128,7 @@
                                                 <LayoutTemplate>
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
+                                                            <th>تحديد</th>
                                                             <th>م</th>
                                                             <th class="upnDownArrow" id="Date">
                                                                 <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
@@ -153,6 +155,9 @@
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
                                                     <tr id="lvItemRow" runat="server">
+                                                        <td>
+                                                            <asp:CheckBox ID="chkSelect" runat="server" />
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
                                                             <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>

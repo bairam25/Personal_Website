@@ -61,7 +61,7 @@ Partial Class Album_Videos_Details
                         divAlbumDescription.Visible = False
                     End If
                     'Fill Details
-                    dt = DBManager.Getdatatable(AlbumTable & " where  AlbumId=" & AlbumId)
+                    dt = DBManager.Getdatatable(AlbumTable & " where Type='V' and AlbumId=" & AlbumId)
                     lvGallery.DataSource = dt
                     lvGallery.DataBind()
                 Else

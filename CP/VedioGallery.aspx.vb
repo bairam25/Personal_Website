@@ -290,13 +290,13 @@ Partial Class Gallery
                 dtImgs.AlbumId = AlbumId
                 'dtImgs.Type = "A"
                 dtImgs.Path = CType(gvRow.FindControl("lblImg"), System.Web.UI.WebControls.Image).ImageUrl
-                dtImgs.IsURL = False
+                dtImgs.IsURL = PublicFunctions.BoolFormat(CType(gvRow.FindControl("lblIsURL"), Label).Text)
                 dtImgs.ShowOrder = CType(gvRow.FindControl("ddlShowOrder"), System.Web.UI.WebControls.DropDownList).SelectedValue
                 dtImgs.Title = CType(gvRow.FindControl("txtTitle"), System.Web.UI.WebControls.TextBox).Text
                 dtImgs.Description = CType(gvRow.FindControl("txtDescription"), System.Web.UI.WebControls.TextBox).Text
                 dtImgs.CreatedDate = Date.Now
                 dtImgs.Main = CType(gvRow.FindControl("rblSelect"), RadioButton).Checked
-                dtImgs.Type = IIf(dtImgs.Path.ToString.Split(".").Last.ToLower = "mp4" OrElse dtImgs.Path.ToString.Split(".").Last.ToLower = "wmv" OrElse dtImgs.Path.ToString.Split(".").Last.ToLower = "webm", "V", "I")
+                dtImgs.Type = CType(gvRow.FindControl("lblType"), Label).Text
                 'If dtImgs.Type = "I" Then
                 '    dtImgs.Path = dtImgs.Path.Replace(dtImgs.Path.Split("/").Last, "Thumb_" + dtImgs.Path.Split("/").Last)
                 'End If
@@ -311,6 +311,23 @@ Partial Class Gallery
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
             Return False
+        End Try
+    End Function
+
+
+    Protected Function GetMediaType(ByVal media As String) As String
+        Try
+            If media.Split(".").Last.ToLower = "mp4" _
+                OrElse media.Split(".").Last.ToLower = "wmv" _
+                OrElse media.Split(".").Last.ToLower = "webm" _
+                OrElse media.Contains("youtube") Then
+                Return "V"
+            Else
+                Return "I"
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+            Return "V"
         End Try
     End Function
 #End Region
@@ -884,13 +901,14 @@ Partial Class Gallery
             For Each gvRow As GridViewRow In gvItemsImgs.Rows
                 AttObj = New TblAlbumDetails
                 AttObj.Id = CType(gvRow.FindControl("lblId"), Label).Text
+                AttObj.IsURL = PublicFunctions.BoolFormat(CType(gvRow.FindControl("lblIsURL"), Label).Text)
                 AttObj.Path = CType(gvRow.FindControl("lblImg"), System.Web.UI.WebControls.Image).ImageUrl
                 AttObj.ShowOrder = CType(gvRow.FindControl("lblShowOrder"), System.Web.UI.WebControls.Label).Text
                 AttObj.Title = CType(gvRow.FindControl("txtTitle"), System.Web.UI.WebControls.TextBox).Text
                 AttObj.Description = CType(gvRow.FindControl("txtDescription"), System.Web.UI.WebControls.TextBox).Text
                 AttObj.CreatedDate = Date.Now
                 AttObj.Main = CType(gvRow.FindControl("rblSelect"), RadioButton).Checked
-                AttObj.Type = "I"
+                AttObj.Type = CType(gvRow.FindControl("lblType"), Label).Text
                 AttObj.IsDeleted = False
                 DocList.Add(AttObj)
             Next

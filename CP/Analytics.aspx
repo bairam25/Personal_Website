@@ -88,7 +88,7 @@
                                                         <span class="input-group-addon" id="basic-addon1">سجلات / الصفحة</span>
                                                     </div>
                                                 </asp:Panel>
-
+                                                <asp:LinkButton ID="cmdDelete" SkinID="btn-close" runat="server" OnClick="DeleteAll" ToolTip="حذف">حذف <i class="ti-trash"></i></asp:LinkButton>
 
                                             </div>
                                         </div>
@@ -120,153 +120,157 @@
 
                             <asp:Panel ID="pnlGV" runat="server">
                                 <div class="col-md-12">
-                                      <div class="table-layer" style="box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.08);">
-                                                <div class="pages-table">
-                                                    <asp:ListView ID="lvContent" runat="server" ClientIDMode="AutoID"
-                                                        OnPagePropertiesChanging="OnPagePropertiesChanging" OnSorting="lv_Sorting">
-                                                        <LayoutTemplate>
-                                                            <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
-                                                                <tr class="HeaderStyle">
-                                                                    <th>م</th>
-                                                                    <th class="upnDownArrow" id="Date">
-                                                                        <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
-                                                                    </th>
-                                                                    <th>الصور</th>
-                                                                    <th class="upnDownArrow" id="Category">
-                                                                        <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
-                                                                    </th>
-                                                                    <th class="upnDownArrow" id="Title">
-                                                                        <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
-                                                                    </th>
-                                                                    <th class="upnDownArrow" id="ShowOrder">
-                                                                        <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
-                                                                    </th>
-                                                                    <th class="upnDownArrow" id="Active">
-                                                                        <asp:LinkButton ID="lbActive" CommandArgument="Active" CommandName="Sort" runat="server">تفعيل</asp:LinkButton>
-                                                                    </th>
-                                                                    <th class="upnDownArrow" id="ShowInHome">
-                                                                        <asp:LinkButton ID="lbShowInHome" CommandArgument="ShowInHome" CommandName="Sort" runat="server">عرض الرئيسية</asp:LinkButton>
-                                                                    </th>
-                                                                <th id="EditHeader">تعديل</th>
-                                                                <th id="DeleteHeader">حذف</th>
-                                                                </tr>
-                                                                <tr id="itemPlaceholder">
-                                                                </tr>
-                                                            </table>
-                                                        </LayoutTemplate>
-                                                        <ItemTemplate>
-                                                            <tr id="lvItemRow" runat="server">
-                                                                <td>
-                                                                    <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
-                                                                    <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>'  />
+                                    <div class="table-layer" style="box-shadow: 0px 1px 15px 1px rgba(69,65,78,0.08);">
+                                        <div class="pages-table">
+                                            <asp:ListView ID="lvContent" runat="server" ClientIDMode="AutoID"
+                                                OnPagePropertiesChanging="OnPagePropertiesChanging" OnSorting="lv_Sorting">
+                                                <LayoutTemplate>
+                                                    <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
+                                                        <tr class="HeaderStyle">
+                                                            <th>تحديد</th>
+                                                            <th>م</th>
+                                                            <th class="upnDownArrow" id="Date">
+                                                                <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
+                                                            </th>
+                                                            <th>الصور</th>
+                                                            <th class="upnDownArrow" id="Category">
+                                                                <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
+                                                            </th>
+                                                            <th class="upnDownArrow" id="Title">
+                                                                <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
+                                                            </th>
+                                                            <th class="upnDownArrow" id="ShowOrder">
+                                                                <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
+                                                            </th>
+                                                            <th class="upnDownArrow" id="Active">
+                                                                <asp:LinkButton ID="lbActive" CommandArgument="Active" CommandName="Sort" runat="server">تفعيل</asp:LinkButton>
+                                                            </th>
+                                                            <th class="upnDownArrow" id="ShowInHome">
+                                                                <asp:LinkButton ID="lbShowInHome" CommandArgument="ShowInHome" CommandName="Sort" runat="server">عرض الرئيسية</asp:LinkButton>
+                                                            </th>
+                                                            <th id="EditHeader">تعديل</th>
+                                                            <th id="DeleteHeader">حذف</th>
+                                                        </tr>
+                                                        <tr id="itemPlaceholder">
+                                                        </tr>
+                                                    </table>
+                                                </LayoutTemplate>
+                                                <ItemTemplate>
+                                                    <tr id="lvItemRow" runat="server">
+                                                        <td>
+                                                            <asp:CheckBox ID="chkSelect" runat="server" />
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
+                                                            <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>' />
 
-                                                                    <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
-                                                                </td>
-                                                                <td>
-                                                                    <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
-                                                                </td>
-                                                                <td id="Active">
-                                                                    <asp:CheckBox ID="chkActive" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("Active"))%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
-                                                                </td>
-                                                                <td id="Home">
-                                                                    <asp:CheckBox ID="chkHome" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("ShowInHome"))%>' AutoPostBack="true" OnCheckedChanged="UpdateShowHome"></asp:CheckBox>
-                                                                </td>
-                                                                <td id="Edit">
-                                                                    <asp:LinkButton ID="lbUpdate" CssClass="btni-xxxs btn-blue brd-50" runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" ToolTip="تحديث">
+                                                            <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
+                                                        </td>
+                                                        <td>
+                                                            <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
+                                                        </td>
+                                                        <td id="Active">
+                                                            <asp:CheckBox ID="chkActive" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("Active"))%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
+                                                        </td>
+                                                        <td id="Home">
+                                                            <asp:CheckBox ID="chkHome" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("ShowInHome"))%>' AutoPostBack="true" OnCheckedChanged="UpdateShowHome"></asp:CheckBox>
+                                                        </td>
+                                                        <td id="Edit">
+                                                            <asp:LinkButton ID="lbUpdate" CssClass="btni-xxxs btn-blue brd-50" runat="server" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" ToolTip="تحديث">
                                                                     <i class="fa-edit fa"></i>
-                                                                    </asp:LinkButton>
-                                                                    <%--<asp:LinkButton runat="server" ID="lbEdit" CauseValidation="false" CssClass="btni-xxxs btn-blue brd-50" data-placement="bottom" data-original-title="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" data-toggle="modal"><i class="fa fa-edit"></i></asp:LinkButton>--%>
-                                                                </td>
-                                                                <td id="Delete">
-                                                                    <asp:Panel runat="server" ID="pnlDelete">
-                                                                        <a class="btni-xxxs btn-red brd-50" href="#" title="حذف" data-toggle="modal" data-placement="bottom" data-original-title="حذف"
-                                                                            onclick="ShowConfirmPopup('<%# CType(Container, ListViewItem).FindControl("mpConfirmDelete").ClientID.ToString%>','<%# CType(Container, ListViewItem).FindControl("pnlConfirmExtenderDelete").ClientID.ToString%>');return false;">
-                                                                            <i class="fa fa-trash"></i></a>
-                                                                    </asp:Panel>
-                                                                    <asp:HiddenField ID="hfDelete" runat="server" />
-                                                                    <asp:ModalPopupExtender ID="mpConfirmDelete" runat="server" PopupControlID="pnlConfirmExtenderDelete" TargetControlID="hfDelete"
-                                                                        CancelControlID="lbNoDelete" BackgroundCssClass="modalBackground">
-                                                                    </asp:ModalPopupExtender>
-                                                                    <asp:Panel ID="pnlConfirmExtenderDelete" runat="server" CssClass="modal-n modalPopup" align="center" Style="display: none">
-                                                                        <div class="header">
-                                                                            رسالة تأكيد
-                                                                        </div>
-                                                                        <div class="body">
-                                                                            <label>هل تريد حذف التحليل ؟</label>
-                                                                        </div>
+                                                            </asp:LinkButton>
+                                                            <%--<asp:LinkButton runat="server" ID="lbEdit" CauseValidation="false" CssClass="btni-xxxs btn-blue brd-50" data-placement="bottom" data-original-title="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="Edit" data-toggle="modal"><i class="fa fa-edit"></i></asp:LinkButton>--%>
+                                                        </td>
+                                                        <td id="Delete">
+                                                            <asp:Panel runat="server" ID="pnlDelete">
+                                                                <a class="btni-xxxs btn-red brd-50" href="#" title="حذف" data-toggle="modal" data-placement="bottom" data-original-title="حذف"
+                                                                    onclick="ShowConfirmPopup('<%# CType(Container, ListViewItem).FindControl("mpConfirmDelete").ClientID.ToString%>','<%# CType(Container, ListViewItem).FindControl("pnlConfirmExtenderDelete").ClientID.ToString%>');return false;">
+                                                                    <i class="fa fa-trash"></i></a>
+                                                            </asp:Panel>
+                                                            <asp:HiddenField ID="hfDelete" runat="server" />
+                                                            <asp:ModalPopupExtender ID="mpConfirmDelete" runat="server" PopupControlID="pnlConfirmExtenderDelete" TargetControlID="hfDelete"
+                                                                CancelControlID="lbNoDelete" BackgroundCssClass="modalBackground">
+                                                            </asp:ModalPopupExtender>
+                                                            <asp:Panel ID="pnlConfirmExtenderDelete" runat="server" CssClass="modal-n modalPopup" align="center" Style="display: none">
+                                                                <div class="header">
+                                                                    رسالة تأكيد
+                                                                </div>
+                                                                <div class="body">
+                                                                    <label>هل تريد حذف التحليل ؟</label>
+                                                                </div>
 
-                                                                        <div class="footer">
-                                                                            <ul class="btn-uls mb0">
-                                                                                <li class="btn-lis">
-                                                                                    <asp:LinkButton ID="lbYesDelete" runat="server" SkinID="btn-green" CommandArgument='<%# Eval("Id") %>' OnClick="Delete" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
-                                                                                <li class="btn-lis">
-                                                                                    <asp:LinkButton ID="lbNoDelete" runat="server" SkinID="btn-red" OnClientClick="CloseConfirmPopup('mpConfirmDelete');return false;">لا<i class="ti-close"></i></asp:LinkButton></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </asp:Panel>
-                                                                </td>
-                                                            </tr>
-                                                        </ItemTemplate>
-                                                        <EmptyDataTemplate>
-                                                            <table style="width: 100%;">
-                                                                <tr class="EmptyRowStyle">
-                                                                    <td>
-                                                                        <div>لا توجد تحليللات</div>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </EmptyDataTemplate>
-                                                    </asp:ListView>
-                                                </div>
+                                                                <div class="footer">
+                                                                    <ul class="btn-uls mb0">
+                                                                        <li class="btn-lis">
+                                                                            <asp:LinkButton ID="lbYesDelete" runat="server" SkinID="btn-green" CommandArgument='<%# Eval("Id") %>' OnClick="Delete" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
+                                                                        <li class="btn-lis">
+                                                                            <asp:LinkButton ID="lbNoDelete" runat="server" SkinID="btn-red" OnClientClick="CloseConfirmPopup('mpConfirmDelete');return false;">لا<i class="ti-close"></i></asp:LinkButton></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </asp:Panel>
+                                                        </td>
+                                                    </tr>
+                                                </ItemTemplate>
+                                                <EmptyDataTemplate>
+                                                    <table style="width: 100%;">
+                                                        <tr class="EmptyRowStyle">
+                                                            <td>
+                                                                <div>لا توجد تحليللات</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </EmptyDataTemplate>
+                                            </asp:ListView>
+                                        </div>
+                                    </div>
+
+                                    <div class="table-bot-panel">
+                                        <div class="tbl-bot-panel-left">
+                                            <div class="row">
+                                                <p class="mb0 table-counts" style="display: none">
+                                                    Total News : <span>
+                                                        <asp:Label ID="lblTotalCount" runat="server"></asp:Label></span>
+                                                </p>
                                             </div>
+                                        </div>
 
-                                            <div class="table-bot-panel">
-                                                <div class="tbl-bot-panel-left">
-                                                    <div class="row">
-                                                        <p class="mb0 table-counts" style="display: none">
-                                                            Total News : <span>
-                                                                <asp:Label ID="lblTotalCount" runat="server"></asp:Label></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                        <div class="tbl-bot-panel-right">
+                                            <div class="row">
+                                                <ul class="pagination">
+                                                    <li>
+                                                        <asp:DataPager ID="dplvContent" class="pagination" runat="server" PagedControlID="lvContent" PageSize='<%# ddlPager.SelectedValue %>' style="width: 100%; display: inline-flex;">
+                                                            <Fields>
+                                                                <asp:NextPreviousPagerField ButtonType="Link"
+                                                                    ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-right'></i>"
+                                                                    ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-right'></i>"
+                                                                    ShowLastPageButton="false" ShowNextPageButton="false" />
 
-                                                <div class="tbl-bot-panel-right">
-                                                    <div class="row">
-                                                        <ul class="pagination">
-                                                            <li>
-                                                                <asp:DataPager ID="dplvContent" class="pagination" runat="server" PagedControlID="lvContent" PageSize='<%# ddlPager.SelectedValue %>' style="width: 100%; display: inline-flex;">
-                                                                    <Fields>
-                                                                        <asp:NextPreviousPagerField ButtonType="Link"
-                                                                            ShowFirstPageButton="true" FirstPageText="<i class='ti-angle-double-right'></i>"
-                                                                            ShowPreviousPageButton="true" PreviousPageText="<i class='ti-angle-right'></i>"
-                                                                            ShowLastPageButton="false" ShowNextPageButton="false" />
+                                                                <asp:NumericPagerField ButtonType="link" RenderNonBreakingSpacesBetweenControls="false" NextPreviousButtonCssClass="hidedots" />
 
-                                                                        <asp:NumericPagerField ButtonType="link" RenderNonBreakingSpacesBetweenControls="false" NextPreviousButtonCssClass="hidedots" />
-
-                                                                        <asp:NextPreviousPagerField ButtonType="Link"
-                                                                            ShowNextPageButton="true" NextPageText="<i class='ti-angle-left'></i>"
-                                                                            ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-left'></i>"
-                                                                            ShowFirstPageButton="false"
-                                                                            ShowPreviousPageButton="false" />
-                                                                    </Fields>
-                                                                </asp:DataPager>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                                <asp:NextPreviousPagerField ButtonType="Link"
+                                                                    ShowNextPageButton="true" NextPageText="<i class='ti-angle-left'></i>"
+                                                                    ShowLastPageButton="true" LastPageText="<i class='ti-angle-double-left'></i>"
+                                                                    ShowFirstPageButton="false"
+                                                                    ShowPreviousPageButton="false" />
+                                                            </Fields>
+                                                        </asp:DataPager>
+                                                    </li>
+                                                </ul>
                                             </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </asp:Panel>
 
@@ -336,23 +340,23 @@
                                                     <div class="panel-body">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                 <div class="col-md-3 form-group">
+                                                                <div class="col-md-3 form-group">
                                                                     <label class="input-label">نوع التصنيف</label>
-                                                                  <asp:RadioButtonList  ID="rblCategoryType" runat ="server" RepeatDirection="Horizontal" OnSelectedIndexChanged ="SelectCategoryType" AutoPostBack="true" >
-                                                                     <asp:ListItem Value ="E" Selected="True" >سوق حالي</asp:ListItem>
-                                                                     <asp:ListItem Value ="N">سوق جديد</asp:ListItem>
-                                                                  </asp:RadioButtonList>
+                                                                    <asp:RadioButtonList ID="rblCategoryType" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="SelectCategoryType" AutoPostBack="true">
+                                                                        <asp:ListItem Value="E" Selected="True">سوق حالي</asp:ListItem>
+                                                                        <asp:ListItem Value="N">سوق جديد</asp:ListItem>
+                                                                    </asp:RadioButtonList>
                                                                 </div>
-                                                                <div class="col-md-4 form-group" id="divNewCategory" runat="server" visible ="false" >
+                                                                <div class="col-md-4 form-group" id="divNewCategory" runat="server" visible="false">
                                                                     <label class="input-label required">التصنيف</label>
                                                                     <asp:TextBox runat="server" ID="txtCategory" MaxLength="200"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone" 
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
                                                                 </div>
                                                                 <div class="col-md-4 form-group" id="divExistCategory" runat="server">
                                                                     <label class="input-label required">التصنيف</label>
-                                                                  <asp:DropDownList ID="ddlCategory" runat ="server" >
-                                                                  </asp:DropDownList>
+                                                                    <asp:DropDownList ID="ddlCategory" runat="server">
+                                                                    </asp:DropDownList>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone" InitialValue="0"
                                                                         ValidationGroup="vContent" ControlToValidate="ddlCategory" ErrorMessage="أختر التصنيف"></asp:RequiredFieldValidator>
                                                                 </div>
@@ -384,7 +388,7 @@
                                                                 </div>
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="input-label">الوصف</label>
-                                                                     <uc1:HTMLEditor ID="txtDescription" runat="server" />
+                                                                    <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>
                                                             </div>

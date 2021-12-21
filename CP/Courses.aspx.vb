@@ -372,7 +372,18 @@ Partial Class Courses
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
-
+    Sub DeleteAll(ByVal Sender As Object, ByVal e As System.EventArgs)
+        Try
+            If PublicFunctions.DeleteAllSelected(lvContent) Then
+                ShowMessage(lblRes, MessageTypesEnum.CUSTOMSuccess, Me, Nothing, "تم حذف السجلات المحددة بنجاح")
+                FillGrid(Sender, e)
+            Else
+                clsMessages.ShowInfoMessgage(lblRes, "لا توجد سجلات محددة للحذف", Me)
+            End If
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
 #End Region
 
 #Region "Save"
