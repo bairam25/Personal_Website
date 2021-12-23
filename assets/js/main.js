@@ -105,7 +105,31 @@
                 rtl: true,
                 cssEase: 'linear',
                 prevArrow: '<a class="slide-arrow prev-arrow"><i class="fas fa-chevron-left"></i></a>',
-                nextArrow: '<a class="slide-arrow next-arrow"><i class="fas fa-chevron-right"></i></a>'
+                nextArrow: '<a class="slide-arrow next-arrow"><i class="fas fa-chevron-right"></i></a>',
+                responsive: [{
+                    breakpoint: 1124,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 577,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                }
+                ]
             });
 
             $('.testimonial-item-one').slick({

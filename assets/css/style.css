@@ -19155,6 +19155,13 @@ div#featured-project-carousel {
     height: 230px;
 }
 
+@media (max-width: 768px) {
+    #Photos .slick-list,
+    #Videos .slick-list {
+        height: unset !important;
+    }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .rn-portfolio .inner .thumbnail a img, .rn-blog .inner .thumbnail a img {
         height: inherit;
