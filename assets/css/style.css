@@ -19141,7 +19141,7 @@ div#featured-project-carousel {
     display: flex;
     justify-content: right;
     align-content: start;
-    min-height: 60px;
+    min-height: 90px;
 }
 
 #Photos .inner .thumbnail a img,

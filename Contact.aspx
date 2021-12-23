@@ -60,11 +60,11 @@
                                         </div>
                                         <div class="description">
                                             <p>
-                                                لطلب المساعدة أو الاستفسار يرجى التواصل معى عبر البريد الاليكترونى أو الاتصال بى.
+                                                لطلب المساعدة أو الاستفسار يرجى التواصل معى عبر البريد الاليكترونى أو المراسلة عبر What’s app.
                                             </p>
                                             <span class="phone" style="direction: ltr;">
                                                 <a href="<%# "https://wa.me/2" + Eval("Mobile").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Mobile").ToString  %></a>
-                                                :What’app
+                                                :What’s app
                                             </span>
                                             <span class="mail">البريد الاليكترونى: <a href="mailto:<%# Eval("Email").ToString  %>" target="_blank" style="letter-spacing: 1px;"><%# Eval("Email").ToString  %></a></span>
                                         </div>

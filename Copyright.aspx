@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <span class="subtitle">Copyright</span>
-                        <h2 class="title">ﺣﻘﻮﻕ اﻟﻨﺸﺮ</h2>
+                        <h2 class="title">حقوق النشر</h2>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                                     <div class="col-lg-12">
                                         <div class="text-content p-0">
                                             <p class="w-100">
-                                                ﺣﻘﻮﻕ اﻟﻨﺸﺮ ﻟﻬﺬا اﻟﻤﻮﻗﻊ ﻭﻣﺤﺘﻮﻳﺎﺗﻪ ﻣﺤﻔﻮﻇﺔ لشركة Oryx Servicies على موقعها او تطبيقاتها Elsayedhussein.com دون سواه ﻭﻣﻦ ﻳﺤﻤﻠﻮﻥ ﺗﺮﺧﻴﺼًﺎ ﻣﻨﻬﺎ ﺑﻤﺎ ﻓﻲ ﺫﻟﻚ ﻣﻦ كل ﻣﺤﺘﻮﻱ ﻳﺸﻤﻞ: اﻟﻨﺺ، ﺑﺮﻣﺠﺔ اﻟﻤﻮﻗﻊ، اﻟﺘﺼﻤﻴﻢ ﻭ اﻟﺼﻮﺭ، اﻟﻤﺤﺘﻮﻱ اﻟﻤﺴﻤﻮﻉ ﻭ اﻟﻤﺮﺋﻲ ﻭ اﻟﻔﻼﺵ.
+                                                حقوق اﻟﻨﺸﺮ ﻟﻬﺬا اﻟﻤﻮﻗﻊ وﻣﺤﺘﻮﻳﺎﺗﻪ ﻣﺤﻔﻮﻇﺔ لشركة Oryx Servicies على موقعها او تطبيقاتها Elsayedhussein.com دون سواه وﻣﻦ يحملون ﺗﺮﺧﻴﺼًﺎ ﻣﻨﻬﺎ ﺑﻤﺎ ﻓﻲ ذلك ﻣﻦ كل محتوي ﻳﺸﻤﻞ: اﻟﻨﺺ، ﺑﺮﻣﺠﺔ اﻟﻤﻮﻗﻊ، اﻟﺘﺼﻤﻴﻢ و الصور، المحتوي المسموع و اﻟﻤﺮﺋﻲ و الفلاش.
                                             </p>
                                         </div>
                                         <!-- End of .text-content -->

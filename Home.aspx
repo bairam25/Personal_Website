@@ -423,11 +423,11 @@
                                     </div>
                                     <div class="content">
                                         <div class="category-info">
-                                            <div class="meta">
-                                                <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
-                                            </div>
                                             <div class="category-list">
-                                                <a href="javascript:void(0)"><%# Eval("MediaCount").ToString  %><i class="fas fa-video ml-1"></i></a>
+                                                <a href="javascript:void(0)"><i class="fas fa-video ml-1"></i><%# Eval("MediaCount").ToString  %></a>
+                                            </div>
+                                            <div class="meta">
+                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %></span>
                                             </div>
                                         </div>
                                         <h4 class="title">
@@ -475,11 +475,11 @@
                                     </div>
                                     <div class="content">
                                         <div class="category-info">
-                                            <div class="meta">
-                                                <span><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %><i class="far fa-clock"></i></span>
-                                            </div>
                                             <div class="category-list">
-                                                <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><%# Eval("MediaCount").ToString  %><i class="fas fa-images ml-1"></i></a>
+                                                <a href='Album_Photos_Details.aspx?ID=<%# Eval("ID").ToString  %>'><i class="fas fa-images ml-1"></i><%# Eval("MediaCount").ToString  %></a>
+                                            </div>
+                                            <div class="meta">
+                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy")  %></span>
                                             </div>
                                         </div>
                                         <h4 class="title">
