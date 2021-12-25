@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <span class="subtitle">Seminars</span>
-                        <h2 class="title">الندوات</h2>
+                        <h4 class="title">الندوات</h4>
                     </div>
                 </div>
             </div>
