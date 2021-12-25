@@ -730,7 +730,8 @@ Partial Class Gallery
             Dim URL As String = txtYoutubeURL.Text.Trim
             Dim URLID As String = GetVideoId(URL)
             If String.IsNullOrEmpty(URLID) Then
-                ShowInfoMessgage(lblRes, "اختر رابط يوتيوب صحيح", Me)
+                ShowInfoMessgage(lblRes, "أدخل رابط يوتيوب صحيح", Me)
+                txtYoutubeURL.Focus()
                 Return False
             End If
             dtDetails.IsURL = True
