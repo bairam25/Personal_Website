@@ -103,6 +103,9 @@ Partial Class Home
             lvAnlyticsCategories.DataBind()
             lvCategories.DataSource = dtAnlyticsCategory
             lvCategories.DataBind()
+            If distinctValues.Rows.Count > 0 Then
+                lbShowMoreTechAnalysis.HRef = "Technical_Analysis.aspx?More=" & distinctValues.Rows(0).Item(0).ToString.Replace(" ", "-")
+            End If
             For Each item As ListViewItem In lvCategories.Items
                 Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)

@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <span class="subtitle">Analysis Of Financial Markets</span>
-                        <h2 class="title">تحليلات الاسواق المالية</h2>
+                        <h4 class="title">تحليلات الاسواق المالية</h4>
                     </div>
                 </div>
             </div>

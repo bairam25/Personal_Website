@@ -121,7 +121,7 @@
                                             <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>'
                                                 id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' 
                                                 data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' 
-                                                data-category='<%# Eval("Category") %>'
+                                                data-category='<%# Eval("Category").ToString.Replace(" ", "-") %>'
                                                 role="tab" aria-selected="true" onclick="SetCategory(this)">
                                                 <%# Eval("Category") %>
                                              </a>
@@ -184,7 +184,7 @@
                 </div>
             </div>
 
-            <a id="lbShowMoreTechAnalysis" class="rn-btn d-block text-center mt--60 btn-more" href="Technical_Analysis.aspx">
+            <a id="lbShowMoreTechAnalysis" runat="server" class="rn-btn d-block text-center mt--60 btn-more" href="Technical_Analysis.aspx">
                 <span>مشاهدة المزيد</span>
             </a>
         </div>
