@@ -519,25 +519,24 @@ Optional ByVal MinNumber As Integer = 0) As Integer
 #Region "Grid View Selection"
     Public Shared Function DeleteAllSelected(lvContent As ListView) As Boolean
         Try
-            Dim ContentIds As String = " "
-            Dim Count As Integer = 0
-            For Each item As ListViewItem In lvContent.Items
-                Dim chkSelect As CheckBox = CType(item.FindControl("chkSelect"), CheckBox)
-                Dim ContentId As String = CType(item.FindControl("lblContentId"), Label).Text
-                If chkSelect.Checked Then
-                    Count += 1
-                    ContentIds += "'" + ContentId + "',"
-                End If
-            Next
-            ContentIds = ContentIds.Remove(ContentIds.Length - 1, 1)
-            If Count > 0 Then
-                Dim Deleted As Integer = DBManager.ExcuteQuery("update tblContent SET  Isdeleted = 'True' where Id in (" & ContentIds & ")")
-                If Deleted = 1 Then
-                    Return True
-                End If
+            Dim IDs As New List(Of String)
+            Dim ContentIds As String
+            Dim qry As String = ""
+            If lvContent.ID = "lvGallery" Then
+                IDs = lvContent.Items.AsEnumerable.Where(Function(s) CType(s.FindControl("chkSelect"), CheckBox).Checked = True).Select(Function(i) CType(i.FindControl("lblAlbumId"), Label).Text).ToList
+                ContentIds = "'" & String.Join("','", IDs) & "'"
+                qry = "update TblAlbum SET  Isdeleted = 'True',DeletedDate=GETDATE() where Id IN (" & ContentIds & ");"
+                qry += "Update tblAlbumDetails SET Isdeleted = 'True',DeletedDate=GETDATE() where AlbumId IN (" & ContentIds & ")"
             Else
+                IDs = lvContent.Items.AsEnumerable.Where(Function(s) CType(s.FindControl("chkSelect"), CheckBox).Checked = True).Select(Function(i) CType(i.FindControl("lblContentId"), Label).Text).ToList
+                ContentIds = "'" & String.Join("','", IDs) & "'"
+                qry = "update tblContent SET  Isdeleted = 'True' where Id in (" & ContentIds & ")"
+            End If
+            If IDs.Count = 0 Then
                 Return False
             End If
+            Dim Deleted As Integer = DBManager.ExcuteQuery(qry)
+            Return Deleted = 1
         Catch ex As Exception
             Throw ex
         End Try

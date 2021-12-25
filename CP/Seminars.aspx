@@ -77,7 +77,7 @@
                                     <div class="table-top-panel">
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
-                                                <asp:Panel ID="pgPanel" CssClass="input-in" runat="server">
+                                              <asp:Panel ID="pgPanel" CssClass="input-in" runat="server">
                                                     <div class="input-group mt5">
                                                         <asp:DropDownList runat="server" CssClass="form-control ltr" ID="ddlPager" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
                                                             <asp:ListItem Value="10">10</asp:ListItem>
@@ -87,10 +87,30 @@
                                                         </asp:DropDownList>
                                                         <span class="input-group-addon" id="basic-addon1">سجلات / الصفحة</span>
                                                     </div>
+                                                    <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
+                                                        onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
+                                                    <asp:HiddenField ID="hfDeleteAll" runat="server" />
+                                                    <asp:ModalPopupExtender ID="mpeDeleteAll" ClientIDMode="Static" runat="server" PopupControlID="pnlDeleteAll" TargetControlID="hfDeleteAll"
+                                                        CancelControlID="lbNoDeleteAll" BackgroundCssClass="modalBackground">
+                                                    </asp:ModalPopupExtender>
+                                                    <asp:Panel ID="pnlDeleteAll" runat="server" ClientIDMode="Static" CssClass="modal-n modalPopup" align="center" Style="display: none">
+                                                        <div class="header">
+                                                            رسالة تأكيد
+                                                        </div>
+                                                        <div class="body">
+                                                            <label>تأكيد حذف العناصر المحددة ؟</label>
+                                                        </div>
+
+                                                        <div class="footer">
+                                                            <ul class="btn-uls mb0">
+                                                                <li class="btn-lis">
+                                                                    <asp:LinkButton ID="lbYesDeleteAll" runat="server" SkinID="btn-green" OnClick="DeleteAll" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
+                                                                <li class="btn-lis">
+                                                                    <asp:LinkButton ID="lbNoDeleteAll" runat="server" SkinID="btn-red">لا<i class="ti-close"></i></asp:LinkButton></li>
+                                                            </ul>
+                                                        </div>
+                                                    </asp:Panel>
                                                 </asp:Panel>
-                                                <asp:LinkButton ID="cmdDelete" SkinID="btn-close" runat="server" OnClick="DeleteAll" ToolTip="حذف">حذف <i class="ti-trash"></i></asp:LinkButton>
-
-
                                             </div>
                                         </div>
 
@@ -128,7 +148,8 @@
                                                 <LayoutTemplate>
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
-                                                            <th>تحديد</th>
+                                                              <th>
+                                                                <asp:CheckBox Text="" runat="server" ID="ckAll" AutoPostBack="true" OnCheckedChanged="CheckAll" /></th>
                                                             <th>م</th>
                                                             <th class="upnDownArrow" id="Date">
                                                                 <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>

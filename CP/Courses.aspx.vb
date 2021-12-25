@@ -372,6 +372,15 @@ Partial Class Courses
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+    Sub CheckAll(ByVal sender As CheckBox, e As EventArgs)
+        Try
+            For Each item As ListViewItem In lvContent.Items
+                CType(item.FindControl("chkSelect"), CheckBox).Checked = sender.Checked
+            Next
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
     Sub DeleteAll(ByVal Sender As Object, ByVal e As System.EventArgs)
         Try
             If PublicFunctions.DeleteAllSelected(lvContent) Then

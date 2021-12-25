@@ -427,6 +427,29 @@
                                                             </asp:DropDownList>
                                                             <span class="input-group-addon">سجلات / الصفحة</span>
                                                         </div>
+                                                          <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
+                                                        onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
+                                                    <asp:HiddenField ID="hfDeleteAll" runat="server" />
+                                                    <asp:ModalPopupExtender ID="mpeDeleteAll" ClientIDMode="Static" runat="server" PopupControlID="pnlDeleteAll" TargetControlID="hfDeleteAll"
+                                                        CancelControlID="lbNoDeleteAll" BackgroundCssClass="modalBackground">
+                                                    </asp:ModalPopupExtender>
+                                                    <asp:Panel ID="pnlDeleteAll" runat="server" ClientIDMode="Static" CssClass="modal-n modalPopup" align="center" Style="display: none">
+                                                        <div class="header">
+                                                            رسالة تأكيد
+                                                        </div>
+                                                        <div class="body">
+                                                            <label>تأكيد حذف العناصر المحددة ؟</label>
+                                                        </div>
+
+                                                        <div class="footer">
+                                                            <ul class="btn-uls mb0">
+                                                                <li class="btn-lis">
+                                                                    <asp:LinkButton ID="lbYesDeleteAll" runat="server" SkinID="btn-green" OnClick="DeleteAll" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
+                                                                <li class="btn-lis">
+                                                                    <asp:LinkButton ID="lbNoDeleteAll" runat="server" SkinID="btn-red">لا<i class="ti-close"></i></asp:LinkButton></li>
+                                                            </ul>
+                                                        </div>
+                                                    </asp:Panel>
                                                     </div>
                                                 </div>
                                             </div>
@@ -459,6 +482,8 @@
                                                 <LayoutTemplate>
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
+                                                             <th>
+                                                                <asp:CheckBox Text="" runat="server" ID="ckAll" AutoPostBack="true" OnCheckedChanged="CheckAll" /></th>
                                                             <th>م</th>
                                                             <th class="upnDownArrow" id="AlbumDate">
                                                                 <asp:LinkButton ID="lbAlbumDate" CommandArgument="AlbumDate" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
@@ -488,6 +513,9 @@
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
                                                     <tr id="lvItemRow" runat="server">
+                                                         <td>
+                                                            <asp:CheckBox ID="chkSelect" runat="server" />
+                                                        </td>
                                                         <td>
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
                                                             <asp:Label ID="lblAlbumId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
