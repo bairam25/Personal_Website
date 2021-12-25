@@ -106,6 +106,7 @@
                     <div class="section-title text-center">
                         <span class="subtitle">Analysis Of Financial Markets</span>
                         <h2 class="title">تحليلات الاسواق المالية</h2>
+                        <asp:HiddenField runat="server" ID="hfSelectedCategory" ClientIDMode="Static" />
                     </div>
                 </div>
             </div>
@@ -117,7 +118,14 @@
                                 <asp:ListView ID="lvAnlyticsCategories" runat="server">
                                     <ItemTemplate>
                                         <li class="nav-item">
-                                            <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>' id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' role="tab" aria-selected="true"><%# Eval("Category") %></a>
+                                            <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>'
+                                                id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' 
+                                                data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' 
+                                                data-category='<%# Eval("Category") %>'
+                                                role="tab" aria-selected="true" onclick="SetCategory(this)">
+                                                <%# Eval("Category") %>
+                                             </a>
+                                             
                                         </li>
                                     </ItemTemplate>
                                 </asp:ListView>
