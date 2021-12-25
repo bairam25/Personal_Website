@@ -34,9 +34,9 @@
                                                 <i class="fas fa-external-link-alt"></i>
                                             </a>
                                         </h4>
-                                        <p class="tags">
+                                       <%-- <p class="tags">
                                             <%# Eval("Description").ToString  %>
-                                        </p>
+                                        </p>--%>
                                     </div>
                                 </div>
                             </div>
