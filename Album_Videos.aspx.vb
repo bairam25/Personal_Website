@@ -54,79 +54,9 @@ Partial Class Album_Videos
                 SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
             Dim dt As DataTable = DBManager.Getdatatable(AlbumTable + " and " + SeachFilter)
-            If dt IsNot Nothing Then
-                If dt.Rows.Count > 0 Then
-                    ViewState("dtAlbumTable") = dt
-                    ' Initialize the sorting expression.
-                    ViewState("SortExpression") = "ModifiedDate DESC"
-                    ' Populate the GridView.
-                    BindListView()
-                    'dplvGallery.Visible = False
-                    'If dt.Rows.Count > 6 Then
-                    '    dplvGallery.Visible = True
-                    'End If
-                Else
-                    lvGallery.DataSource = Nothing
-                    lvGallery.DataBind()
-                    'dplvGallery.Visible = False
-                End If
-            End If
+            lvGallery.DataSource = dt
+            lvGallery.DataBind()
 
-
-
-            'ScriptManager.RegisterClientScriptBlock(UP, Me.[GetType](), Guid.NewGuid().ToString(), "LoadJquery();", True)
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-
-
-    ''' <summary>
-    ''' Load data into the Listview.
-    ''' </summary>
-    Private Sub BindListView()
-        Try
-            If ViewState("dtAlbumTable") IsNot Nothing Then
-                ' Get the DataTable from ViewState.
-                Dim dtAlbumTable As DataTable = DirectCast(ViewState("dtAlbumTable"), DataTable)
-
-                ' Convert the DataTable to DataView.
-                Dim dv As New DataView(dtAlbumTable)
-
-                ' Set the sort column and sort order.
-                dv.Sort = ViewState("SortExpression").ToString()
-
-                ' Bind the Listview control.
-                lvGallery.DataSource = dv
-                lvGallery.DataBind()
-                'If dtAlbumTable.Rows.Count > 0 Then
-                '    dplvGallery.DataBind()
-                'End If
-            End If
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-    '''' <summary>
-    '''' Set Number of rows at every page
-    '''' </summary>
-    'Protected Sub PageSize_Changed(ByVal sender As Object, ByVal e As System.EventArgs)
-    '    Try
-    '        dplvGallery.SetPageProperties(0, ddlPager.SelectedValue, True)
-    '        FillGrid(sender, New EventArgs)
-    '    Catch ex As Exception
-    '        clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-    '    End Try
-    'End Sub
-    '''' <summary>
-    '''' set Pager
-    '''' </summary>
-    Protected Sub OnPagePropertiesChanging(sender As Object, e As PagePropertiesChangingEventArgs)
-        Try
-            'dplvGallery.SetPageProperties(e.StartRowIndex, e.MaximumRows, False)
-            FillGrid(sender, New EventArgs)
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try

@@ -164,7 +164,7 @@
             <footer class="site-footer">
                 <div class="row">
                     <div class="col-md-12 col-xs-12 text-center">
-                        <span class="site-footer-legal">2019 <span>©</span> <a href="#">برنامج التنمية المحلية لصعيد مصر</a></span>
+                        <span class="site-footer-legal">2022 <span>©</span> <a href="#">جميع الحقوق محفوظة</a></span>
                     </div>
                 </div>
             </footer>
