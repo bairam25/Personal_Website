@@ -159,7 +159,7 @@
                 <!-- End Photo -->--%>
             </div>
 
-            <div class="tbl-bot-panel-right">
+            <%--<div class="tbl-bot-panel-right">
                 <div class="row">
                     <ul class="pagination">
                         <li>
@@ -182,7 +182,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
     <!-- ENd Album Photos Area -->
