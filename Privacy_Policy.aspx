@@ -19,7 +19,7 @@
                             <div class="modal-body">
                                 <div class="row pt--50">
                                     <div class="col-lg-12">
-                                        <div class="text-content p-0">
+                                        <div class="text-content p-0 mx-5 px-5">
                                             <p class="mb--20 w-100">
                                                 حماية والحفاظ على البيانات الشخصية الخاصة بزوار موقع Elsayedhussein.com أحد أهم أولوياتنا، فمن خلال دخولك موقع Elsayedhussein.com أو التسجيل في أحد خدماته فإنك تعطي موقع Elsayedhussein.com الموافقة بجمع واستخدام المعلومات الشخصية الخاصة بك لإستخدامها في بعض من الأمور الآتية :
                                             </p>

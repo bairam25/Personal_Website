@@ -19,7 +19,7 @@
                             <div class="modal-body">
                                 <div class="row pt--50">
                                     <div class="col-lg-12">
-                                        <div class="text-content p-0">
+                                        <div class="text-content p-0 mx-5 px-5">
                                             <p class="w-100">
                                                 حقوق اﻟﻨﺸﺮ ﻟﻬﺬا اﻟﻤﻮﻗﻊ وﻣﺤﺘﻮﻳﺎﺗﻪ ﻣﺤﻔﻮﻇﺔ لشركة Oryx Servicies على موقعها او تطبيقاتها Elsayedhussein.com دون سواه وﻣﻦ يحملون ﺗﺮﺧﻴﺼًﺎ ﻣﻨﻬﺎ ﺑﻤﺎ ﻓﻲ ذلك ﻣﻦ كل محتوي ﻳﺸﻤﻞ: اﻟﻨﺺ، ﺑﺮﻣﺠﺔ اﻟﻤﻮﻗﻊ، اﻟﺘﺼﻤﻴﻢ و الصور، المحتوي المسموع و اﻟﻤﺮﺋﻲ و الفلاش.
                                             </p>
