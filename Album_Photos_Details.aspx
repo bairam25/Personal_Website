@@ -21,7 +21,7 @@
                     <ItemTemplate>
                         <!-- Start Photo -->
                         <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" data-aos-once="true" class="col-lg-6 col-xl-4 mt--30 col-md-6 col-sm-12 col-12 mt--30">
-                            <div class="rn-blog venobox" href='<%# Eval("Path").ToString.Replace("~", "")  %>' data-gall="venue-gallery">
+                            <div class="rn-blog venobox" href='<%# Eval("Path").ToString.Replace("~", "")  %>' data-gall="venue-gallery" data-title='<%# Eval("Title").ToString   %>'>
                                 <div class="inner">
                                     <div class="thumbnail">
                                         <a href="javascript:void(0)">
@@ -93,7 +93,8 @@
                 bgcolor: '',
                 overlayColor: 'rgba(6, 12, 34, 0.85)',
                 closeBackground: '',
-                closeColor: '#fff'
+                closeColor: '#fff',
+                titleattr: 'data-title'
             });
         });
     </script>

@@ -134,14 +134,14 @@
                                                 <div id="collapseOne" class="panel-collapse collapse in">
                                                     <div class="panel-body">
                                                         <div class="row">
-                                                            <div class="col-md-12">                            
+                                                            <div class="col-md-12">
                                                                 <div class="col-md-6">
                                                                     <label class="input-label required">عنوان الألبوم</label>
                                                                     <asp:TextBox runat="server" ID="txtTitle" MaxLength="200" autocomplete="off" placeholder="العنوان" ToolTip="العنوان"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator1" ControlToValidate="txtTitle"
                                                                         ErrorMessage="أدخل العنوان" SetFocusOnError="true" />
                                                                 </div>
-                                                                 <div class="col-md-2">
+                                                                <div class="col-md-2">
                                                                     <label class="input-label required">الترتيب</label>
                                                                     <asp:TextBox runat="server" ID="txtShowOrder" placeholder="الترتيب" onkeypress="return isNumber(event);" MaxLength="6"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ValidationGroup="vGallery" runat="server" ID="RequiredFieldValidator5" ControlToValidate="txtShowOrder"
@@ -291,8 +291,8 @@
                                                                         <ItemTemplate>
                                                                             <asp:Label ID="lblId" runat="server" Visible="false" Text='<%# Eval("Id")%>' />
                                                                             <asp:Label ID="lblShowOrder" runat="server" Text='<%# Eval("ShowOrder")%>' Visible="false" />
-                                                                            <asp:Label ID="lblIsURL" runat="server" Text='<%# PublicFunctions.BoolFormat(Eval("IsURl")) %>' Visible="false"   />
-                                                                            <asp:Label ID="lblType" runat="server" Text='<%# GetMediaType(Eval("Path").ToString)  %>'  Visible="false" />
+                                                                            <asp:Label ID="lblIsURL" runat="server" Text='<%# PublicFunctions.BoolFormat(Eval("IsURl")) %>' Visible="false" />
+                                                                            <asp:Label ID="lblType" runat="server" Text='<%# GetMediaType(Eval("Path").ToString)  %>' Visible="false" />
                                                                             <asp:Image ID="lblImg" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Path")%>' Width="50px" onclick="ImagePreview(this.src,this.alt)" Visible="false" />
                                                                             <asp:Image ID="lblMedia" CssClass="td-img img-thumbnail" runat="server" lang='<%# Eval("Path").ToString.Replace("~/", "../") %>'
                                                                                 ImageUrl='<%#IIf(Eval("Path").ToString.Split(".").Last.ToLower = "mp4" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "wmv" OrElse Eval("Path").ToString.Split(".").Last.ToLower = "webm", "images/video.png", Eval("Path")) %>'
@@ -452,39 +452,43 @@
                                     <div class="table-top-panel">
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
-                                                <div class="input-field input-in mb0">
-                                                    <div class="input-group">
-                                                        <asp:DropDownList ID="ddlPager" runat="server" CssClass="form-control" placeholder="Pages" AutoPostBack="true" OnSelectedIndexChanged="FillGrid">
-                                                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                                                            <asp:ListItem Text="25" Value="25"></asp:ListItem>
-                                                            <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                            <asp:ListItem Text="100" Value="100"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                        <span class="input-group-addon">سجلات / الصفحة</span>
-                                                    </div>
-                                                      <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
-                                                        onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
-                                                    <asp:HiddenField ID="hfDeleteAll" runat="server" />
-                                                    <asp:ModalPopupExtender ID="mpeDeleteAll" ClientIDMode="Static" runat="server" PopupControlID="pnlDeleteAll" TargetControlID="hfDeleteAll"
-                                                        CancelControlID="lbNoDeleteAll" BackgroundCssClass="modalBackground">
-                                                    </asp:ModalPopupExtender>
-                                                    <asp:Panel ID="pnlDeleteAll" runat="server" ClientIDMode="Static" CssClass="modal-n modalPopup" align="center" Style="display: none">
-                                                        <div class="header">
-                                                            رسالة تأكيد
-                                                        </div>
-                                                        <div class="body">
-                                                            <label>تأكيد حذف العناصر المحددة ؟</label>
-                                                        </div>
+                                                <div class="d-flex">
+                                                    <div class="input-in">
+                                                        <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
+                                                            onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
+                                                        <asp:HiddenField ID="hfDeleteAll" runat="server" />
+                                                        <asp:ModalPopupExtender ID="mpeDeleteAll" ClientIDMode="Static" runat="server" PopupControlID="pnlDeleteAll" TargetControlID="hfDeleteAll"
+                                                            CancelControlID="lbNoDeleteAll" BackgroundCssClass="modalBackground">
+                                                        </asp:ModalPopupExtender>
+                                                        <asp:Panel ID="pnlDeleteAll" runat="server" ClientIDMode="Static" CssClass="modal-n modalPopup" align="center" Style="display: none">
+                                                            <div class="header">
+                                                                رسالة تأكيد
+                                                            </div>
+                                                            <div class="body">
+                                                                <label>تأكيد حذف العناصر المحددة ؟</label>
+                                                            </div>
 
-                                                        <div class="footer">
-                                                            <ul class="btn-uls mb0">
-                                                                <li class="btn-lis">
-                                                                    <asp:LinkButton ID="lbYesDeleteAll" runat="server" SkinID="btn-green" OnClick="DeleteAll" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
-                                                                <li class="btn-lis">
-                                                                    <asp:LinkButton ID="lbNoDeleteAll" runat="server" SkinID="btn-red">لا<i class="ti-close"></i></asp:LinkButton></li>
-                                                            </ul>
+                                                            <div class="footer">
+                                                                <ul class="btn-uls mb0">
+                                                                    <li class="btn-lis">
+                                                                        <asp:LinkButton ID="lbYesDeleteAll" runat="server" SkinID="btn-green" OnClick="DeleteAll" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
+                                                                    <li class="btn-lis">
+                                                                        <asp:LinkButton ID="lbNoDeleteAll" runat="server" SkinID="btn-red">لا<i class="ti-close"></i></asp:LinkButton></li>
+                                                                </ul>
+                                                            </div>
+                                                        </asp:Panel>
+                                                    </div>
+                                                    <div class="input-in">
+                                                        <div class="input-group">
+                                                            <asp:DropDownList ID="ddlPager" runat="server" CssClass="form-control" placeholder="Pages" AutoPostBack="true" OnSelectedIndexChanged="FillGrid">
+                                                                <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                                                                <asp:ListItem Text="25" Value="25"></asp:ListItem>
+                                                                <asp:ListItem Text="50" Value="50"></asp:ListItem>
+                                                                <asp:ListItem Text="100" Value="100"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <span class="input-group-addon">سجلات / الصفحة</span>
                                                         </div>
-                                                    </asp:Panel>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -516,7 +520,7 @@
                                                 <LayoutTemplate>
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
-                                                              <th>
+                                                            <th>
                                                                 <asp:CheckBox Text="" runat="server" ID="ckAll" AutoPostBack="true" OnCheckedChanged="CheckAll" /></th>
                                                             <th>م</th>
                                                             <th class="upnDownArrow" id="AlbumDate">
@@ -547,7 +551,7 @@
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
                                                     <tr id="lvItemRow" runat="server">
-                                                          <td>
+                                                        <td>
                                                             <asp:CheckBox ID="chkSelect" runat="server" />
                                                         </td>
                                                         <td>
@@ -575,7 +579,7 @@
                                                         <td id="Active">
                                                             <asp:CheckBox ID="chkActive" runat="server" Checked='<%# Eval("Active")%>' AutoPostBack="true" OnCheckedChanged="UpdateActive"></asp:CheckBox>
                                                         </td>
-                                                         <td id="Home">
+                                                        <td id="Home">
                                                             <asp:CheckBox ID="chkHome" runat="server" Checked='<%# PublicFunctions.BoolFormat(Eval("ShowInHome"))%>' AutoPostBack="true" OnCheckedChanged="UpdateShowHome"></asp:CheckBox>
                                                         </td>
                                                         <td id="Edit">
