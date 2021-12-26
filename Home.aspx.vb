@@ -101,7 +101,7 @@ Partial Class Home
             Dim distinctValues As DataTable = dv.ToTable(True, "Category")
             lvAnlyticsCategories.DataSource = distinctValues
             lvAnlyticsCategories.DataBind()
-            lvCategories.DataSource = dtAnlyticsCategory
+            lvCategories.DataSource = distinctValues
             lvCategories.DataBind()
             If distinctValues.Rows.Count > 0 Then
                 lbShowMoreTechAnalysis.HRef = "Technical_Analysis.aspx?More=" & distinctValues.Rows(0).Item(0).ToString.Replace(" ", "-")

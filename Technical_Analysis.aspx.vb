@@ -37,7 +37,7 @@ Partial Class Technical_Analysis
             lvAnlyticsCategories.DataSource = distinctValues
             lvAnlyticsCategories.DataBind()
 
-            lvCategories.DataSource = dtAnlyticsCategory
+            lvCategories.DataSource = distinctValues
             lvCategories.DataBind()
 
             For Each item As ListViewItem In lvCategories.Items
