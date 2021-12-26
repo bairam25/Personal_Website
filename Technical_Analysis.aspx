@@ -58,7 +58,7 @@
                                                                     <div class="content pt--0">
                                                                         <div class="category-info pb--0">
                                                                             <div class="meta">
-                                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                                             </div>
                                                                         </div>
                                                                         <h4 class="title">

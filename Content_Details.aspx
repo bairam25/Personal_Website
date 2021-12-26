@@ -30,7 +30,7 @@
                                                             <div class="d-flex justify-content-between">
 
                                                                 <div class="meta">
-                                                                    <span><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                    <span><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                                 </div>
                                                             </div>
                                                         </span>

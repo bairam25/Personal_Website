@@ -159,7 +159,7 @@
                                                                     <div class="content pt--0">
                                                                         <div class="category-info pb--0">
                                                                             <div class="meta">
-                                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                                             </div>
                                                                         </div>
                                                                         <h4 class="title">
@@ -220,7 +220,7 @@
                                         <a href="javascript:void(0)">تصنيف الخبر</a>
                                     </div>--%>
                                             <div class="meta">
-                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                             </div>
                                         </div>
                                         <h4 class="title">
@@ -292,7 +292,7 @@
                                                         <div class="title-area">
                                                             <div class="title-info text-right">
                                                                 <h3 class="title"><%# Eval("Title") %></h3>
-                                                                <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                             </div>
                                                             <asp:LinkButton Visible="false" ID="lbMoreDetails" runat="server" CssClass="rn-btn" href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
                                                         <span>قراءة المزيد</span>
@@ -336,7 +336,7 @@
                                                     <div class="content pt--0">
                                                         <div class="category-info pb--0">
                                                             <div class="meta">
-                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                             </div>
                                                         </div>
                                                         <h4 class="title">
@@ -375,7 +375,7 @@
                                         <a href="javascript:void(0)">تصنيف الخبر</a>
                                     </div>--%>
                                                             <div class="meta">
-                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy    hh:mm tt", "AR") %></span>
+                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
                                                             </div>
                                                         </div>
                                                         <h4 class="title">
