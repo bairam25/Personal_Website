@@ -75,7 +75,7 @@ Partial Class Gallery
             'SubCategory = ddlSubCategory.SelectedValue
             ShowOrder = txtShowOrder.Text
             STitle = txtTitle.Text
-            Description = txtDescription.Text
+            Description = txtDescription.TextValue
             AlbumDate = PublicFunctions.DateFormat(txtAlbumDate.Text, "dd/MM/yyyy")
             ShowInHome = chkShowInHome.Checked
         Catch ex As Exception
@@ -345,7 +345,7 @@ Partial Class Gallery
             Dim dt As DataTable = DBManager.Getdatatable(AlbumTable & " where Id ='" & lblAlbumId.Text & "' ")
             If dt.Rows.Count <> 0 Then
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
-                txtDescription.Text = dt.Rows(0).Item("Description").ToString
+                txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtShowOrder.Text = dt.Rows(0).Item("ShowOrder").ToString
                 txtAlbumDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 chkShowInHome.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("ShowInHome").ToString)

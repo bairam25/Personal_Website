@@ -61,6 +61,7 @@ Partial Class Seminars
         UserId = PublicFunctions.GetUserId(Page)
         Try
             If Page.IsPostBack = False Then
+                lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
                 FillGrid(sender, e)
             End If
             'Set Default values of controls
@@ -490,7 +491,7 @@ Partial Class Seminars
             ' Check that there is a file
             If fuPhoto.PostedFile IsNot Nothing Then
 
-                Dim filePath As String = "~/ContentPhotos/" & fuPhoto.FileName
+                Dim filePath As String = "~/ContentPhotos/" & lblDateContent.Text + "_" + fuPhoto.FileName
 
                 ' Check file size (mustn’t be 0)
                 Dim myFile As HttpPostedFile = fuPhoto.PostedFile

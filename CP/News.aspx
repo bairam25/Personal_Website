@@ -143,6 +143,7 @@
 
                             <div class="col-md-12">
                                 <asp:Label ID="lblRes" runat="server" Visible="false"></asp:Label>
+                                <asp:Label ID="lblDateContent" runat="server" style="display:none" ></asp:Label>
                             </div>
 
                             <asp:Panel ID="pnlGV" runat="server">
