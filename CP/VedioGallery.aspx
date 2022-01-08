@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="VedioGallery.aspx.vb" Inherits="Gallery" Theme="Theme1" %>
-
+<%@ Register Src="UserControls/HTMLEditor.ascx" TagPrefix="uc1" TagName="HTMLEditor" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
@@ -169,7 +169,8 @@
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="input-label">وصف الألبوم</label>
-                                                                    <asp:TextBox runat="server" ID="txtDescription" MaxLength="500" TextMode="MultiLine" autocomplete="off" placeholder="الوصف" ToolTip="الوصف"></asp:TextBox>
+                                                                    <uc1:HTMLEditor ID="txtDescription" runat="server" />
+                                                                    <%--<asp:TextBox runat="server" ID="txtDescription" MaxLength="500" TextMode="MultiLine" autocomplete="off" placeholder="الوصف" ToolTip="الوصف"></asp:TextBox>--%>
                                                                 </div>
                                                                 <%-- <div class="col-md-3">
                                                                         <label runat="server" id="Label1" for="ddlCategory" class="active">التصنيف</label>
