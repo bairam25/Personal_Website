@@ -32,6 +32,7 @@ Partial Class Courses
             pnlForm.Enabled = b
             pnlForm.Visible = b
             pnlGV.Visible = Not b
+            lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try

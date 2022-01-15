@@ -31,6 +31,7 @@ Partial Class Analytics
             pnlForm.Enabled = b
             pnlForm.Visible = b
             pnlGV.Visible = Not b
+            lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -305,6 +306,7 @@ Partial Class Analytics
             SelectCategoryType()
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
+
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
             clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlCategory, True, "--أختر تصنيف--")
 
