@@ -175,6 +175,7 @@
                                                             </th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
+                                                            <th id="PreviewHeader">العرض</th>
                                                         </tr>
                                                         <tr id="itemPlaceholder">
                                                         </tr>
@@ -243,6 +244,9 @@
                                                                     </ul>
                                                                 </div>
                                                             </asp:Panel>
+                                                        </td>
+                                                         <td>
+                                                            <a href='../Content_Details.aspx?Id=<%# Eval("Id") %>' class="btni-xxxs btn-green brd-50" title="مشاهدة العرض" target="_blank"><i class="fa-eye fa"></i></a>
                                                         </td>
                                                     </tr>
                                                 </ItemTemplate>
