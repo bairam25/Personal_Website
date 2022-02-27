@@ -138,6 +138,7 @@ Partial Class Gallery
             'ddlCategory.SelectedIndex = 0
             'CategoryChanged(Sender, e)
             txtAlbumDate.Text = DateTime.Now.ToShortDateString
+            chkActive.Checked = True
             txtShowOrder.Text = Val(DBManager.Getdatatable("select count(*) from TblAlbum where Type='A' and isnull(IsDeleted,0)=0 ").Rows(0).Item(0).ToString) + 1
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
@@ -253,8 +254,8 @@ Partial Class Gallery
             dtAlbum.MediaCount = gvItemsImgs.Rows.Count
             If cmdSave.CommandArgument.ToLower() = "add" Then
                 dtAlbum.CreatedDate = DateTime.Now
-                dtAlbum.Active = False
             End If
+            dtAlbum.Active = chkActive.Checked
             dtAlbum.ModifiedDate = DateTime.Now
             dtAlbum.IsDeleted = False
             Return True
@@ -328,6 +329,8 @@ Partial Class Gallery
                 txtShowOrder.Text = dt.Rows(0).Item("ShowOrder").ToString
                 txtAlbumDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 chkShowInHome.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("ShowInHome").ToString)
+                chkActive.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("Active"))
+
                 'Dim Category As String = dt.Rows(0).Item("Category").ToString
                 'Dim SubCategory As String = dt.Rows(0).Item("SubCategory").ToString
                 'If ddlCategory.Items.FindByValue(Category) IsNot Nothing Then

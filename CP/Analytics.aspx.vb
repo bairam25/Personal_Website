@@ -306,7 +306,7 @@ Partial Class Analytics
             SelectCategoryType()
             Enabler(True)
             txtContentDate.Text = DateTime.Now.ToShortDateString
-
+            chkActive.Checked = True
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
             clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlCategory, True, "--أختر تصنيف--")
 
@@ -365,6 +365,7 @@ Partial Class Analytics
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
                 HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
+                chkActive.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("Active"))
                 FillImages()
 
                 Return True
@@ -488,7 +489,7 @@ Partial Class Analytics
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description
-
+            dtContent.Active = chkActive.Checked
             dtContent.Photo = Photo
             dtContent.ShowOrder = OrderNo
             If cmdSave.CommandArgument = "add" Then

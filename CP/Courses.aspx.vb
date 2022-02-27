@@ -303,6 +303,7 @@ Partial Class Courses
             pf.ClearAll(pnlForm)
             Enabler(True)
             txtDescription.TextValue = String.Empty
+            chkActive.Checked = True
             txtContentDate.Text = DateTime.Now.ToShortDateString
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='CUR'")
         Catch ex As Exception
@@ -344,6 +345,7 @@ Partial Class Courses
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
                 HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
+                chkActive.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("Active"))
                 FillImages()
 
                 Return True
@@ -461,7 +463,7 @@ Partial Class Courses
             dtContent.Title = ContentTitle
             dtContent.Date = ContentDate
             dtContent.Description = Description
-
+            dtContent.Active = chkActive.Checked
             dtContent.Photo = Photo
             dtContent.ShowOrder = OrderNo
             If cmdSave.CommandArgument = "add" Then

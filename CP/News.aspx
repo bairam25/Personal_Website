@@ -398,6 +398,12 @@
                                                                     <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>
+                                                                 <div class="col-md-12">
+                                                                    <label class="input-label">&nbsp;</label>
+                                                                    <div class="c-check">
+                                                                        <asp:CheckBox runat="server" ID="chkActive" ToolTip="تفعيل" Text="تفعيل"></asp:CheckBox>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

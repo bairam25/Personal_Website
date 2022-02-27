@@ -171,6 +171,12 @@
                                                                     <label class="input-label">الوصف</label>
                                                                     <asp:TextBox runat="server" ID="txtDescription" MaxLength="500" TextMode="MultiLine" autocomplete="off" placeholder="الوصف" ToolTip="الوصف"></asp:TextBox>
                                                                 </div>
+                                                                 <div class="col-md-12">
+                                                                    <label class="input-label">&nbsp;</label>
+                                                                    <div class="c-check">
+                                                                        <asp:CheckBox runat="server" ID="chkActive" ToolTip="تفعيل" Text="تفعيل"></asp:CheckBox>
+                                                                    </div>
+                                                                </div>
                                                                 <%-- <div class="col-md-3">
                                                                         <label runat="server" id="Label1" for="ddlCategory" class="active">التصنيف</label>
                                                                         <asp:DropDownList runat="server" TabIndex="4" ID="ddlCategory" CssClass="add_padding" AutoPostBack="true" OnSelectedIndexChanged="CategoryChanged"></asp:DropDownList>
