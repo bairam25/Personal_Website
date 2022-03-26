@@ -22,7 +22,7 @@ Partial Class Courses
     End Sub
     Sub FillCourses()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='CUR' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='CUR' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvCourses.DataSource = dtCon
             lvCourses.DataBind()
         Catch ex As Exception

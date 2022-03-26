@@ -31,7 +31,7 @@ Partial Class Technical_Analysis
                 Dim searchValue As String = Request.QueryString("More").ToString.Replace("-", " ")
                 SeachFilter = "(Category = N'" + searchValue + "')"
             End If
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category,ShowOrder from tblContent where Active='1'  and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder")
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category,ShowOrder from tblContent where Active='1'  and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder desc")
             Dim dv As DataView = New DataView(dtAnlyticsCategory)
             Dim distinctValues As DataTable = dv.ToTable(True, "Category")
             lvAnlyticsCategories.DataSource = distinctValues
@@ -43,7 +43,7 @@ Partial Class Technical_Analysis
             For Each item As ListViewItem In lvCategories.Items
                 Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category=N'" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category=N'" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder desc")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next

@@ -111,8 +111,9 @@
                                 <div class="title"><%# Eval("Name").ToString  %></div>
                                 <div class="subtitle subtitle-typed">
                                     <div class="typing-title">
-                                        <p>مدير استثمار</p>
-                                        <p>خبير أسواق مالية</p>
+                                        <p> <%# Eval("Degree").ToString  %></p>
+                                        <%--<p>مدير استثمار</p>--%>
+                                        <%--<p>خبير أسواق مالية</p>--%>
                                     </div>
                                 </div>
                             </div>
@@ -164,8 +165,9 @@
                                 <div class="title"><%# Eval("Name").ToString  %></div>
                                 <div class="subtitle subtitle-typed">
                                     <div class="typing-title">
-                                        <p>خبير أسواق</p>
-                                        <p>المال والأعمال</p>
+                                         <p> <%# Eval("Degree").ToString  %></p>
+                                       <%-- <p>خبير أسواق</p>
+                                        <p>المال والأعمال</p>--%>
                                     </div>
                                 </div>
 

@@ -53,7 +53,7 @@ Partial Class Album_Videos
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
                 SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
-            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable + " and " + SeachFilter)
+            Dim dt As DataTable = DBManager.Getdatatable(AlbumTable + " and " + SeachFilter + " order by ShowOrder Desc")
             lvGallery.DataSource = dt
             lvGallery.DataBind()
 

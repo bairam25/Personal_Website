@@ -23,7 +23,7 @@ Partial Class Seminars
     End Sub
     Sub FillSeminars()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='SEM' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='SEM' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvSeminars.DataSource = dtCon
             lvSeminars.DataBind()
         Catch ex As Exception

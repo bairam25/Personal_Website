@@ -79,6 +79,13 @@
                                             <div class="row">
                                                 <asp:Panel ID="pgPanel" CssClass="d-flex" runat="server">
                                                     <div class="input-in">
+                                                        <div class="input-group">
+                                                            <asp:DropDownList runat="server" CssClass="form-control ltr" ID="ddlFilterCategories" AutoPostBack="true" OnSelectedIndexChanged="FillGrid">
+                                                             </asp:DropDownList>
+                                                            <span class="input-group-addon" id="basic-addon2">التصنيف</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-in">
                                                         <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
                                                             onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
                                                         <asp:HiddenField ID="hfDeleteAll" runat="server" />

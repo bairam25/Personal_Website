@@ -64,6 +64,7 @@ Partial Class Analytics
         Try
             If Page.IsPostBack = False Then
                 lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
+                clsBindDDL.BindCustomDDLs("select distinct Category from tblContent where Type='ANL' and isnull(Isdeleted,0)=0", "Category", "Category", ddlFilterCategories, True, "--أختر تصنيف--")
                 FillGrid(sender, e)
             End If
             'Set Default values of controls
@@ -88,7 +89,7 @@ Partial Class Analytics
 
                     ViewState("dtNewsTable") = dt
                     ' Initialize the sorting expression.
-                    ViewState("SortExpression") = "ModifiedDate DESC"
+                    ViewState("SortExpression") = "ShowOrder DESC"
                     ' Populate the GridView.
                     BindListView()
                     dplvContent.Visible = False
@@ -121,8 +122,8 @@ Partial Class Analytics
         '    btnClearSearch.Visible = True
         'End If
         Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like N'%" & txtSearch.Text & "%')")
-
-        Return Search
+        Dim Category As String = IIf(ddlFilterCategories.SelectedValue = "0", "1=1", "Category=N'" & ddlFilterCategories.SelectedValue & "'")
+        Return Search & " and " & Category
 
     End Function
 

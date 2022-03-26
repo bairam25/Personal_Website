@@ -25,7 +25,7 @@ Partial Class News
 
     Sub FillConferences()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvConferences.DataSource = dtCon
             lvConferences.DataBind()
         Catch ex As Exception

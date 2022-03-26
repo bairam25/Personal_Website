@@ -30,7 +30,7 @@ Partial Class News
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
                 SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
-            Dim dtNews As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder")
+            Dim dtNews As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and Type='NEW' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder Desc")
             lvNews.DataSource = dtNews
             lvNews.DataBind()
         Catch ex As Exception

@@ -85,7 +85,7 @@ Partial Class Seminars
 
                     ViewState("dtNewsTable") = dt
                     ' Initialize the sorting expression.
-                    ViewState("SortExpression") = "ModifiedDate DESC"
+                    ViewState("SortExpression") = "ShowOrder DESC"
                     ' Populate the GridView.
                     BindListView()
                     dplvContent.Visible = False
