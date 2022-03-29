@@ -400,7 +400,7 @@
                                                                 </div>
                                                                 <div class="col-md-2 form-group">
                                                                     <label class="input-label required">الترتيب</label>
-                                                                    <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="2" onkeypress="return isNumber(event);"></asp:TextBox>
+                                                                    <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="6" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
                                                                 </div>
