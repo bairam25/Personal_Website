@@ -96,20 +96,18 @@ Partial Class Home
 
     Sub FillCategories()
         Try
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category,ShowOrder from tblContent where Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
-            Dim dv As DataView = New DataView(dtAnlyticsCategory)
-            Dim distinctValues As DataTable = dv.ToTable(True, "Category")
-            lvAnlyticsCategories.DataSource = distinctValues
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and ShowInHome='1'  and isnull(IsDeleted,0)=0 order by ShowOrder")
+            lvAnlyticsCategories.DataSource = dtAnlyticsCategory
             lvAnlyticsCategories.DataBind()
-            lvCategories.DataSource = distinctValues
+            lvCategories.DataSource = dtAnlyticsCategory
             lvCategories.DataBind()
-            If distinctValues.Rows.Count > 0 Then
-                lbShowMoreTechAnalysis.HRef = "Technical_Analysis.aspx?More=" & distinctValues.Rows(0).Item(0).ToString.Replace(" ", "-")
+            If dtAnlyticsCategory.Rows.Count > 0 Then
+                lbShowMoreTechAnalysis.HRef = "Technical_Analysis.aspx?CategoryId=" & dtAnlyticsCategory.Rows(0).Item("CategoryId").ToString.Replace(" ", "-")
             End If
             For Each item As ListViewItem In lvCategories.Items
-                Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
+                Dim CategoryId As String = CType(item.FindControl("lblCategoryId"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category=N'" + Category + "' and Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where CategoryId='" + CategoryId + "' and Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next

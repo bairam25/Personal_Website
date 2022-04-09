@@ -423,6 +423,6 @@
 function SetCategory(sender) {
     const cat = $(sender).data("category");
     if (document.getElementById("hfSelectedCategory") && document.getElementById("PageContent_lbShowMoreTechAnalysis")) {
-        document.getElementById("PageContent_lbShowMoreTechAnalysis").href = "Technical_Analysis.aspx?More=" + cat;
+        document.getElementById("PageContent_lbShowMoreTechAnalysis").href = "Technical_Analysis.aspx?CategoryId=" + cat;
     }
 }

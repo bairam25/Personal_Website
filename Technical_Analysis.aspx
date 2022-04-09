@@ -22,7 +22,7 @@
                                 <asp:ListView ID="lvAnlyticsCategories" runat="server">
                                     <ItemTemplate>
                                         <li class="nav-item">
-                                            <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>' id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' role="tab" aria-selected="true"><%# Eval("Category") %></a>
+                                            <a class='<%# ActiveCategory(Eval("CategoryId"), Container.DataItemIndex.ToString, "1") %>' id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' role="tab" aria-selected="true"><%# Eval("Category") %></a>
                                         </li>
                                     </ItemTemplate>
                                 </asp:ListView>
@@ -39,8 +39,9 @@
                             <div class="tab-content w-100" id="v-tabContent">
                                 <asp:ListView ID="lvCategories" runat="server">
                                     <ItemTemplate>
+                                        <asp:Label ID="lblCategoryId" runat="server" Text='<%# Eval("CategoryId") %>' Visible="false"></asp:Label>
                                         <asp:Label ID="lblCategory" runat="server" Text='<%# Eval("Category") %>' Visible="false"></asp:Label>
-                                        <div class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "tab-pane fade show active", "tab-pane fade") %>' id='<%# "v-pills-" + Container.DataItemIndex.ToString %>' role="tabpanel" aria-labelledby='<%#"v-tab-" + Container.DataItemIndex.ToString %>'>
+                                        <div class='<%# ActiveCategory(Eval("CategoryId"), Container.DataItemIndex.ToString, "2")%>' id='<%# "v-pills-" + Container.DataItemIndex.ToString %>' role="tabpanel" aria-labelledby='<%#"v-tab-" + Container.DataItemIndex.ToString %>'>
                                             <asp:ListView ID="lvAnalytics" runat="server">
                                                 <ItemTemplate>
                                                     <!-- Start Section -->

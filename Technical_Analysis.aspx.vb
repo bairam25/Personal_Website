@@ -27,23 +27,18 @@ Partial Class Technical_Analysis
             If Request.QueryString("search") IsNot Nothing Then
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
                 SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
-            ElseIf Request.QueryString("More") IsNot Nothing Then
-                Dim searchValue As String = Request.QueryString("More").ToString.Replace("-", " ")
-                SeachFilter = "(Category = N'" + searchValue + "')"
             End If
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  distinct Category as Category,ShowOrder from tblContent where Active='1'  and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder desc")
-            Dim dv As DataView = New DataView(dtAnlyticsCategory)
-            Dim distinctValues As DataTable = dv.ToTable(True, "Category")
-            lvAnlyticsCategories.DataSource = distinctValues
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and isnull(IsDeleted,0)=0  order by ShowOrder desc")
+            lvAnlyticsCategories.DataSource = dtAnlyticsCategory
             lvAnlyticsCategories.DataBind()
 
-            lvCategories.DataSource = distinctValues
+            lvCategories.DataSource = dtAnlyticsCategory
             lvCategories.DataBind()
 
             For Each item As ListViewItem In lvCategories.Items
-                Dim Category As String = CType(item.FindControl("lblCategory"), Label).Text
+                Dim CategoryId As String = CType(item.FindControl("lblCategoryId"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where Category=N'" + Category + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder desc")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where CategoryId='" + CategoryId + "' and Active='1' and Type='ANL' and isnull(IsDeleted,0)=0 and " + SeachFilter + " order by ShowOrder desc")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next
@@ -51,4 +46,34 @@ Partial Class Technical_Analysis
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+
+    Protected Function ActiveCategory(CategoryId As String, index As Integer, Type As String) As String
+        Try
+            Dim ActiveCatClass As String = ""
+            Dim NotActiveCatClass As String = ""
+            Select Case Type
+                Case "1"
+                    ActiveCatClass = "nav-link acive active"
+                    NotActiveCatClass = "nav-link"
+                Case "2"
+                    ActiveCatClass = "tab-pane fade show active"
+                    NotActiveCatClass = "tab-pane fade"
+            End Select
+
+            'check query string and set class depend on selected category else get first category
+            If Request.QueryString("CategoryId") IsNot Nothing Then
+                Dim QueryCategory As String = Request.QueryString("CategoryId").ToString.Replace("-", " ")
+                If QueryCategory = CategoryId Then
+                    Return ActiveCatClass
+                End If
+            Else
+                If index = 0 Then
+                    Return ActiveCatClass
+                End If
+            End If
+            Return NotActiveCatClass
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Function
 End Class

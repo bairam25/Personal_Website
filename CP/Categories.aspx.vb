@@ -5,18 +5,15 @@ Imports BusinessLayer.BusinessLayer
 Imports clsMessages
 
 #End Region
-Partial Class Analytics
+Partial Class Categories
     Inherits System.Web.UI.Page
 #Region "Global Variables"
     Dim pf As New PublicFunctions
     Dim UserId As String = "1"
-    Dim CategoryId As String
-    Dim ContentTitle As String
-    Dim ContentDate As String
+    Dim CategoryName As String
     Dim Description As String
-    Dim Photo As String
     Dim OrderNo As String
-    Dim ContentTable As String = "select * from tblContent where Type='ANL'"
+    Dim ContentTable As String = "select * from tblCategories where "
 #End Region
 #Region "Public_Functions"
 
@@ -41,13 +38,9 @@ Partial Class Analytics
     ''' </summary>
     Sub SetControlFields()
         Try
-            ContentTitle = txtTitle.Text
-            CategoryId = ddlCategory.SelectedValue
+            CategoryName = txtCategory.Text
             Description = txtDescription.TextValue
-            Photo = HiddenContentImg.Text
-            ContentDate = PublicFunctions.DateFormat(txtContentDate.Text, "dd/MM/yyyy")
             OrderNo = PublicFunctions.IntFormat(txtOrderNo.Text)
-            FillImages()
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
@@ -64,7 +57,6 @@ Partial Class Analytics
         Try
             If Page.IsPostBack = False Then
                 lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
-                clsBindDDL.BindCustomDDLs("select Id,Name from tblCategories where  isnull(Isdeleted,0)=0", "Name", "Id", ddlFilterCategories, True, "--أختر تصنيف--")
                 FillGrid(sender, e)
             End If
             'Set Default values of controls
@@ -83,7 +75,7 @@ Partial Class Analytics
     ''' </summary>
     Sub FillGrid(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim dt As DataTable = DBManager.Getdatatable(ContentTable & " and isnull(IsDeleted,0)=0 and " & CollectConditions(sender, e))
+            Dim dt As DataTable = DBManager.Getdatatable(ContentTable & "  isnull(IsDeleted,0)=0 and " & CollectConditions(sender, e))
             If dt IsNot Nothing Then
                 If dt.Rows.Count > 0 Then
 
@@ -121,9 +113,8 @@ Partial Class Analytics
         'If txtSearch.Text <> String.Empty Then
         '    btnClearSearch.Visible = True
         'End If
-        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like N'%" & txtSearch.Text & "%')")
-        Dim Category As String = IIf(ddlFilterCategories.SelectedValue = "0", "1=1", "CategoryId='" & ddlFilterCategories.SelectedValue & "'")
-        Return Search & " and " & Category
+        Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Name like N'%" & txtSearch.Text & "%')")
+        Return Search
 
     End Function
 
@@ -227,7 +218,7 @@ Partial Class Analytics
             End While
 
         Catch ex As Exception
-            clsMessages.ShowErrorMessgage(lblRes, "Error Code: " & Application("Errors").Select("exType='" & ex.GetType().Name.ToString & "'")(0).ItemArray(2) & "</br> " & Application("Errors").Select("exType='" & ex.GetType().Name.ToString & "'")(0).ItemArray(3), Me)
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
 
     End Sub
@@ -251,7 +242,7 @@ Partial Class Analytics
                 StatusName = "Deactive"
                 MSG = "تم إالغاء التفعيل بنجاح"
             End If
-            Updated = DBManager.ExcuteQuery("Update tblContent set Active ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
+            Updated = DBManager.ExcuteQuery("Update TblCategories set Active ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
             If Updated = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.CUSTOMSuccess, Page, Nothing, MSG)
             End If
@@ -279,7 +270,7 @@ Partial Class Analytics
                 StatusName = "Hide"
                 MSG = "تم إالغاء العرض بنجاح"
             End If
-            Updated = DBManager.ExcuteQuery("Update tblContent set ShowInHome ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
+            Updated = DBManager.ExcuteQuery("Update tblCategories set ShowInHome ='" + chk.Checked.ToString + "',ModifiedDate=getdate() where Id='" + ItemId + "' ")
             If Updated = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.CUSTOMSuccess, Page, Nothing, MSG)
             End If
@@ -298,16 +289,11 @@ Partial Class Analytics
         Try
             cmdSave.CommandArgument = "add"
             lblContentId.Text = ""
-            imgContent.ImageUrl = "~/images/img-up.png"
-            HiddenContentImg.Text = ""
             pf.ClearAll(pnlForm)
             txtDescription.TextValue = String.Empty
-            ddlCategory.SelectedIndex = -1
             Enabler(True)
-            txtContentDate.Text = DateTime.Now.ToShortDateString
             chkActive.Checked = True
-            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblContent where isnull(isDeleted,0)=0 and Type='ANL'")
-            clsBindDDL.BindCustomDDLs("select Id,Name from tblCategories where  isnull(Isdeleted,0)=0", "Name", "Id", ddlCategory, True, "--أختر تصنيف--")
+            txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblCategories where isnull(isDeleted,0)=0 ")
 
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
@@ -325,7 +311,6 @@ Partial Class Analytics
             cmdSave.CommandArgument = "edit"
             lblContentId.Text = Sender.commandargument.ToString
             pf.ClearAll(pnlForm)
-            clsBindDDL.BindCustomDDLs("select Id,Name from tblCategories where isnull(Isdeleted,0)=0", "Name", "Id", ddlCategory, True, "--أختر تصنيف--")
 
             If FillForm() Then
                 Enabler(True)
@@ -341,16 +326,12 @@ Partial Class Analytics
     Private Function FillForm() As Boolean
         Try
             Dim dt As New DataTable
-            dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
+            dt = DBManager.Getdatatable("select * from tblCategories where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
-                txtTitle.Text = dt.Rows(0).Item("Title").ToString
-                ddlCategory.SelectedValue = dt.Rows(0).Item("CategoryId").ToString
-                txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
+                txtCategory.Text = dt.Rows(0).Item("name").ToString
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
-                HiddenContentImg.Text = dt.Rows(0).Item("Photo").ToString
                 chkActive.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("Active"))
-                FillImages()
 
                 Return True
             Else
@@ -371,7 +352,7 @@ Partial Class Analytics
         Try
             Dim ContentId As String = Sender.commandargument
 
-            If DBManager.ExcuteQuery("update tblContent SET  Isdeleted = 'True' where Id= '" + ContentId + "'") = 1 Then
+            If DBManager.ExcuteQuery("update tblCategories SET  Isdeleted = 'True' where Id= '" + ContentId + "'") = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Delete, Me.Page)
                 FillGrid(Sender, e)
             End If
@@ -410,8 +391,8 @@ Partial Class Analytics
     ''' </summary>
     Protected Sub Save(ByVal Sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim daTabeFactory As New TblContentFactory
-            Dim dtTable As New TblContent
+            Dim daTabeFactory As New TblCategoriesFactory
+            Dim dtTable As New TblCategories
             If cmdSave.CommandArgument = "add" Then
                 If FillDT(dtTable) = False Then
                     Exit Sub
@@ -426,7 +407,7 @@ Partial Class Analytics
                 End If
 
             Else
-                dtTable = daTabeFactory.GetAllBy(TblContent.TblContentFields.Id, lblContentId.Text)(0)
+                dtTable = daTabeFactory.GetAllBy(TblCategories.TblCategoriesFields.Id, lblContentId.Text)(0)
                 If FillDT(dtTable) = False Then
                     Exit Sub
                 End If
@@ -449,26 +430,17 @@ Partial Class Analytics
     ''' <summary>
     ''' Fill dtContent from controls in the panel form.
     ''' </summary>
-    Protected Function FillDT(ByRef dtContent As TblContent) As Boolean
+    Protected Function FillDT(ByRef dtContent As TblCategories) As Boolean
         Try
             If Not IsNumeric(OrderNo) Then
                 clsMessages.ShowInfoMessgage(lblRes, "Invalid Order", Me)
                 txtOrderNo.Focus()
                 Return False
             End If
-            If Not IsDate(ContentDate) Then
-                clsMessages.ShowInfoMessgage(lblRes, "Invalid Date", Me)
-                txtContentDate.Focus()
-                Return False
-            End If
-            dtContent.Type = "ANL"
-            dtContent.CategoryId = CategoryId
-            dtContent.Category = ddlCategory.SelectedItem.Text
-            dtContent.Title = ContentTitle
-            dtContent.Date = ContentDate
+
+            dtContent.Name = CategoryName
             dtContent.Description = Description
             dtContent.Active = chkActive.Checked
-            dtContent.Photo = Photo
             dtContent.ShowOrder = OrderNo
             If cmdSave.CommandArgument = "add" Then
                 dtContent.CreatedDate = DateTime.Now
@@ -491,76 +463,15 @@ Partial Class Analytics
     Protected Sub Cancel(ByVal Sender As Object, ByVal e As System.EventArgs)
         Try
 
-            imgContent.ImageUrl = "~/images/img-up.png"
-            HiddenContentImg.Text = ""
             lblContentId.Text = ""
             txtDescription.TextValue = String.Empty
-            ddlCategory.SelectedIndex = -1
             Enabler(False)
             FillGrid(Sender, e)
-            clsBindDDL.BindCustomDDLs("select Id,Name from tblCategories where  isnull(Isdeleted,0)=0", "Name", "Id", ddlCategory, True, "--أختر تصنيف--")
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
 
 #End Region
-#Region "Uploader"
-    Protected Sub ContentPhotoUploaded(ByVal sender As Object, ByVal e As EventArgs)
-        Try
-            ' Check that there is a file
-            If fuPhoto.PostedFile IsNot Nothing Then
 
-                Dim filePath As String = "~/ContentPhotos/" & lblDateContent.Text + "_" + fuPhoto.FileName
-
-                ' Check file size (mustn’t be 0)
-                Dim myFile As HttpPostedFile = fuPhoto.PostedFile
-                Dim nFileLen As Integer = myFile.ContentLength
-                If (nFileLen > 0) Then
-                    ' Read file into a data stream
-                    Dim myData As Byte() = New [Byte](nFileLen - 1) {}
-                    myFile.InputStream.Read(myData, 0, nFileLen)
-                    myFile.InputStream.Dispose()
-
-                    ' Save the stream to disk as temporary file. make sure the path is unique!
-                    Dim newFile As New System.IO.FileStream(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""), System.IO.FileMode.Create)
-                    newFile.Write(myData, 0, myData.Length)
-
-
-                    ' run ALL the image optimisations you want here..... make sure your paths are unique
-                    ' you can use these booleans later if you need the results for your own labels or so.
-                    ' dont call the function after the file has been closed.
-                    ''''''''''''''''''''''''''''''''' Main Photo Size'''''''''''''''''''''''''''''''
-
-                    Dim MainWidth As String = "800"
-                    Dim MainHeight As String = "600"
-
-                    ImgResize.ResizeImageAndUpload(newFile, filePath, MainHeight, MainWidth)
-
-
-                    ' tidy up and delete the temp file.
-                    newFile.Close()
-                    System.IO.File.Delete(Server.MapPath(filePath & "_temp" + System.IO.Path.GetExtension(myFile.FileName).ToLower() + ""))
-                End If
-            End If
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-    Sub FillImages()
-        Try
-            If HiddenContentImg.Text IsNot Nothing And HiddenContentImg.Text <> "" Then
-                imgContent.ImageUrl = HiddenContentImg.Text
-            Else
-                HiddenContentImg.Text = ""
-                imgContent.ImageUrl = "~/images/img-up.png"
-            End If
-
-        Catch ex As Exception
-            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
-        End Try
-    End Sub
-
-#End Region
 End Class

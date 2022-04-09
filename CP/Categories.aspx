@@ -1,4 +1,4 @@
-﻿<%@ Page Theme="Theme1" Language="VB" AutoEventWireup="false" CodeFile="Analytics.aspx.vb" Inherits="Analytics" %>
+﻿<%@ Page Theme="Theme1" Language="VB" AutoEventWireup="false" CodeFile="Categories.aspx.vb" Inherits="Categories" %>
 
 <%@ Register Src="UserControls/HTMLEditor.ascx" TagPrefix="uc1" TagName="HTMLEditor" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <title>التحليللات</title>
+    <title>تصنيف التحليللات</title>
     <link rel="shortcut icon" href="../images/logo/favi.png" />
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,12 +45,12 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-6 col-xs-5 text-left">
-                        <h4>التحليللات</h4>
+                        <h4>تصنيف التحليللات</h4>
                     </div>
                     <div class="col-sm-6 col-xs-7">
                         <ol class="breadcrumb">
                             <li><a href="../Home.aspx" target="_blank"><i class="ti-home"></i></a></li>
-                            <li>التحليللات</li>
+                            <li>تصنيف التحليللات</li>
                         </ol>
                     </div>
                 </div>
@@ -78,13 +78,7 @@
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
                                                 <asp:Panel ID="pgPanel" CssClass="d-flex" runat="server">
-                                                    <div class="input-in">
-                                                        <div class="input-group">
-                                                            <asp:DropDownList runat="server" CssClass="form-control ltr" ID="ddlFilterCategories" AutoPostBack="true" OnSelectedIndexChanged="FillGrid">
-                                                             </asp:DropDownList>
-                                                            <span class="input-group-addon" id="basic-addon2">التصنيف</span>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="input-in">
                                                         <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
                                                             onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
@@ -129,7 +123,7 @@
                                             <div class="row">
                                                 <div class="input-280 input-in searchContiner pull-right">
                                                     <div class="input-group">
-                                                        <asp:TextBox ID="txtSearch" runat="server" type="text" placeholder="بحث بالعنوان " AutoPostBack="true" OnTextChanged="FillGrid" onkeypress="return isString(event);" onkeyup="ValidateChars(this);ShowHideClearSearch(this.value);" ToolTip="بحث بالعنوان "></asp:TextBox>
+                                                        <asp:TextBox ID="txtSearch" runat="server" type="text" placeholder="بحث باسم التصنيف " AutoPostBack="true" OnTextChanged="FillGrid" onkeypress="return isString(event);" onkeyup="ValidateChars(this);ShowHideClearSearch(this.value);" ToolTip="بحث بالعنوان "></asp:TextBox>
 
                                                         <asp:LinkButton runat="server" SkinID="clear-search" ID="cmdClear" title="مسح" OnClientClick="$('#txtSearch').val('');">&times;</asp:LinkButton>
                                                         <span class="input-group-btn">
@@ -163,16 +157,11 @@
                                                             <th>
                                                                 <asp:CheckBox Text="" runat="server" ID="ckAll" AutoPostBack="true" OnCheckedChanged="CheckAll" /></th>
                                                             <th>م</th>
-                                                            <th class="upnDownArrow" id="Date">
-                                                                <asp:LinkButton ID="lblDate" CommandArgument="Date" CommandName="Sort" runat="server">التاريخ</asp:LinkButton>
-                                                            </th>
-                                                            <th>الصور</th>
-                                                            <th class="upnDownArrow" id="Category">
+                                                           
+                                                            <th class="upnDownArrow" id="Name">
                                                                 <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
                                                             </th>
-                                                            <th class="upnDownArrow" id="Title">
-                                                                <asp:LinkButton ID="lbNewsTitle" CommandArgument="Title" CommandName="Sort" runat="server">العنوان</asp:LinkButton>
-                                                            </th>
+                                                        
                                                             <th class="upnDownArrow" id="ShowOrder">
                                                                 <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
                                                             </th>
@@ -199,20 +188,11 @@
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
                                                             <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
                                                         </td>
+                                                        
                                                         <td>
-                                                            <asp:Label runat="server" Text='<%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd/MM/yyyy") %>'></asp:Label>
+                                                            <asp:Label runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                                         </td>
-                                                        <td>
-                                                            <asp:Image ID="ImgbigPhoto" CssClass="td-img img-thumbnail" runat="server" ImageUrl='<%# Eval("Photo")%>' />
-
-                                                            <%--<img runat="server" class="td-img img-thumbnail" alt='<%# Eval("Title")%>' title='<%# Eval("Title")%>' src='<%# Eval("MediaPath")%>' onclick="ImagePreview(this.src,this.alt)" />--%>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# Eval("Category") %>'></asp:Label>
-                                                        </td>
-                                                        <td>
-                                                            <asp:Label runat="server" Text='<%# Eval("Title") %>'></asp:Label>
-                                                        </td>
+                                                       
                                                         <td>
                                                             <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
                                                         </td>
@@ -265,7 +245,7 @@
                                                     <table style="width: 100%;">
                                                         <tr class="EmptyRowStyle">
                                                             <td>
-                                                                <div>لا توجد تحليللات</div>
+                                                                <div>لا توجد تصنيفات</div>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -365,12 +345,11 @@
                                 <asp:Label ID="lblContentId" runat="server" Visible="false"></asp:Label>
 
                                 <div class="mb0" id="accordion" role="tablist" aria-multiselectable="false">
-                                    <div class="user-flex-panel">
                                         <div class="left-700">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading" role="tab" id="heading1">
                                                     <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات التحليل</a>
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات التصنيف</a>
                                                     </h4>
                                                 </div>
 
@@ -379,40 +358,20 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                
-                                                                <div class="col-md-4 form-group" id="divExistCategory" runat="server">
+                                                                <div class="col-md-4 form-group" id="divNewCategory" runat="server">
                                                                     <label class="input-label required">التصنيف</label>
-                                                                    <asp:DropDownList ID="ddlCategory" runat="server">
-                                                                    </asp:DropDownList>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="displaynone" InitialValue="0"
-                                                                        ValidationGroup="vContent" ControlToValidate="ddlCategory" ErrorMessage="أختر التصنيف"></asp:RequiredFieldValidator>
+                                                                    <asp:TextBox runat="server" ID="txtCategory" MaxLength="200"></asp:TextBox>
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
+                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
                                                                 </div>
+                                                                
                                                                 <div class="col-md-2 form-group">
                                                                     <label class="input-label required">الترتيب</label>
                                                                     <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="6" onkeypress="return isNumber(event);"></asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
                                                                         ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
                                                                 </div>
-                                                                <div class="col-md-3 form-group">
-                                                                    <label class="input-label required">التاريخ</label>
-                                                                    <asp:TextBox ID="txtContentDate" runat="server" MaxLength="10" onkeypress="return isDate(event);"></asp:TextBox>
-                                                                    <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender1" runat="server"
-                                                                        Enabled="True" TargetControlID="txtContentDate" DaysModeTitleFormat="dd/MM/yyyy"
-                                                                        TodaysDateFormat="dd/MM/yyyy" Format="dd/MM/yyyy">
-                                                                    </asp:CalendarExtender>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="أدخل تاريخ التحليل" ValidationGroup="vNews"
-                                                                        ControlToValidate="txtContentDate" EnableClientScript="true" Display="Dynamic" SetFocusOnError="true" ErrorMessage="Required News Date"></asp:RequiredFieldValidator>
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ValidationGroup="vNews" runat="server"
-                                                                        ErrorMessage="Invalid News Date" ControlToValidate="txtContentDate" Display="Dynamic"
-                                                                        ValidationExpression="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
-                                                                        CssClass="in-validate" SetFocusOnError="true"></asp:RegularExpressionValidator>
-                                                                </div>
-
-                                                                <div class="col-md-9 form-group">
-                                                                    <label class="input-label required">العنوان</label>
-                                                                    <asp:TextBox runat="server" ID="txtTitle" MaxLength="100"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="displaynone"
-                                                                        ValidationGroup="vContent" ControlToValidate="txtTitle" ErrorMessage="أدخل العنوان"></asp:RequiredFieldValidator>
-                                                                </div>
+                                                               
                                                                 <div class="col-md-2">
                                                                     <label class="input-label">&nbsp;</label>
                                                                     <div class="c-check">
@@ -430,42 +389,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="right-300 pos-relavtive">
-                                            <div class="demo-upload-head m0">
-                                                <h3 class="required">الصور</h3>
-                                            </div>
-                                            <div class="update-progress-img">
-                                                <asp:Image ID="imgLoader" runat="server" ClientIDMode="Static" ImageUrl="~/images/image-uploader.gif" Style="display: none;" />
-                                            </div>
-                                            <fieldset>
-
-                                                <asp:Panel ID="pnlTLCopy" runat="server" CssClass="demo-upload-container pb5">
-                                                    <div class="custom-file-container">
-
-                                                        <asp:HyperLink ID="hlViewContent" CssClass="custom-file-container__image-preview h-img-pre" runat="server" ClientIDMode="Static" Target="_blank">
-                                                            <asp:Image ID="imgContent" ClientIDMode="Static" runat="server" Style="max-height: 100%; max-width: 100%" ImageUrl="~/images/img-up.png" />
-                                                        </asp:HyperLink>
-                                                        <asp:TextBox ID="HiddenContentImg" runat="server" ClientIDMode="Static" Style="display: none"></asp:TextBox>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="displaynone"
-                                                            ValidationGroup="vContent" ControlToValidate="HiddenContentImg" ErrorMessage="تحميل الصورة"></asp:RequiredFieldValidator>
-
-                                                        <asp:Panel ID="pnlfuPhoto" runat="server" CssClass="photo-upload-box_inactive">
-                                                            <label class="custom-file-container__custom-file">
-                                                                <asp:AsyncFileUpload ID="fuPhoto" CssClass="inputfile inputfile-1" runat="server" OnUploadedComplete="ContentPhotoUploaded"
-                                                                    OnClientUploadComplete="UploadComplete" OnClientUploadError="UploadError" OnClientUploadStarted="UploadStarted"
-                                                                    FailedValidation="False" />
-
-                                                                <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                                                <span class="custom-file-container__custom-file__custom-file-control" title="Logo"></span>
-                                                            </label>
-                                                        </asp:Panel>
-                                                    </div>
-
-                                                </asp:Panel>
-                                            </fieldset>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -473,17 +396,9 @@
 
 
                     </asp:Panel>
-                    <!-- The Modal -->
-                    <div id="previewImage" class="previewImage">
 
-                        <!-- The Close Button -->
-                        <a class="Myclose" onclick='closeImgPopup();'>&times;</a>
-
-                        <!-- Modal Content (The Image) -->
-                        <img class="previewImage-content" id="img01" style="max-height: 515px;" />
-                    </div>
                 </div>
-                <script src="JSCode/imgPreview.js"></script>
+               
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>
