@@ -121,6 +121,9 @@
                          <li>
                             <a href="Conferences.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-solar-panel"></i><span>المؤتمرات</span></a>
                         </li>
+                        <li>
+                            <a href="Categories.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-chart-pie"></i><span>تصنيف التحليلات</span></a>
+                        </li>
                          <li>
                             <a href="Analytics.aspx" onclick="LoadFrame(this);return false;" ><i class="fa fa-chart-bar"></i><span>تحليلات الاسواق المالية</span></a>
                         </li>

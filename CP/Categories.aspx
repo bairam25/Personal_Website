@@ -80,31 +80,6 @@
                                                 <asp:Panel ID="pgPanel" CssClass="d-flex" runat="server">
 
                                                     <div class="input-in">
-                                                        <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
-                                                            onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
-                                                        <asp:HiddenField ID="hfDeleteAll" runat="server" />
-                                                        <asp:ModalPopupExtender ID="mpeDeleteAll" ClientIDMode="Static" runat="server" PopupControlID="pnlDeleteAll" TargetControlID="hfDeleteAll"
-                                                            CancelControlID="lbNoDeleteAll" BackgroundCssClass="modalBackground">
-                                                        </asp:ModalPopupExtender>
-                                                        <asp:Panel ID="pnlDeleteAll" runat="server" ClientIDMode="Static" CssClass="modal-n modalPopup" align="center" Style="display: none">
-                                                            <div class="header">
-                                                                رسالة تأكيد
-                                                            </div>
-                                                            <div class="body">
-                                                                <label>تأكيد حذف العناصر المحددة ؟</label>
-                                                            </div>
-
-                                                            <div class="footer">
-                                                                <ul class="btn-uls mb0">
-                                                                    <li class="btn-lis">
-                                                                        <asp:LinkButton ID="lbYesDeleteAll" runat="server" SkinID="btn-green" OnClick="DeleteAll" CausesValidation="false">نعم<i class="ti-check"></i></asp:LinkButton></li>
-                                                                    <li class="btn-lis">
-                                                                        <asp:LinkButton ID="lbNoDeleteAll" runat="server" SkinID="btn-red">لا<i class="ti-close"></i></asp:LinkButton></li>
-                                                                </ul>
-                                                            </div>
-                                                        </asp:Panel>
-                                                    </div>
-                                                    <div class="input-in">
                                                         <div class="input-group">
                                                             <asp:DropDownList runat="server" CssClass="form-control ltr" ID="ddlPager" AutoPostBack="true" OnSelectedIndexChanged="PageSize_Changed">
                                                                 <asp:ListItem Value="10">10</asp:ListItem>
@@ -154,8 +129,6 @@
                                                 <LayoutTemplate>
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
-                                                            <th>
-                                                                <asp:CheckBox Text="" runat="server" ID="ckAll" AutoPostBack="true" OnCheckedChanged="CheckAll" /></th>
                                                             <th>م</th>
                                                            
                                                             <th class="upnDownArrow" id="Name">
@@ -173,7 +146,7 @@
                                                             </th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
-                                                            <th id="PreviewHeader">العرض</th>
+                                                           
                                                         </tr>
                                                         <tr id="itemPlaceholder">
                                                         </tr>
@@ -181,9 +154,7 @@
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
                                                     <tr id="lvItemRow" runat="server">
-                                                        <td>
-                                                            <asp:CheckBox ID="chkSelect" runat="server" />
-                                                        </td>
+                                                        
                                                         <td>
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
                                                             <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
@@ -236,9 +207,7 @@
                                                                 </div>
                                                             </asp:Panel>
                                                         </td>
-                                                        <td>
-                                                            <a href='../Content_Details.aspx?Id=<%# Eval("Id") %>' class="btni-xxxs btn-green brd-50" title="مشاهدة العرض" target="_blank"><i class="fa-eye fa"></i></a>
-                                                        </td>
+                                                        
                                                     </tr>
                                                 </ItemTemplate>
                                                 <EmptyDataTemplate>
