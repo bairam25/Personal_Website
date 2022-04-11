@@ -41,7 +41,7 @@ Partial Class Home
 
     Sub FillNews()
         Try
-            Dim dtNews As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and ShowInHome='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtNews As DataTable = DBManager.Getdatatable("Select * from tblContent where Active='1' and ShowInHome='1' and Type='NEW' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvNews.DataSource = dtNews
             lvNews.DataBind()
         Catch ex As Exception
@@ -50,7 +50,7 @@ Partial Class Home
     End Sub
     Sub FillVediosGallary()
         Try
-            Dim dtGallery As DataTable = DBManager.Getdatatable("Select * from vw_Allbum where Type='V' and Active='1' and ShowInHome='1'  order by ShowOrder")
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select * from vw_Allbum where Type='V' and Active='1' and ShowInHome='1'  order by ShowOrder desc")
             lvGallery.DataSource = dtGallery
             lvGallery.DataBind()
         Catch ex As Exception
@@ -59,7 +59,7 @@ Partial Class Home
     End Sub
     Sub FillPhotoGallary()
         Try
-            Dim dtGallery As DataTable = DBManager.Getdatatable("Select  * from vw_Allbum where Type='A' and Active='1' and ShowInHome='1'  order by ShowOrder")
+            Dim dtGallery As DataTable = DBManager.Getdatatable("Select  * from vw_Allbum where Type='A' and Active='1' and ShowInHome='1'  order by ShowOrder desc")
             lvPhotos.DataSource = dtGallery
             lvPhotos.DataBind()
         Catch ex As Exception
@@ -68,7 +68,7 @@ Partial Class Home
     End Sub
     Sub FillSeminars()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='SEM' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='SEM' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvSeminars.DataSource = dtCon
             lvSeminars.DataBind()
         Catch ex As Exception
@@ -77,7 +77,7 @@ Partial Class Home
     End Sub
     Sub FillCourses()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='CUR' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='CUR' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvCourses.DataSource = dtCon
             lvCourses.DataBind()
         Catch ex As Exception
@@ -86,7 +86,7 @@ Partial Class Home
     End Sub
     Sub FillConferences()
         Try
-            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim dtCon As DataTable = DBManager.Getdatatable("Select  * from tblContent where Active='1' and ShowInHome='1' and Type='COF' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
             lvConferences.DataSource = dtCon
             lvConferences.DataBind()
         Catch ex As Exception
@@ -96,7 +96,7 @@ Partial Class Home
 
     Sub FillCategories()
         Try
-            Dim qry = "Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and ShowInHome='1' and isnull(IsDeleted,0)=0 " &
+            Dim qry = "Select  Id as CategoryId,Name as Category,ShowOrder desc from tblCategories where Active='1' and ShowInHome='1' and isnull(IsDeleted,0)=0 " &
                       " and Id in (select CategoryId from tblContent where Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 ) " &
                       " order by ShowOrder"
             Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable(qry)
@@ -110,7 +110,7 @@ Partial Class Home
             For Each item As ListViewItem In lvCategories.Items
                 Dim CategoryId As String = CType(item.FindControl("lblCategoryId"), Label).Text
                 Dim lvAnalytics As ListView = CType(item.FindControl("lvAnalytics"), ListView)
-                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where CategoryId='" + CategoryId + "' and Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder")
+                Dim dtAnlytics As DataTable = DBManager.Getdatatable("Select * from tblContent where CategoryId='" + CategoryId + "' and Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 order by ShowOrder desc")
                 lvAnalytics.DataSource = dtAnlytics
                 lvAnalytics.DataBind()
             Next
