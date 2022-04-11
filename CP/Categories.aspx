@@ -130,11 +130,11 @@
                                                     <table id="itemPlaceholderContainer" runat="server" class="table tbl-table">
                                                         <tr class="HeaderStyle">
                                                             <th>م</th>
-                                                           
+
                                                             <th class="upnDownArrow" id="Name">
                                                                 <asp:LinkButton ID="lbCategory" CommandArgument="Category" CommandName="Sort" runat="server">التصنيف</asp:LinkButton>
                                                             </th>
-                                                        
+
                                                             <th class="upnDownArrow" id="ShowOrder">
                                                                 <asp:LinkButton ID="lbShowOrder" CommandArgument="ShowOrder" CommandName="Sort" runat="server">الترتيب</asp:LinkButton>
                                                             </th>
@@ -146,7 +146,7 @@
                                                             </th>
                                                             <th id="EditHeader">تعديل</th>
                                                             <th id="DeleteHeader">حذف</th>
-                                                           
+
                                                         </tr>
                                                         <tr id="itemPlaceholder">
                                                         </tr>
@@ -154,16 +154,16 @@
                                                 </LayoutTemplate>
                                                 <ItemTemplate>
                                                     <tr id="lvItemRow" runat="server">
-                                                        
+
                                                         <td>
                                                             <asp:Label ID="srialNo" runat="server" Text='<%# Val(Container.DataItemIndex.ToString) + 1 %>'></asp:Label>
                                                             <asp:Label ID="lblContentId" runat="server" Text='<%# Eval("Id") %>' Visible="false"></asp:Label>
                                                         </td>
-                                                        
+
                                                         <td>
                                                             <asp:Label runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                                                         </td>
-                                                       
+
                                                         <td>
                                                             <asp:Label runat="server" Text='<%# Eval("ShowOrder") %>'></asp:Label>
                                                         </td>
@@ -194,7 +194,7 @@
                                                                     رسالة تأكيد
                                                                 </div>
                                                                 <div class="body">
-                                                                    <label>هل تريد حذف التحليل ؟</label>
+                                                                    <label>هل تريد الحذف ؟</label>
                                                                 </div>
 
                                                                 <div class="footer">
@@ -207,7 +207,7 @@
                                                                 </div>
                                                             </asp:Panel>
                                                         </td>
-                                                        
+
                                                     </tr>
                                                 </ItemTemplate>
                                                 <EmptyDataTemplate>
@@ -314,50 +314,49 @@
                                 <asp:Label ID="lblContentId" runat="server" Visible="false"></asp:Label>
 
                                 <div class="mb0" id="accordion" role="tablist" aria-multiselectable="false">
-                                        <div class="left-700">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading" role="tab" id="heading1">
-                                                    <h4 class="panel-title">
-                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات التصنيف</a>
-                                                    </h4>
-                                                </div>
+                                    <div class="left-700">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" role="tab" id="heading1">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1">بيانات التصنيف</a>
+                                                </h4>
+                                            </div>
 
-                                                <div id="collapse1" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                               
-                                                                <div class="col-md-4 form-group" id="divNewCategory" runat="server">
-                                                                    <label class="input-label required">التصنيف</label>
-                                                                    <asp:TextBox runat="server" ID="txtCategory" MaxLength="200"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
-                                                                        ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                                
-                                                                <div class="col-md-2 form-group">
-                                                                    <label class="input-label required">الترتيب</label>
-                                                                    <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="6" onkeypress="return isNumber(event);"></asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
-                                                                        ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
-                                                                </div>
-                                                               
-                                                                <div class="col-md-2">
-                                                                    <label class="input-label">&nbsp;</label>
-                                                                    <div class="c-check">
-                                                                        <asp:CheckBox runat="server" ID="chkActive" ToolTip="تفعيل" Text="تفعيل"></asp:CheckBox>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="input-label">الوصف</label>
-                                                                    <uc1:HTMLEditor ID="txtDescription" runat="server" />
-                                                                    <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
+                                            <div id="collapse1" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                            <div class="col-md-4 form-group" id="divNewCategory" runat="server">
+                                                                <label class="input-label required">التصنيف</label>
+                                                                <asp:TextBox runat="server" ID="txtCategory" MaxLength="200"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="displaynone"
+                                                                    ValidationGroup="vContent" ControlToValidate="txtCategory" ErrorMessage="أدخل التصنيف"></asp:RequiredFieldValidator>
+                                                            </div>
+
+                                                            <div class="col-md-2 form-group">
+                                                                <label class="input-label required">الترتيب</label>
+                                                                <asp:TextBox runat="server" ID="txtOrderNo" MaxLength="6" onkeypress="return isNumber(event);"></asp:TextBox>
+                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="displaynone"
+                                                                    ValidationGroup="vContent" ControlToValidate="txtOrderNo" ErrorMessage="أدخل ترتيب المؤشر"></asp:RequiredFieldValidator>
+                                                            </div>
+
+                                                            <div class="col-md-2">
+                                                                <label class="input-label">&nbsp;</label>
+                                                                <div class="c-check">
+                                                                    <asp:CheckBox runat="server" ID="chkActive" ToolTip="تفعيل" Text="تفعيل"></asp:CheckBox>
                                                                 </div>
                                                             </div>
+                                                           <%-- <div class="col-md-12 form-group">
+                                                                <label class="input-label">الوصف</label>
+                                                                <uc1:HTMLEditor ID="txtDescription" runat="server" />
+                                                            </div>--%>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +366,7 @@
                     </asp:Panel>
 
                 </div>
-               
+
             </ContentTemplate>
         </asp:UpdatePanel>
     </form>

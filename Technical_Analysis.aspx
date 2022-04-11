@@ -72,6 +72,15 @@
                                                     </div>
                                                     <!-- End Section -->
                                                 </ItemTemplate>
+                                                 <EmptyDataTemplate>
+                                                    <table>
+                                                        <tr class="EmptyRowStyle">
+                                                            <td>
+                                                                <div>لا توجد تحليلات</div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </EmptyDataTemplate>
                                             </asp:ListView>
 
                                         </div>

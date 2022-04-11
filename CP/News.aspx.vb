@@ -86,6 +86,12 @@ Partial Class News
                     ' Initialize the sorting expression.
                     ViewState("SortExpression") = "ShowOrder DESC"
                     ' Populate the GridView.
+                    If sender.parent IsNot Nothing Then
+                        If sender.parent.clientid = "pnlOps" Or sender.id.ToString.ToLower.Contains("delete") Then
+                            'Reset Pager to First Index
+                            dplvContent.SetPageProperties(0, ddlPager.SelectedValue, True)
+                        End If
+                    End If
                     BindListView()
                     dplvContent.Visible = False
                     If dt.Rows.Count > ddlPager.SelectedValue Then

@@ -96,7 +96,10 @@ Partial Class Home
 
     Sub FillCategories()
         Try
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and ShowInHome='1'  and isnull(IsDeleted,0)=0 order by ShowOrder")
+            Dim qry = "Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and ShowInHome='1' and isnull(IsDeleted,0)=0 " &
+                      " and Id in (select CategoryId from tblContent where Active='1' and ShowInHome='1' and Type='ANL' and isnull(IsDeleted,0)=0 ) " &
+                      " order by ShowOrder"
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable(qry)
             lvAnlyticsCategories.DataSource = dtAnlyticsCategory
             lvAnlyticsCategories.DataBind()
             lvCategories.DataSource = dtAnlyticsCategory
