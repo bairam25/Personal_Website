@@ -39,7 +39,7 @@ Partial Class Categories
     Sub SetControlFields()
         Try
             CategoryName = txtCategory.Text
-            Description = txtDescription.TextValue
+            Description = Nothing 'txtDescription.TextValue
             OrderNo = PublicFunctions.IntFormat(txtOrderNo.Text)
         Catch ex As Exception
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
@@ -81,15 +81,23 @@ Partial Class Categories
 
                     ViewState("dtNewsTable") = dt
                     ' Initialize the sorting expression.
-                    ViewState("SortExpression") = "ShowOrder DESC"
+                    ViewState("SortExpression") = "ShowOrder"
                     ' Populate the GridView.
+                    If sender.parent IsNot Nothing Then
+                        If sender.parent.clientid = "pnlOps" Or sender.id.ToString.ToLower.Contains("delete") Then
+                            'Reset Pager to First Index
+                            dplvContent.SetPageProperties(0, ddlPager.SelectedValue, True)
+                        End If
+                    End If
+
+
                     BindListView()
                     dplvContent.Visible = False
                     If dt.Rows.Count > ddlPager.SelectedValue Then
                         dplvContent.Visible = True
                     End If
                 Else
-                    lvContent.DataSource = Nothing
+                    lvContent.DataSource = New DataTable
                     lvContent.DataBind()
                     dplvContent.Visible = False
                 End If
@@ -210,10 +218,10 @@ Partial Class Categories
         Try
             Dim i As Integer = 0
             While i < lvContent.Items.Count
-                CType(lvContent.FindControl("Date"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
-                CType(lvContent.FindControl("Category"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
-                CType(lvContent.FindControl("Title"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvContent.FindControl("Name"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvContent.FindControl("Active"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 CType(lvContent.FindControl("ShowOrder"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
+                CType(lvContent.FindControl("ShowInHome"), HtmlTableCell).Attributes.Add("class", "upnDownArrow")
                 i += 1
             End While
 
@@ -290,7 +298,7 @@ Partial Class Categories
             cmdSave.CommandArgument = "add"
             lblContentId.Text = ""
             pf.ClearAll(pnlForm)
-            txtDescription.TextValue = String.Empty
+            'txtDescription.TextValue = String.Empty
             Enabler(True)
             chkActive.Checked = True
             txtOrderNo.Text = DBManager.SelectMax("ShowOrder", "tblCategories where isnull(isDeleted,0)=0 ")
@@ -329,7 +337,7 @@ Partial Class Categories
             dt = DBManager.Getdatatable("select * from tblCategories where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
                 txtCategory.Text = dt.Rows(0).Item("name").ToString
-                txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
+                'txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString
                 chkActive.Checked = PublicFunctions.BoolFormat(dt.Rows(0).Item("Active"))
 
@@ -350,9 +358,14 @@ Partial Class Categories
     ''' </summary>
     Protected Sub Delete(ByVal Sender As Object, ByVal e As System.EventArgs)
         Try
-            Dim ContentId As String = Sender.commandargument
-
-            If DBManager.ExcuteQuery("update tblCategories SET  Isdeleted = 'True' where Id= '" + ContentId + "'") = 1 Then
+            Dim CategoryID As String = Sender.commandargument
+            'Check if category has anaylisys 
+            Dim dtAnalysis = DBManager.Getdatatable("Select top 1 * from TblContent where Type = 'ANL' and CategoryID='" & CategoryID & "' and isnull(isdeleted,0)=0")
+            If dtAnalysis.Rows.Count > 0 Then
+                clsMessages.ShowInfoMessgage(lblRes, "يجب مسح جميع التحليلات لهذا التصنيف اولا", Me)
+                Exit Sub
+            End If
+            If DBManager.ExcuteQuery("update tblCategories SET  Isdeleted = 'True' where Id= '" + CategoryID + "'") = 1 Then
                 clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.Delete, Me.Page)
                 FillGrid(Sender, e)
             End If
@@ -444,7 +457,7 @@ Partial Class Categories
         Try
 
             lblContentId.Text = ""
-            txtDescription.TextValue = String.Empty
+            'txtDescription.TextValue = String.Empty
             Enabler(False)
             FillGrid(Sender, e)
         Catch ex As Exception

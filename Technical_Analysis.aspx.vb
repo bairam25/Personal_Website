@@ -28,7 +28,7 @@ Partial Class Technical_Analysis
                 Dim searchValue As String = Request.QueryString("search").ToString.Replace("-", " ")
                 SeachFilter = "(Title like N'%" + searchValue + "%' or Description like N'%" + searchValue + "%')"
             End If
-            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and isnull(IsDeleted,0)=0  order by ShowOrder desc")
+            Dim dtAnlyticsCategory As DataTable = DBManager.Getdatatable("Select  Id as CategoryId,Name as Category,ShowOrder from tblCategories where Active='1' and isnull(IsDeleted,0)=0  order by ShowOrder")
             lvAnlyticsCategories.DataSource = dtAnlyticsCategory
             lvAnlyticsCategories.DataBind()
 

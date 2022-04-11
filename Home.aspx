@@ -98,7 +98,9 @@
         </div>
     </div>
     <!-- End Slider Area -->
-        <!-- Start Technical Analysis -->
+
+
+    <!-- Start Technical Analysis -->
     <div class="rn-portfolio-area rn-section-gap section-separator" id="portfolio">
         <div class="container">
             <div class="row">
@@ -119,13 +121,13 @@
                                     <ItemTemplate>
                                         <li class="nav-item">
                                             <a class='<%#IIf(Val(Container.DataItemIndex.ToString) = 0, "nav-link acive active", "nav-link") %>'
-                                                id='<%# "v-tab-" + Container.DataItemIndex.ToString %>' 
-                                                data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>' 
+                                                id='<%# "v-tab-" + Container.DataItemIndex.ToString %>'
+                                                data-toggle="tab" href='<%# "#v-pills-" + Container.DataItemIndex.ToString %>'
                                                 data-category='<%# Eval("CategoryId").ToString.Replace(" ", "-") %>'
                                                 role="tab" aria-selected="true" onclick="SetCategory(this)">
                                                 <%# Eval("Category") %>
-                                             </a>
-                                             
+                                            </a>
+
                                         </li>
                                     </ItemTemplate>
                                 </asp:ListView>
@@ -191,6 +193,7 @@
         </div>
     </div>
     <!-- End Technical Analysis -->
+
     <!-- Start News Area -->
     <div class="rn-portfolio-area rn-section-gap section-separator" id="News">
         <div class="container">
@@ -245,163 +248,166 @@
         </div>
     </div>
     <!-- End News Area -->
+
     <!-- Start Conferences and Courses Area -->
-    <div class="rn-resume-area rn-section-gap section-separator" id="resume">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title text-center">
-                        <span class="subtitle">Courses, Seminars And Conferences</span>
-                        <h2 class="title">الدورات والندوات والمؤتمرات</h2>
+    <asp:Panel runat="server" Visible="false" ID="pnlHiddenByClient">
+        <div class="rn-resume-area rn-section-gap section-separator" id="resume">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <span class="subtitle">Courses, Seminars And Conferences</span>
+                            <h2 class="title">الدورات والندوات والمؤتمرات</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mt--45">
-                <div class="col-lg-12">
-                    <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="Courses-tab" data-toggle="tab" href="#Courses" role="tab" aria-controls="Courses" aria-selected="false">الدورات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Seminars-tab" data-toggle="tab" href="#Seminars" role="tab" aria-controls="Seminars" aria-selected="true">الندوات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Conferences-tab" data-toggle="tab" href="#Conferences" role="tab" aria-controls="Conferences" aria-selected="false">المؤتمرات</a>
-                        </li>
-                    </ul>
-                    <!-- Start Tab Content Wrapper  -->
-                    <div class="rn-nav-content tab-content" id="myTabContents">
-                        <!-- Start Single Tab  -->
-                        <div class="tab-pane show active fade single-tab-area" id="Courses" role="tabpanel" aria-labelledby="Courses-tab">
-                            <div class="col-lg-12 p-0">
-                                <div class="testimonial-activation seminars-slider testimonial-pb mb--30">
-                                    <!-- Start Course -->
-                                    <asp:ListView ID="lvCourses" runat="server">
-                                        <ItemTemplate>
-                                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                                <div class="inner d-rtl">
-                                                    <div class="card-info">
-                                                        <div class="card-thumbnail">
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Name") %>' />
-                                                        </div>
-                                                        <div class="card-content">
-                                                            <h3 class="title"><%# Eval("Name") %></h3>
-                                                            <span class="designation"><%# Eval("Category") %></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-description w-100">
-                                                        <div class="title-area">
-                                                            <div class="title-info text-right">
-                                                                <h3 class="title"><%# Eval("Title") %></h3>
-                                                                <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                <div class="row mt--45">
+                    <div class="col-lg-12">
+                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="Courses-tab" data-toggle="tab" href="#Courses" role="tab" aria-controls="Courses" aria-selected="false">الدورات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Seminars-tab" data-toggle="tab" href="#Seminars" role="tab" aria-controls="Seminars" aria-selected="true">الندوات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="Conferences-tab" data-toggle="tab" href="#Conferences" role="tab" aria-controls="Conferences" aria-selected="false">المؤتمرات</a>
+                            </li>
+                        </ul>
+                        <!-- Start Tab Content Wrapper  -->
+                        <div class="rn-nav-content tab-content" id="myTabContents">
+                            <!-- Start Single Tab  -->
+                            <div class="tab-pane show active fade single-tab-area" id="Courses" role="tabpanel" aria-labelledby="Courses-tab">
+                                <div class="col-lg-12 p-0">
+                                    <div class="testimonial-activation seminars-slider testimonial-pb mb--30">
+                                        <!-- Start Course -->
+                                        <asp:ListView ID="lvCourses" runat="server">
+                                            <ItemTemplate>
+                                                <div class="testimonial mt--50 mt_md--40 mt_sm--40">
+                                                    <div class="inner d-rtl">
+                                                        <div class="card-info">
+                                                            <div class="card-thumbnail">
+                                                                <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Name") %>' />
                                                             </div>
-                                                            <asp:LinkButton   ID="lbMoreDetails" runat="server" CssClass="rn-btn" href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                            <div class="card-content">
+                                                                <h3 class="title"><%# Eval("Name") %></h3>
+                                                                <span class="designation"><%# Eval("Category") %></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-description w-100">
+                                                            <div class="title-area">
+                                                                <div class="title-info text-right">
+                                                                    <h3 class="title"><%# Eval("Title") %></h3>
+                                                                    <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                                                                </div>
+                                                                <asp:LinkButton ID="lbMoreDetails" runat="server" CssClass="rn-btn" href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
                                                         <span>قراءة المزيد</span>
-                                                            </asp:LinkButton>
-                                                        </div>
-                                                        <div class="seperator"></div>
-                                                        <p class="discription" style="max-height: 155px; overflow: hidden;">
-                                                            <%# Eval("Description") %>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ItemTemplate>
-                                    </asp:ListView>
-                                    <!--End Course -->
-
-                                </div>
-                            </div>
-
-                            <a id="lbMoreCourses" class="rn-btn d-block text-center mt--60 btn-more" href="Courses.aspx">
-                                <span>مشاهدة المزيد</span>
-                            </a>
-                        </div>
-                        <!-- End Single Tab  -->
-                        <!-- Start Single Tab  -->
-                        <div class="tab-pane fade" id="Seminars" role="tabpanel" aria-labelledby="Seminars-tab">
-                            <!-- Start Section -->
-                            <asp:ListView ID="lvSeminars" runat="server">
-                                <ItemTemplate>
-                                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30 p-0">
-                                        <div class="rn-portfolio w-100" data-toggle="modal" data-target="#">
-                                            <div class="inner row">
-                                                <div class="col-md-2">
-                                                    <div class="thumbnail">
-                                                        <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="content pt--0">
-                                                        <div class="category-info pb--0">
-                                                            <div class="meta">
-                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                                                                </asp:LinkButton>
                                                             </div>
+                                                            <div class="seperator"></div>
+                                                            <p class="discription" style="max-height: 155px; overflow: hidden;">
+                                                                <%# Eval("Description") %>
+                                                            </p>
                                                         </div>
-                                                        <h4 class="title">
-                                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
-                                                        </h4>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </ItemTemplate>
+                                        </asp:ListView>
+                                        <!--End Course -->
+
                                     </div>
-                                    <!-- End Section -->
-                                </ItemTemplate>
-                            </asp:ListView>
-                            <a id="LinkButton2" class="rn-btn d-block text-center mt--60 btn-more" href="Seminars.aspx">
-                                <span>مشاهدة المزيد</span>
-                            </a>
-                        </div>
-                        <!-- End Single Tab  -->
-                        <!-- Start Single Tab  -->
-                        <div class="tab-pane fade " id="Conferences" role="tabpanel" aria-labelledby="Conferences-tab">
-                            <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
-                                <asp:ListView ID="lvConferences" runat="server">
+                                </div>
+
+                                <a id="lbMoreCourses" class="rn-btn d-block text-center mt--60 btn-more" href="Courses.aspx">
+                                    <span>مشاهدة المزيد</span>
+                                </a>
+                            </div>
+                            <!-- End Single Tab  -->
+                            <!-- Start Single Tab  -->
+                            <div class="tab-pane fade" id="Seminars" role="tabpanel" aria-labelledby="Seminars-tab">
+                                <!-- Start Section -->
+                                <asp:ListView ID="lvSeminars" runat="server">
                                     <ItemTemplate>
-                                        <!-- Start News -->
-                                        <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                                            <div class="rn-portfolio w-100">
-                                                <div class="inner">
-                                                    <div class="thumbnail">
-                                                        <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
-                                                            <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="category-info">
-                                                            <%--<div class="category-list">
-                                        <a href="javascript:void(0)">تصنيف الخبر</a>
-                                    </div>--%>
-                                                            <div class="meta">
-                                                                <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
-                                                            </div>
+                                        <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-12 col-xl-12 col-md-12 col-12 mt--30 mt_md--30 mt_sm--30 p-0">
+                                            <div class="rn-portfolio w-100" data-toggle="modal" data-target="#">
+                                                <div class="inner row">
+                                                    <div class="col-md-2">
+                                                        <div class="thumbnail">
+                                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                                <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
+                                                            </a>
                                                         </div>
-                                                        <h4 class="title">
-                                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
-                                                        </h4>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="content pt--0">
+                                                            <div class="category-info pb--0">
+                                                                <div class="meta">
+                                                                    <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                                                                </div>
+                                                            </div>
+                                                            <h4 class="title">
+                                                                <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
+                                                            </h4>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End News -->
+                                        <!-- End Section -->
                                     </ItemTemplate>
                                 </asp:ListView>
+                                <a id="LinkButton2" class="rn-btn d-block text-center mt--60 btn-more" href="Seminars.aspx">
+                                    <span>مشاهدة المزيد</span>
+                                </a>
                             </div>
+                            <!-- End Single Tab  -->
+                            <!-- Start Single Tab  -->
+                            <div class="tab-pane fade " id="Conferences" role="tabpanel" aria-labelledby="Conferences-tab">
+                                <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
+                                    <asp:ListView ID="lvConferences" runat="server">
+                                        <ItemTemplate>
+                                            <!-- Start News -->
+                                            <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
+                                                <div class="rn-portfolio w-100">
+                                                    <div class="inner">
+                                                        <div class="thumbnail">
+                                                            <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                                <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Title") %>' />
+                                                            </a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="category-info">
+                                                                <%--<div class="category-list">
+                                        <a href="javascript:void(0)">تصنيف الخبر</a>
+                                    </div>--%>
+                                                                <div class="meta">
+                                                                    <span><i class="far fa-clock"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                                                                </div>
+                                                            </div>
+                                                            <h4 class="title">
+                                                                <a href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'><%# Eval("Title") %></a>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End News -->
+                                        </ItemTemplate>
+                                    </asp:ListView>
+                                </div>
 
-                            <asp:LinkButton ID="lbMoreConferences" href="Conferences.aspx" runat="server" CssClass="rn-btn d-block text-center mt--60 btn-more">
+                                <asp:LinkButton ID="lbMoreConferences" href="Conferences.aspx" runat="server" CssClass="rn-btn d-block text-center mt--60 btn-more">
                                 <span>مشاهدة المزيد</span>
-                            </asp:LinkButton>
+                                </asp:LinkButton>
+                            </div>
+                            <!-- End Single Tab  -->
                         </div>
-                        <!-- End Single Tab  -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Conferences and Courses Area -->
+        <!-- End Conferences and Courses Area -->
+    </asp:Panel>
     <!-- Start Album Videos Area -->
     <div class="rn-blog-area rn-section-gap section-separator" id="Videos">
         <div class="container">
@@ -421,12 +427,12 @@
                             <div class="rn-blog">
                                 <div class="inner">
                                     <div class="thumbnail">
-                                         <a data-toggle="modal"  
+                                        <a data-toggle="modal"
                                             lang='<%# Eval("MainURL").ToString.Replace("~", "")  %>'
                                             data-count='<%# Eval("MediaCount").ToString %>'
                                             data-id='<%# Eval("ID").ToString %>'
                                             data-title='<%# Eval("Title").ToString %>'
-                                            onclick="OpenAlbum(this);">                                         
+                                            onclick="OpenAlbum(this);">
                                             <img src='<%# Eval("MainURL").ToString.Replace("~", "")  %>' alt='<%# Eval("Title").ToString  %>'>
                                         </a>
                                     </div>
@@ -459,6 +465,7 @@
         </div>
     </div>
     <!-- ENd Album Videos Area -->
+
     <!-- Start Album Photos Area -->
     <div class="rn-blog-area rn-section-gap section-separator" id="Photos">
         <div class="container">
@@ -466,7 +473,7 @@
                 <div class="col-lg-12">
                     <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="section-title text-center">
                         <span class="subtitle">Photos</span>
-                        <h2 class="title"> الصور</h2>
+                        <h2 class="title">الصور</h2>
                     </div>
                 </div>
             </div>

@@ -91,6 +91,12 @@ Partial Class Analytics
                     ' Initialize the sorting expression.
                     ViewState("SortExpression") = "ShowOrder DESC"
                     ' Populate the GridView.
+                    If sender.parent IsNot Nothing Then
+                        If sender.parent.clientid = "pnlOps" Or sender.id.ToString.ToLower.Contains("delete") Then
+                            'Reset Pager to First Index
+                            dplvContent.SetPageProperties(0, ddlPager.SelectedValue, True)
+                        End If
+                    End If
                     BindListView()
                     dplvContent.Visible = False
                     If dt.Rows.Count > ddlPager.SelectedValue Then
@@ -344,7 +350,10 @@ Partial Class Analytics
             dt = DBManager.Getdatatable("select * from tblContent where isnull(Isdeleted,0)=0  and id='" + lblContentId.Text + "'")
             If dt.Rows.Count <> 0 Then
                 txtTitle.Text = dt.Rows(0).Item("Title").ToString
-                ddlCategory.SelectedValue = dt.Rows(0).Item("CategoryId").ToString
+                Dim CategoryID = dt.Rows(0).Item("CategoryId").ToString
+                If ddlCategory.Items.FindByValue(CategoryID) IsNot Nothing Then
+                    ddlCategory.SelectedValue = CategoryID
+                End If
                 txtContentDate.Text = PublicFunctions.DateFormat(dt.Rows(0).Item("Date").ToString, "dd/MM/yyyy")
                 txtDescription.TextValue = dt.Rows(0).Item("Description").ToString
                 txtOrderNo.Text = dt.Rows(0).Item("ShowOrder").ToString

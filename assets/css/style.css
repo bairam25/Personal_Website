@@ -22126,3 +22126,15 @@ body.white-version {
     }
 }
     /* End Page Loader */
+
+
+.EmptyRowStyle div {
+    text-align: center;
+    font-size: 2.5rem;
+    background-color: rgba(255,255,255,0.95);
+    margin-left: 3rem;
+    margin-top: 2.5rem;
+}
+.EmptyRowStyle td {
+    border : 0;
+}
