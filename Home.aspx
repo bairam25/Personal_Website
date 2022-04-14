@@ -250,28 +250,30 @@
     <!-- End News Area -->
 
     <!-- Start Conferences and Courses Area -->
-    <asp:Panel runat="server" Visible="false" ID="pnlHiddenByClient">
+    <asp:Panel runat="server"  ID="pnlHiddenByClient">
         <div class="rn-resume-area rn-section-gap section-separator" id="resume">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title text-center">
-                            <span class="subtitle">Courses, Seminars And Conferences</span>
-                            <h2 class="title">الدورات والندوات والمؤتمرات</h2>
+                           <%-- <span class="subtitle">Courses, Seminars And Conferences</span>--%>
+                           <%-- <h2 class="title">الدورات والندوات والمؤتمرات</h2>--%>
+                            <span class="subtitle">Courses</span>
+                             <h2 class="title">الدورات التدريبية</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row mt--45">
                     <div class="col-lg-12">
-                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
+                        <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist" style="display:none ">
                             <li class="nav-item">
-                                <a class="nav-link active" id="Courses-tab" data-toggle="tab" href="#Courses" role="tab" aria-controls="Courses" aria-selected="false">الدورات</a>
+                                <a class="nav-link active" id="Courses-tab" data-toggle="tab" href="#Courses" role="tab" aria-controls="Courses" aria-selected="true">الدورات</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="Seminars-tab" data-toggle="tab" href="#Seminars" role="tab" aria-controls="Seminars" aria-selected="true">الندوات</a>
+                                <a class="nav-link" id="Seminars-tab" data-toggle="tab" href="#Seminars" role="tab" aria-controls="Seminars" aria-selected="false" style="display:none ">الندوات</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="Conferences-tab" data-toggle="tab" href="#Conferences" role="tab" aria-controls="Conferences" aria-selected="false">المؤتمرات</a>
+                                <a class="nav-link" id="Conferences-tab" data-toggle="tab" href="#Conferences" role="tab" aria-controls="Conferences" aria-selected="false" style="display:none " >المؤتمرات</a>
                             </li>
                         </ul>
                         <!-- Start Tab Content Wrapper  -->
@@ -282,6 +284,38 @@
                                     <div class="testimonial-activation seminars-slider testimonial-pb mb--30">
                                         <!-- Start Course -->
                                         <asp:ListView ID="lvCourses" runat="server">
+                                <ItemTemplate>
+                                    <div class="testimonial mt--50 mt_md--40 mt_sm--40 col-md-12 p-0">
+                                        <div class="inner d-rtl">
+                                            <div class="card-info">
+                                                <div class="card-thumbnail">
+                                                    <asp:Image ID="imgPhoto" runat="server" ImageUrl='<%# Eval("Photo") %>' ToolTip='<%# Eval("Name") %>' />
+                                                </div>
+                                                <div class="card-content">
+                                                    <h3 class="title"><%# Eval("Name") %></h3>
+                                                    <span class="designation"><%# Eval("Category") %></span>
+                                                </div>
+                                            </div>
+                                            <div class="card-description w-100 mt--0">
+                                                <div class="title-area">
+                                                    <div class="title-info text-right">
+                                                        <h3 class="title"><%# Eval("Title") %></h3>
+                                                        <span class="date"><i class="far fa-clock ml-2"></i><%# PublicFunctions.DateFormat(Eval("Date").ToString, "dd MMMM yyyy", "AR") %> <%# PublicFunctions.DateFormat(Eval("CreatedDate").ToString, "hh:mm tt", "AR") %></span>
+                                                    </div>
+                                                    <asp:LinkButton  ID="lbMoreDetails" runat="server" CssClass="rn-btn" href='<%# "Content_Details.aspx?Id=" + Eval("Id").ToString  %>'>
+                                                        <span>قراءة المزيد</span>
+                                                    </asp:LinkButton>
+                                                </div>
+                                                <div class="seperator"></div>
+                                                <p class="discription" style="max-height: 250px; overflow: hidden;">
+                                                    <%# Eval("Description") %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:ListView>
+                                     <%--   <asp:ListView ID="lvCourses" runat="server">
                                             <ItemTemplate>
                                                 <div class="testimonial mt--50 mt_md--40 mt_sm--40">
                                                     <div class="inner d-rtl">
@@ -312,7 +346,7 @@
                                                     </div>
                                                 </div>
                                             </ItemTemplate>
-                                        </asp:ListView>
+                                        </asp:ListView>--%>
                                         <!--End Course -->
 
                                     </div>
