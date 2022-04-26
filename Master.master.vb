@@ -25,6 +25,13 @@ Partial Class Master
         Dim dtProfile = DBManager.Getdatatable("Select * from tblProfile")
         lvSocialMedia.DataSource = dtProfile
         lvSocialMedia.DataBind()
+
+        lvSocialMedia2.DataSource = dtProfile
+        lvSocialMedia2.DataBind()
+
+        If dtProfile.Rows.Count > 0 Then
+            lblMobileDescription.InnerHtml = dtProfile.Rows(0).Item("Degree").ToString
+        End If
     End Sub
 
 #End Region
