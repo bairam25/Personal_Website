@@ -15,7 +15,7 @@ Partial Class News
     Dim Description As String
     Dim Photo As String
     Dim OrderNo As String
-    Dim ContentTable As String = "select * from tblContent where Type='NEW'"
+    Dim ContentTable As String = "select   * from tblContent where Type='NEW'"
 #End Region
 #Region "Public_Functions"
 
@@ -62,6 +62,8 @@ Partial Class News
         Try
             If Page.IsPostBack = False Then
                 lblDateContent.Text = DateTime.Now.ToString.Replace("/", "").Replace(":", "").Replace(".", "").Replace(" ", "")
+                txtFilterFromDate.Text = DateTime.Now.ToShortDateString
+                txtFilterToDate.Text = DateTime.Now.ToShortDateString
                 FillGrid(sender, e)
             End If
             'Set Default values of controls
@@ -72,7 +74,6 @@ Partial Class News
     End Sub
 #End Region
 #Region "Fill Grid"
-
     ''' <summary>
     ''' Fill Listview with data.
     ''' </summary>
@@ -118,13 +119,16 @@ Partial Class News
     ''' </summary>
     Public Function CollectConditions(ByVal sender As Object, ByVal e As System.EventArgs) As String
         txtSearch.Text = txtSearch.Text.TrimStart.TrimEnd
+        Dim DateFrom As String = IIf(txtFilterFromDate.Text = "", "1=1", "  Date >= '" + PublicFunctions.DateFormat(txtFilterFromDate.Text, "yyyy/MM/dd") + " 00:00:00'")
+        Dim DateTo As String = IIf(txtFilterToDate.Text = "", "1=1", "  Date <= '" + PublicFunctions.DateFormat(txtFilterToDate.Text, "yyyy/MM/dd") + " 23:59:59'")
+
         'btnClearSearch.Visible = False
         'If txtSearch.Text <> String.Empty Then
         '    btnClearSearch.Visible = True
         'End If
         Dim Search As String = IIf(txtSearch.Text = String.Empty, "1=1", "(Title like N'%" & txtSearch.Text & "%')")
 
-        Return Search
+        Return Search + " and " + DateFrom + " and " + DateTo
 
     End Function
 
@@ -286,6 +290,47 @@ Partial Class News
             clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Filter Listview by Date Rage
+    ''' </summary>
+    Protected Sub lbFilterDate_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Try
+            If Not IsDate(txtFilterFromDate.Text) Or Not IsDate(txtFilterToDate.Text) Then
+                clsMessages.ShowAlertMessgage(lblRes, "Please select valid dates", Me)
+                txtFilterFromDate.Text = DateTime.Now.ToShortDateString
+                txtFilterToDate.Text = DateTime.Now.ToShortDateString
+                Exit Sub
+            End If
+            If CheckDates(txtFilterFromDate.Text, txtFilterToDate.Text) = False Then
+                txtFilterFromDate.Text = DateTime.Now.ToShortDateString
+                txtFilterToDate.Text = DateTime.Now.ToShortDateString
+                Exit Sub
+            End If
+            FillGrid(sender, New EventArgs)
+        Catch ex As Exception
+            clsMessages.ShowMessage(lblRes, clsMessages.MessageTypesEnum.ERR, Page, ex)
+        End Try
+    End Sub
+
+    Function CheckDates(ByVal DateFrom As String, ByVal DateTo As String) As Boolean
+        Try
+            Dim Date1 As String = DateFrom
+            Dim Date2 As String = DateTo
+            If IsDate(Date1) And IsDate(Date2) Then
+                If Convert.ToDateTime(Date1) > Convert.ToDateTime(Date2) Then
+                    clsMessages.ShowAlertMessgage(lblRes, " Date from should be less than Date to", Me)
+                    Return False
+                End If
+                Return True
+            End If
+            Return False
+        Catch ex As Exception
+            clsMessages.ShowErrorMessgage(lblRes, "Error: " & ex.ToString, Me)
+            Return False
+        End Try
+    End Function
+
 #End Region
 
 #Region "New"

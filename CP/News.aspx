@@ -78,6 +78,54 @@
                                         <div class="tbl-top-panel-left">
                                             <div class="row">
                                                 <asp:Panel ID="pgPanel" CssClass="d-flex" runat="server">
+                                                    <asp:CompareValidator ValidationGroup="vgDate" CssClass="alert border-danger bg-transparent text-danger mb-1" ErrorMessage="To date cannot be earlier than From date"
+                                                        ControlToValidate="txtFilterToDate" ControlToCompare="txtFilterFromDate" Display="Dynamic" Type="Date" Operator="GreaterThanEqual" runat="server" />
+
+                                                    <div class="input-in">
+                                                        <label class="form-label" for="txtFilterFromDate">من </label>
+                                                        <div class="input-in">
+                                                            <asp:TextBox ID="txtFilterFromDate" runat="server" CssClass="form-control inp-date" MaxLength="10" ToolTip="Select Date" onkeypress="return isDate(event);" ClientIDMode="Static" placeholder="__/__/____"></asp:TextBox>
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text fs-xl">
+                                                                    <i class="fal fa-calendar-alt"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender4" runat="server"
+                                                            Enabled="True" TargetControlID="txtFilterFromDate" PopupPosition="Right"
+                                                            DaysModeTitleFormat="dd/MM/yyyy" TodaysDateFormat="dd/MM/yyyy"
+                                                            Format="dd/MM/yyyy">
+                                                        </asp:CalendarExtender>
+                                                        <asp:MaskedEditExtender ID="MaskedEditExtender" Mask="99/99/9999" MaskType="Date" UserDateFormat="DayMonthYear" ClearMaskOnLostFocus="true"
+                                                            MessageValidatorTip="true" CultureName="en-nz" runat="server" TargetControlID="txtFilterFromDate">
+                                                        </asp:MaskedEditExtender>
+                                                        <asp:MaskedEditValidator IsValidEmpty="false" ID="MaskedEditValidator" CssClass="date-validate" ValidationGroup="vgDate" InvalidValueMessage="Invalid From Date" ControlExtender="MaskedEditExtender" ControlToValidate="txtFilterFromDate" runat="server"></asp:MaskedEditValidator>
+                                                    </div>
+
+                                                    <div class="input-in">
+                                                        <label class="form-label" for="txtFilterToDate">الى</label>
+                                                        <div class="input-in">
+                                                            <asp:TextBox ID="txtFilterToDate" runat="server" CssClass="form-control inp-date" MaxLength="10" ToolTip="Select Date" onkeypress="return isDate(event);" ClientIDMode="Static" placeholder="__/__/____"></asp:TextBox>
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text fs-xl">
+                                                                    <i class="fal fa-calendar-alt"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <asp:CalendarExtender CssClass="custom-calendar" ID="CalendarExtender5" runat="server"
+                                                            Enabled="True" TargetControlID="txtFilterToDate" PopupPosition="Right"
+                                                            DaysModeTitleFormat="dd/MM/yyyy" TodaysDateFormat="dd/MM/yyyy"
+                                                            Format="dd/MM/yyyy">
+                                                        </asp:CalendarExtender>
+                                                        <asp:MaskedEditExtender ID="MaskedEditExtender1" Mask="99/99/9999" MaskType="Date" UserDateFormat="DayMonthYear" ClearMaskOnLostFocus="true"
+                                                            MessageValidatorTip="true" CultureName="en-nz" runat="server" TargetControlID="txtFilterToDate">
+                                                        </asp:MaskedEditExtender>
+                                                        <asp:MaskedEditValidator IsValidEmpty="false" ID="MaskedEditValidator1" CssClass="date-validate" ValidationGroup="vgDate" InvalidValueMessage="Invalid To Date" ControlExtender="MaskedEditExtender1" ControlToValidate="txtFilterToDate" runat="server"></asp:MaskedEditValidator>
+                                                    </div>
+
+                                                    <div class="input-in">
+                                                        <asp:LinkButton ID="lbFilterDate" OnClick="lbFilterDate_Click" ToolTip="Filter by date range" CssClass="btn btn-blue btn-sm btn-block waves-effect waves-themed" runat="server" ValidationGroup="vgDate" CommandArgument="0">بحث </asp:LinkButton>
+                                                    </div>
                                                     <div class="input-in">
                                                         <a id="cmdDelete" href="#" title="Cancel" class="btn-main btn-red" data-toggle="modal" data-placement="bottom" data-original-title="Cancel"
                                                             onclick="ShowConfirmPopup('mpeDeleteAll','pnlDeleteAll');return false;">حذف<i class="ti-trash"></i></a>
@@ -114,6 +162,9 @@
                                                             <span class="input-group-addon" id="basic-addon1">سجلات / الصفحة</span>
                                                         </div>
                                                     </div>
+
+
+
                                                 </asp:Panel>
 
                                             </div>
@@ -143,7 +194,7 @@
 
                             <div class="col-md-12">
                                 <asp:Label ID="lblRes" runat="server" Visible="false"></asp:Label>
-                                <asp:Label ID="lblDateContent" runat="server" style="display:none" ></asp:Label>
+                                <asp:Label ID="lblDateContent" runat="server" Style="display: none"></asp:Label>
                             </div>
 
                             <asp:Panel ID="pnlGV" runat="server">
@@ -245,7 +296,7 @@
                                                                 </div>
                                                             </asp:Panel>
                                                         </td>
-                                                         <td>
+                                                        <td>
                                                             <a href='../Content_Details.aspx?ID=<%# Eval("Id") %>' class="btni-xxxs btn-green brd-50" title="مشاهدة العرض" target="_blank"><i class="fa-eye fa"></i></a>
                                                         </td>
                                                     </tr>
@@ -398,7 +449,7 @@
                                                                     <uc1:HTMLEditor ID="txtDescription" runat="server" />
                                                                     <%--<asp:TextBox runat="server" ID="txtDescription" TextMode="MultiLine" MaxLength="200"></asp:TextBox>--%>
                                                                 </div>
-                                                                 <div class="col-md-12">
+                                                                <div class="col-md-12">
                                                                     <label class="input-label">&nbsp;</label>
                                                                     <div class="c-check">
                                                                         <asp:CheckBox runat="server" ID="chkActive" ToolTip="تفعيل" Text="تفعيل"></asp:CheckBox>
